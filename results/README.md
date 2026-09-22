@@ -11,7 +11,8 @@ model outputs, and source hashes used at that stage:
 | `refinement_v3` | Parallel compilation, patch dynamics, noisy observables, cultivation, STAR retries |
 | `presentation_v1` | Capacity inversion and the repository/presentation provenance record |
 | `discussion_v1` | Archived fixed-step analytical example and its original figures (source at commit `7212660`) |
-| `discussion_v2` | Small-patch-informed step scenario, PEC comparisons, hybrid, and time-growing family |
+| `discussion_v2` | Archived cubic-time, fixed-allocation example and its figures (source at commit `26b9a07`) |
+| `discussion_v3` | Measured time dependence by ordering, joint budget/source optimization, finite-patch and grid checks |
 
 The principal current figures are in [../figures](../figures), and the full
 story is in [../tex/main.pdf](../tex/main.pdf). Presentation changes do not

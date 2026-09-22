@@ -121,7 +121,9 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
         T_per_rotation=0;nt=w.fixed_T;analog=w.rotations
         chi=4*c['star_alpha']*c['p']*w.theta+4*c['star_floor']*analog
     log_amp=chi/2
-    qsource=c['source_error'];cleanup=int(log(nt*qsource)+log_amp>log(epsilon*c['magic_fraction']))
+    qsource=c['source_error']
+    cleanup=c.get('forced_cleanup',int(log(nt*qsource)+log_amp>log(epsilon*c['magic_fraction'])))
+    if cleanup not in (0,1):raise ValueError('Only zero or one cleanup stage is modeled')
     qout=35*qsource**3 if cleanup else qsource
     if log(nt*qout)+log_amp>log(epsilon*c['magic_fraction']):return {**base,'log10_Q_min':None}
     candidates=[]
@@ -205,23 +207,26 @@ def plot(rows,c,epsilon=.001):
         ax.set_xscale('log');ax.set_xlim(10,1e9);ax.set_ylim(0,ymax+1)
         ax.set_xticks([1e2,1e4,1e6,1e8]);ax.set_yticks(range(0,ymax+1,4 if ymax<=36 else 8))
         ax.set_xlabel('Available physical qubits, Q')
-        title=f'τ = {tau:g}  ·  r = {step_count(tau,epsilon,c)}' if tau is not None else f'τ = {c["time_family_scale"]:g} L  ·  size-dependent r'
+        modern=c.get('presentation_version')=='v3'
+        title=(f'τ = {tau:g}  ·  optimized r by arm and size' if modern else f'τ = {tau:g}  ·  r = {step_count(tau,epsilon,c)}') if tau is not None else f'τ = {c["time_family_scale"]:g} L  ·  size-dependent r'
         ax.set_title(title,loc='left',fontsize=12);ax.grid(alpha=.18)
-        if ymax>=c['max_L']:
-            ax.axhspan(c['max_L']-.4,c['max_L']+1,color='#eeeeee',zorder=0)
-            ax.text(.98,.975,f'L = {c["max_L"]}: sweep limit',ha='right',va='top',transform=ax.transAxes,fontsize=8,color='#666666')
+        limit=max(v['L'] for v in rows if v['family']==family)
+        if ymax>=limit:
+            ax.axhspan(limit-.4,limit+1,color='#eeeeee',zorder=0)
+            ax.text(.98,.975,f'L = {limit}: sweep limit',ha='right',va='top',transform=ax.transAxes,fontsize=8,color='#666666')
     for ax in list(axes.flat)[len(panels):]:ax.set_visible(False)
     for ax in axes[:,0]:ax.set_ylabel('Largest modeled side L (L × L sites)')
     handles,legend=axes[0,0].get_legend_handles_labels()
     order=[0,3,4,5,1,2]
     fig.legend([handles[i] for i in order],[legend[i] for i in order],loc='lower center',
                bbox_to_anchor=(.5,.064),ncol=3,frameon=False,fontsize=9)
-    fig.suptitle('Discussion model: step refinement, mitigation, and hybrid protection',fontsize=16,x=.07,ha='left',y=.987)
+    fig.suptitle('Budget-optimized discussion model' if modern else 'Discussion model: step refinement, mitigation, and hybrid protection',fontsize=16,x=.07,ha='left',y=.987)
     time_power={2:'²',3:'³'}.get(c['trotter_time_power'],'^'+str(c['trotter_time_power']))
     rule=(f'assumed Trotter error = {c["trotter_coefficient"]:g} τ{time_power}/r², budget = {c["trotter_budget_fraction"]:g} ε'
           if c['step_policy']=='small_patch_fit' else f'r = ceil({c["steps_per_tau"]:g} τ)')
+    if modern:rule='measured finite-patch Trotter envelope by ordering; error allocation and source menu optimized'
     fig.text(.07,.944,f'One week · p = 10⁻³ · ε = {epsilon:g} · {rule}',fontsize=10,color='#555555')
-    fig.text(.5,.012,'Small-patch-informed scenario, not a large-lattice accuracy certificate. Bands are scenario ranges, including PEC references.\n'
+    fig.text(.5,.012,'Finite-patch transfer, not a large-lattice accuracy certificate. Bands are scenario ranges, including PEC references.\n'
              'Effective NISQ bias is assumed affordable. PEC uses Hoeffding; other curves use Gaussian planning counts. Full-lattice, even-L estimates.',
              ha='center',fontsize=8.2,color='#555555')
     fig.subplots_adjust(left=.07,right=.985,bottom=.205,top=.875,wspace=.10,hspace=.34)

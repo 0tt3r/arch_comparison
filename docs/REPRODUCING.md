@@ -8,9 +8,10 @@ Set `OPENBLAS_NUM_THREADS=1` and `OMP_NUM_THREADS=1` for the bounded examples.
 ## Current figures and manuscript
 
 For the fast analytical discussion example alone, run `make discussion`.
-Edit `configs/discussion_model.json` for the scenario knobs. This regenerates
-`results/discussion_v2/` and the two `discussion_capacity` figures without
-calling CUDA-Q or a dynamics solver. See [DISCUSSION_MODEL.md](DISCUSSION_MODEL.md).
+Edit `configs/discussion_model.json` for delivery assumptions and
+`configs/budget_optimization.json` for the coefficient policy and search grid.
+This regenerates `results/discussion_v3/` costs and the capacity/calibration
+figures from saved data, without calling CUDA-Q or a dynamics solver. See [DISCUSSION_MODEL.md](DISCUSSION_MODEL.md).
 
 ```bash
 conda activate qb_gsee
@@ -31,6 +32,30 @@ scientific simulations or change the old result directories. A Tectonic
 executable on PATH is preferred; the helper also supports the existing local
 conda package cache. With a standard TeX installation, `cd tex && latexmk -pdf main.tex`
 builds the same main document.
+
+## Current time calibration and optimization checks
+
+Calibration resumes completed (patch, time, ordering) cases and writes each
+completed case atomically. Use a new `--out` directory for a fresh independent
+run; point the model at the intended saved calibration before comparing results.
+The default 2 × 2 and 3 × 3 sweep runs on one CPU thread. The 4 × 3 checks
+use about 1.4 GB and several minutes per time point on the workshop node.
+
+```bash
+python python/time_calibration.py
+python python/time_calibration.py --patches 4x3 --times 2 4 --out results/discussion_v3/rectangle_checks
+python python/check_discussion_v3.py --guard
+make discussion
+python python/check_discussion_v3.py --supplementary
+python python/check_discussion_v3.py
+```
+
+`--supplementary` checks the actual error at selected optimized step counts
+and searches a finer allocation grid at tau = 1. Run it again after changing
+the model assumptions. `make audit` verifies saved model budgets, capacity
+inversion, calibration convergence/source hashes, and the older frozen
+scientific artifacts. The two old discussion directories and their figures
+are archived; `make discussion` does not overwrite them.
 
 ## Latest scientific calculations
 

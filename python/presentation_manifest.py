@@ -43,7 +43,12 @@ def check_content():
             if '://' in target or target.startswith('#'):continue
             assert (path.parent/target.split('#')[0]).exists(),(name,target)
     assert (ROOT/'tex/main.pdf').read_bytes().startswith(b'%PDF-')
+    discussion=json.loads((ROOT/'results/discussion_v3/validation.json').read_text())
+    assert discussion['status'].startswith('PASS:')
+    assert discussion['scenario_points']==len(json.loads((ROOT/'results/discussion_v3/costs.json').read_text()))
     return {'threshold_rows':len(saved),'frontier_points':len(frontier),
+            'discussion_scenario_points':discussion['scenario_points'],
+            'discussion_calibration_cases':discussion['calibration_cases'],
             'manuscript_figures':len(figures),'status':'PASS: discrete inversion, manuscript references, and artifact paths'}
 
 
@@ -71,7 +76,7 @@ def main(write=False):
     if write:
         record={**current,'checks':report,'python':sys.version,
                 'packages':{n:importlib.metadata.version(n) for n in ('numpy','scipy','matplotlib','pytest')},
-                'scope':'Presentation and repository organization; prior scientific artifacts remain unchanged'}
+                'scope':'Current discussion calculations, presentation, and repository organization; prior versioned scientific artifacts remain unchanged'}
         path.write_text(json.dumps(record,indent=2,sort_keys=True)+'\n')
     manifest=json.loads(path.read_text())
     for category,values in current.items():

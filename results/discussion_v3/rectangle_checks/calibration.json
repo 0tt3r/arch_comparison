@@ -1,0 +1,148 @@
+{
+  "rows": [
+    {
+      "patch": "4x3",
+      "sites": 12,
+      "dimension": 853776,
+      "tau": 2.0,
+      "algorithm": "plaquette",
+      "exact_doublon": 0.13421206025623578,
+      "exact_norm_error": 6.328271240363392e-15,
+      "measurements": [
+        {
+          "r": 32,
+          "signed_error": 0.0011129154294152177,
+          "coefficient": 1.139625399721183,
+          "norm_error": 2.886579864025407e-15,
+          "seconds": 40.49307721294463
+        },
+        {
+          "r": 64,
+          "signed_error": 0.00027727641412217396,
+          "coefficient": 1.1357241922444246,
+          "norm_error": 1.887379141862766e-15,
+          "seconds": 72.16055945307016
+        },
+        {
+          "r": 128,
+          "signed_error": 6.92593815154463e-05,
+          "coefficient": 1.1347457067490723,
+          "norm_error": 2.886579864025407e-15,
+          "seconds": 135.4615487391129
+        }
+      ],
+      "coefficient": 1.1357241922444246,
+      "relative_coefficient_spread": 0.0008615520405694622,
+      "converged": true
+    },
+    {
+      "patch": "4x3",
+      "sites": 12,
+      "dimension": 853776,
+      "tau": 2.0,
+      "algorithm": "termwise",
+      "exact_doublon": 0.13421206025623578,
+      "exact_norm_error": 6.328271240363392e-15,
+      "measurements": [
+        {
+          "r": 32,
+          "signed_error": -0.0006859071842086895,
+          "coefficient": -0.702368956629698,
+          "norm_error": 4.529709940470639e-14,
+          "seconds": 4.420340645126998
+        },
+        {
+          "r": 64,
+          "signed_error": -0.00017136581424309627,
+          "coefficient": -0.7019143751397223,
+          "norm_error": 9.836575998178887e-14,
+          "seconds": 8.677397225052118
+        },
+        {
+          "r": 128,
+          "signed_error": -4.283473025357143e-05,
+          "coefficient": -0.7018042204745143,
+          "norm_error": 3.1252778143198157e-13,
+          "seconds": 17.230863981880248
+        }
+      ],
+      "coefficient": 0.7019143751397223,
+      "relative_coefficient_spread": 0.00015693461924910922,
+      "converged": true
+    },
+    {
+      "patch": "4x3",
+      "sites": 12,
+      "dimension": 853776,
+      "tau": 4.0,
+      "algorithm": "plaquette",
+      "exact_doublon": 0.14204718571577554,
+      "exact_norm_error": 1.1102230246251565e-16,
+      "measurements": [
+        {
+          "r": 64,
+          "signed_error": 0.0010014359124084216,
+          "coefficient": 4.101881497224895,
+          "norm_error": 4.6629367034256575e-15,
+          "seconds": 80.44444785406813
+        },
+        {
+          "r": 128,
+          "signed_error": 0.0002502172185391005,
+          "coefficient": 4.099558908544623,
+          "norm_error": 9.658940314238862e-15,
+          "seconds": 144.06604722887278
+        },
+        {
+          "r": 256,
+          "signed_error": 6.254506496952694e-05,
+          "coefficient": 4.098953377842918,
+          "norm_error": 2.7755575615628914e-15,
+          "seconds": 269.70918783918023
+        }
+      ],
+      "coefficient": 4.099558908544623,
+      "relative_coefficient_spread": 0.00014770630577911638,
+      "converged": true
+    },
+    {
+      "patch": "4x3",
+      "sites": 12,
+      "dimension": 853776,
+      "tau": 4.0,
+      "algorithm": "termwise",
+      "exact_doublon": 0.14204718571577554,
+      "exact_norm_error": 1.1102230246251565e-16,
+      "measurements": [
+        {
+          "r": 64,
+          "signed_error": -0.0006688439313268235,
+          "coefficient": -2.739584742714669,
+          "norm_error": 9.592326932761353e-14,
+          "seconds": 8.819661926943809
+        },
+        {
+          "r": 128,
+          "signed_error": -0.0001665002694902773,
+          "coefficient": -2.7279404153287032,
+          "norm_error": 1.8030021919912542e-13,
+          "seconds": 17.294756502844393
+        },
+        {
+          "r": 256,
+          "signed_error": -4.158149331856542e-05,
+          "coefficient": -2.7250847461255034,
+          "norm_error": 6.094014182167484e-13,
+          "seconds": 34.886558402795345
+        }
+      ],
+      "coefficient": 2.7279404153287032,
+      "relative_coefficient_spread": 0.0010468224258687489,
+      "converged": true
+    }
+  ],
+  "scope": "Finite patches and local doublon; no bulk accuracy certificate",
+  "hamiltonian": "OBC, half-filled Neel, U/J=4, central coordinate (1,1)",
+  "step_rule": "r0=ceil(16 max(1,tau)); r0,2r0,4r0; additional refinement if coefficient spread exceeds 5 percent",
+  "source_sha256": "1a13556a954865ce3755140b21107ef805a8851c8600d26262f49e952eac9a78"
+}

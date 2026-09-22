@@ -1,4 +1,6 @@
-# Revised back-of-the-envelope+ discussion example
+# Archived fixed-allocation discussion example
+
+Superseded by [discussion v3](../discussion_v3/summary.md). Source at commit `26b9a07`; fixed error allocation and assumed cubic time law.
 
 One week, p = 0.001, 10 ns gates, 240 ns syndrome cycles. Four architectures; effective mitigation and PEC are shown separately.
 The chosen step policy is small_patch_fit; the transferred fit is 0.22 tau^3/r^2, with Trotter allowance 0.25 epsilon.
@@ -45,5 +47,5 @@ The fourth panel follows tau = 0.25 L. With the chosen small-patch-fit time powe
 The L^4 law applies instead when the step count grows linearly in time; choose trotter_time_power = 2 for that sensitivity.
 
 Details: [discussion guide](../../docs/DISCUSSION_MODEL.md).
-Figures: [strict precision](../../figures/discussion_capacity.pdf), [0.01 sensitivity](../../figures/discussion_capacity_loose.pdf).
+Figures: [strict precision](figures/discussion_capacity.pdf), [0.01 sensitivity](figures/discussion_capacity_loose.pdf).
 The [original fixed-step example](../discussion_v1/summary.md) is archived.

@@ -124,3 +124,32 @@ with the same sqrt(F) amplification as logical faults. Termwise STAR can still
 beat this hybrid at small sizes because it already avoids fixed T gates. The
 original discussion_v1 data and figures are archived; current outputs live in
 discussion_v2. Frozen compiled and dynamics artifacts remain unchanged.
+
+Following the requested next goals, discussion_v3 optimizes per-arm error
+allocation and the shared raw-cultivation/cleanup menu. Total precision is
+unchanged. The Trotter and magic model errors are charged explicitly; statistics
+receive the remaining allowance after logical/synthesis reserves and a declared
+10% residual-bias reserve for mitigated arms. Affordability of that reserve is
+not calibrated. Each selected split and supply choice is saved. The optimizer
+searches a finite grid and integer-step neighbors, with a finer-grid sensitivity.
+
+Exact 2x2 and 3x3 time sweeps now cover tau through 8 for both termwise and
+plaquette orderings. Selected 4x3 checks assess finite-patch dependence. The
+planning coefficient is 1.1 times the running maximum of measured 3x3
+coefficients through the requested time; pointwise values remain a sensitivity.
+This avoids relying on isolated finite-patch cancellations without asserting a
+universal time power or bulk error bound. STAR uses its termwise coefficient;
+FT/hybrid use plaquettes; transfer to the NISQ experimental gate proxy is still
+an assumption. No time extrapolation beyond 8 is made, so tau=L/4 stops at L=32.
+The v2 discussion data and figures are archived. Physical STAR scheduling and
+empirical NISQ bias/variance calibration remain subsequent work.
+
+Finite-step checks at r=ceil(8 tau) and twice r augment the coefficient envelope.
+They correct a leading-order underestimate found at an optimized loose-precision
+termwise point. Direct selected-step checks pass after this correction. The
+finer allocation grid improves the tau=1 anchors by at most 18%; global
+optimality is not claimed.
+
+The L=2 resource point uses its own measured 2x2 coefficients and finite-step
+checks; the 3x3 transfer applies to L>=4. This avoids discarding a directly
+measured small-system reference.

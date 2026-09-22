@@ -5,7 +5,7 @@ export OMP_NUM_THREADS = 1
 .PHONY: discussion figures paper test audit
 
 discussion:
-	$(PYTHON) python/discussion_model.py
+	$(PYTHON) python/run_discussion_v3.py
 
 figures: discussion
 	$(PYTHON) python/plot_capacity.py
@@ -20,4 +20,5 @@ test:
 
 audit:
 	$(PYTHON) python/audit_refinement_v3.py
+	$(PYTHON) python/check_discussion_v3.py
 	$(PYTHON) python/presentation_manifest.py

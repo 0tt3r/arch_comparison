@@ -1,0 +1,10 @@
+{
+  "scenario_points": 2464,
+  "feasible_model_points": 2272,
+  "capacity_rows": 56,
+  "calibration_cases": 76,
+  "finite_step_guard_cases": 72,
+  "selected_step_checks": 39,
+  "maximum_finer_grid_improvement": 1.1790507493054712,
+  "status": "PASS: model budget arithmetic, finite-patch convergence, selected-step checks, and capacity inversion; bulk transfer and residual bias uncalibrated"
+}

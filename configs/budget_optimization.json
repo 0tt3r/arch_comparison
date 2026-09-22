@@ -1,0 +1,57 @@
+{
+  "coefficient_patch": "3x3",
+  "coefficient_margin": 1.1,
+  "minimum_steps_per_tau": 8,
+  "trotter_fraction_grid": [
+    0.03,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.94,
+    0.97
+  ],
+  "logical_fraction_grid": [
+    0.005,
+    0.02,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "synthesis_fraction_grid": [
+    0.01,
+    0.03,
+    0.075,
+    0.15
+  ],
+  "residual_bias_fraction": {
+    "nisq": 0.1,
+    "star": 0.1,
+    "hybrid": 0.1,
+    "ft": 0.0
+  },
+  "cleanup_choices": [
+    0,
+    1
+  ],
+  "coefficient_scope": "Default: running maximum of measured 3x3 |error| r^2 through the requested time, with 10% margin, to avoid relying on isolated finite-patch cancellations. Pointwise values are retained as a sensitivity. Other sizes and the experimental NISQ ordering remain transfers. No extrapolation beyond measured time nodes. L=2 uses its own measured 2x2 data. The coefficient also covers measured errors at r=ceil(8 tau) and twice that value, avoiding an uncontrolled leading-order approximation at loose precision.",
+  "search_scope": "Best over the declared error-allocation grid and shared source menu, followed by integer-step neighbors. Not a global optimizer or a calibrated source-quality tradeoff.",
+  "residual_bias_scope": "Post-mitigation residual bias reserve, including mismatch and unmodeled SPAM; affordability is assumed, not measured. PEC still assumes the declared invertible channels.",
+  "coefficient_policy": "running_max",
+  "finite_step_guard": true,
+  "exact_2x2_coefficients": true
+}
