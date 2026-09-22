@@ -51,6 +51,25 @@ def data_and_surgery(ax,color):
     block(ax,1,1,40.5,4.8,'#98a5b3','Spare area → additional protected samplers',fontsize=8,dashed=True)
 
 
+def star_shared_ancillas(ax):
+    # STAR may prepare angle states in ancillas also used for lattice surgery.
+    # Dashed patches denote temporary roles, not a dedicated state factory.
+    color=COLORS['star']
+    ax.add_patch(Rectangle((1,17.1),40,3.8,facecolor='#e3e7ed',edgecolor='none',zorder=1))
+    for x in (8.7,24.7):
+        ax.add_patch(Rectangle((x,9),8,21,facecolor='#e3e7ed',edgecolor='none',zorder=1))
+    for i,(x,y) in enumerate((x,y) for y in (22,9) for x in (1,17,33)):
+        block(ax,x,y,7.2,7.2,color,rf'$\bar q_{i}$',fontsize=12)
+    block(ax,9,22,7.2,7.2,color,r'$|A_\theta\rangle$',fontsize=11,dashed=True)
+    block(ax,25,9,7.2,7.2,color,r'$|A_\varphi\rangle$',fontsize=11,dashed=True)
+    arrow(ax,(12.6,21.7),(12.6,20.4),color)
+    arrow(ax,(28.6,16.5),(28.6,17.8),color)
+    ax.text(21.5,19,'shared surgery / preparation space',ha='center',va='center',
+            fontsize=8,color=MUTED,zorder=6,
+            bbox={'facecolor':'#e3e7ed','edgecolor':'none','pad':1})
+    block(ax,1,1,40.5,4.8,'#98a5b3','Spare area → additional protected samplers',fontsize=8,dashed=True)
+
+
 def overview():
     fig,axes=plt.subplots(1,3,figsize=(15.8,6.9))
     titles=['NISQ','STAR','FTQC']
@@ -64,12 +83,8 @@ def overview():
         block(ax,x,y,12,8,color,f'Sampler {i+1}',fontsize=9)
     ax.text(21.5,-3.1,'Prepare → evolve → measure',ha='center',fontsize=11,color=INK)
     ax.text(21.5,-6.0,'Pool shots; select and mitigate',ha='center',fontsize=10,color=MUTED)
-    ax=axes[1];color=COLORS['star'];data_and_surgery(ax,color)
-    block(ax,32,21.5,9.4,8.0,color,'Analog\ninjection',fontsize=8.5)
-    block(ax,32,9.2,9.4,7.0,color,'Grow / retry',fontsize=8)
-    arrow(ax,(36.5,21.2),(36.5,16.6),color)
-    arrow(ax,(34.0,19.0),(29.4,19.0),color)
-    ax.text(21.5,-3.1,'Logical patches + rotation delivery',ha='center',fontsize=11,color=INK)
+    ax=axes[1];star_shared_ancillas(ax)
+    ax.text(21.5,-3.1,'Temporary angle-state preparation',ha='center',fontsize=11,color=INK)
     ax.text(21.5,-6.0,'Mitigate residual analog errors',ha='center',fontsize=10,color=MUTED)
     ax=axes[2];color=COLORS['ft'];data_and_surgery(ax,color)
     block(ax,32,21.5,9.4,8.0,color,'T-state\nbuffers',fontsize=8.5)
@@ -84,6 +99,51 @@ def overview():
     fig.text(.5,.028,'Dots: physical qubits · Gray corridors: operation space · Colored outlines: resource groups · Schematic allocations, not optimized floorplans',
              ha='center',fontsize=9,color=MUTED)
     fig.subplots_adjust(left=.035,right=.985,top=.92,bottom=.065,wspace=.11)
+    return fig
+
+
+def rotation_protocols():
+    fig,axes=plt.subplots(1,2,figsize=(13.8,6.6))
+    for ax in axes:
+        ax.set_xlim(0,12);ax.set_ylim(0,8.2);ax.axis('off')
+    ax=axes[0];color=COLORS['star']
+    ax.text(.2,7.7,'STAR: inject the requested angle',fontsize=16,fontweight='bold',color=color)
+    ax.text(.2,7.05,r'Start at $\varphi=\theta$; use $|A_\varphi\rangle=e^{-i\varphi Z}|+\rangle$',fontsize=11,color=INK)
+    block(ax,.4,5.1,3.4,1.35,color,r'Prepare $|A_\varphi\rangle$',fontsize=12,dashed=True)
+    block(ax,5.1,5.1,3.0,1.35,color,'Teleport\n+ measure',fontsize=11)
+    arrow(ax,(4.0,5.775),(4.9,5.775),color)
+    arrow(ax,(8.3,5.775),(9.45,5.775),color)
+    ax.text(10.5,5.775,'Target\nrotation',ha='center',va='center',fontsize=11,color=INK)
+    ax.text(8.8,6.45,'success',ha='center',fontsize=9,color=MUTED)
+    arrow(ax,(6.6,4.9),(6.6,3.95),color)
+    ax.text(6.9,4.35,'wrong sign',va='center',fontsize=9,color=MUTED)
+    block(ax,4.8,2.4,3.6,1.3,color,r'Retry with $\varphi\to2\varphi$',fontsize=11)
+    ax.plot([4.6,2.1,2.1],[3.05,3.05,4.1],color=color,lw=1.5)
+    arrow(ax,(2.1,4.1),(2.1,4.9),color)
+    ax.text(.3,1.55,'Ideal sign retries: mean 2 teleportations',fontsize=11,color=INK)
+    ax.text(.3,.75,'Residual rotation noise → PEC sampling',fontsize=11,color=color)
+
+    ax=axes[1];color=COLORS['ft']
+    ax.text(.2,7.7,'FTQC: synthesize the requested angle',fontsize=16,fontweight='bold',color=color)
+    ax.text(.2,7.05,r'Approximate $e^{-i\theta Z}$ to a chosen synthesis tolerance',fontsize=11,color=INK)
+    block(ax,.4,5.0,4.1,1.45,color,'Cultivate / distill\nhigh-fidelity T states',fontsize=11)
+    block(ax,6.1,5.0,4.7,1.45,color,'T-state buffers',fontsize=11)
+    arrow(ax,(4.7,5.725),(5.9,5.725),color)
+    arrow(ax,(8.4,4.8),(8.4,3.9),color)
+    ax.plot([.2,11.4],[3.25,3.25],color=INK,lw=1.5)
+    for x,label in ((.6,'C'),(2.1,'T'),(3.6,'C'),(5.1,'T'),(8.1,'T'),(9.6,'C')):
+        block(ax,x,2.8,.75,.9,color,label,fontsize=11,face='#f0ebfa' if label=='T' else '#f4f5f7')
+    ax.text(7,3.25,'⋯',ha='center',va='center',fontsize=18,color=INK)
+    arrow(ax,(10.6,3.25),(11.5,3.25),color)
+    ax.text(.3,2.1,'C: Clifford operations; T includes inverse T gates',fontsize=9.5,color=MUTED)
+    ax.text(.3,1.25,r'Generic rotation: $N_T=O(\log(1/\epsilon_{\rm syn}))$',fontsize=11,color=INK)
+    ax.text(.3,.55,'State errors + logical faults enter the bias budget',fontsize=10.5,color=color)
+
+    fig.suptitle('Shared protected Clifford operations; different non-Clifford protocols',
+                 fontsize=17,x=.04,ha='left',y=.985)
+    fig.text(.5,.025,'Hybrid: analog injection for small angles + high-fidelity T states for fixed π/8 rotations.   Flow diagrams; not equal-duration schedules.',
+             ha='center',fontsize=9.3,color=MUTED)
+    fig.subplots_adjust(left=.035,right=.99,top=.9,bottom=.09,wspace=.10)
     return fig
 
 
@@ -117,7 +177,7 @@ def patch_detail():
     arrow(ax,(8.1,5.7),(7.4,5.4),COLORS['star'])
     arrow(ax,(8.1,3.3),(7.4,4.5),COLORS['ft'])
     arrow(ax,(4.05,5.0),(3.45,5.0),INK,style='<->')
-    ax.text(.2,2.55,'STAR uses the analog path; FTQC uses the T-state path.',fontsize=9.5,color=INK)
+    ax.text(.2,2.55,'STAR preparation can reuse surgery ancillas.',fontsize=9.5,color=INK)
     ax.text(.2,1.65,'The hybrid uses both: fixed T states + analog small angles.',fontsize=9.5,color=INK)
     ax.text(.2,.55,'More area can buy greater distance, faster supply,\nmore operation space, or more complete sampler replicas.',fontsize=10,color=MUTED,linespacing=1.5)
     fig.subplots_adjust(left=.025,right=.985,bottom=.03,top=.96,wspace=.1)
@@ -127,14 +187,15 @@ def patch_detail():
 def main():
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'pdf.fonttype':42,'svg.fonttype':'none'})
     out=ROOT/'figures';out.mkdir(exist_ok=True)
-    for name,make in [('architecture_overview',overview),('architecture_detail',patch_detail)]:
+    for name,make in [('architecture_overview',overview),('architecture_detail',patch_detail),
+                      ('rotation_protocols',rotation_protocols)]:
         fig=make()
         for suffix in ('pdf','svg','png'):
             path=out/f'{name}.{suffix}'
             fig.savefig(path,dpi=220)
             if suffix=='svg':path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
         plt.close(fig)
-    print('Wrote two architecture cartoons as PDF, editable SVG, and PNG.')
+    print('Wrote three architecture cartoons as PDF, editable SVG, and PNG.')
 
 
 if __name__=='__main__':main()

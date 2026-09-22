@@ -1,25 +1,28 @@
 {
   "artifacts": {
-    "figures/architecture_detail.pdf": "67464b16aaacef3b727f7d0ac968df4a69f8eb2699a4ab5dca6960051b96c7b9",
-    "figures/architecture_detail.png": "b7ea03ca0c8c1f8bb6dae4ea5def6d7b4c1dabb0917df8f92c7eaaa2e58171c3",
-    "figures/architecture_detail.svg": "28dd95147f7ab30666b58255ecb376603cc29ede9f141f0dc253745a485a31c2",
-    "figures/architecture_overview.pdf": "00fd026d9025b7aef474e5bfdcd15dc18f62482cf471a034dbe35014c2ce9545",
-    "figures/architecture_overview.png": "ce36b1bb474d85408603dfe6498079b715ca95256eb1564dede898e563eb4406",
-    "figures/architecture_overview.svg": "f1269c5b08d4e66bed67e65e6b21ea1bb29769df4cfc933a805f959c4f972ddb",
+    "figures/architecture_detail.pdf": "f809dadcd490b75ee50c0c60fadda88e5a98154db0a80c6aea737a380efda185",
+    "figures/architecture_detail.png": "7f6a28ba05e2d1039c99617bc272c087d3b4d976596a2611fb32e46f72308838",
+    "figures/architecture_detail.svg": "09ca9e53c9ba8bf0faeafe6b3d6efd9f2ced796c95e77cc14d4f0d7bbf64e943",
+    "figures/architecture_overview.pdf": "5704181e64e22a773f133f5f1a258b44335eae0a2d25c2fcc5300cc3a30658bc",
+    "figures/architecture_overview.png": "d464a19bd5da4a3d1cff38a81c59b17a08ffe0496e2051398ed816d58c3eefae",
+    "figures/architecture_overview.svg": "06d9b2f012512e75ee709c175c66832c247cee50831e398cd4a0912c739b3040",
     "figures/capacity_vs_qubits.pdf": "c7d9090f98b2f32d806e7656521940e3837e5129e25887131e491e6f151dff43",
     "figures/capacity_vs_qubits.png": "3755c323c93303909972a9f92954e42f2a0af7e1353064ee438df6755ce99ea0",
     "figures/capacity_vs_qubits.svg": "e7187d1428a88ea5a01b48ed7ecb8b05217faa39b4d6351589dd2a52f79ccff3",
+    "figures/rotation_protocols.pdf": "7914638a029b9282e6bf3cb4480f419b0bcc221a848ef0d3de780034ddbc82ee",
+    "figures/rotation_protocols.png": "555fb931d572deac586d446ae20b02ac62694459c14653ab374729aa68b37687",
+    "figures/rotation_protocols.svg": "b51419f59a4ad42efdab674d3938a91bb702ce0edea49d33cd9dca3662694fea",
     "results/presentation_v1/capacity_frontiers.json": "fe49c084f9540b3096fa3ed9cf6bf57b5bf227aa15fcd0e7ddf75a1f7b992586",
     "results/presentation_v1/capacity_thresholds.csv": "8f5701b8919412e01ad606752f754a3120851ee64d7f7088cdfa28797af24a84",
     "results/presentation_v1/capacity_thresholds.json": "e9111d88f1ab33cb20843a45c4568a405a56347ff2b61ea74ec8687463da6df2",
     "results/presentation_v1/reorganization.json": "22c3fcf0c4e234be1f74d0ba623ee8e882054578bf4499fce22b87916a55b36d",
-    "results/presentation_v1/tests.xml": "8f479a5629c6514852858c4a0ad8efe8eaabde28cb03380dbfaf348b6d23ed33",
-    "results/presentation_v1/validation.json": "274e3495d6537f5807a1ac3000d6cdfbf299d71e9c39c762f744f29aff8e2061",
-    "tex/main.pdf": "dc13a4e8822cd3ee52050a46020d50ac0679cdd11f6c37342f8cf439519f9db5"
+    "results/presentation_v1/tests.xml": "ce83bb443eee0289ccae81193960ca6df27b0122ac105490072d4e3c40ceef2b",
+    "results/presentation_v1/validation.json": "2503180ec1f920d6cf6893a1a35fdbafc9d3f9a2c0553b3f1dc3034670bfed84",
+    "tex/main.pdf": "de8cfe68a8f3c172a11ec120990d88530c3785b2d3d51b9812134e668b0324f7"
   },
   "checks": {
     "frontier_points": 44,
-    "manuscript_figures": 5,
+    "manuscript_figures": 6,
     "status": "PASS: discrete inversion, manuscript references, and artifact paths",
     "threshold_rows": 32
   },
@@ -46,7 +49,7 @@
   "scope": "Presentation and repository organization; prior scientific artifacts remain unchanged",
   "sources": {
     "Makefile": "a308afab79f6c2aa1044970cdc569922684c5e839525fa986508de9fc8582c6d",
-    "README.md": "5057dcb07e5ca1aa99c6c8b575019401ee62c2cf481c8a831d6afeadfad8114a",
+    "README.md": "bbefbfb537b9e773bf071e5d938437bc7dfbc112652f5f68132904d31555a989",
     "configs/assumptions.json": "02589376ef4bd0216d12b6a744d070c6d31b1a1d92c6403698981a929bfda653",
     "configs/cultivation_assumptions.json": "2b92b64a6e96ad42867c5ffeee76df14ca568bf853dbe57195b9bfb9d339ce32",
     "configs/file_locations.json": "23e38ebc75dcf479d68cf4817970472f8f0406f0849785663672b6e76464e0a5",
@@ -65,7 +68,7 @@
     "python/cudaq_star_gadget.py": "3c488cfef66173e8599c14e0c266c9e2ae906db07a70de6aaf83a05ec592c0ed",
     "python/cudaq_surface_probe.py": "af79981aedf7ec6aa1659b06790ef80475b4d65b8c2571d87196176275b3298d",
     "python/cultivation_model.py": "0f3077ba06cf589dce6e027fe1039456ec3178b102da4889a56c83c1158c2c10",
-    "python/draw_architectures.py": "dadf06a89d8c79465eb616bea43f6642ed274d161d8ce3bbf51e2e7b87effe47",
+    "python/draw_architectures.py": "d85072b7eac3b18c153df6686150ce38f97f1d6e73481b94a69b61e8ac5b17f5",
     "python/factory_sensitivity.py": "691980cc34a16e3fb5b9e53f5f7369acb9b3a01a7831648bf9ee7454f78c8c5e",
     "python/hubbard_circuits.py": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3",
     "python/make_plots.py": "880a93402795d8651af47fbc1e916cd83696cc6975a0dd62617b74b0c7749499",
@@ -94,7 +97,7 @@
     "tests/test_refinement_v3.py": "eada6b2a5a5b8a9ef8a45e265aaf25dde92c99ff3391a4c60b530a2a97dcf051",
     "tests/test_repository_paths.py": "3adf4ff35d1658d1c805e64138c0a3a3243a8c3311a9748a4cb546e04d65f38f",
     "tex/archive/README.md": "25f4b614dd1cd2ce381067b297247d8d439df77a4e98988d851a2893c523c0aa",
-    "tex/main.tex": "3deec23b202501617746c38624a4fb7094a4e713e4064b0db15b63469ac1dea9",
+    "tex/main.tex": "dacf0971408b62a536112688c3fc22fa71774b500c63ce34570d1aae7f437558",
     "tex/references.bib": "6ea8c9d2321186932c91309993a696cbc568dc20b8871c3f725106a1893d8341"
   }
 }

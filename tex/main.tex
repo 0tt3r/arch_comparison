@@ -53,14 +53,30 @@ timing is kept separate when its implementation or verification is incomplete.
 \centering
 \includegraphics[width=\linewidth]{architecture_overview.pdf}
 \caption{Three allocations of a common sea of physical qubits. NISQ uses
-many unprotected circuit replicas. STAR reserves encoded data, surgery space,
-and analog injection/growth resources. FTQC replaces analog rotation delivery
-with high-fidelity T-state supply, buffers, and synthesized logical operations.
+many unprotected circuit replicas. STAR and FTQC share protected data patches
+and lattice surgery. Dashed orange patches show temporary angle-state
+preparation in STAR surgery ancillas, a possible allocation rather than a
+dedicated factory requirement~\cite{toshio}. FTQC supplies high-fidelity T
+states to a synthesized sequence of logical operations.
 Every dot denotes a physical qubit; each encoded data patch contains many
 such qubits. The drawings explain resource roles and are not numerical
 floorplans or equal-capacity implementations of a particular Hubbard lattice.}
 \label{fig:architectures}
 \end{figure}
+
+The similarity of the encoded data patches is physical: both approaches
+protect their Clifford operations. The main distinction is how they supply
+non-Clifford rotations, including the sequence of operations in time
+(Figure~\ref{fig:rotation-protocols}). STAR teleports an angle-specific
+resource state and mitigates residual rotation errors. Our FTQC reference
+instead synthesizes the rotation from Clifford gates and high-fidelity T
+states. In the original STAR preparation protocol, a surgery ancilla can
+also serve as the preparation patch when distance and physical error rate
+permit adequate acceptance~\cite[Sec.~II A 2]{toshio}. Preparation, any patch
+growth, and retries still occupy space and time. Dedicated injection lanes
+are therefore a scheduling choice in our cost model, not a defining STAR
+requirement. Conversely, FTQC supply may be compact or shared in time;
+neither approach has a universal ratio of data area to preparation area.
 
 \section{Task, conventions, and precision}
 The problem has $N=L^2$ Hubbard sites, $2N$ spin modes, and open boundaries.
@@ -376,13 +392,29 @@ alone is insufficient.
 rotated-code illustration with nine data and eight check qubits; links are
 nearest-neighbor data--check interactions. Right: logical data interacts
 through operation space with analog injection or T-state supply. STAR and
-FTQC use different supply paths; the hybrid uses both. This illustration is
-not a choice of distance or a calibrated surgery schedule for the resource
-curves.}
+FTQC use different supply paths; the hybrid uses both. The diagram shows
+functional roles: STAR preparation can occupy surgery ancillas rather than
+a separate supply region. This illustration is not a choice of distance or
+a calibrated surgery schedule for the resource curves.}
 \label{fig:patch}
 \end{figure}
 
 \section{STAR: angle exposure, floors, and delivery}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{rotation_protocols.pdf}
+\caption{Two implementations of the same target rotation, in the convention
+$e^{-i\theta Z}$. STAR prepares an angle-specific resource state and uses
+teleportation with angle-doubling corrections~\cite{akahoshi,toshio}.
+Ideal sign outcomes require two teleportations on average; this does not
+include rejected preparation attempts or their cost. FTQC consumes
+high-fidelity T states in a Clifford+T approximation, whose generic T count
+grows logarithmically with inverse synthesis tolerance~\cite{ross}. The
+hybrid chooses between these paths by operation class. These are protocol
+flows, not schedules with equal durations or calibrated factory footprints.}
+\label{fig:rotation-protocols}
+\end{figure}
+
 For independent residual dephasing $q_j$ after completed rotations,
 \begin{equation}\label{eq:star}
  \Gamma^2=\prod_j(1-2q_j)^{-2},\qquad

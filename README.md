@@ -18,8 +18,12 @@ retains the original area thresholds.
 
 The [architecture overview](figures/architecture_overview.pdf) and
 [patch/supply detail](figures/architecture_detail.pdf) explain resource roles.
-Both are schematic and available as editable SVG, vector PDF, and PNG in
-`figures/`.
+The [rotation protocols](figures/rotation_protocols.pdf) show the distinction
+in time: STAR injects angle-specific states with retries, while FTQC consumes
+high-fidelity T states in a synthesized sequence. Both encoded approaches
+share protected Clifford operations; STAR preparation can reuse surgery
+ancillas. These drawings are schematic and available as editable SVG,
+vector PDF, and PNG in `figures/`.
 
 | Location | Purpose |
 |---|---|
