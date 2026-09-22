@@ -1,22 +1,26 @@
 # Hubbard dynamics on a fixed qubit array
 
-For the team discussion, start with the **[back-of-the-envelope+ summary](results/discussion_v1/summary.md)**
+For the team discussion, start with the **[back-of-the-envelope+ summary](results/discussion_v2/summary.md)**
 and its [assumptions and formulas](docs/DISCUSSION_MODEL.md).
 
 ![Back-of-the-envelope capacity scenarios](figures/discussion_capacity.png)
 
-The curves use simple analytical laws for NISQ, STAR, and FTQC, with declared
-scenario bands. The NISQ circuit scale is anchored to Willow; its effective
-mitigation overhead is assumed, not fitted. A
+The curves use simple analytical laws for NISQ, STAR, FTQC, and the hybrid,
+with declared scenario bands and explicit NISQ PEC comparisons. Step counts
+transfer the small-patch error fit: at tau = 1, r = 30 for 0.001 absolute
+precision and r = 10 for 0.01. This is a scenario, not a large-lattice accuracy
+certificate. The NISQ circuit scale is anchored to Willow; its effective
+mitigation overhead and residual bias are assumed, not fitted. A
 [0.01 absolute-precision sensitivity](figures/discussion_capacity_loose.pdf)
-is also available. Run `make discussion` to regenerate these estimates quickly.
+is also available. The fourth panel follows tau = L/4. Run `make discussion`
+to regenerate these estimates quickly.
 
 Start with the **[main manuscript](tex/main.pdf)** ([LaTeX](tex/main.tex),
 [bibliography](tex/references.bib)). It brings together the analytical resource
 laws, CUDA-Q compilation, mitigation, STAR, FTQC and hybrid supply, and the
 small-system accuracy checks.
 
-The principal comparison is now **maximum tested lattice size versus available
+The principal comparison is **maximum modeled lattice size versus available
 physical qubits**, subject to a one-week runtime cutoff:
 
 The separate [compiled-reference capacity plot](figures/capacity_vs_qubits.pdf)

@@ -1,0 +1,44 @@
+{
+  "points": [
+    {
+      "patch": "square3",
+      "steps": 16,
+      "error": 0.000853504910431499,
+      "coefficient": 0.21849725707046375
+    },
+    {
+      "patch": "square3",
+      "steps": 32,
+      "error": 0.00021283257943155443,
+      "coefficient": 0.21794056133791173
+    },
+    {
+      "patch": "square3",
+      "steps": 64,
+      "error": 5.317423927067577e-05,
+      "coefficient": 0.21780168405268796
+    },
+    {
+      "patch": "square2",
+      "steps": 16,
+      "error": 0.0008707546715785996,
+      "coefficient": 0.2229131959241215
+    },
+    {
+      "patch": "square2",
+      "steps": 32,
+      "error": 0.0002178340624863495,
+      "coefficient": 0.2230620799860219
+    },
+    {
+      "patch": "square2",
+      "steps": 64,
+      "error": 5.446728599364792e-05,
+      "coefficient": 0.22309800342998187
+    }
+  ],
+  "median_coefficient": 0.22070522649729263,
+  "chosen_coefficient": 0.22,
+  "time_power_assumed": 3,
+  "scope": "Plaquette formula at tau=1 on two small patches; larger lattices, other orderings, and time law are extrapolations"
+}

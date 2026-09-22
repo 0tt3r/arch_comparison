@@ -1,4 +1,6 @@
-# Back-of-the-envelope+ discussion example
+# Archived fixed-step discussion example
+
+Superseded by [discussion v2](../discussion_v2/summary.md). These tables use r = ceil(4 tau); source code is in commit 7212660.
 
 Central scenarios, one week, p = 0.001, 10 ns gates, 240 ns syndrome cycles.
 These are analytical planning estimates; mitigation and Trotter biases are assumed affordable.
@@ -32,4 +34,4 @@ Bands vary NISQ anchor overhead 10–1000, STAR floor 0–1e-4, delivery lanes 8
 They are scenarios, not confidence intervals.
 
 Details: [discussion guide](../../docs/DISCUSSION_MODEL.md).
-Figures: [strict precision](../../figures/discussion_capacity.pdf), [0.01 sensitivity](../../figures/discussion_capacity_loose.pdf).
+Figures: [strict precision](figures/discussion_capacity.pdf), [0.01 sensitivity](figures/discussion_capacity_loose.pdf).

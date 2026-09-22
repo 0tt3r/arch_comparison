@@ -1,5 +1,5 @@
 {
-  "tests_passed": 81,
+  "tests_passed": 84,
   "unchanged_scientific_python_files": [
     "compiled_model.py",
     "hubbard_circuits.py",
@@ -15,12 +15,12 @@
     "native_depth": 215,
     "synthesized_T_count": 672
   },
-  "manuscript_pages": 18,
+  "manuscript_pages": 19,
   "main_latex_build": "PASS: no overfull boxes or unresolved references",
   "archive_build": "PASS: refinement_v3 rebuilt in build/ without replacing archive",
   "historical_tex_pdf_bib": "Original pre-move hashes preserved",
   "scientific_artifacts": "v3 frozen artifact audit and current-code numerical replay passed",
   "architecture_figure_review": "PASS: shared Clifford patches distinguished from temporary STAR preparation and FT T-state supply; spatial and protocol PNGs visually inspected",
   "nisq_sampling_audit": "PASS: 32 active qubits, 36-qubit footprint, 59239 reference replicas; four diagnostic budgets recomputed",
-  "discussion_model": "PASS: 1296 analytical scenarios; experimental gate/depth anchor, STAR angle invariance, FT cleanup and logical-budget checks; two plots visually inspected"
+  "discussion_model": "PASS: 2688 analytical scenarios; saved small-patch fit and budget conventions, explicit PEC recovery of compiled baseline, hybrid fixed-state supply and amplified budget; both plots visually inspected"
 }

@@ -107,3 +107,20 @@ effective sampling overhead. It retains the strict target and adds the
 the remaining bias budget is affordable. These discussion scenarios are
 separate from the earlier compiled-reference artifacts. They do not change
 their scientific inputs or retrospectively claim a fit to experimental data.
+
+The discussion-model revision incorporates the review without starting a new
+large-system dynamics calculation. It transfers the saved small-patch coefficient
+0.22 into the explicit scenario delta D = 0.22 tau^3/r^2. For full-lattice
+calculations the entire 25% Trotter/truncation reserve goes to Trotter error:
+r = 10 (loose) and 30 (strict) at tau = 1. Splitting that reserve equally would
+give 14 and 42. The time law, size transfer, and transfer between product-formula
+orderings are assumptions, not newly qualified accuracy results.
+
+The revised figure includes the hybrid, two-qubit-only PEC, the saved full-noise
+compiled PEC proxy, and tau = L/4. PEC uses the earlier Hoeffding sampling bound;
+effective mitigation and encoded curves retain Gaussian planning counts. The
+hybrid shares the FT cultivation/cleanup model and budgets its magic-state error
+with the same sqrt(F) amplification as logical faults. Termwise STAR can still
+beat this hybrid at small sizes because it already avoids fixed T gates. The
+original discussion_v1 data and figures are archived; current outputs live in
+discussion_v2. Frozen compiled and dynamics artifacts remain unchanged.

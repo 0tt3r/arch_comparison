@@ -58,7 +58,8 @@ def inventory():
         'noisy_small.json','accuracy_calibration.pdf','postselection_bias.pdf')]
     inputs.extend(ROOT/f'results/refinement_v3/parallel_L{L}_observable/result.json' for L in (2,4,6,8))
     artifacts=[ROOT/'tex/main.pdf']+sorted((ROOT/'figures').glob('*'))
-    artifacts.extend(p for p in sorted((ROOT/'results/discussion_v1').glob('*')) if p.is_file())
+    for folder in sorted((ROOT/'results').glob('discussion_v*')):
+        artifacts.extend(p for p in sorted(folder.rglob('*')) if p.is_file())
     artifacts.extend(p for p in sorted(OUT.iterdir()) if p.is_file() and p.name!='manifest.json')
     return {key:{str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}
             for key,paths in [('sources',sources),('scientific_inputs',inputs),('artifacts',artifacts)]}
