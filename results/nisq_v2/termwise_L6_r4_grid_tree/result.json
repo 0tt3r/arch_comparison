@@ -1,0 +1,618 @@
+{
+  "schedule": {
+    "width": 72,
+    "gates": {
+      "x": 36,
+      "rzz": 25241,
+      "h": 24860,
+      "rz": 49520
+    },
+    "two_qubit_gates": 25241,
+    "one_qubit_gates": 74416,
+    "depth_layers": 36042,
+    "idle_qubit_layers": 2470126,
+    "seconds_per_attempt": 0.00036062,
+    "physical_copy_qubits": 81,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        7
+      ]
+    ]
+  },
+  "observable_exposure": {
+    "chi": 993.3629682019962,
+    "exposure": {
+      "two_qubit": 95.82242010428504,
+      "one_qubit": 28.222540845439788,
+      "idle": 869.0217108570117,
+      "spam": 0.2962963952596155
+    },
+    "locations": {
+      "two_qubit": 23954,
+      "one_qubit": 70554,
+      "idle": 2171178
+    },
+    "input_support": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71
+    ]
+  },
+  "full_circuit_chi": 1119.7111641012918,
+  "mode_to_wire": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "11": 11,
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "17": 17,
+    "18": 18,
+    "19": 19,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 24,
+    "25": 25,
+    "26": 26,
+    "27": 27,
+    "28": 28,
+    "29": 29,
+    "30": 30,
+    "31": 31,
+    "32": 32,
+    "33": 33,
+    "34": 34,
+    "35": 35,
+    "36": 36,
+    "37": 37,
+    "38": 38,
+    "39": 39,
+    "40": 40,
+    "41": 41,
+    "42": 42,
+    "43": 43,
+    "44": 44,
+    "45": 45,
+    "46": 46,
+    "47": 47,
+    "48": 48,
+    "49": 49,
+    "50": 50,
+    "51": 51,
+    "52": 52,
+    "53": 53,
+    "54": 54,
+    "55": 55,
+    "56": 56,
+    "57": 57,
+    "58": 58,
+    "59": 59,
+    "60": 60,
+    "61": 61,
+    "62": 62,
+    "63": 63,
+    "64": 64,
+    "65": 65,
+    "66": 66,
+    "67": 67,
+    "68": 68,
+    "69": 69,
+    "70": 70,
+    "71": 71
+  },
+  "observable_wires": [
+    40,
+    41
+  ],
+  "costs_by_idle_ratio": {
+    "0.0": {
+      "L": 6,
+      "N": 36,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "termwise",
+      "arm": "physical_local_PEC",
+      "rotations": 2201,
+      "fixed_T": 0,
+      "theta": 156.0,
+      "log10_gamma2": 54.00072193783892,
+      "seconds_per_attempt": 0.00036062,
+      "qubits_per_copy": 81,
+      "log10_Q_min": 53.55256944783786,
+      "log10_seconds_at_Q": 53.3342051171844
+    },
+    "0.1": {
+      "L": 6,
+      "N": 36,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "termwise",
+      "arm": "physical_local_PEC",
+      "rotations": 2201,
+      "fixed_T": 0,
+      "theta": 156.0,
+      "log10_gamma2": 91.72033588849519,
+      "seconds_per_attempt": 0.00036062,
+      "qubits_per_copy": 81,
+      "log10_Q_min": 91.27218339849414,
+      "log10_seconds_at_Q": 91.05381906784069
+    },
+    "1.0": {
+      "L": 6,
+      "N": 36,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "termwise",
+      "arm": "physical_local_PEC",
+      "rotations": 2201,
+      "fixed_T": 0,
+      "theta": 156.0,
+      "log10_gamma2": 431.4120556171623,
+      "seconds_per_attempt": 0.00036062,
+      "qubits_per_copy": 81,
+      "log10_Q_min": 430.96390312716125,
+      "log10_seconds_at_Q": 430.7455387965078
+    }
+  },
+  "off_path_entanglers_before_local_simplification": 5136,
+  "L": 6,
+  "tau": 1.0,
+  "steps": 4,
+  "algorithm": "termwise",
+  "variant": "grid_tree",
+  "configuration": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18.0,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000
+  },
+  "blocks_full": 1241,
+  "blocks_in_fermionic_cone": 1136,
+  "modes_in_fermionic_cone": 72,
+  "native_assumption": "arbitrary RZZ and 1q pulses: 10ns each; p2=p, p1=p/10",
+  "postselection": {
+    "acceptance": 0.25,
+    "character_visibilities": [
+      4.406357601588105e-105,
+      4.0217903693261864e-104,
+      8.019132342332845e-132
+    ],
+    "log_character_visibilities": [
+      -240.28838635687595,
+      -238.07712250239157,
+      -301.85940204592976
+    ],
+    "log_no_fault_probability": -280.0129721996417,
+    "conditional_bias_upper_bound": 1.0,
+    "bias_status": "worst-case bound; postselection alone is not precision-certified",
+    "selection": "both spin parities; not exact spin-resolved particle numbers"
+  },
+  "cudaq_logical": {
+    "actions": {
+      "qlx_standard_x": 36,
+      "qlx_standard_pauli_rotation": 74761,
+      "qlx_standard_h": 24860
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 72,
+      "qlx_standard_measure_z": 72
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 72,
+    "action_depth_upper_bound": 99801,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:9f99d1c0a1cfb5f6ec3e7f953844da68bafe1ad12fc2db31f8ee2a096e3bbbce"
+  },
+  "sources": {
+    "nisq_compilation.py": "4ca4012614ef5e2ae43096b94028df063b85e6d739a8acae8bd2981744f522de",
+    "nisq_observables.py": "2e834fbc485a698da80b76ba94edf6f137e0dce91fc4b78e2750cc7776dfbefc",
+    "run_nisq_refinement.py": "8dcb5fba05156b2183aa3ef0e592c1951e8c1d84a908570b9fdd60bfc33ee594",
+    "hubbard_circuits.py": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3",
+    "cudaq_compile.py": "562151a02a695fc2fb5f03f91e60ef19651c35cc891d163a9f3aeb532877ae9a"
+  }
+}

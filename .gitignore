@@ -1,0 +1,22 @@
+__pycache__/
+.pytest_cache/
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+.venv*/
+build/
+.#*
+*~
+
+# Full v1 compiler dumps are tracked as .mlir.gz; angle fixtures stay readable.
+/results/cudaq_v1/**/analog_p0.mlir
+/results/cudaq_v1/**/native_p0.mlir
+/results/cudaq_v1/**/fswap_p0.mlir
+/results/cudaq_v1/**/full_ft_p0.mlir
+/results/cudaq_v1/**/full_ft_pbc.mlir
+/results/cudaq_v1/**/physical_p3.mlir

@@ -1,0 +1,1474 @@
+{
+  "L": 8,
+  "tau": 1.0,
+  "steps": 4,
+  "algorithm": "plaquette",
+  "configuration": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18.0,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000
+  },
+  "source_sha256": {
+    "hubbard_circuits.py": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3",
+    "cudaq_compile.py": "562151a02a695fc2fb5f03f91e60ef19651c35cc891d163a9f3aeb532877ae9a",
+    "model.py": "bbd72594cdced68c580e5e60b2914e0dc8f1d09d0bccf3d915169d0397e8ee86"
+  },
+  "central_modes": [
+    72,
+    73
+  ],
+  "angles": {
+    "dynamic_rotations": 1168,
+    "fixed_T": 2624,
+    "theta_dynamic": 188.0,
+    "angle_histogram": [
+      {
+        "role": "dynamic",
+        "theta": 0.125,
+        "count": 832
+      },
+      {
+        "role": "dynamic",
+        "theta": 0.25,
+        "count": 336
+      },
+      {
+        "role": "fixed_T",
+        "theta": 0.39269908169872,
+        "count": 2624
+      }
+    ]
+  },
+  "analog_logical": {
+    "actions": {
+      "qlx_standard_x": 64,
+      "qlx_standard_pauli_rotation": 3792,
+      "qlx_standard_z": 1312
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 128,
+      "qlx_standard_measure_z": 128
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 128,
+    "action_depth_upper_bound": 5424,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:793fb5451c79e4622aef5179bf9279c98c86d3ff5101ced9202f8f4b7f482bb4"
+  },
+  "native_logical": {
+    "actions": {
+      "qlx_standard_x": 64,
+      "qlx_standard_cx": 107584,
+      "qlx_standard_pauli_rotation": 3792,
+      "qlx_standard_sdg": 3472,
+      "qlx_standard_h": 13888,
+      "qlx_standard_s": 3472,
+      "qlx_standard_z": 1312
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 128,
+      "qlx_standard_measure_z": 128
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 128,
+    "action_depth_upper_bound": 133840,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:ff68cc8010a3222d7f1383fefbeba4e714b4892b411ea59b0b44f420103a7efd"
+  },
+  "native_schedule": {
+    "gates": {
+      "x": 64,
+      "cx": 107584,
+      "rz": 3792,
+      "sdg": 3472,
+      "h": 13888,
+      "s": 3472,
+      "z": 1312
+    },
+    "two_qubit_gates": 107584,
+    "one_qubit_gates": 26000,
+    "depth_layers": 28761,
+    "idle_qubit_layers": 3440240,
+    "gate_ns": 10.0,
+    "seconds_per_attempt": 0.00028781,
+    "physical_copy_side": 12,
+    "physical_copy_qubits": 144,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        11,
+        9
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "schedule": "ASAP on a square-grid Hamiltonian path"
+  },
+  "fswap_logical": {
+    "actions": {
+      "qlx_standard_x": 64,
+      "qlx_standard_cx": 87440,
+      "qlx_standard_pauli_rotation": 3792,
+      "qlx_standard_h": 53816,
+      "qlx_standard_sdg": 3472,
+      "qlx_standard_s": 3472,
+      "qlx_standard_z": 1312
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 128,
+      "qlx_standard_measure_z": 128
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 128,
+    "action_depth_upper_bound": 153624,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:f3720caabdda099b398b0fe37c4df79170e7c1d2e3253e2adc40b8ee6802a2a6"
+  },
+  "fswap_schedule": {
+    "gates": {
+      "x": 64,
+      "cx": 87440,
+      "rz": 3792,
+      "h": 53816,
+      "sdg": 3472,
+      "s": 3472,
+      "z": 1312
+    },
+    "two_qubit_gates": 87440,
+    "one_qubit_gates": 65928,
+    "depth_layers": 4573,
+    "idle_qubit_layers": 344536,
+    "gate_ns": 10.0,
+    "seconds_per_attempt": 4.593e-05,
+    "physical_copy_side": 12,
+    "physical_copy_qubits": 144,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        11,
+        9
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "schedule": "ASAP on a square-grid Hamiltonian path"
+  },
+  "fswap_mode_to_wire": [
+    0,
+    1,
+    4,
+    5,
+    22,
+    23,
+    18,
+    19,
+    62,
+    63,
+    58,
+    59,
+    118,
+    119,
+    114,
+    115,
+    116,
+    117,
+    112,
+    113,
+    60,
+    61,
+    56,
+    57,
+    20,
+    21,
+    16,
+    17,
+    2,
+    3,
+    6,
+    7,
+    30,
+    31,
+    24,
+    25,
+    8,
+    9,
+    12,
+    13,
+    46,
+    47,
+    42,
+    43,
+    102,
+    103,
+    98,
+    99,
+    100,
+    101,
+    96,
+    97,
+    44,
+    45,
+    40,
+    41,
+    10,
+    11,
+    14,
+    15,
+    28,
+    29,
+    26,
+    27,
+    70,
+    71,
+    64,
+    65,
+    54,
+    55,
+    48,
+    49,
+    32,
+    33,
+    36,
+    37,
+    86,
+    87,
+    82,
+    83,
+    84,
+    85,
+    80,
+    81,
+    34,
+    35,
+    38,
+    39,
+    52,
+    53,
+    50,
+    51,
+    68,
+    69,
+    66,
+    67,
+    126,
+    127,
+    120,
+    121,
+    110,
+    111,
+    104,
+    105,
+    94,
+    95,
+    88,
+    89,
+    72,
+    73,
+    76,
+    77,
+    74,
+    75,
+    78,
+    79,
+    92,
+    93,
+    90,
+    91,
+    108,
+    109,
+    106,
+    107,
+    124,
+    125,
+    122,
+    123
+  ],
+  "fswap_count": 19964,
+  "fswap_central_wires": [
+    32,
+    33
+  ],
+  "synthesis": {
+    "operator_precision_per_rotation": 3.210616438356164e-08,
+    "angle_classes": [
+      {
+        "theta": -0.25,
+        "theta_hex": "-0x1.0000000000000p-2",
+        "multiplicity": 144,
+        "T_per_rotation": 74,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 47,
+            "qlx_standard_h": 74,
+            "qlx_standard_t": 74
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 197,
+          "synthesis_demand": {
+            "qlx_standard_t": 74
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:1a7f5bd2201365e2bc9e8f5a4665ab8c404fc836359d6a55be85cfbabb53011a"
+        }
+      },
+      {
+        "theta": -0.125,
+        "theta_hex": "-0x1.0000000000000p-3",
+        "multiplicity": 704,
+        "T_per_rotation": 74,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 44,
+            "qlx_standard_h": 75,
+            "qlx_standard_t": 74
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 195,
+          "synthesis_demand": {
+            "qlx_standard_t": 74
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:e30e658192b06bc92372ac528e340aec3c8a5b1a0b2d089876a3f8b72b641722"
+        }
+      },
+      {
+        "theta": 0.25,
+        "theta_hex": "0x1.0000000000000p-2",
+        "multiplicity": 192,
+        "T_per_rotation": 74,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 36,
+            "qlx_standard_h": 76,
+            "qlx_standard_t": 74
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 188,
+          "synthesis_demand": {
+            "qlx_standard_t": 74
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:744ca5ca25a594d88fc51750f2da165f0623460766303a2ecfb8b8d36d883c50"
+        }
+      },
+      {
+        "theta": 0.125,
+        "theta_hex": "0x1.0000000000000p-3",
+        "multiplicity": 128,
+        "T_per_rotation": 74,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 45,
+            "qlx_standard_h": 75,
+            "qlx_standard_t": 74
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 196,
+          "synthesis_demand": {
+            "qlx_standard_t": 74
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:a8fdbf99964d67cf2efdb669da2899067c6f0ffe693d8ceaf3f0d3794b8a9f8d"
+        }
+      }
+    ],
+    "T_fixed": 2624,
+    "T_total": 89056,
+    "method": "CUDA-Q GridSynth per signed angle class; additive counts before inter-gate optimization"
+  },
+  "compile_wall_seconds": 21.31217798916623,
+  "status": {
+    "physical_routing": "explicit NN Hamiltonian path, all-gate ASAP schedule",
+    "STAR": "compiled analog P0; encoded analog gadget timing remains external",
+    "FT": "actual GridSynth counts; factory and surface timing remain external"
+  }
+}

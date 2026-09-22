@@ -1,0 +1,54 @@
+{
+  "python": "3.12.0 | packaged by Anaconda, Inc. | (main, Oct  2 2023, 17:29:18) [GCC 11.2.0]",
+  "executable": "/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python",
+  "packages": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "matplotlib": "3.11.0"
+  },
+  "configuration": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18.0,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000
+  },
+  "sources": {
+    "model.py": "bbd72594cdced68c580e5e60b2914e0dc8f1d09d0bccf3d915169d0397e8ee86",
+    "compiled_model.py": "b0b8a6651c5d4543aec87f64e5b85cbdbc941609d2f812fd29ffdc0936e5f41b",
+    "plot_compiled.py": "f534bf0b5a9378d4c3d56d8ae264b9511c683fc05fcedc8c08c02d36974dfde5"
+  }
+}

@@ -1,0 +1,2722 @@
+[
+  {
+    "event_id": "factory_start0",
+    "kind": "factory_start",
+    "start_ns": 0.0,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire1",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call2",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "acquire1"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call0",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire1"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "prepare3",
+    "kind": "prepare",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "acquire1"
+    ],
+    "parent": "call2",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire1"
+    ],
+    "resource_dependencies": [
+      "acquire1"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire4",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[1]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call5",
+    "kind": "call_template",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[1]"
+    ],
+    "dependencies": [
+      "acquire4"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call1",
+    "profile": null,
+    "template_event": "call2",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "acquire4"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire6",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[2]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call7",
+    "kind": "call_template",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[2]"
+    ],
+    "dependencies": [
+      "acquire6"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call2",
+    "profile": null,
+    "template_event": "call2",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "acquire6"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire8",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[3]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call9",
+    "kind": "call_template",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[3]"
+    ],
+    "dependencies": [
+      "acquire8"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call3",
+    "profile": null,
+    "template_event": "call2",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "acquire8"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire10",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[4]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call11",
+    "kind": "call_template",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[4]"
+    ],
+    "dependencies": [
+      "acquire10"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call4",
+    "profile": null,
+    "template_event": "call2",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "acquire10"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire12",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[5]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call13",
+    "kind": "call_template",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[5]"
+    ],
+    "dependencies": [
+      "acquire12"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call5",
+    "profile": null,
+    "template_event": "call2",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "acquire12"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire14",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[6]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call15",
+    "kind": "call_template",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[6]"
+    ],
+    "dependencies": [
+      "acquire14"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call6",
+    "profile": null,
+    "template_event": "call2",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "acquire14"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire16",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[7]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call17",
+    "kind": "call_template",
+    "start_ns": 0.0,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[7]"
+    ],
+    "dependencies": [
+      "acquire16"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_prepare_zero",
+    "instance": "rotated_surface_3_prepare_zero.call7",
+    "profile": null,
+    "template_event": "call2",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "acquire16"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call18",
+    "kind": "call",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call2"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call8",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call2"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call19",
+    "kind": "call",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call2"
+    ],
+    "parent": "call18",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1.call9",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call2"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "resource_request20",
+    "kind": "resource_request",
+    "start_ns": 128529.20453366992,
+    "duration_ns": 0.0,
+    "resources": [
+      "binding:t_factory",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "factory_start0"
+    ],
+    "parent": "call19",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "factory_start0"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "await21",
+    "kind": "await",
+    "start_ns": 128529.20453366992,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "control:await21"
+    ],
+    "dependencies": [
+      "resource_request20"
+    ],
+    "parent": "call19",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "resource_request20"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call22",
+    "kind": "call",
+    "start_ns": 128769.20453366992,
+    "duration_ns": 240.0,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call2",
+      "await21"
+    ],
+    "parent": "call19",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_inject",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_inject.call10",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call2",
+      "await21"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "resource_rpp23",
+    "kind": "resource_rotate_product",
+    "start_ns": 128769.20453366992,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "await21",
+      "call2"
+    ],
+    "parent": "call22",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "await21",
+      "call2"
+    ],
+    "resource_dependencies": [
+      "call2"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call24",
+    "kind": "call",
+    "start_ns": 129009.20453366992,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call18"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call11",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call18"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call25",
+    "kind": "call",
+    "start_ns": 129009.20453366992,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call18"
+    ],
+    "parent": "call24",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1.call12",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call18"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "resource_request26",
+    "kind": "resource_request",
+    "start_ns": 257058.40906733985,
+    "duration_ns": 0.0,
+    "resources": [
+      "binding:t_factory",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call18"
+    ],
+    "parent": "call25",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call18"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "await27",
+    "kind": "await",
+    "start_ns": 257058.40906733985,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "control:await27"
+    ],
+    "dependencies": [
+      "resource_request26"
+    ],
+    "parent": "call25",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "resource_request26"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call28",
+    "kind": "call",
+    "start_ns": 257298.40906733985,
+    "duration_ns": 240.0,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call18",
+      "await27"
+    ],
+    "parent": "call25",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_inject",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_inject.call13",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call18",
+      "await27"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "resource_rpp29",
+    "kind": "resource_rotate_product",
+    "start_ns": 257298.40906733985,
+    "duration_ns": 239.99999999999997,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "await27",
+      "call18"
+    ],
+    "parent": "call28",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "await27",
+      "call18"
+    ],
+    "resource_dependencies": [
+      "call18"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call30",
+    "kind": "call_template",
+    "start_ns": 257538.40906733985,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call24"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call14",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call24"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call31",
+    "kind": "call_template",
+    "start_ns": 386307.61360100977,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call30"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call15",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call30"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call32",
+    "kind": "call_template",
+    "start_ns": 514836.8181346797,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call31"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call16",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call31"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call33",
+    "kind": "call_template",
+    "start_ns": 643606.0226683496,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call32"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call17",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call32"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call34",
+    "kind": "call_template",
+    "start_ns": 772135.2272020194,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call33"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call18",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call33"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call35",
+    "kind": "call_template",
+    "start_ns": 900904.4317356893,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call34"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call19",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call34"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call36",
+    "kind": "call_template",
+    "start_ns": 1029433.6362693592,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call35"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call20",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call35"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call37",
+    "kind": "call_template",
+    "start_ns": 1158202.8408030292,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call36"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call21",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call36"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call38",
+    "kind": "call_template",
+    "start_ns": 1286732.045336699,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call37"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call22",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call37"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call39",
+    "kind": "call_template",
+    "start_ns": 1415501.249870369,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call38"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call23",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call38"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call40",
+    "kind": "call_template",
+    "start_ns": 1544030.4544040388,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call39"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call24",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call39"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call41",
+    "kind": "call_template",
+    "start_ns": 1672799.6589377087,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call40"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call25",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call40"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call42",
+    "kind": "call_template",
+    "start_ns": 1801328.8634713786,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call41"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call26",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call41"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call43",
+    "kind": "call_template",
+    "start_ns": 1930098.0680050484,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call42"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call27",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call42"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call44",
+    "kind": "call_template",
+    "start_ns": 2058627.2725387183,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call43"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call28",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call43"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call45",
+    "kind": "call_template",
+    "start_ns": 2187396.4770723884,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call44"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call29",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call44"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call46",
+    "kind": "call_template",
+    "start_ns": 2315925.6816060585,
+    "duration_ns": 128769.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call45"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x0_z1_q1_t_injection_site8_rpp.call30",
+    "profile": null,
+    "template_event": "call18",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call45"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call47",
+    "kind": "call_template",
+    "start_ns": 2444694.8861397286,
+    "duration_ns": 128529.20453366992,
+    "resources": [
+      "binding:t_factory",
+      "data[0]",
+      "factory:t_state_stream_factory_model"
+    ],
+    "dependencies": [
+      "call46"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp",
+    "instance": "rotated_surface_3_default_encoding_pinnacle_rpp_x1_z0_q1_t_injection_site9_rpp.call31",
+    "profile": null,
+    "template_event": "call24",
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [
+      "call46"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call48",
+    "kind": "call",
+    "start_ns": 257538.40906733985,
+    "duration_ns": 2316405.681606059,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call24"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1",
+    "instance": "hubbard_macro_mpp_x0_z1_s1.call32",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call24"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp49",
+    "kind": "measure_product",
+    "start_ns": 2573224.0906733987,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call24",
+      "call47"
+    ],
+    "parent": "call48",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call24"
+    ],
+    "resource_dependencies": [
+      "call47"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call50",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 959.9999999999999,
+    "resources": [
+      "data[1]"
+    ],
+    "dependencies": [
+      "acquire4"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1_1",
+    "instance": "hubbard_macro_mpp_x0_z1_s1_1.call33",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire4"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp51",
+    "kind": "measure_product",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[1]"
+    ],
+    "dependencies": [
+      "acquire4",
+      "call5"
+    ],
+    "parent": "call50",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire4"
+    ],
+    "resource_dependencies": [
+      "call5"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call52",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 959.9999999999999,
+    "resources": [
+      "data[2]"
+    ],
+    "dependencies": [
+      "acquire6"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1_2",
+    "instance": "hubbard_macro_mpp_x0_z1_s1_2.call34",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire6"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp53",
+    "kind": "measure_product",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[2]"
+    ],
+    "dependencies": [
+      "acquire6",
+      "call7"
+    ],
+    "parent": "call52",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire6"
+    ],
+    "resource_dependencies": [
+      "call7"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call54",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 959.9999999999999,
+    "resources": [
+      "data[3]"
+    ],
+    "dependencies": [
+      "acquire8"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1_3",
+    "instance": "hubbard_macro_mpp_x0_z1_s1_3.call35",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire8"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp55",
+    "kind": "measure_product",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[3]"
+    ],
+    "dependencies": [
+      "acquire8",
+      "call9"
+    ],
+    "parent": "call54",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire8"
+    ],
+    "resource_dependencies": [
+      "call9"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call56",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 959.9999999999999,
+    "resources": [
+      "data[4]"
+    ],
+    "dependencies": [
+      "acquire10"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1_4",
+    "instance": "hubbard_macro_mpp_x0_z1_s1_4.call36",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire10"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp57",
+    "kind": "measure_product",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[4]"
+    ],
+    "dependencies": [
+      "acquire10",
+      "call11"
+    ],
+    "parent": "call56",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire10"
+    ],
+    "resource_dependencies": [
+      "call11"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call58",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 959.9999999999999,
+    "resources": [
+      "data[5]"
+    ],
+    "dependencies": [
+      "acquire12"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1_5",
+    "instance": "hubbard_macro_mpp_x0_z1_s1_5.call37",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire12"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp59",
+    "kind": "measure_product",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[5]"
+    ],
+    "dependencies": [
+      "acquire12",
+      "call13"
+    ],
+    "parent": "call58",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire12"
+    ],
+    "resource_dependencies": [
+      "call13"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call60",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 959.9999999999999,
+    "resources": [
+      "data[6]"
+    ],
+    "dependencies": [
+      "acquire14"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1_6",
+    "instance": "hubbard_macro_mpp_x0_z1_s1_6.call38",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire14"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp61",
+    "kind": "measure_product",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[6]"
+    ],
+    "dependencies": [
+      "acquire14",
+      "call15"
+    ],
+    "parent": "call60",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire14"
+    ],
+    "resource_dependencies": [
+      "call15"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call62",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 959.9999999999999,
+    "resources": [
+      "data[7]"
+    ],
+    "dependencies": [
+      "acquire16"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "hubbard_macro_mpp_x0_z1_s1_7",
+    "instance": "hubbard_macro_mpp_x0_z1_s1_7.call39",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire16"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "mpp63",
+    "kind": "measure_product",
+    "start_ns": 239.99999999999997,
+    "duration_ns": 719.9999999999999,
+    "resources": [
+      "data[7]"
+    ],
+    "dependencies": [
+      "acquire16",
+      "call17"
+    ],
+    "parent": "call62",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire16"
+    ],
+    "resource_dependencies": [
+      "call17"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release64",
+    "kind": "release",
+    "start_ns": 2573944.0906733987,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[0]"
+    ],
+    "dependencies": [
+      "call48"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call48"
+    ],
+    "resource_dependencies": [
+      "call48"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release65",
+    "kind": "release",
+    "start_ns": 959.9999999999999,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[1]"
+    ],
+    "dependencies": [
+      "call50"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call50"
+    ],
+    "resource_dependencies": [
+      "call50"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release66",
+    "kind": "release",
+    "start_ns": 959.9999999999999,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[2]"
+    ],
+    "dependencies": [
+      "call52"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call52"
+    ],
+    "resource_dependencies": [
+      "call52"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release67",
+    "kind": "release",
+    "start_ns": 959.9999999999999,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[3]"
+    ],
+    "dependencies": [
+      "call54"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call54"
+    ],
+    "resource_dependencies": [
+      "call54"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release68",
+    "kind": "release",
+    "start_ns": 959.9999999999999,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[4]"
+    ],
+    "dependencies": [
+      "call56"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call56"
+    ],
+    "resource_dependencies": [
+      "call56"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release69",
+    "kind": "release",
+    "start_ns": 959.9999999999999,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[5]"
+    ],
+    "dependencies": [
+      "call58"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call58"
+    ],
+    "resource_dependencies": [
+      "call58"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release70",
+    "kind": "release",
+    "start_ns": 959.9999999999999,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[6]"
+    ],
+    "dependencies": [
+      "call60"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call60"
+    ],
+    "resource_dependencies": [
+      "call60"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release71",
+    "kind": "release",
+    "start_ns": 959.9999999999999,
+    "duration_ns": 0.0,
+    "resources": [
+      "data[7]"
+    ],
+    "dependencies": [
+      "call62"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call62"
+    ],
+    "resource_dependencies": [
+      "call62"
+    ],
+    "domain_dependencies": []
+  }
+]

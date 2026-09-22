@@ -1,0 +1,937 @@
+{
+  "L": 6,
+  "tau": 1.0,
+  "steps": 4,
+  "algorithm": "termwise",
+  "configuration": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18.0,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000
+  },
+  "source_sha256": {
+    "hubbard_circuits.py": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3",
+    "cudaq_compile.py": "562151a02a695fc2fb5f03f91e60ef19651c35cc891d163a9f3aeb532877ae9a",
+    "model.py": "bbd72594cdced68c580e5e60b2914e0dc8f1d09d0bccf3d915169d0397e8ee86"
+  },
+  "central_modes": [
+    40,
+    41
+  ],
+  "angles": {
+    "dynamic_rotations": 2201,
+    "fixed_T": 0,
+    "theta_dynamic": 156.0,
+    "angle_histogram": [
+      {
+        "role": "dynamic",
+        "theta": 0.0625,
+        "count": 1920
+      },
+      {
+        "role": "dynamic",
+        "theta": 0.125,
+        "count": 274
+      },
+      {
+        "role": "dynamic",
+        "theta": 0.25,
+        "count": 7
+      }
+    ]
+  },
+  "analog_logical": {
+    "actions": {
+      "qlx_standard_x": 36,
+      "qlx_standard_pauli_rotation": 2201
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 72,
+      "qlx_standard_measure_z": 72
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 72,
+    "action_depth_upper_bound": 2381,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:6fccaa96e754bdcd61907916b89c6e84a4f1b99e9c76fc9634a2c6be3ad3c6f3"
+  },
+  "native_logical": {
+    "actions": {
+      "qlx_standard_x": 36,
+      "qlx_standard_cx": 27442,
+      "qlx_standard_pauli_rotation": 2201,
+      "qlx_standard_h": 7680,
+      "qlx_standard_sdg": 1920,
+      "qlx_standard_s": 1920
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 72,
+      "qlx_standard_measure_z": 72
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 72,
+    "action_depth_upper_bound": 41343,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:d44d5ccd1ef46ca87bc3ef9e74b53d401389a3b4e3365cafb129cb72eabc7d21"
+  },
+  "native_schedule": {
+    "gates": {
+      "x": 36,
+      "cx": 27442,
+      "rz": 2201,
+      "h": 7680,
+      "sdg": 1920,
+      "s": 1920
+    },
+    "two_qubit_gates": 27442,
+    "one_qubit_gates": 13757,
+    "depth_layers": 32896,
+    "idle_qubit_layers": 2299871,
+    "gate_ns": 10.0,
+    "seconds_per_attempt": 0.00032916,
+    "physical_copy_side": 9,
+    "physical_copy_qubits": 81,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        7
+      ]
+    ],
+    "schedule": "ASAP on a square-grid Hamiltonian path"
+  },
+  "fswap_logical": {
+    "actions": {
+      "qlx_standard_x": 36,
+      "qlx_standard_cx": 96026,
+      "qlx_standard_pauli_rotation": 2201,
+      "qlx_standard_h": 53492,
+      "qlx_standard_sdg": 1920,
+      "qlx_standard_s": 1920
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 72,
+      "qlx_standard_measure_z": 72
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 72,
+    "action_depth_upper_bound": 155739,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:5d6cfc17a9403e489a08dc3f6f738f9535e5d72dba9d8f1ba8ce21161e47bc68"
+  },
+  "fswap_schedule": {
+    "gates": {
+      "x": 36,
+      "cx": 96026,
+      "rz": 2201,
+      "h": 53492,
+      "sdg": 1920,
+      "s": 1920
+    },
+    "two_qubit_gates": 96026,
+    "one_qubit_gates": 59569,
+    "depth_layers": 12496,
+    "idle_qubit_layers": 648091,
+    "gate_ns": 10.0,
+    "seconds_per_attempt": 0.00012516,
+    "physical_copy_side": 9,
+    "physical_copy_qubits": 81,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        7
+      ]
+    ],
+    "schedule": "ASAP on a square-grid Hamiltonian path"
+  },
+  "fswap_mode_to_wire": [
+    0,
+    1,
+    2,
+    20,
+    5,
+    22,
+    7,
+    24,
+    9,
+    26,
+    11,
+    28,
+    12,
+    29,
+    10,
+    27,
+    8,
+    25,
+    6,
+    23,
+    4,
+    21,
+    3,
+    19,
+    18,
+    35,
+    17,
+    34,
+    16,
+    33,
+    15,
+    32,
+    14,
+    31,
+    13,
+    30,
+    42,
+    53,
+    41,
+    52,
+    40,
+    51,
+    39,
+    50,
+    38,
+    49,
+    36,
+    37,
+    48,
+    59,
+    47,
+    58,
+    46,
+    57,
+    45,
+    56,
+    44,
+    55,
+    43,
+    54,
+    66,
+    71,
+    65,
+    70,
+    64,
+    69,
+    63,
+    68,
+    62,
+    67,
+    60,
+    61
+  ],
+  "fswap_count": 22906,
+  "fswap_central_wires": [
+    40,
+    51
+  ],
+  "synthesis": {
+    "operator_precision_per_rotation": 1.703771013175829e-08,
+    "angle_classes": [
+      {
+        "theta": -0.0625,
+        "theta_hex": "-0x1.0000000000000p-4",
+        "multiplicity": 1920,
+        "T_per_rotation": 78,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 44,
+            "qlx_standard_h": 81,
+            "qlx_standard_t": 78
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 205,
+          "synthesis_demand": {
+            "qlx_standard_t": 78
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:92e9a7e4ea4b4343d92224fdd53b6d49282a228f38a7cd2a83995f28105702e2"
+        }
+      },
+      {
+        "theta": 0.25,
+        "theta_hex": "0x1.0000000000000p-2",
+        "multiplicity": 7,
+        "T_per_rotation": 76,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 39,
+            "qlx_standard_h": 79,
+            "qlx_standard_t": 76
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 196,
+          "synthesis_demand": {
+            "qlx_standard_t": 76
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:69ac547d9d3d97c3403311bebf16a817f3118044633308236f0441a30f44301f"
+        }
+      },
+      {
+        "theta": 0.125,
+        "theta_hex": "0x1.0000000000000p-3",
+        "multiplicity": 274,
+        "T_per_rotation": 76,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 38,
+            "qlx_standard_t": 76,
+            "qlx_standard_h": 76
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 192,
+          "synthesis_demand": {
+            "qlx_standard_t": 76
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:d86c6fee4e907e45e703ef902068e8a75a1981b1d97c16eae1a34bfc1a267689"
+        }
+      }
+    ],
+    "T_fixed": 0,
+    "T_total": 171116,
+    "method": "CUDA-Q GridSynth per signed angle class; additive counts before inter-gate optimization"
+  },
+  "compile_wall_seconds": 13.488788209855556,
+  "status": {
+    "physical_routing": "explicit NN Hamiltonian path, all-gate ASAP schedule",
+    "STAR": "compiled analog P0; encoded analog gadget timing remains external",
+    "FT": "actual GridSynth counts; factory and surface timing remain external"
+  }
+}

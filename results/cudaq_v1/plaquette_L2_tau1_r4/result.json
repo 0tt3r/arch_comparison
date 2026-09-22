@@ -1,0 +1,409 @@
+{
+  "L": 2,
+  "tau": 1.0,
+  "steps": 4,
+  "algorithm": "plaquette",
+  "configuration": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18.0,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000
+  },
+  "source_sha256": {
+    "hubbard_circuits.py": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3",
+    "cudaq_compile.py": "562151a02a695fc2fb5f03f91e60ef19651c35cc891d163a9f3aeb532877ae9a",
+    "model.py": "bbd72594cdced68c580e5e60b2914e0dc8f1d09d0bccf3d915169d0397e8ee86"
+  },
+  "central_modes": [
+    4,
+    5
+  ],
+  "angles": {
+    "dynamic_rotations": 36,
+    "fixed_T": 64,
+    "theta_dynamic": 8.0,
+    "angle_histogram": [
+      {
+        "role": "dynamic",
+        "theta": 0.125,
+        "count": 8
+      },
+      {
+        "role": "dynamic",
+        "theta": 0.25,
+        "count": 28
+      },
+      {
+        "role": "fixed_T",
+        "theta": 0.39269908169872,
+        "count": 64
+      }
+    ]
+  },
+  "analog_logical": {
+    "actions": {
+      "qlx_standard_x": 4,
+      "qlx_standard_pauli_rotation": 100,
+      "qlx_standard_z": 32
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 8,
+      "qlx_standard_measure_z": 8
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 8,
+    "action_depth_upper_bound": 152,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:218ceb843e70a61619f9293a1d7c178181647c2ce86777e19628d9664f05dacc"
+  },
+  "native_logical": {
+    "actions": {
+      "qlx_standard_x": 4,
+      "qlx_standard_cx": 616,
+      "qlx_standard_pauli_rotation": 100,
+      "qlx_standard_sdg": 80,
+      "qlx_standard_h": 320,
+      "qlx_standard_s": 80,
+      "qlx_standard_z": 32
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 8,
+      "qlx_standard_measure_z": 8
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 8,
+    "action_depth_upper_bound": 1248,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:7f26b4e6be1bbedfa38180cdf17f14c3380e3ce80d6d1995f29dcb481581c6a6"
+  },
+  "native_schedule": {
+    "gates": {
+      "x": 4,
+      "cx": 616,
+      "rz": 100,
+      "sdg": 80,
+      "h": 320,
+      "s": 80,
+      "z": 32
+    },
+    "two_qubit_gates": 616,
+    "one_qubit_gates": 616,
+    "depth_layers": 839,
+    "idle_qubit_layers": 4864,
+    "gate_ns": 10.0,
+    "seconds_per_attempt": 8.59e-06,
+    "physical_copy_side": 3,
+    "physical_copy_qubits": 9,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "schedule": "ASAP on a square-grid Hamiltonian path"
+  },
+  "fswap_logical": {
+    "actions": {
+      "qlx_standard_x": 4,
+      "qlx_standard_cx": 432,
+      "qlx_standard_pauli_rotation": 100,
+      "qlx_standard_h": 436,
+      "qlx_standard_sdg": 80,
+      "qlx_standard_s": 80,
+      "qlx_standard_z": 32
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 8,
+      "qlx_standard_measure_z": 8
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 8,
+    "action_depth_upper_bound": 1180,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:f6e704abdd5be31323c97f4103023e8d9927393ec0c61148687e5a8059669824"
+  },
+  "fswap_schedule": {
+    "gates": {
+      "x": 4,
+      "cx": 432,
+      "rz": 100,
+      "h": 436,
+      "sdg": 80,
+      "s": 80,
+      "z": 32
+    },
+    "two_qubit_gates": 432,
+    "one_qubit_gates": 732,
+    "depth_layers": 392,
+    "idle_qubit_layers": 1540,
+    "gate_ns": 10.0,
+    "seconds_per_attempt": 4.12e-06,
+    "physical_copy_side": 3,
+    "physical_copy_qubits": 9,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "schedule": "ASAP on a square-grid Hamiltonian path"
+  },
+  "fswap_mode_to_wire": [
+    0,
+    1,
+    4,
+    5,
+    2,
+    3,
+    6,
+    7
+  ],
+  "fswap_count": 58,
+  "fswap_central_wires": [
+    2,
+    3
+  ],
+  "synthesis": {
+    "operator_precision_per_rotation": 1.0416666666666665e-06,
+    "angle_classes": [
+      {
+        "theta": -0.25,
+        "theta_hex": "-0x1.0000000000000p-2",
+        "multiplicity": 16,
+        "T_per_rotation": 60,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 30,
+            "qlx_standard_h": 62,
+            "qlx_standard_t": 60
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 154,
+          "synthesis_demand": {
+            "qlx_standard_t": 60
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:2fb83dccd2d42229eb18f443e4225a5d6a1b801e7ba4d3661ef79b4e5b357aa5"
+        }
+      },
+      {
+        "theta": 0.25,
+        "theta_hex": "0x1.0000000000000p-2",
+        "multiplicity": 12,
+        "T_per_rotation": 60,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 36,
+            "qlx_standard_h": 62,
+            "qlx_standard_t": 60
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 160,
+          "synthesis_demand": {
+            "qlx_standard_t": 60
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:77699d9d68a1cf774b1af54c65ef8a0cc2702b640a86c71f383e2926145a6f24"
+        }
+      },
+      {
+        "theta": 0.125,
+        "theta_hex": "0x1.0000000000000p-3",
+        "multiplicity": 8,
+        "T_per_rotation": 60,
+        "logical_estimate": {
+          "actions": {
+            "qlx_standard_s": 29,
+            "qlx_standard_h": 61,
+            "qlx_standard_t": 60
+          },
+          "instruments": {
+            "qlx_standard_prepare_zero": 1,
+            "qlx_standard_measure_z": 1
+          },
+          "idle_sites": 0,
+          "discards": 0,
+          "logical_qubits_peak": 1,
+          "action_depth_upper_bound": 152,
+          "synthesis_demand": {
+            "qlx_standard_t": 60
+          },
+          "resource_requests": {},
+          "resource_consumptions": {},
+          "build_root": "program",
+          "build_sha256": "sha256:0bd0b2a3a400e2b7d39ec68d94228a34031916eee3a694cb62332532acd7ce75"
+        }
+      }
+    ],
+    "T_fixed": 64,
+    "T_total": 2224,
+    "method": "CUDA-Q GridSynth per signed angle class; additive counts before inter-gate optimization",
+    "whole_program": {
+      "actions": {
+        "qlx_standard_h": 2552,
+        "qlx_standard_s": 1632,
+        "qlx_standard_cx": 616,
+        "qlx_standard_t": 2224
+      },
+      "instruments": {
+        "qlx_standard_prepare_zero": 8,
+        "qlx_standard_measure_z": 8
+      },
+      "idle_sites": 0,
+      "discards": 0,
+      "logical_qubits_peak": 8,
+      "action_depth_upper_bound": 7040,
+      "synthesis_demand": {
+        "qlx_standard_t": 2224
+      },
+      "resource_requests": {},
+      "resource_consumptions": {},
+      "build_root": "program",
+      "build_sha256": "sha256:a9b7a1069b82daba1f933d209de3e8102a28b73c964650ab0e009d383f6a61de"
+    },
+    "whole_program_T": 2224,
+    "whole_program_matches_angle_classes": true,
+    "pauli_based_computation": {
+      "actions": {
+        "qlx_standard_pauli_rotation": 2224
+      },
+      "instruments": {
+        "qlx_standard_prepare_zero": 8,
+        "qlx_standard_mpp": 8
+      },
+      "idle_sites": 0,
+      "discards": 1,
+      "logical_qubits_peak": 8,
+      "action_depth_upper_bound": 2240,
+      "synthesis_demand": {},
+      "resource_requests": {},
+      "resource_consumptions": {},
+      "build_root": "program",
+      "build_sha256": "sha256:5f87447043e766af7f9ae5c0f003092a6cd7ba017e392766e9bc7982a2c4e224"
+    }
+  },
+  "compile_wall_seconds": 0.7299393708817661,
+  "status": {
+    "physical_routing": "explicit NN Hamiltonian path, all-gate ASAP schedule",
+    "STAR": "compiled analog P0; encoded analog gadget timing remains external",
+    "FT": "actual GridSynth counts; factory and surface timing remain external"
+  }
+}

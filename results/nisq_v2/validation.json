@@ -1,0 +1,20 @@
+{
+  "native_cases": 29,
+  "native_cudaq_p0_cases": 29,
+  "passing_tests": 56,
+  "checks": [
+    "replay native schedule and nearest-neighbor constraints",
+    "replay observable PEC exposures and primitive-noise spin-parity acceptance",
+    "match saved CUDA-Q action, instrument and width counts to native operations",
+    "read all compressed native P0 artifacts",
+    "verify every per-case compiler source has a hash-matching snapshot",
+    "verify L=8,12,16,20 r=1 plaquette plateau",
+    "read passing JUnit record and 72 factory scenarios"
+  ],
+  "limits": [
+    "No Hubbard dynamics or Trotter-error calibration",
+    "Postselection bias is a sufficient upper bound, not a measured bias",
+    "Encoded timing and supply remain reference models; rejected P3 schedule unused"
+  ],
+  "audit_python": "3.12.0 | packaged by Anaconda, Inc. | (main, Oct  2 2023, 17:29:18) [GCC 11.2.0]"
+}

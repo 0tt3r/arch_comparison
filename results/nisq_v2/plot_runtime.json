@@ -1,0 +1,8 @@
+{
+  "python": "3.12.0 | packaged by Anaconda, Inc. | (main, Oct  2 2023, 17:29:18) [GCC 11.2.0]",
+  "executable": "/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python",
+  "packages": {
+    "numpy": "1.26.4",
+    "matplotlib": "3.11.0"
+  }
+}

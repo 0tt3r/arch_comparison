@@ -1,0 +1,30 @@
+{
+  "L": 2,
+  "r": 1,
+  "distance": 3,
+  "precision": 3.1249999999999997e-06,
+  "probe_rotations": 0,
+  "T_count": 672,
+  "stages": [
+    "p0",
+    "p1",
+    "p2",
+    "p3"
+  ],
+  "schedule": {
+    "status": "REJECTED by CUDA-Q schedule estimator",
+    "exception": "ScheduleConflict",
+    "message": "native Tier-3 schedule estimation returned invalid authenticated evidence",
+    "cause": "schedule estimate peak_concurrency cannot exceed provisioned physical_resources",
+    "makespan_ns": 1.97261499446628e+20
+  },
+  "status": "REJECTED by CUDA-Q schedule estimator",
+  "scope": "native encoded MPP/RPP macro reference, not nearest-neighbor gate-level QEC",
+  "timing_sanity_bound_ns": 224088776.57485843,
+  "timing_sanity_passed": false,
+  "factory_output_injection_error": 1.5006250000000003e-21,
+  "factory_service_clocks": 178.5127840745416,
+  "factory_patch_tiles": 37,
+  "patch_footprint": 32,
+  "rpp_ns": 6479.999999999999
+}

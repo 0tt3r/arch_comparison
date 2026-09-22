@@ -1,0 +1,82 @@
+[
+  {
+    "case": "zero_memory",
+    "status": "compiled",
+    "estimate": {
+      "event_count": 6,
+      "event_counts": {
+        "acquire": 1,
+        "call": 2,
+        "measure_product": 1,
+        "prepare": 1,
+        "release": 1
+      },
+      "makespan_ns": 480.0,
+      "expected_makespan_ns": 480.0,
+      "maximum_makespan_ns": 480.0,
+      "active_resource_time_ns": 2880.0,
+      "expected_active_resource_time_ns": 2880.0,
+      "maximum_active_resource_time_ns": 2880.0,
+      "active_physical_qubit_time_ns": 2880.0,
+      "expected_active_physical_qubit_time_ns": 2880.0,
+      "maximum_active_physical_qubit_time_ns": 2880.0,
+      "physical_resources": 17,
+      "physical_qubits": 17,
+      "peak_concurrency": 1,
+      "peak_active_physical_qubits": 9,
+      "utilization": 0.35294117647058826,
+      "expected_utilization": 0.35294117647058826,
+      "maximum_utilization": 0.35294117647058826,
+      "exhaustion_probability": 0.0,
+      "termination": "program",
+      "bottleneck": "measure_product",
+      "assumptions": [
+        "durations come from the selected verified P3 timing profile",
+        "unresolved external resource supply is rejected",
+        "folded repeat and bounded-while multiplicities are exact",
+        "bounded retries replay the authenticated causal slice",
+        "conditional occupancy uses the worst-case executable branch",
+        "scheduled factory-model bindings contribute their full qubit footprint",
+        "shared call templates retain exact canonical leaf occupancy",
+        "scheduled_macro durations are deterministic mean-output slots; maximum_makespan_ns is conditional on those slots, not a physical factory worst case",
+        "utilization is active resource-time divided by scheduled resource capacity",
+        "expected metrics follow runtime abort semantics"
+      ],
+      "input_root": "program_placed_qec_physical",
+      "schedule_symbol": "program_placed_qec_physical_schedule",
+      "source_stage": "p3",
+      "source_facets": [
+        "qec_spec",
+        "protocol_network",
+        "patch_graph",
+        "native_legalization",
+        "carrier_mapping",
+        "physical_routing",
+        "physical_schedule"
+      ],
+      "tier": 4,
+      "device_identity": "ReferenceSurfaceProbe",
+      "physical_model_identity": "ReferenceSurfaceProbePhysicalMachine",
+      "operating_point_identity": "ReferenceSurfaceProbe_default_operating_point",
+      "lower_tier_identity": "program_placed_qec_physical_schedule_analytical"
+    }
+  },
+  {
+    "case": "clifford_h",
+    "status": "unsupported_by_reference_recipe",
+    "exception": "ValueError",
+    "message": "no feasible P2 implementation for h"
+  },
+  {
+    "case": "T_gate",
+    "status": "unsupported_by_reference_recipe",
+    "exception": "ValueError",
+    "message": "no feasible P2 implementation for t"
+  },
+  {
+    "case": "analog_rz",
+    "status": "unsupported_by_reference_recipe",
+    "exception": "ValueError",
+    "message": "no feasible P2 implementation for pauli_rotation"
+  }
+]

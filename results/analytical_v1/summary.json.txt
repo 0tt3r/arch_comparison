@@ -1,0 +1,93 @@
+[
+  {
+    "L": 4,
+    "arm": "nisq",
+    "log10_Q_min": 1.5051499783199058,
+    "distance": 0
+  },
+  {
+    "L": 4,
+    "arm": "star_original",
+    "log10_Q_min": 5.221930389305063,
+    "distance": 21
+  },
+  {
+    "L": 4,
+    "arm": "star_angle",
+    "log10_Q_min": 5.221930389305063,
+    "distance": 21
+  },
+  {
+    "L": 4,
+    "arm": "star_floor",
+    "log10_Q_min": 5.221930389305063,
+    "distance": 21
+  },
+  {
+    "L": 4,
+    "arm": "ft",
+    "log10_Q_min": 7.139603631186699,
+    "distance": 25
+  },
+  {
+    "L": 8,
+    "arm": "nisq",
+    "log10_Q_min": 15.91227268757168,
+    "distance": 0
+  },
+  {
+    "L": 8,
+    "arm": "star_original",
+    "log10_Q_min": 7.870762255198966,
+    "distance": 25
+  },
+  {
+    "L": 8,
+    "arm": "star_angle",
+    "log10_Q_min": 7.819420538898927,
+    "distance": 25
+  },
+  {
+    "L": 8,
+    "arm": "star_floor",
+    "log10_Q_min": 7.839391619829549,
+    "distance": 25
+  },
+  {
+    "L": 8,
+    "arm": "ft",
+    "log10_Q_min": 7.97151573017821,
+    "distance": 27
+  },
+  {
+    "L": 16,
+    "arm": "nisq",
+    "log10_Q_min": 73.83579102398258,
+    "distance": 0
+  },
+  {
+    "L": 16,
+    "arm": "star_original",
+    "log10_Q_min": 15.035849990249371,
+    "distance": 33
+  },
+  {
+    "L": 16,
+    "arm": "star_angle",
+    "log10_Q_min": 14.914247107556966,
+    "distance": 33
+  },
+  {
+    "L": 16,
+    "arm": "star_floor",
+    "log10_Q_min": 14.99350305261685,
+    "distance": 33
+  },
+  {
+    "L": 16,
+    "arm": "ft",
+    "log10_Q_min": 8.925710524990293,
+    "distance": 29
+  }
+]
+Wrote /lcrc/project/QC_NA_Sim/architecture_comparison/results/analytical_v1

@@ -1,0 +1,378 @@
+{
+  "schedule": {
+    "width": 32,
+    "gates": {
+      "x": 16,
+      "rzz": 11008,
+      "h": 10848,
+      "rz": 21636
+    },
+    "two_qubit_gates": 11008,
+    "one_qubit_gates": 32500,
+    "depth_layers": 8224,
+    "idle_qubit_layers": 208652,
+    "seconds_per_attempt": 8.244e-05,
+    "physical_copy_qubits": 36,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ]
+  },
+  "observable_exposure": {
+    "chi": 130.11958424309324,
+    "exposure": {
+      "two_qubit": 41.554784171466686,
+      "one_qubit": 12.254008507798316,
+      "idle": 76.17465538222248,
+      "spam": 0.13613618160576926
+    },
+    "locations": {
+      "two_qubit": 10388,
+      "one_qubit": 30634,
+      "idle": 190316
+    },
+    "input_support": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  "full_circuit_chi": 140.6852244636626,
+  "mode_to_wire": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "11": 11,
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "17": 17,
+    "18": 18,
+    "19": 19,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 24,
+    "25": 25,
+    "26": 26,
+    "27": 27,
+    "28": 28,
+    "29": 29,
+    "30": 30,
+    "31": 31
+  },
+  "observable_wires": [
+    20,
+    21
+  ],
+  "costs_by_idle_ratio": {
+    "0.0": {
+      "L": 4,
+      "N": 16,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "plaquette",
+      "arm": "physical_local_PEC",
+      "rotations": 288,
+      "fixed_T": 576,
+      "theta": 44.0,
+      "log10_gamma2": 23.427984930939648,
+      "seconds_per_attempt": 8.244e-05,
+      "qubits_per_copy": 36,
+      "log10_Q_min": 21.986738096890303,
+      "log10_seconds_at_Q": 21.768362039799197
+    },
+    "0.1": {
+      "L": 4,
+      "N": 16,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "plaquette",
+      "arm": "physical_local_PEC",
+      "rotations": 288,
+      "fixed_T": 576,
+      "theta": 44.0,
+      "log10_gamma2": 26.734321881955687,
+      "seconds_per_attempt": 8.244e-05,
+      "qubits_per_copy": 36,
+      "log10_Q_min": 25.29307504790634,
+      "log10_seconds_at_Q": 25.074698990815232
+    },
+    "1.0": {
+      "L": 4,
+      "N": 16,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "plaquette",
+      "arm": "physical_local_PEC",
+      "rotations": 288,
+      "fixed_T": 576,
+      "theta": 44.0,
+      "log10_gamma2": 56.51021742432071,
+      "seconds_per_attempt": 8.244e-05,
+      "qubits_per_copy": 36,
+      "log10_Q_min": 55.06897059027136,
+      "log10_seconds_at_Q": 54.85059453318025
+    }
+  },
+  "off_path_entanglers_before_local_simplification": 2160,
+  "L": 4,
+  "tau": 1.0,
+  "steps": 4,
+  "algorithm": "plaquette",
+  "variant": "grid_tree",
+  "configuration": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18.0,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000
+  },
+  "blocks_full": 472,
+  "blocks_in_fermionic_cone": 417,
+  "modes_in_fermionic_cone": 32,
+  "native_assumption": "arbitrary RZZ and 1q pulses: 10ns each; p2=p, p1=p/10",
+  "postselection": {
+    "acceptance": 0.25000000000000017,
+    "character_visibilities": [
+      4.0790871459839445e-16,
+      2.6408348780103707e-16,
+      8.287568794298386e-17
+    ],
+    "log_character_visibilities": [
+      -35.43548826325133,
+      -35.87026637906977,
+      -37.0291899244501
+    ],
+    "log_no_fault_probability": -35.206476489229985,
+    "conditional_bias_upper_bound": 0.999999999999998,
+    "bias_status": "worst-case bound; postselection alone is not precision-certified",
+    "selection": "both spin parities; not exact spin-resolved particle numbers"
+  },
+  "cudaq_logical": {
+    "actions": {
+      "qlx_standard_x": 16,
+      "qlx_standard_pauli_rotation": 32644,
+      "qlx_standard_h": 10848
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 32,
+      "qlx_standard_measure_z": 32
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 32,
+    "action_depth_upper_bound": 43572,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:e189b4c1930434cc47ad57745cd9fc6bed4458239679871b50d3b82115f072d6"
+  },
+  "sources": {
+    "nisq_compilation.py": "4ca4012614ef5e2ae43096b94028df063b85e6d739a8acae8bd2981744f522de",
+    "nisq_observables.py": "2e834fbc485a698da80b76ba94edf6f137e0dce91fc4b78e2750cc7776dfbefc",
+    "run_nisq_refinement.py": "9e7a1f2f05677cdf0b36d86b0e1b7bee2d4b8af884008e0756a3ddf92c7b26bb",
+    "hubbard_circuits.py": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3",
+    "cudaq_compile.py": "562151a02a695fc2fb5f03f91e60ef19651c35cc891d163a9f3aeb532877ae9a"
+  }
+}
