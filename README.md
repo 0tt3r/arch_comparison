@@ -1,91 +1,58 @@
-# Hubbard architecture comparison
+# Hubbard dynamics on a fixed qubit array
 
-The latest pass is in [NISQ_REFINEMENT.md](NISQ_REFINEMENT.md) and the
-[companion derivation note](nisq_refinement.pdf). It adds 29 CUDA-Q native circuits,
-fermionic fusion, observable-cone restriction, exact spin-parity acceptance under
-the declared noise model, and injection-error/factory sensitivities. See the
-[NISQ resource plot](results/nisq_v2/nisq_resources.png) and
-[factory reassessment](results/nisq_v2/factory_reassessment.png).
-The L=4 hybrid gain reverses under conventional injection in the current serial
-factory model; postselection acceptance alone does not certify observable accuracy.
+Start with the **[main manuscript](tex/main.pdf)** ([LaTeX](tex/main.tex),
+[bibliography](tex/references.bib)). It brings together the analytical resource
+laws, CUDA-Q compilation, mitigation, STAR, FTQC and hybrid supply, and the
+small-system accuracy checks.
 
-The first CUDA-Q compilation results are in [CUDA_Q_RESULTS.md](CUDA_Q_RESULTS.md),
-the [updated resource comparison](results/cudaq_v1/compiled_comparison.png), and
-the [gate-count/duration plot](results/cudaq_v1/compilation_diagnostics.png).
-Actual physical circuits and synthesized T counts replace the first gate proxies.
-Encoded timing remains a declared reference: the complete Hubbard macro schedule
-fails a timing sanity check and is excluded from the curves.
+The principal comparison is now **maximum tested lattice size versus available
+physical qubits**, subject to a one-week runtime cutoff:
 
-For the derivations, start with the [compiled note](analytical_forms.pdf),
-[analytical_forms.tex](analytical_forms.tex), its dedicated
-[references.bib](references.bib), and the
-[first scaling plot](results/analytical_v1/first_scaling.png).
-[WORKING_DECISIONS.md](WORKING_DECISIONS.md) records the accepted conventions and
-the sequence: analytical note → first plots → CUDA-Q Logical → Trotter refinement
-→ qubitization.
+![Maximum tested lattice size versus available physical qubits](figures/capacity_vs_qubits.png)
 
-Results remain conditional on the shared Trotter step count and the assumed
-doublon scale. The new physical circuits have explicit nearest-neighbor routing;
-surface-code and STAR schedules are not yet calibrated for that machine.
-No exact Hubbard dynamics runs have been performed.
+These are conditional four-step circuit costs. Four steps fail the accuracy
+target on the small square patches checked; L ≥ 4 accuracy remains uncalibrated.
+The staircases show only tested sizes, and reaching 8 × 8 marks the end of the
+current sweep. The [underlying CSV](results/presentation_v1/capacity_thresholds.csv)
+retains the original area thresholds.
 
-Reproduce from the repository root using Python 3.12 with numpy, matplotlib,
-and pytest (the existing `qb_gsee` environment has these):
+The [architecture overview](figures/architecture_overview.pdf) and
+[patch/supply detail](figures/architecture_detail.pdf) explain resource roles.
+Both are schematic and available as editable SVG, vector PDF, and PNG in
+`figures/`.
 
-```bash
-/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python -m pytest -q
-/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python make_plots.py
-```
+| Location | Purpose |
+|---|---|
+| `python/` | Models, compilers, plotting, build and audit scripts |
+| `tests/` | Independent mathematical and implementation checks |
+| `configs/` | Assumptions, compiler dependency lock, historical filename map |
+| `tex/main.tex` | One complete current manuscript |
+| `tex/references.bib` | Dedicated bibliography for the main manuscript |
+| `tex/archive/` | Earlier complete notes and their original PDFs/bibliographies |
+| `figures/` | Current capacity plot and architecture cartoons |
+| `results/` | Versioned numerical evidence, compiler artifacts, and manifests |
+| `docs/` | Accepted decisions, reproduction guide, older plans and reviews |
+| `refs/` | Reference papers |
 
-The figures are also saved as vector PDFs. CSVs contain values beyond the plot
-limits in logarithmic form, a step-count sweep, and sensitivities to signal size,
-threshold, step density, floor, and physical error. `manifest.json` records the
-assumptions, software versions, and source hashes. Edit `assumptions.json`, or
-pass `--config PATH --out DIRECTORY`, to create another scenario.
-For FT, the main configuration fields minimize required area for the week cutoff;
-`fixed_Q_*` fields describe the separately optimized fixed-device runtime.
-
-Build the note with either `latexmk -pdf analytical_forms.tex` or
-`tectonic analytical_forms.tex`; both use `references.bib`.
-
-Reproduce the CUDA-Q counts with the isolated project environment:
+Use the existing science environment, then:
 
 ```bash
-# Only needed when creating a fresh environment:
-/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python -m venv .venv-cudaq
-.venv-cudaq/bin/python -m pip install -r requirements-cudaq.lock
-
-.venv-cudaq/bin/python cudaq_compile.py --sizes 2 4 --full-synthesis
-.venv-cudaq/bin/python cudaq_compile.py --sizes 6 8
-/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python -m pytest -q
-/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python plot_compiled.py
-.venv-cudaq/bin/python cudaq_compile.py --manifest-only
+conda activate qb_gsee
+make test
+make paper
+make audit
 ```
 
-The new scripts preserve analog rotations for STAR, synthesize Clifford+T for
-FT, and compile two explicit physical realizations. Per-case directories contain
-counts, schedules, mode permutations, angle classes, and raw MLIR. The new CSV
-includes hybrid fixed-angle distillation, idle-noise, logical-bias, and T-consumption
-sensitivities. Idle noise defaults to p per 100 ns for the compiled physical
-comparison; the original analytical artifacts retain their original convention.
+`make paper` regenerates the current figures and builds `tex/main.pdf`.
+It does not rerun the scientific calculations. To specify an interpreter,
+use `make PYTHON=/path/to/python paper`. The build helper uses Tectonic on
+PATH or the existing local package cache; `latexmk -pdf main.tex` from `tex/`
+also works with a standard TeX installation.
 
-Optional backend integration diagnostics, whose timing is not used in the plots:
-
-```bash
-.venv-cudaq/bin/python cudaq_surface_probe.py
-.venv-cudaq/bin/python cudaq_encoded_reference.py --probe-rotations 20
-.venv-cudaq/bin/python cudaq_encoded_reference.py
-.venv-cudaq/bin/python cudaq_encoded_reference.py --steps 1
-.venv-cudaq/bin/python cudaq_compile.py --manifest-only
-```
-
-These probes deliberately retain explicit rejected/unsupported statuses. Completing
-the compiler pipeline is not sufficient validation of the returned schedule.
-
-Full v1 MLIR dumps are stored in Git as `.mlir.gz`; the small angle-synthesis
-fixtures remain plain text. `results/cudaq_v1/storage.json` maps the compressed
-files to the original artifact hashes in the v1 manifest. Restore and
-verify the originals with `python package_results.py --restore`. After regenerating
-v1 results and their manifest, `python package_results.py` refreshes the compressed
-copies. Both commands preserve existing local originals. Tests and plots run
-directly from a checkout without restoring the full dumps.
+See [REPRODUCING.md](docs/REPRODUCING.md) for scientific reruns, the isolated
+CPU CUDA-Q environment, archived-note builds, and compressed MLIR handling.
+[WORKING_DECISIONS.md](docs/WORKING_DECISIONS.md) records the accepted conventions.
+`PLAN.md` remains at the root because it had an active editor lock during the
+reorganization. The latest chronological calculation report is
+[REFINEMENT_V3.md](docs/archive/REFINEMENT_V3.md); its source datasets and original
+hash manifest remain intact.

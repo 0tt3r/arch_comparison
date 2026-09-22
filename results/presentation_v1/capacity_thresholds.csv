@@ -1,0 +1,33 @@
+absolute_error,arm,L,N,log10_Q_min,reference
+0.001,nisq,2,4,0.9542425094393249,"compiled native, nominal idle"
+0.001,star,2,4,4.193291602579516,"best of 1, 2, 4, 8 reference lanes"
+0.001,ft,2,4,4.529122234820962,packed cultivation; zero additional handoff error
+0.001,hybrid,2,4,4.235730397379405,packed cultivation; zero additional handoff error
+0.001,nisq,4,16,6.328910219452591,"compiled native, nominal idle"
+0.001,star,4,16,5.085347671533056,"best of 1, 2, 4, 8 reference lanes"
+0.001,ft,4,16,5.874282309528828,packed cultivation; zero additional handoff error
+0.001,hybrid,4,16,4.759456310651191,packed cultivation; zero additional handoff error
+0.001,nisq,6,36,23.522069884052964,"compiled native, nominal idle"
+0.001,star,6,36,6.252886026402171,"best of 1, 2, 4, 8 reference lanes"
+0.001,ft,6,36,7.1167515553198575,packed cultivation; zero additional handoff error
+0.001,hybrid,6,36,5.520058856357916,packed cultivation; zero additional handoff error
+0.001,nisq,8,64,49.30302519220302,"compiled native, nominal idle"
+0.001,star,8,64,7.518415225368562,"best of 1, 2, 4, 8 reference lanes"
+0.001,ft,8,64,7.500484023491146,packed cultivation; zero additional handoff error
+0.001,hybrid,8,64,6.344565171003798,packed cultivation; zero additional handoff error
+0.01,nisq,2,4,0.9542425094393249,"compiled native, nominal idle"
+0.01,star,2,4,4.08457627793433,"best of 1, 2, 4, 8 reference lanes"
+0.01,ft,2,4,4.137986732723531,packed cultivation; zero additional handoff error
+0.01,hybrid,2,4,4.134304634954544,packed cultivation; zero additional handoff error
+0.01,nisq,4,16,4.329357194131549,"compiled native, nominal idle"
+0.01,star,4,16,4.65787774702322,"best of 1, 2, 4, 8 reference lanes"
+0.01,ft,4,16,4.717504074764202,packed cultivation; zero additional handoff error
+0.01,hybrid,4,16,4.6742363358069285,packed cultivation; zero additional handoff error
+0.01,nisq,6,36,21.522072297526254,"compiled native, nominal idle"
+0.01,star,6,36,5.0353736965712175,"best of 1, 2, 4, 8 reference lanes"
+0.01,ft,6,36,5.09991533145914,packed cultivation; zero additional handoff error
+0.01,hybrid,6,36,4.956898046912602,packed cultivation; zero additional handoff error
+0.01,nisq,8,64,47.303027605676306,"compiled native, nominal idle"
+0.01,star,8,64,5.420685014794903,"best of 1, 2, 4, 8 reference lanes"
+0.01,ft,8,64,5.331912948773648,packed cultivation; zero additional handoff error
+0.01,hybrid,8,64,5.2659492899506235,packed cultivation; zero additional handoff error

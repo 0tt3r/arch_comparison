@@ -1,0 +1,15 @@
+{
+  "physical_error": 0.001,
+  "state_error": 2e-9,
+  "reported_end_distance": 15,
+  "source": "Gidney, Shutty, Jones, arXiv:2409.17595v1, Table 1 and Figures 1, 15, 16",
+  "reported_volume_qubit_cycles_fig15": 66000,
+  "packed_volume_qubit_cycles": 100000,
+  "factory_physical_qubits": 1024,
+  "successful_latency_cycles": 50,
+  "handoff_clocks": 2,
+  "unshared_fixed_slot_volume_qubit_cycles": 5120000,
+  "handoff_error_sensitivities": [0, 1e-9, 1e-8],
+  "status": "Source error and Fig.15 volume are literature estimates. Rounded packed volume, footprint, latency, and handoff are declared supply assumptions, not a compiled cultivation factory.",
+  "caveat": "Reported error ends in a grafted matchable code. Transfer, storage, consumption, and mapping the paper's uniform-noise cycles to this machine require calibration. Handoff error is separate."
+}

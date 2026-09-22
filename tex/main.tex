@@ -1,0 +1,810 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\eps}{\epsilon}
+\graphicspath{{../figures/}{../}}
+\title{Hubbard dynamics on a fixed qubit array:\\protection, mitigation, and achievable lattice size}
+\author{Working research manuscript}
+\date{22 September 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We compare three uses of the same nearest-neighbor array: physical-qubit
+computation with error mitigation, partially protected STAR computation, and
+fully fault-tolerant surface-code computation. The application is a local
+doublon observable after a Fermi--Hubbard quench. We organize the comparison
+around the largest lattice accessible with a given number of physical qubits
+and one week of execution. A common accounting model separates sampling,
+mitigation exposure, logical protection, non-Clifford supply, and parallel
+replicas. Explicit circuit compilation and small-patch dynamics identify the
+mechanisms that control the comparison: idle exposure depends strongly on
+the schedule; STAR depends on both total rotation angle and accumulated
+injection floors; FT depends on supply and consumption together; and Trotter
+refinement changes the cost of these architectures differently. Current
+four-step resource curves are conditional circuit comparisons, since that
+step count fails the observable-accuracy target on both square patches
+tested. We retain this distinction while developing a common basis for
+architecture optimization and hybrid strategies.
+\end{abstract}
+
+\section{The fixed-device question}
+The same physical qubits can buy more simultaneous samples, stronger logical
+protection, or faster delivery of non-Clifford operations. We want to determine
+which use gives the largest accessible dynamics problem, and which combinations
+can improve on the three reference approaches. Figure~\ref{fig:architectures}
+shows the resource roles. The comparison includes physical probabilistic error
+cancellation (PEC)~\cite{temme}, the original and small-angle STAR mechanisms~\cite{akahoshi,toshio}, and surface-code computation with explicit magic-state
+supply~\cite{litinski,gidney2024cultivation}. Campbell's Hubbard construction
+provides a concrete algorithmic baseline~\cite{campbell}; recent partial-FT
+resource studies~\cite{chung} and a performed fermionic-dynamics experiment~\cite{alam2025} provide comparison points with distinct hardware assumptions.
+
+We treat these as specified implementations and estimators. A poor physical
+PEC curve is not an impossibility theorem for NISQ, and an encoded curve based
+on reference patch timing is not a validated physical floorplan. The purpose
+of the analytical laws is to expose the quantities whose measurement or
+optimization can change the architecture ranking. CUDA-Q Logical supplies
+explicit circuit and synthesis artifacts~\cite{cudaqlogical}; physical encoded
+timing is kept separate when its implementation or verification is incomplete.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{architecture_overview.pdf}
+\caption{Three allocations of a common sea of physical qubits. NISQ uses
+many unprotected circuit replicas. STAR reserves encoded data, surgery space,
+and analog injection/growth resources. FTQC replaces analog rotation delivery
+with high-fidelity T-state supply, buffers, and synthesized logical operations.
+Every dot denotes a physical qubit; each encoded data patch contains many
+such qubits. The drawings explain resource roles and are not numerical
+floorplans or equal-capacity implementations of a particular Hubbard lattice.}
+\label{fig:architectures}
+\end{figure}
+
+\section{Task, conventions, and precision}
+The problem has $N=L^2$ Hubbard sites, $2N$ spin modes, and open boundaries.
+The physical device has a separate area budget $Q$. In units where energies
+are measured in $J$, we simulate
+\begin{equation}\label{eq:H}
+ H/J=-\sum_{\langle ij\rangle,\sigma}
+ (c^\dagger_{i\sigma}c_{j\sigma}+\mathrm{h.c.})
+ +u\sum_i(n_{i\uparrow}-\tfrac12)(n_{i\downarrow}-\tfrac12),
+ \qquad u=U/J=4.
+\end{equation}
+The symmetric onsite form differs from $U n_\uparrow n_\downarrow$ only
+by a known phase in a fixed-number sector. We prepare the half-filled
+N\'eel product state and measure the central doublon
+$D=\langle n_{i\uparrow}n_{i\downarrow}\rangle$ at $\tau=Jt/\hbar$.
+Doublon avoids the symmetry-pinned charge-density observable of this quench.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Reference value or convention\\
+\midrule
+Connectivity & Square array, nearest neighbors\\
+Gate / measurement / reset & $10$ / $100$ / $100$ ns\\
+Physical two-qubit / one-qubit error & $p=10^{-3}$ / $p/10$\\
+Idle channel & Depolarizing error $p$ per $100$ ns\\
+Encoded cycle / classical feedforward & $240$ / $200$ ns, reference assumptions\\
+Runtime cutoff & $B=604800$ s, one week\\
+Main precision & $1\%$ relative at provisional $D_*=0.1$: $\eps=0.001$\\
+Statistical confidence & $1-\delta=0.95$\\
+Rotation convention & $U_P(\theta)=e^{-i\theta P}$; CUDA-Q angle $\phi=2\theta$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The native physical compilation assumes arbitrary-angle $R_{ZZ}$ and
+one-qubit pulses at the stated gate duration. The noise channels and encoded
+cycle are explicit model choices, not a characterization of a fabricated
+device. In particular, the surface-code suppression fit has not been
+calibrated to the same physical idle and syndrome schedule.
+
+The target is $\eps=\eta|D|$ with $\eta=0.01$. Resource curves use the
+declared signal $D_*$, rather than silently treating it as calculated dynamics.
+Campbell's energy precision proportional to $N$ corresponds to fixed absolute
+precision in energy density~\cite{campbell}. Our local $D$ is already
+intensive: fixed absolute error in $D$ does not itself become stricter with
+size. Relative precision is useful when the signal magnitude is the relevant
+scale. Strict relative precision at zero signal needs a separate prescription;
+a production estimator with unknown nonzero $D$ would require a pilot or
+sequential confidence procedure. We retain $\eps=0.01$ absolute as a
+separately labeled sensitivity.
+
+We allocate fractions $(0.5,0.25,0.1,0.075,0.075)$ of $\eps$ to statistical,
+algorithmic, logical, synthesis, and magic-state errors. For a spatial patch
+$\Omega$ and product formula with $r$ steps,
+\begin{equation}\label{eq:budget}
+ |\widehat D-D_{\mathrm{target}}|\leq\eps_{\mathrm{stat}}
+ +|D_{\Omega,r}-D_\Omega|+|D_\Omega-D_{\mathrm{target}}|
+ +\eps_{\mathrm{logical}}+\eps_{\mathrm{synth}}+\eps_{\mathrm{magic}}.
+\end{equation}
+The truncation scenario splits the existing $0.25\eps$ algorithmic reserve
+equally between Trotter and spatial bias. It does not add a new allowance.
+Mitigation assumes exact channel knowledge; a residual calibration bias would
+need its own allocation within Eq.~\eqref{eq:budget}. No unverified
+postselection bias reduction is credited in a resource curve.
+
+\section{Sampling, replication, and maximum lattice size}
+For inverse channels $\mathcal E_j^{-1}=\sum_a c_{ja}\mathcal P_{ja}$,
+define $\gamma_j=\sum_a|c_{ja}|$, $\Gamma=\prod_j\gamma_j$, and
+$\chi=\log\Gamma^2$. Centering the doublon observable as $D-I/2$ puts
+the PEC sample in $[-\Gamma/2,\Gamma/2]$. Hoeffding's bound then gives
+\begin{equation}\label{eq:shots}
+ n\geq\frac{\Gamma^2}{2\eps_{\mathrm{stat}}^2}\log\frac{2}{\delta},
+ \qquad N_0=\left\lceil\frac{\log(2/\delta)}{2\eps_{\mathrm{stat}}^2}\right\rceil.
+\end{equation}
+At strict reference precision, $N_0=7377759$. This is a sufficient common
+sampling convention, not a claim that every estimator needs this many shots.
+
+Let $q_a$ and $t_a$ be the physical area and time of one complete sampler,
+and let $a$ be whole-circuit acceptance. With $m=\lfloor Q/q_a\rfloor$ replicas,
+\begin{equation}\label{eq:time}
+ T_{\mathrm{answer}}\simeq\frac{N_0e^\chi t_a}{am},\qquad
+ Q_{\min}(L)=q_a\max\!\left(1,
+ \left\lceil\frac{N_0e^\chi t_a}{aB}\right\rceil\right).
+\end{equation}
+The code excludes a sampler whose single attempt exceeds $B$. Resource-state
+rejection is charged in delivery time, not counted again as whole-circuit
+rejection. Integer replicas are retained where they matter. Packing is an
+area-budget reference; a global square placement, calibration overhead, and
+control bandwidth are not yet modeled in the encoded curves.
+
+The principal output is now
+\begin{equation}\label{eq:lmax}
+ L_{\max}^{\mathrm{tested}}(Q)=
+ \max\{L\in\mathcal L_{\mathrm{tested}}:\min_s Q_{\min}(L,s)\leq Q\},
+\end{equation}
+where $s$ labels allowed distances, supply configurations, and lane counts.
+This is a discrete upper envelope, not a smooth inverse fit. No feasible
+tested lattice is left blank, and reaching the largest tested size is marked
+as a survey boundary. We do not interpolate untested sizes or call that
+boundary a physical saturation. The companion output
+$\tau_{\max}(Q,L)$ follows by sweeping evolution time under the same contract;
+it has not yet been accuracy-qualified.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{capacity_vs_qubits.pdf}
+\caption{Largest tested Hubbard lattice within one week versus available
+physical qubits. Left: the accepted relative-precision reference. Right: the
+loose absolute-precision sensitivity. NISQ uses the parallel native local-PEC
+circuit at nominal idle noise; STAR chooses among one, two, four, and eight
+reference injection lanes; FTQC and hybrid use the packed cultivation supply
+scenario with zero additional handoff error. These are conditional $r=4$
+costs, not accuracy-qualified dynamics capacities. That step count fails the
+small square-patch checks, and $L\geq4$ accuracy is uncalibrated. The NISQ
+compiler includes exact observable reductions that the encoded workloads have
+not yet received. Only $L=2,4,6,8$ is tested; the upper band marks that limit.}
+\label{fig:capacity}
+\end{figure}
+
+For a fixed circuit and estimator, Eq.~\eqref{eq:time} gives the exposure limit
+\begin{equation}\label{eq:wall}
+ \chi\lesssim\log\frac{amB}{N_0t_a}.
+\end{equation}
+Increasing hardware or runtime therefore buys logarithmic exposure, even
+though it can move a discrete lattice-size threshold appreciably. This is
+the mitigation wall of the specified strategy, not a universal NISQ law.
+
+\section{The common algorithm and its angle inventory}
+\subsection{Termwise second order}
+In a fixed-number sector, the single-$Z$ terms of the onsite interaction are
+a known phase. With $E=2L(L-1)$ spatial bonds, the remaining Jordan--Wigner
+Hamiltonian has
+\begin{equation}
+ K=4E+N=9N-8L,\qquad
+ \lambda=\sum_\ell |h_\ell|=2E+\frac{|u|N}{4}=5N-4L.
+\end{equation}
+There are four hopping Pauli strings per spatial bond, each with coefficient
+magnitude $1/2$, and one onsite $ZZ$ per site, with magnitude $|u|/4$.
+Our convention is $U_P(\theta)=e^{-i\theta P}$; thus $R_z(\phi)$ has
+$\phi=2\theta$, and a $T$ gate has $|\theta|=\pi/8$ up to a global phase.
+
+For a symmetric product over the $K$ terms, choose onsite terms at both ends
+of the ordering and merge adjacent identical rotations at the center and
+between steps. Before further commuting or Clifford simplifications,
+\begin{equation}\label{eq:termwise}
+ R_{\rm term}=r(2K-2)+1,\qquad \Theta_{\rm term}=\tau\lambda.
+\end{equation}
+The count follows from $r(2K-1)$ rotations after center merging and $r-1$
+additional boundary merges. Every coefficient has total positive duration
+$\tau$, proving the angle identity. Signed higher-order stages instead
+multiply the angle sum by their total absolute stage weight. The histogram,
+not merely $\Theta$, is retained for channel evaluation.
+
+\subsection{Campbell plaquette second order with open boundaries}
+Campbell partitions hopping into disjoint pink and gold tiles and applies
+\begin{equation}\label{eq:plaq}
+ S_2(\Delta)=e^{-i\Delta H_I/2}e^{-i\Delta H_p/2}
+ e^{-i\Delta H_g}e^{-i\Delta H_p/2}e^{-i\Delta H_I/2},
+ \qquad \Delta=\tau/r.
+\end{equation}
+We adapt the periodic construction to open boundaries. The pink partition
+has $P=L^2/4$ complete plaquettes. The shifted gold partition has
+$G=(L/2-1)^2$ complete plaquettes and $B=2(L-2)$ isolated boundary bonds.
+Each bond belongs to exactly one partition, since $4(P+G)+B=E$.
+
+A single-spin four-site hopping cycle has eigenvalues $\{2,0,0,-2\}$.
+Campbell's circuit implements its evolution with two variable-angle Pauli
+rotations and eight fixed $T$ gates~\cite[Appendix E.1]{campbell}. An isolated
+bond needs two commuting hopping Pauli rotations per spin. For $L\geq4$,
+including both spin species and exact onsite boundary merging, this gives
+\begin{align}
+ R_{\rm plaq}&=N(r+1)+4r(2P+G+B),\\
+ T_{\rm fixed}&=16r(2P+G),\\
+ \Theta_{\rm dyn}&=\tau\left[\frac{|u|N}{4}+4(P+G)+2B\right].\label{eq:plaqangle}
+\end{align}
+For $L=2$ the gold partition is empty: the two pink half steps merge, so
+$2P$ becomes $P$ in the count formulas. The angle formula is unchanged.
+At $L=4$, $\tau=1$, $r=4$, these formulas give
+$(R_{\rm plaq},T_{\rm fixed},\Theta_{\rm dyn})=(288,576,44)$.
+
+The compiled total angle includes $T_{\rm fixed}\pi/8$. Consequently, the
+invariance of $\tau\lambda$ under refinement in Eq.~\eqref{eq:termwise}
+does not apply to all non-Clifford operations in Eq.~\eqref{eq:plaq}.
+The fixed basis changes are an algorithm-dependent STAR exposure even when
+the variable rotations have no injection floor. Distilling those fixed
+angles is an immediate hybrid candidate. Hamming-weight phasing, cancellations
+between neighboring basis changes, and angle extraction remain further compiler
+optimizations. Campbell neglects fermionic-swap Clifford costs in his
+non-Clifford metric; our native nearest-neighbor compilation explicitly restores this motion.
+
+
+
+\section{Physical computation: gates, locality, and idle exposure}
+For a $k$-qubit depolarizing location with total nonidentity-Pauli probability
+$p_k$, set $s_k=1-4^kp_k/(4^k-1)$. The inverse has identity coefficient
+$1+p_k/s_k$ and $4^k-1$ coefficients $-p_k/[(4^k-1)s_k]$, giving
+\begin{equation}\label{eq:physical}
+ \gamma_k=1+2p_k/s_k,\qquad
+ \chi_{\mathrm{phys}}=\sum_{\ell\in\mathrm{cone}}2\log\gamma_{k_\ell}
+ \simeq4pG_2+4(p/10)G_1+4p_{\mathrm{idle}}G_{\mathrm{idle}}+\chi_{\mathrm{SPAM}}.
+\end{equation}
+Preparation and readout bit flips use $\gamma=1/(1-2p)$. The continuous-time
+idle convention composes as
+\begin{equation}
+ p_{\mathrm{idle}}(\Delta t)=\frac34
+ \left[1-(1-4p/3)^{\Delta t/(100\,\mathrm{ns})}\right].
+\end{equation}
+Only channels in the compiled measurement's backward dependency cone enter
+the local PEC product. CPTP channels outside that cone cannot affect its
+expectation. This sufficient cone can still exceed the observable support
+needed at a specified tolerance.
+
+\subsection{Fermionic blocks and parallel motion}
+Two-mode hopping, density evolution, and fermionic Hadamards are extracted
+from the plaquette workload while preserving its noncommuting stage order.
+A number-conserving Gaussian gate has odd-sector matrix $G\in U(2)$,
+vacuum amplitude one, and double-occupation amplitude $\det G$. An Euler
+decomposition of $G$ therefore compiles to local $Z$ rotations and at most
+two native $R_{ZZ}$ gates. In particular,
+\begin{equation}
+ V(\theta)=e^{-i\theta(XX+YY)},\qquad
+ F_{\mathrm{swap}}=(S\otimes S)V(\pi/4),
+\end{equation}
+so a swap followed by hopping can fuse into the same pair of entanglers with
+a changed angle. Products of Gaussian gates on the same adjacent pair fuse
+through operations on disjoint wires. A commuting density rotation adds at
+most one entangler.
+
+The compiler gathers independent plaquette groups into intervals of a live
+fermionic order using parallel odd-even transposition sorting. All swaps are
+adjacent physical fermionic swaps on a snake embedded in the square grid~\cite{kivlichan2018}. It then executes disjoint groups concurrently and tries
+six initial-order/local-route choices. A preparation permutation is free for
+the specified occupation product state, while the final wire map and Fock
+signs remain explicit. Using only snake edges leaves room for a better
+two-dimensional compiler. The trapped-ion experiment's all-to-all connectivity
+and free ordinary-SWAP relabeling are a different compilation assumption~\cite{alam2025}.
+
+The first onsite stage is a scalar on the initial Fock state, and the last
+onsite stage commutes with the measured doublon. Removing them is exact for
+this task. A reverse traversal through even fermionic blocks then removes
+blocks on disjoint support. These reductions are available to every arm;
+the current encoded resource curves retain the original full logical workload.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+$L=4,\ \tau=1,\ r=4$ & Entanglers & $10$ ns layers & Local $\chi$\\
+\midrule
+Greedy fused route with cone & $3149$ & $2187$ & $35.297$\\
+Parallel route, full evolution & $3204$ & $1074$ & $22.214$\\
+Parallel route with observable reductions & $2648$ & $964$ & $20.017$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The final row has $t_a=9.84~\mu\mathrm{s}$ and exposure
+\begin{equation}
+ \chi=10.5927_{2q}+4.1201_{1q}+5.1681_{\mathrm{idle}}+0.1361_{\mathrm{SPAM}}.
+\end{equation}
+Its strict-precision threshold is $Q_{\min}\simeq2.13\times10^6$, versus
+$12168$ with zero idle on the same circuit. Idle has decreased substantially
+but remains material. The gain combines scheduling, placement, fusion, and
+observable algebra; zero idle is a sensitivity rather than a demonstrated
+alternate schedule.
+
+\subsection{Exact circuit cones and physical truncation}
+For the original plaquette block ordering, the sufficient interior cones
+checked at $r=1,2,4$ contain $(4r+2)^2=36,100,324$ sites. The $r=1$
+circuits at $L=8,12,16,20$ all compile to $2001$ native entanglers on $72$
+modes in that implementation. Ordered termwise sweeps can instead have
+global strict dependencies even at one step. Neither observation establishes
+the smallest Hamiltonian region needed at finite tolerance.
+
+At fixed evolution time a local-observable truncation may eventually remove
+size dependence, whereas a time family such as $\tau\propto L$ probes
+growing physical reach. A truncation must receive a bias allowance in
+Eq.~\eqref{eq:budget}; it cannot be inferred solely from the strict circuit
+cone. Section~\ref{sec:calibration} begins the finite-patch check and states
+what its outer boundary leaves unresolved.
+
+\section{Encoded protection and the logical-fault budget}
+Both encoded arms use the declared per-patch, per-cycle suppression reference
+\begin{equation}\label{eq:logical}
+ p_L(d)=A(p/p_{\mathrm{th}})^{(d+1)/2},\qquad
+ A=0.1,\quad p_{\mathrm{th}}=0.01.
+\end{equation}
+The alternative $(A,p_{\mathrm{th}})=(0.07,0.0039)$ is motivated by the
+original STAR fit~\cite{akahoshi}. Its time convention and circuit noise
+must be reconciled before it becomes a calibration of this device. We use
+$240$ ns per syndrome cycle and roughly $2d^2$ physical qubits per tile as
+reference accounting. Figure~\ref{fig:patch} distinguishes physical qubits,
+logical patches, and operation/supply space.
+
+For $V_L$ patch-cycles per attempt, $q_L\leq V_Lp_L(d)$ by a union bound.
+A $[0,1]$ unmitigated observable has fault bias at most $q_L$. A uniform
+branch-wise bound for centered PEC gives the sufficient worst-case
+$\Gamma q_L$. Thus the reference chooses the smallest admissible odd $d$ with
+\begin{equation}\label{eq:distance}
+ V_Lp_L(d)\leq\eps_L/\Gamma,\qquad
+ d\gtrsim\frac{2\log(AV_L\Gamma/\eps_L)}{\log(p_{\mathrm{th}}/p)}-1.
+\end{equation}
+The implementation solves the discrete self-consistency problem because
+duration and volume also depend on $d$. Faults are budgeted per attempt;
+the full sampling campaign is not required to contain zero logical faults.
+Commuting, branch-independent fault channels can justify removing $\Gamma$
+locally. Section~\ref{sec:rus} checks this condition for a declared logical
+injection instrument, and Appendix~\ref{app:c9} explains why independence
+alone is insufficient.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{architecture_detail.pdf}
+\caption{Physical and logical resource scales. Left: a distance-three
+rotated-code illustration with nine data and eight check qubits; links are
+nearest-neighbor data--check interactions. Right: logical data interacts
+through operation space with analog injection or T-state supply. STAR and
+FTQC use different supply paths; the hybrid uses both. This illustration is
+not a choice of distance or a calibrated surgery schedule for the resource
+curves.}
+\label{fig:patch}
+\end{figure}
+
+\section{STAR: angle exposure, floors, and delivery}
+For independent residual dephasing $q_j$ after completed rotations,
+\begin{equation}\label{eq:star}
+ \Gamma^2=\prod_j(1-2q_j)^{-2},\qquad
+ \chi_{\mathrm{STAR}}=-2\sum_j\log(1-2q_j)\simeq4\sum_jq_j.
+\end{equation}
+Original STAR uses the post-RUS reference $q_0=4p/15$~\cite{akahoshi}.
+The small-angle reference uses $q_j=\alpha p|\theta_j|+f$, with
+$\alpha=1.5$ in our angle convention and a declared floor $f=10^{-5}$~\cite{toshio,chung}. The floor is a sensitivity motivated by injection and
+growth, not a measured error floor at this operating point. Fixed $\pi/8$
+rotations retain $q_0$; we do not extrapolate the small-angle fit to them.
+Consequently,
+\begin{equation}\label{eq:star-exposure}
+ \chi_{\mathrm{STAR}}\simeq4\alpha p\Theta_{\mathrm{dyn}}+4fR
+                     +\frac{16p}{15}T_{\mathrm{fixed}}.
+\end{equation}
+The implementation evaluates the logarithmic product in Eq.~\eqref{eq:star};
+the physical channel models themselves remain approximations. Their three
+exposures have different responses to compilation and refinement. In
+particular, $fR\sim\alpha p\Theta_{\mathrm{dyn}}$ marks a floor/angle
+competition, while repeated basis changes can dominate separately.
+
+The serial reference allocates
+$n_{\mathrm{data}}=\lceil1.5(2N+6)\rceil$ tiles and six injection tiles.
+It charges $18$ code clocks per rotation, with one clock equal to $d$
+syndrome cycles, plus startup, readout, and feedforward. This is a delivery
+model. A small-angle error law does not itself establish its acceptance,
+throughput, or footprint. The explicit retry refinement below adds both
+parallelism and its area cost.
+
+\subsection{Explicit retries, covariance, and parallelism}\label{sec:rus}
+The logical injection instrument prepares
+$|A_\theta\rangle=e^{-i\theta Z}|+\rangle$, applies
+$\mathrm{CNOT}_{\mathrm{data}\to\mathrm{ancilla}}$, and measures the ancilla
+in $Z$. Its data Kraus operators are
+\begin{equation}
+ K_0=2^{-1/2}e^{-i\theta Z},\qquad
+ K_1=2^{-1/2}e^{+i\theta Z}.
+\end{equation}
+After outcome one, an injection of angle $2\theta$ corrects a successful
+next branch: $K_0(2\theta)K_1(\theta)=K_0(\theta)/\sqrt2$.
+Repeating this gives the standard angle-doubling protocol underlying the
+STAR reference~\cite{akahoshi,toshio}. CUDA-Q P0 now contains explicit
+preparation, CNOT, measurement, conditional retries, and a returned exhaustion
+flag for caps $1,2,4,8,24$. This compilation does not supply a surface-code
+injection or patch-growth implementation.
+
+For a Pauli fault on either wire immediately before or after CNOT, each
+conditional $K$ remains diagonal or antidiagonal with equal-magnitude
+entries. Hence
+\begin{equation}
+ K^\dagger K=I/2,\qquad KZ=\pm ZK.
+\end{equation}
+The first identity makes the outcome probability independent of the data
+state; the second makes the conditional map commute with the channel
+$\mathcal Z(\rho)=Z\rho Z$. It therefore commutes with a Z-dephasing inverse,
+which is a linear combination of $\mathcal I$ and $\mathcal Z$. Mixtures
+of such faults and compositions over retries retain this local covariance
+under the stated branch-independent Pauli model. All sixteen two-qubit
+Paulis at both locations are checked independently.
+
+This verifies the needed local commutation condition for that declared
+instrument. It does not establish branch-independent residual noise for
+physical state preparation, patch growth, measurement-dependent selection,
+or a mismatched channel inversion. The worst-case $\Gamma q_L$ bias bound
+therefore remains the default; $q_L$ is a separately labeled covariance-based
+reference scenario. The physical STAR schedule still has to justify using it.
+
+For $b$ simultaneous ideal injections with geometric success probability
+$1/2$ and cap $K$, the mean batch retry time in units of one attempt is
+\begin{equation}
+ \mathbb E[M_b]=\sum_{k=0}^{K-1}\Pr(M_b>k)
+ =\sum_{k=0}^{K-1}\left[1-(1-2^{-k})^b\right].
+\end{equation}
+It approaches $2$ for one lane, but is approximately $3.50$ for four lanes.
+Simply dividing the serial duration by four misses the slowest retry. The
+implemented policy has a barrier between batches, reserves six injection
+tiles per lane, and assumes nine clocks per attempt, recovering the previous
+18-clock serial mean. It forms disjoint batches using full JW supports,
+not merely disjoint fermionic endpoints. An asynchronous policy could improve
+this conservative batch schedule.
+
+With $R$ rotations the ideal no-exhaustion probability is
+$(1-2^{-K})^R$. We choose $K$ from a small allocated tail allowance and
+charge the acceptance penalty. At $L=4$ and strict precision, two lanes
+minimize area at $Q=121716$, versus $166698$ for the earlier serial reference.
+Four and eight lanes reduce attempt time further but lose on area. At loose
+precision one lane still wins. These results constrain the particular
+logical mapping and resource model, not the best possible STAR architecture.
+
+
+
+\section{Full fault tolerance and the hybrid}
+For $R$ synthesized rotations each with operator error $\zeta$, telescoping
+unitaries bound the observable bias by $2R\zeta$. We set
+$\zeta=\eps_{\mathrm{syn}}/(2R)$. The deterministic synthesis fit
+\begin{equation}
+ T_R=\left\lceil3.02\log_2(1/\zeta)+0.77\right\rceil,\qquad
+ N_T=T_{\mathrm{fixed}}+RT_R,
+\end{equation}
+has the expected logarithmic scaling~\cite{ross}. At the compiled points,
+actual CUDA-Q GridSynth words replace this estimate. At $L=4,\tau=1,r=4$, termwise Strang has $889$ variable rotations,
+no fixed T gates, and $61178$ synthesized T gates. Plaquettes have $288$
+variable rotations and $576$ fixed T gates, for $19584$ synthesized T gates:
+$66$ per variable rotation. Independent matrix reconstruction checks the
+precision of every distinct emitted word. Whole-program synthesis at
+$L=2,4$ agrees with the class-weighted counts; $L=6,8$ use those counts
+before inter-gate optimization.
+
+\subsection{Conventional factory reference}
+Injected-state error $p_{\mathrm{in}}$ is separate from gate error $p$.
+The current conventional reference uses $46p/15$, with alternatives retained
+as sensitivities; this coefficient is not calibrated to our asymmetric
+$p_{1q}=p/10$ noise model. For a 15-to-1 stage~\cite{litinski},
+\begin{equation}
+ a_1=1-15p_{\mathrm{in}},\quad q_1=35p_{\mathrm{in}}^3,\quad
+ q_2=35q_1^3.
+\end{equation}
+One stage reserves twelve tiles, including its output, and takes $11/a_1$
+mean code clocks. The deliberately serial two-stage reference reserves
+two eleven-tile blocks and fifteen storage tiles, so
+\begin{equation}
+ n_F=37,\qquad c_F=\frac{15(11/a_1)+11}{1-15q_1}.
+\end{equation}
+Both stages use the selected code distance, and protected factory faults
+enter $V_L$. Correlations, transport, and rejection-tail latency are not
+resolved by this leading-order mean-service model.
+
+For $F$ factory copies, the FT timing reference is
+\begin{align}
+ C_{\mathrm{FT}}&=2+\max(9N_T+2R,\lceil N_T/F\rceil c_F),\\
+ t_a&=C_{\mathrm{FT}}dt_c+N_Tt_{\mathrm{ff}}+t_{\mathrm{reset}}+t_{\mathrm{meas}},\\
+ q_a&=2d^2(n_{\mathrm{data}}+Fn_F).
+\end{align}
+Nine clocks per T is the compact-block consumption reference~\cite{litinski};
+the $2R$ term is an extra Clifford-work placeholder. We optimize $F$ over
+$\{1,2,4,8,16\}$ together with level and distance, subject to
+$N_Tq_{1,2}\leq\eps_{\mathrm{magic}}$. Supply and consumption must be varied
+together: speeding consumption alone does not help a supply-limited circuit.
+
+\subsection{Why the hybrid is a separate candidate}
+The hybrid supplies the fixed T rotations as high-fidelity states while
+retaining analog small rotations. It removes the last term of
+Eq.~\eqref{eq:star-exposure}, but pays factory area, supply time, and a
+magic-state budget amplified by the retained analog PEC reference.
+At fixed ideal shot budget, a proposed additional protection step improves
+the wall-clock cost when
+\begin{equation}\label{eq:hybrid}
+ \Delta\log t_a+\Delta\chi-\Delta\log a-\Delta\log m<0.
+\end{equation}
+This provides a marginal criterion for operation-dependent protection,
+observable-aware allocation, and mixed rotation delivery. It must include
+the lost replicas when protection consumes area. The earlier hybrid gain
+at $L=4$ reversed under conventional two-level injection supply; that was
+an amortization effect of the serial reference, not a general disadvantage
+of the hybrid. Cultivation changes the comparison again, for both FT and
+hybrid, under the supply assumptions that follow.
+
+\subsection{Cultivation for both FT and hybrid supply}
+Gidney, Shutty, and Jones report cultivated-state error approximately
+$2\times10^{-9}$ at $p=10^{-3}$ and, in their Fig.~15, expected volume
+$6.6\times10^4$ qubit-rounds for the distance-five protocol with early
+rejection and sharing~\cite{gidney2024cultivation}. The output is in a
+grafted matchable code after escape to nominal distance $15$; its behavior
+is not identical to an ordinary distance-$15$ surface-code patch. Holding,
+transfer, growth, and consumption require additional accounting.
+
+Our declared packed-supply scenario rounds the expected volume to
+$V=10^5$ qubit-cycles, takes footprint $q_f=1024$, successful latency
+$\ell_f=50$ cycles, and charges a $2d$-cycle handoff. These latter choices
+are supply assumptions, not a compiled factory. The comparison also uses
+an unshared fixed-slot volume $V=1024\times50/0.01=5.12\times10^6$.
+Mapping the paper's uniform physical noise and round definitions to this
+device's $p_{1q}=p/10$ and $240$~ns cycle remains conditional.
+
+For handoff error $q_h$, define
+\begin{equation}
+ q_{\mathrm{ready}}=2\times10^{-9}+q_h,\qquad
+ s_{\mathrm{raw}}=\max(V/q_f,\ell_f)+2d.
+\end{equation}
+We sweep $q_h=0,10^{-9},10^{-8}$. Direct consumption is permitted only when
+\begin{equation}\label{eq:magic}
+ N_T q_{\mathrm{ready}}\Gamma\leq\eps_{\mathrm{magic}},
+ \qquad \eps_{\mathrm{magic}}=0.075\eps,
+\end{equation}
+with $\Gamma=1$ for FT and the retained conservative analog-mitigation
+amplification for hybrid. Otherwise one additional $15$-to-$1$ stage is
+available, with the same reference coefficients used previously~\cite{litinski}:
+\begin{equation}
+ q_{\mathrm{out}}=35q_{\mathrm{ready}}^3,\qquad
+ s_{\mathrm{out}}=\frac{15s_{\mathrm{raw}}+11d}{1-15q_{\mathrm{ready}}}.
+\end{equation}
+The area includes the source footprint, one handoff buffer per source,
+and twelve further tiles if this stage is used. Surface-memory faults of
+the data, buffers, and final distillation stage enter the logical budget;
+the source preparation error already appears in Eq.~\eqref{eq:magic}.
+Supply and consumption run concurrently, so duration contains their maximum,
+and source copies and code distance are optimized under the week cutoff.
+
+At strict precision and zero additional handoff error, direct unamplified
+consumption supports at most $37500$ states. The compiled $L=4$ FT count,
+$19584$, fits; the $L=6$ circuit requires the extra stage. Taking
+$q_h=10^{-8}$ forces that stage already at $L=4$. Cultivation therefore does
+not remove a distillation level independently of the task budget. In
+particular, the roughly $10^5$ cutoff discussed around TopQAD Fig.~16
+counts small-angle rotations at about $100$ T states per rotation, not
+$10^5$ T states~\cite{chung}.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+$L=4$, $r=4$ reference & $Q$, $\eps=10^{-3}$ & $Q$, $\eps=10^{-2}$\\
+\midrule
+Serial STAR & $166698$ & $45486$\\
+FT, conventional serial factory & $13791250$ & $216890$\\
+FT, packed cultivation, $q_h=0$ & $748656$ & $52180$\\
+Hybrid, conventional serial factory & $669714$ & $54150$\\
+Hybrid, packed cultivation, $q_h=0$ & $57472$ & $47232$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The conventional reference uses injected-state error $46p/15$. All rows
+remain conditional on $r=4$. The loose-precision FT rows reuse the stricter
+synthesized words; resynthesis could improve them further. Cultivation
+changes the supply comparison appreciably, but neither these numbers nor
+their ranking should be promoted into a result for accurate dynamics.
+
+
+
+\section{Accuracy, truncation, and noisy observables}\label{sec:calibration}
+The calibration constructs $H$ directly in fixed $(N_\uparrow,N_\downarrow)$
+sectors. Sparse matrix exponentiation evaluates $e^{-i\tau H/J}$ without using
+the compiled gate decomposition. A separate evolution applies
+\begin{equation}
+ U_r(\tau)=\left[
+ e^{-i\Delta H_U/2}
+ e^{-i\Delta H_{\mathrm{pink}}/2}
+ e^{-i\Delta H_{\mathrm{gold}}}
+ e^{-i\Delta H_{\mathrm{pink}}/2}
+ e^{-i\Delta H_U/2}\right]^r,
+ \qquad \Delta=\tau/r,
+\end{equation}
+where energies are in units of $J$. The largest patch is $3\times3$, with
+sector dimension $\binom94\binom95=15876$. An independent eight-qubit dense
+Hamiltonian verifies the exact-sector observable; the original compiled
+plaquette circuit independently verifies the product formula on $2\times2$.
+The saved evidence contains $112$ Trotter comparisons and $164$ exact-curve
+points over four patches.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Patch, $\tau=1$ & Exact $D$ & Error $r=4$ & Error $r=16$ & Error $r=64$\\
+\midrule
+$2\times2$ & $0.1179790$ & $0.0136397$ & $0.00087075$ & $0.00005447$\\
+$3\times3$ & $0.1050849$ & $0.0143939$ & $0.00085350$ & $0.00005317$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For these square patches, $r=64$ is the first tested power of two passing the
+strict split budget; $r=16$ passes the loose split budget. These are not
+minimal-step claims. The asymptotic local error is consistent with $r^{-2}$,
+while coarse steps can be nonmonotonic. We also record a budget based on $1\%$
+of each actual patch signal, rather than silently replacing the provisional
+$D_*$ in every resource curve.
+
+The compiled $L=2$ circuits at $r=4,16,64$ contain respectively $164,740,3044$
+native entanglers. The selected PEC estimator needs only one nine-qubit square
+copy at $r=16$, but approximately $4.73\times10^6$ qubits at $r=64$ to meet
+the week cutoff. Thus a common Trotter refinement can affect architecture
+costs very differently: it increases a physical noise exposure in an
+exponential, even when its algorithmic error reduction is shared. The
+corresponding $L=4$ compilations demonstrate cost sensitivity only; their
+Trotter error has not been calibrated.
+
+To start testing physical truncation, compare a five-site cross with its
+enclosing $3\times3$ square, keeping the same N\'eel pattern and central
+observable. Their exact differences are $4.75\times10^{-4}$ at $\tau=0.1$
+and $7.93\times10^{-2}$ at $\tau=1$. Both exceed the strict truncation
+allowance. However,
+\begin{equation}
+ |D_{\mathrm{cross}}-D_{\mathrm{target}}|
+ \leq |D_{\mathrm{cross}}-D_{3\times3}|
+       +|D_{3\times3}-D_{\mathrm{target}}|,
+\end{equation}
+and the second term is unknown. These finite-reference differences neither
+certify a bulk light cone nor bound the error of the larger patch. Larger
+patches, controlled local bounds, or both are still needed.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{results/refinement_v3/accuracy_calibration.pdf}
+\caption{Exact patch dynamics, local product-formula errors, a nested spatial
+comparison, and the cost sensitivity to $r$. Each exact curve belongs to its
+own finite patch. The spatial difference is not an infinite-volume error
+certificate. The $L=4$ cost sweep does not assume the small-patch error law
+holds at $L=4$.}
+\end{figure}
+
+\subsection{Postselection: measuring bias as well as acceptance}
+We propagate the full eight-qubit density matrix through the saved $L=2$
+native circuits. After each $k$-qubit primitive, the channel is
+\begin{equation}
+ \mathcal D_{k,p}(\rho)=(1-p)\rho+
+ \frac{p}{4^k-1}\sum_{P\ne I}P\rho P.
+\end{equation}
+Primitive idle channels, initial preparation flips, and final readout flips
+are also included. A direct Pauli-mixture implementation independently checks
+the optimized channel calculation. For selection event $A$, the measured
+quantity is $D_A=\mathbb E[D\mathbf1_A]/\Pr(A)$; a large or small acceptance
+alone says nothing sufficient about its bias.
+
+At $r=4$, the unselected noise bias relative to the ideal Trotter circuit is
+$0.020371$. Selecting the two spin parities reduces it to $0.005808$ with
+acceptance $0.81958$. Selecting exact $N_\uparrow=N_\downarrow=2$ reduces it
+to $0.004212$ with acceptance $0.80943$. Its bias relative to exact dynamics,
+including the independently measured Trotter error, is $0.01785$. At $r=64$,
+the number-selected noise bias rises to $0.1070$. Postselection helps here,
+but by itself does not meet the strict precision target.
+
+The parity acceptance agrees with the independently propagated Pauli-character
+formula. Trace errors are below $1.4\times10^{-12}$ and the calculated density
+matrices remain positive. These results apply to the stated eight-qubit
+circuits and noise channels. They do not prove failure of selection at $L=4$
+or of combinations with other mitigation methods. The larger trapped-ion
+experiment~\cite{alam2025} remains a separate circuit, geometry, and noise
+comparison.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{results/refinement_v3/postselection_bias.pdf}
+\caption{Exact acceptance and actual observable bias under the declared
+eight-qubit noise model. The right panel isolates noise bias from Trotter
+bias. No extrapolation from these curves to $L\geq4$ is used.}
+\end{figure}
+
+
+
+\section{What determines the scaling}
+The exposure variables give a more transferable comparison than a single
+crossover. With local full-lattice compilation, $R=O(Nr)$ and
+$\Theta=O(N\tau)$. Physical PEC and original STAR therefore have reference
+exponents $O(pNr)$, while the small-angle term has exponent $O(pN\tau)$.
+An injection floor and the plaquette fixed-angle basis changes restore
+$O(r)$ growth of the STAR exponent. FT has
+$N_T=O(Nr\log(Nr/\eps))$ and logarithmic distance growth below threshold,
+but starts with a substantial protected footprint and supply overhead.
+These are laws of the specified models, subject to the locality and accuracy
+qualifications above.
+
+Figure~\ref{fig:capacity} expresses their current numerical consequences
+as a device-allocation question. At $Q=10^6$ and strict reference precision,
+the largest tested conditional circuits are $2\times2$ for NISQ,
+$4\times4$ for STAR and FTQC, and $6\times6$ for the hybrid. These numbers
+use different implemented optimizations, conditional encoded supply, and
+the same unqualified $r=4$ product formula. They are not final architecture
+rankings. At loose precision the encoded thresholds cluster much more
+closely, making delivery rate, distance, and integer replicas consequential.
+
+Small-patch calibration explains why a common algorithmic correction does
+not cancel from the resource comparison: increasing $r$ reduces a shared
+Trotter error but enters each architecture's cost differently. Likewise,
+physical truncation could reduce all three arms if its bias is controlled.
+The next scientific dependencies are a common accuracy-qualified workload,
+a controlled spatial truncation estimate, and physical injection/growth and
+handoff schedules with residual-channel validation. Qubitization remains
+a separately identified later algorithm comparison.
+
+\appendix
+\section{Logical-fault commutation and its limitation}\label{app:c9}
+A branch-independent fault channel $\mathcal F$ outside a complete PEC
+cancellation block, or commuting through its noise channel $\mathcal E$,
+satisfies $\mathcal E^{-1}\mathcal F\mathcal E=\mathcal F$. For a stochastic
+fault of probability $q_L$, this gives bias at most $q_L$ for a $[0,1]$
+observable. Pauli channels commute locally, making this a useful condition.
+It does not follow merely from linearity or branch independence.
+
+For a counterexample, take Bloch matrices
+$E=\operatorname{diag}(s,s,1)$ and
+$F=(1-q)I+qH$, where $H$ is Hadamard conjugation. On $|0\rangle$, measuring
+$(I+X)/2$ after $E^{-1}FE$ gives bias $q/(2s)>q$ when $s<1/2$.
+This is a stochastic non-Pauli fault inside the cancellation sandwich.
+The logical STAR instrument of Section~\ref{sec:rus} instead verifies local
+Z covariance under its stated Pauli fault model. A physical implementation
+must justify that model across injection, growth, retries, and any selection
+before the more favorable budget becomes its default.
+
+\section{Compilation, checks, and reproducibility}
+The installed CPU CUDA-Q Logical environment compiles the common analog
+program, native physical circuits, and synthesized Clifford+T words.
+The physical routes carry mode permutations, explicit nearest-neighbor gates,
+ASAP schedules, counts, and hashes. The STAR retry program contains real
+logical preparation, measurement, and conditional angle doubling with an
+exhaustion flag. These P0 artifacts do not imply a physical STAR QEC schedule.
+
+The installed minimal surface recipe lacks some needed gate gadgets.
+An explicit encoded macro adapter reaches physical IR, but the Hubbard
+backend timing is rejected. A reduced circuit with four fixed-angle
+rotations repeated four times, totaling $16$ T states, triggers a nested
+schedule interval error. The $4$-, $8$-, and $32$-T variants pass a loose
+bound, and separate two-resource template-call controls return their
+expected times. The root cause remains unresolved. None of these backend
+timings enters the resource curves; passing the loose controls is not a
+validation of physical encoded timing.
+
+Tests independently check fermionic signs, product-formula identities,
+synthesis accuracy, exact-sector dynamics, primitive Pauli noise, STAR
+instrument algebra, and resource budgets. The capacity inversion additionally
+checks threshold inclusion, nonmonotone cost envelopes, and the untested
+region. These checks validate the specified calculations rather than the
+hardware assumptions.
+
+The repository entry point is \texttt{README.md}. Source code is in
+\texttt{python/}, tests in \texttt{tests/}, assumptions in \texttt{configs/},
+and this manuscript in \texttt{tex/main.tex} with a dedicated
+\texttt{tex/references.bib}. Current overview figures are in \texttt{figures/};
+versioned scientific evidence stays in \texttt{results/}. Earlier complete
+notes are in \texttt{tex/archive/}. The original v3 manifest is preserved:
+historical source hashes are checked against their archived snapshots, while
+the relocated code replays the same saved numerical evidence. The presentation
+manifest records the new figures and their source datasets without relabeling
+older results as a new calculation.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}

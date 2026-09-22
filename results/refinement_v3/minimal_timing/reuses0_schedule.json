@@ -1,0 +1,261 @@
+[
+  {
+    "event_id": "acquire0",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "q[0]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "acquire1",
+    "kind": "acquire",
+    "start_ns": 0.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "q[1]"
+    ],
+    "dependencies": [],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "unrelated_delay",
+    "kind": "delay",
+    "start_ns": 0.0,
+    "duration_ns": 1000.0,
+    "resources": [
+      "q[0]"
+    ],
+    "dependencies": [
+      "acquire0"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire0"
+    ],
+    "resource_dependencies": [
+      "acquire0"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "call0",
+    "kind": "call",
+    "start_ns": 0.0,
+    "duration_ns": 3.0,
+    "resources": [
+      "q[1]"
+    ],
+    "dependencies": [
+      "acquire1"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": "work",
+    "instance": "root.work.call0",
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire1"
+    ],
+    "resource_dependencies": [],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "short_delay",
+    "kind": "delay",
+    "start_ns": 0.0,
+    "duration_ns": 3.0,
+    "resources": [
+      "q[1]"
+    ],
+    "dependencies": [
+      "acquire1"
+    ],
+    "parent": "call0",
+    "branch": "body",
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "acquire1"
+    ],
+    "resource_dependencies": [
+      "acquire1"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release0",
+    "kind": "release",
+    "start_ns": 1000.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "q[0]"
+    ],
+    "dependencies": [
+      "unrelated_delay"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "unrelated_delay"
+    ],
+    "resource_dependencies": [
+      "unrelated_delay"
+    ],
+    "domain_dependencies": []
+  },
+  {
+    "event_id": "release1",
+    "kind": "release",
+    "start_ns": 3.0,
+    "duration_ns": 0.0,
+    "resources": [
+      "q[1]"
+    ],
+    "dependencies": [
+      "call0"
+    ],
+    "parent": null,
+    "branch": null,
+    "condition": null,
+    "max_attempts": null,
+    "exhaustion": null,
+    "commit_point": null,
+    "repeat_count": null,
+    "repeat_period_ns": null,
+    "repeat_epilogue_ns": null,
+    "max_iterations": null,
+    "callee": null,
+    "instance": null,
+    "profile": null,
+    "template_event": null,
+    "attempt": null,
+    "attempt_event": null,
+    "decision_event": null,
+    "success_probability": null,
+    "success_probability_source": null,
+    "success_probability_evidence": null,
+    "data_dependencies": [
+      "call0"
+    ],
+    "resource_dependencies": [
+      "call0"
+    ],
+    "domain_dependencies": []
+  }
+]

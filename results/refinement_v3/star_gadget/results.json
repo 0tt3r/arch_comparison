@@ -1,0 +1,142 @@
+[
+  {
+    "cap": 1,
+    "theta": 0.137,
+    "ideal_exhaustion_probability": 0.5,
+    "worst_case_prepared_states": 1,
+    "expected_attempts": 1.0,
+    "cudaq_logical": {
+      "actions": {
+        "qlx_standard_h": 3,
+        "qlx_standard_pauli_rotation": 1,
+        "qlx_standard_cx": 1
+      },
+      "instruments": {
+        "qlx_standard_prepare_zero": 2,
+        "qlx_standard_measure_z": 2
+      },
+      "idle_sites": 0,
+      "discards": 0,
+      "logical_qubits_peak": 2,
+      "action_depth_upper_bound": 9,
+      "synthesis_demand": {},
+      "resource_requests": {},
+      "resource_consumptions": {},
+      "build_root": "rotation",
+      "build_sha256": "sha256:5ee2365c4082d7c5147012852bc8eaadb9e5f0542258c278c60fe7285b064b5a"
+    },
+    "scope": "logical injection and conditional angle doubling; physical preparation and QEC unspecified"
+  },
+  {
+    "cap": 2,
+    "theta": 0.137,
+    "ideal_exhaustion_probability": 0.25,
+    "worst_case_prepared_states": 2,
+    "expected_attempts": 1.5,
+    "cudaq_logical": {
+      "actions": {
+        "qlx_standard_h": 4,
+        "qlx_standard_pauli_rotation": 2,
+        "qlx_standard_cx": 2
+      },
+      "instruments": {
+        "qlx_standard_prepare_zero": 3,
+        "qlx_standard_measure_z": 3
+      },
+      "idle_sites": 0,
+      "discards": 0,
+      "logical_qubits_peak": 2,
+      "action_depth_upper_bound": 14,
+      "synthesis_demand": {},
+      "resource_requests": {},
+      "resource_consumptions": {},
+      "build_root": "rotation",
+      "build_sha256": "sha256:8ec610a7e8f19a308eec0a94bb05c95c5d807704abf989c3037facb5af340d0e"
+    },
+    "scope": "logical injection and conditional angle doubling; physical preparation and QEC unspecified"
+  },
+  {
+    "cap": 4,
+    "theta": 0.137,
+    "ideal_exhaustion_probability": 0.0625,
+    "worst_case_prepared_states": 4,
+    "expected_attempts": 1.875,
+    "cudaq_logical": {
+      "actions": {
+        "qlx_standard_h": 6,
+        "qlx_standard_pauli_rotation": 4,
+        "qlx_standard_cx": 4
+      },
+      "instruments": {
+        "qlx_standard_prepare_zero": 5,
+        "qlx_standard_measure_z": 5
+      },
+      "idle_sites": 0,
+      "discards": 0,
+      "logical_qubits_peak": 2,
+      "action_depth_upper_bound": 24,
+      "synthesis_demand": {},
+      "resource_requests": {},
+      "resource_consumptions": {},
+      "build_root": "rotation",
+      "build_sha256": "sha256:97f0bef77da55a1f419503b40c3acdf98e1359fb2063a994b5ae842d7fbd0df4"
+    },
+    "scope": "logical injection and conditional angle doubling; physical preparation and QEC unspecified"
+  },
+  {
+    "cap": 8,
+    "theta": 0.137,
+    "ideal_exhaustion_probability": 0.00390625,
+    "worst_case_prepared_states": 8,
+    "expected_attempts": 1.9921875,
+    "cudaq_logical": {
+      "actions": {
+        "qlx_standard_h": 10,
+        "qlx_standard_pauli_rotation": 8,
+        "qlx_standard_cx": 8
+      },
+      "instruments": {
+        "qlx_standard_prepare_zero": 9,
+        "qlx_standard_measure_z": 9
+      },
+      "idle_sites": 0,
+      "discards": 0,
+      "logical_qubits_peak": 2,
+      "action_depth_upper_bound": 44,
+      "synthesis_demand": {},
+      "resource_requests": {},
+      "resource_consumptions": {},
+      "build_root": "rotation",
+      "build_sha256": "sha256:6ee572c9c55485f603c74d6b8f22cc06aa3a5297f8d4776d7c912b3e8575869b"
+    },
+    "scope": "logical injection and conditional angle doubling; physical preparation and QEC unspecified"
+  },
+  {
+    "cap": 24,
+    "theta": 0.137,
+    "ideal_exhaustion_probability": 5.960464477539063e-08,
+    "worst_case_prepared_states": 24,
+    "expected_attempts": 1.9999998807907104,
+    "cudaq_logical": {
+      "actions": {
+        "qlx_standard_h": 26,
+        "qlx_standard_pauli_rotation": 24,
+        "qlx_standard_cx": 24
+      },
+      "instruments": {
+        "qlx_standard_prepare_zero": 25,
+        "qlx_standard_measure_z": 25
+      },
+      "idle_sites": 0,
+      "discards": 0,
+      "logical_qubits_peak": 2,
+      "action_depth_upper_bound": 124,
+      "synthesis_demand": {},
+      "resource_requests": {},
+      "resource_consumptions": {},
+      "build_root": "rotation",
+      "build_sha256": "sha256:2d3bf9bbd837998b5eaa48ac5351984c74480bb188a2d529e15e40d3eb206527"
+    },
+    "scope": "logical injection and conditional angle doubling; physical preparation and QEC unspecified"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "tests_passed": 78,
+  "unchanged_scientific_python_files": [
+    "compiled_model.py",
+    "hubbard_circuits.py",
+    "model.py",
+    "nisq_compilation.py",
+    "nisq_observables.py",
+    "parallel_nisq.py",
+    "test_hubbard_circuits.py"
+  ],
+  "cudaq_relocation_smoke": {
+    "case": "plaquette_L2_tau1_r1",
+    "native_two_qubit_gates": 160,
+    "native_depth": 215,
+    "synthesized_T_count": 672
+  },
+  "manuscript_pages": 15,
+  "main_latex_build": "PASS: no overfull boxes or unresolved references",
+  "archive_build": "PASS: refinement_v3 rebuilt in build/ without replacing archive",
+  "historical_tex_pdf_bib": "Original pre-move hashes preserved",
+  "scientific_artifacts": "v3 frozen artifact audit and current-code numerical replay passed"
+}

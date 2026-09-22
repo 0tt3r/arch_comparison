@@ -1,0 +1,49 @@
+[
+  {
+    "reuses": 0,
+    "expected_makespan_ns": 1000.0,
+    "reported_makespan_ns": 1000.0,
+    "expected_call_duration_ns": 3.0,
+    "reported_call_durations_ns": [
+      3.0
+    ],
+    "passes": true
+  },
+  {
+    "reuses": 1,
+    "expected_makespan_ns": 1000.0,
+    "reported_makespan_ns": 1000.0,
+    "expected_call_duration_ns": 3.0,
+    "reported_call_durations_ns": [
+      3.0,
+      3.0
+    ],
+    "passes": true
+  },
+  {
+    "reuses": 2,
+    "expected_makespan_ns": 1000.0,
+    "reported_makespan_ns": 1000.0,
+    "expected_call_duration_ns": 3.0,
+    "reported_call_durations_ns": [
+      3.0,
+      3.0,
+      3.0
+    ],
+    "passes": true
+  },
+  {
+    "reuses": 4,
+    "expected_makespan_ns": 1000.0,
+    "reported_makespan_ns": 1000.0,
+    "expected_call_duration_ns": 3.0,
+    "reported_call_durations_ns": [
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0
+    ],
+    "passes": true
+  }
+]

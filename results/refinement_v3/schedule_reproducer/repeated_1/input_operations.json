@@ -1,0 +1,40 @@
+[
+  {
+    "name": "rotate",
+    "qubits": [
+      0,
+      1
+    ],
+    "angle": 0.39269908169872414,
+    "paulis": "ZZ",
+    "role": "fixed_T"
+  },
+  {
+    "name": "rotate",
+    "qubits": [
+      1
+    ],
+    "angle": 0.39269908169872414,
+    "paulis": "X",
+    "role": "fixed_T"
+  },
+  {
+    "name": "rotate",
+    "qubits": [
+      1,
+      2
+    ],
+    "angle": 0.39269908169872414,
+    "paulis": "ZZ",
+    "role": "fixed_T"
+  },
+  {
+    "name": "rotate",
+    "qubits": [
+      2
+    ],
+    "angle": 0.39269908169872414,
+    "paulis": "X",
+    "role": "fixed_T"
+  }
+]

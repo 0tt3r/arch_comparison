@@ -1,0 +1,1249 @@
+{
+  "schedule": {
+    "width": 128,
+    "gates": {
+      "h": 31744,
+      "x": 64,
+      "rzz": 16102,
+      "rx": 15938,
+      "rz": 16010
+    },
+    "two_qubit_gates": 16102,
+    "one_qubit_gates": 63756,
+    "depth_layers": 1552,
+    "idle_qubit_layers": 102696,
+    "seconds_per_attempt": 1.5720000000000002e-05,
+    "physical_copy_qubits": 144,
+    "layout": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        11,
+        9
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        7,
+        10
+      ]
+    ]
+  },
+  "observable_exposure": {
+    "chi": 117.11384693038477,
+    "exposure": {
+      "two_qubit": 64.41231562658419,
+      "one_qubit": 25.402446832905408,
+      "idle": 26.77856377652017,
+      "spam": 0.5205206943750001
+    },
+    "locations": {
+      "two_qubit": 16102,
+      "one_qubit": 63504,
+      "idle": 66904
+    },
+    "input_support": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ]
+  },
+  "full_circuit_chi": 131.54052549544252,
+  "mode_to_wire": {
+    "0": 0,
+    "2": 1,
+    "28": 13,
+    "30": 2,
+    "1": 3,
+    "3": 4,
+    "29": 18,
+    "31": 5,
+    "4": 6,
+    "6": 7,
+    "24": 23,
+    "26": 14,
+    "5": 8,
+    "7": 9,
+    "25": 27,
+    "27": 19,
+    "8": 10,
+    "10": 11,
+    "20": 31,
+    "22": 24,
+    "9": 12,
+    "11": 16,
+    "21": 41,
+    "23": 28,
+    "12": 17,
+    "14": 21,
+    "16": 40,
+    "18": 32,
+    "13": 22,
+    "15": 25,
+    "17": 43,
+    "19": 42,
+    "32": 26,
+    "34": 15,
+    "60": 44,
+    "62": 29,
+    "33": 30,
+    "35": 20,
+    "61": 50,
+    "63": 36,
+    "36": 33,
+    "38": 34,
+    "56": 53,
+    "58": 35,
+    "37": 37,
+    "39": 38,
+    "57": 60,
+    "59": 39,
+    "40": 45,
+    "42": 46,
+    "52": 68,
+    "54": 54,
+    "41": 48,
+    "43": 49,
+    "53": 74,
+    "55": 61,
+    "44": 51,
+    "46": 56,
+    "48": 52,
+    "50": 70,
+    "45": 58,
+    "47": 63,
+    "49": 59,
+    "51": 76,
+    "64": 64,
+    "66": 47,
+    "92": 82,
+    "94": 65,
+    "65": 66,
+    "67": 57,
+    "93": 84,
+    "95": 72,
+    "68": 67,
+    "70": 55,
+    "88": 91,
+    "90": 71,
+    "69": 73,
+    "71": 62,
+    "89": 96,
+    "91": 81,
+    "72": 77,
+    "74": 79,
+    "84": 78,
+    "86": 80,
+    "73": 87,
+    "75": 89,
+    "85": 88,
+    "87": 90,
+    "76": 69,
+    "78": 86,
+    "80": 85,
+    "82": 104,
+    "77": 75,
+    "79": 99,
+    "81": 95,
+    "83": 111,
+    "96": 100,
+    "98": 83,
+    "124": 115,
+    "126": 101,
+    "97": 102,
+    "99": 94,
+    "125": 124,
+    "127": 116,
+    "100": 106,
+    "102": 93,
+    "120": 107,
+    "122": 108,
+    "101": 109,
+    "103": 98,
+    "121": 113,
+    "123": 114,
+    "104": 92,
+    "106": 105,
+    "116": 117,
+    "118": 118,
+    "105": 97,
+    "107": 112,
+    "117": 119,
+    "119": 120,
+    "108": 103,
+    "110": 122,
+    "112": 121,
+    "114": 123,
+    "109": 110,
+    "111": 126,
+    "113": 125,
+    "115": 127
+  },
+  "observable_wires": [
+    77,
+    87
+  ],
+  "costs_by_idle_ratio": {
+    "0.0": {
+      "L": 8,
+      "N": 64,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "plaquette",
+      "arm": "physical_local_PEC",
+      "rotations": 1168,
+      "fixed_T": 2624,
+      "theta": 188.0,
+      "log10_gamma2": 39.23211499489117,
+      "seconds_per_attempt": 1.5720000000000002e-05,
+      "qubits_per_copy": 144,
+      "log10_Q_min": 37.673242710766004,
+      "log10_seconds_at_Q": 37.45488228899548
+    },
+    "0.1": {
+      "L": 8,
+      "N": 64,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "plaquette",
+      "arm": "physical_local_PEC",
+      "rotations": 1168,
+      "fixed_T": 2624,
+      "theta": 188.0,
+      "log10_gamma2": 40.394430130616904,
+      "seconds_per_attempt": 1.5720000000000002e-05,
+      "qubits_per_copy": 144,
+      "log10_Q_min": 38.83555784649173,
+      "log10_seconds_at_Q": 38.6171974247212
+    },
+    "1.0": {
+      "L": 8,
+      "N": 64,
+      "tau": 1.0,
+      "r": 4,
+      "algorithm": "plaquette",
+      "arm": "physical_local_PEC",
+      "rotations": 1168,
+      "fixed_T": 2624,
+      "theta": 188.0,
+      "log10_gamma2": 50.86189747632819,
+      "seconds_per_attempt": 1.5720000000000002e-05,
+      "qubits_per_copy": 144,
+      "log10_Q_min": 49.30302519220302,
+      "log10_seconds_at_Q": 49.08466477043249
+    }
+  },
+  "initial_mode_order": [
+    0,
+    2,
+    28,
+    30,
+    1,
+    3,
+    29,
+    31,
+    4,
+    6,
+    24,
+    26,
+    5,
+    7,
+    25,
+    27,
+    8,
+    10,
+    20,
+    22,
+    9,
+    11,
+    21,
+    23,
+    12,
+    14,
+    16,
+    18,
+    13,
+    15,
+    17,
+    19,
+    32,
+    34,
+    60,
+    62,
+    33,
+    35,
+    61,
+    63,
+    36,
+    38,
+    56,
+    58,
+    37,
+    39,
+    57,
+    59,
+    40,
+    42,
+    52,
+    54,
+    41,
+    43,
+    53,
+    55,
+    44,
+    46,
+    48,
+    50,
+    45,
+    47,
+    49,
+    51,
+    64,
+    66,
+    92,
+    94,
+    65,
+    67,
+    93,
+    95,
+    68,
+    70,
+    88,
+    90,
+    69,
+    71,
+    89,
+    91,
+    72,
+    74,
+    84,
+    86,
+    73,
+    75,
+    85,
+    87,
+    76,
+    78,
+    80,
+    82,
+    77,
+    79,
+    81,
+    83,
+    96,
+    98,
+    124,
+    126,
+    97,
+    99,
+    125,
+    127,
+    100,
+    102,
+    120,
+    122,
+    101,
+    103,
+    121,
+    123,
+    104,
+    106,
+    116,
+    118,
+    105,
+    107,
+    117,
+    119,
+    108,
+    110,
+    112,
+    114,
+    109,
+    111,
+    113,
+    115
+  ],
+  "fermionic_swaps": 6645,
+  "pair_fusions": 14,
+  "stage_history": [
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 0,
+      "regroup_swaps": 0,
+      "internal_swaps": 32,
+      "parallel_groups": 32
+    },
+    {
+      "stage": "gold",
+      "regroup_swap_layers": 25,
+      "regroup_swaps": 931,
+      "internal_swaps": 18,
+      "parallel_groups": 42
+    },
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 26,
+      "regroup_swaps": 919,
+      "internal_swaps": 30,
+      "parallel_groups": 32
+    },
+    {
+      "stage": "onsite",
+      "regroup_swap_layers": 7,
+      "regroup_swaps": 128,
+      "internal_swaps": 0,
+      "parallel_groups": 64
+    },
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 3,
+      "regroup_swaps": 96,
+      "internal_swaps": 0,
+      "parallel_groups": 32
+    },
+    {
+      "stage": "gold",
+      "regroup_swap_layers": 25,
+      "regroup_swaps": 931,
+      "internal_swaps": 18,
+      "parallel_groups": 42
+    },
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 26,
+      "regroup_swaps": 919,
+      "internal_swaps": 30,
+      "parallel_groups": 32
+    },
+    {
+      "stage": "onsite",
+      "regroup_swap_layers": 7,
+      "regroup_swaps": 128,
+      "internal_swaps": 0,
+      "parallel_groups": 64
+    },
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 3,
+      "regroup_swaps": 96,
+      "internal_swaps": 0,
+      "parallel_groups": 32
+    },
+    {
+      "stage": "gold",
+      "regroup_swap_layers": 25,
+      "regroup_swaps": 886,
+      "internal_swaps": 18,
+      "parallel_groups": 30
+    },
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 25,
+      "regroup_swaps": 697,
+      "internal_swaps": 18,
+      "parallel_groups": 18
+    },
+    {
+      "stage": "onsite",
+      "regroup_swap_layers": 7,
+      "regroup_swaps": 114,
+      "internal_swaps": 0,
+      "parallel_groups": 36
+    },
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 6,
+      "regroup_swaps": 98,
+      "internal_swaps": 0,
+      "parallel_groups": 18
+    },
+    {
+      "stage": "gold",
+      "regroup_swap_layers": 25,
+      "regroup_swaps": 411,
+      "internal_swaps": 8,
+      "parallel_groups": 8
+    },
+    {
+      "stage": "pink",
+      "regroup_swap_layers": 25,
+      "regroup_swaps": 117,
+      "internal_swaps": 2,
+      "parallel_groups": 2
+    }
+  ],
+  "group_order": "mean",
+  "optimize_inside": true,
+  "routing": "parallel odd-even fermionic regrouping on the nearest-neighbor snake",
+  "initial_order_policy": "tile",
+  "candidates": [
+    {
+      "initial_order": "site",
+      "optimize_inside": false,
+      "G2": 18402,
+      "depth": 1744,
+      "chi": 133.9451037666413,
+      "log10_Q": 56.66279319877802
+    },
+    {
+      "initial_order": "site",
+      "optimize_inside": true,
+      "G2": 18416,
+      "depth": 1720,
+      "chi": 133.12293776917014,
+      "log10_Q": 56.29978171035462
+    },
+    {
+      "initial_order": "spin",
+      "optimize_inside": false,
+      "G2": 18626,
+      "depth": 1816,
+      "chi": 138.60493202746224,
+      "log10_Q": 58.703904995138814
+    },
+    {
+      "initial_order": "spin",
+      "optimize_inside": true,
+      "G2": 18640,
+      "depth": 1792,
+      "chi": 137.52820332833656,
+      "log10_Q": 58.23057317907724
+    },
+    {
+      "initial_order": "tile",
+      "optimize_inside": false,
+      "G2": 16098,
+      "depth": 1576,
+      "chi": 118.22256290919896,
+      "log10_Q": 49.79111476911131
+    },
+    {
+      "initial_order": "tile",
+      "optimize_inside": true,
+      "G2": 16102,
+      "depth": 1552,
+      "chi": 117.11384693038477,
+      "log10_Q": 49.30302519220302
+    }
+  ],
+  "L": 8,
+  "tau": 1.0,
+  "steps": 4,
+  "algorithm": "plaquette",
+  "observable_pruned": true,
+  "configuration": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18.0,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000
+  },
+  "observable_modes": [
+    72,
+    73
+  ],
+  "postselection": {
+    "acceptance": 0.2500000000110141,
+    "character_visibilities": [
+      2.209862764843281e-11,
+      2.1957642600965062e-11,
+      4.693047364951726e-18
+    ],
+    "log_character_visibilities": [
+      -24.535505606688943,
+      -24.541905854732438,
+      -39.90044954445052
+    ],
+    "log_no_fault_probability": -33.01838435749037,
+    "conditional_bias_upper_bound": 0.9999999999999817,
+    "bias_status": "worst-case bound; postselection alone is not precision-certified",
+    "selection": "both spin parities; not exact spin-resolved particle numbers"
+  },
+  "cudaq_logical": {
+    "actions": {
+      "qlx_standard_h": 31744,
+      "qlx_standard_x": 64,
+      "qlx_standard_pauli_rotation": 48050
+    },
+    "instruments": {
+      "qlx_standard_prepare_zero": 128,
+      "qlx_standard_measure_z": 128
+    },
+    "idle_sites": 0,
+    "discards": 0,
+    "logical_qubits_peak": 128,
+    "action_depth_upper_bound": 80114,
+    "synthesis_demand": {},
+    "resource_requests": {},
+    "resource_consumptions": {},
+    "build_root": "program",
+    "build_sha256": "sha256:c187ec876944f9358066f97502431cfc62f0e890ee6306f56bdbb73e9f0c9ba0"
+  },
+  "sources": {
+    "parallel_nisq.py": "3daed00c76d82077accc3aa78c8b3d231cac89786039a331c3a152ce3d147b32",
+    "run_parallel_refinement.py": "8a57f289c86db2dafb094c4916be0605f56606af6f065e77da600dbd02db614d",
+    "nisq_compilation.py": "4ca4012614ef5e2ae43096b94028df063b85e6d739a8acae8bd2981744f522de",
+    "nisq_observables.py": "2e834fbc485a698da80b76ba94edf6f137e0dce91fc4b78e2750cc7776dfbefc",
+    "hubbard_circuits.py": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3",
+    "run_nisq_refinement.py": "a3b183752185a408c143067c687cb90befdfe1cc9c84ff17e3d51caeee0ab595",
+    "model.py": "bbd72594cdced68c580e5e60b2914e0dc8f1d09d0bccf3d915169d0397e8ee86"
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "unselected": {
+      "acceptance": 0.9999999999999277,
+      "doublon": 0.15198958022440373,
+      "bias_from_noiseless_circuit": 0.020370859246648304,
+      "bias_from_exact_dynamics": 0.03401053819071287
+    },
+    "spin_parity": {
+      "acceptance": 0.8195834006211229,
+      "doublon": 0.13742709696077393,
+      "bias_from_noiseless_circuit": 0.0058083759830185044,
+      "bias_from_exact_dynamics": 0.01944805492708307
+    },
+    "spin_particle_number": {
+      "acceptance": 0.8094342975334907,
+      "doublon": 0.13583038965522992,
+      "bias_from_noiseless_circuit": 0.004211668677474495,
+      "bias_from_exact_dynamics": 0.01785134762153906
+    },
+    "trace_error": 7.205349050160069e-14,
+    "hermiticity_error": 1.1857187100668868e-16,
+    "min_eigenvalue": 7.245204703387608e-06,
+    "L": 2,
+    "r": 4,
+    "tau": 1.0,
+    "ideal_circuit_D": 0.13161872097775543,
+    "exact_dynamics_D": 0.11797904203369086,
+    "elapsed_seconds": 1.7008083630353212,
+    "scope": "exact noisy eight-qubit calculation only"
+  },
+  {
+    "unselected": {
+      "acceptance": 0.9999999999996814,
+      "doublon": 0.1944065822502377,
+      "bias_from_noiseless_circuit": 0.07555678554496822,
+      "bias_from_exact_dynamics": 0.07642754021654682
+    },
+    "spin_parity": {
+      "acceptance": 0.48547712167421014,
+      "doublon": 0.15454370165792958,
+      "bias_from_noiseless_circuit": 0.035693904952660116,
+      "bias_from_exact_dynamics": 0.036564659624238716
+    },
+    "spin_particle_number": {
+      "acceptance": 0.44602554388178745,
+      "doublon": 0.1429659775116562,
+      "bias_from_noiseless_circuit": 0.02411618080638675,
+      "bias_from_exact_dynamics": 0.02498693547796535
+    },
+    "trace_error": 3.1863418885255094e-13,
+    "hermiticity_error": 9.974659986866641e-17,
+    "min_eigenvalue": 0.00014896259872770445,
+    "L": 2,
+    "r": 16,
+    "tau": 1.0,
+    "ideal_circuit_D": 0.11884979670526946,
+    "exact_dynamics_D": 0.11797904203369086,
+    "elapsed_seconds": 7.287737271282822,
+    "scope": "exact noisy eight-qubit calculation only"
+  },
+  {
+    "unselected": {
+      "acceptance": 0.9999999999986937,
+      "doublon": 0.2609634188858254,
+      "bias_from_noiseless_circuit": 0.1429299095661409,
+      "bias_from_exact_dynamics": 0.14298437685213455
+    },
+    "spin_parity": {
+      "acceptance": 0.25848491967322557,
+      "doublon": 0.2544185710454621,
+      "bias_from_noiseless_circuit": 0.1363850617257776,
+      "bias_from_exact_dynamics": 0.13643952901177125
+    },
+    "spin_particle_number": {
+      "acceptance": 0.162961484507183,
+      "doublon": 0.22505712732811814,
+      "bias_from_noiseless_circuit": 0.10702361800843363,
+      "bias_from_exact_dynamics": 0.10707808529442728
+    },
+    "trace_error": 1.3062884148677461e-12,
+    "hermiticity_error": 1.3619612612983792e-17,
+    "min_eigenvalue": 0.0014354720879140982,
+    "L": 2,
+    "r": 64,
+    "tau": 1.0,
+    "ideal_circuit_D": 0.11803350931968451,
+    "exact_dynamics_D": 0.11797904203369086,
+    "elapsed_seconds": 29.161767536774278,
+    "scope": "exact noisy eight-qubit calculation only"
+  }
+]

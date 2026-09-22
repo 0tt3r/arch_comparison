@@ -1,0 +1,14 @@
+{
+  "native_compiled_cases": 9,
+  "trotter_comparisons": 112,
+  "exact_curve_points": 164,
+  "finite_spatial_comparisons": 4,
+  "noisy_density_cases": 3,
+  "cultivation_scenarios": 88,
+  "star_parallel_scenarios": 64,
+  "logical_retry_caps": 5,
+  "scheduler_diagnostics": 4,
+  "scheduler_positive_controls": 4,
+  "tests_passed": 73,
+  "status": "PASS: saved-model consistency and provenance; physical encoded schedules unvalidated"
+}

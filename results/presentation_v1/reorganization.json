@@ -1,0 +1,206 @@
+{
+  "CUDA_Q_RESULTS.md": {
+    "new_path": "docs/archive/CUDA_Q_RESULTS.md",
+    "original_sha256": "cce4692b9a7ba7c597a1412602c4cadca97f60e3ad53666f544dec1abd841756"
+  },
+  "NISQ_REFINEMENT.md": {
+    "new_path": "docs/archive/NISQ_REFINEMENT.md",
+    "original_sha256": "4088eedc8853df734f7889724032edaa91b0c475b2d99cabecfb14f4f2064da8"
+  },
+  "PLAN_CLAUDE.md": {
+    "new_path": "docs/plans/PLAN_CLAUDE.md",
+    "original_sha256": "4be97c1c99f0dc3bb7041d6488f4df519581a389c4b60c3a6103f21504ed7840"
+  },
+  "PLAN_CLAUDE2.md": {
+    "new_path": "docs/plans/PLAN_CLAUDE2.md",
+    "original_sha256": "c81981a18930a751ec0a48e896e6713df3e32d0f4a17000008a23db6735eb7fd"
+  },
+  "PLAN_CODEX.md": {
+    "new_path": "docs/plans/PLAN_CODEX.md",
+    "original_sha256": "0d1789f49d17ae6e5f5b769a6a7902d175e015cd40e3cf7a3d8873c56662d458"
+  },
+  "PLAN_CODEX2.md": {
+    "new_path": "docs/plans/PLAN_CODEX2.md",
+    "original_sha256": "a9a2e545dfc6e82602eca26143e461542c86f3609c980d2e0925a95a876637a3"
+  },
+  "REFINEMENT_V3.md": {
+    "new_path": "docs/archive/REFINEMENT_V3.md",
+    "original_sha256": "1512194b66d2fcc7ad9ca0073f1774e042fc2cf5b8ceee1f6576f94b8d681eb7"
+  },
+  "WORKING_DECISIONS.md": {
+    "new_path": "docs/WORKING_DECISIONS.md",
+    "original_sha256": "3277ae0a1866f4918bfd23f33a6c035761c17a44920432c09148972f928c6085"
+  },
+  "analytical_forms.pdf": {
+    "new_path": "tex/archive/analytical_forms.pdf",
+    "original_sha256": "972c1802827939a6392d5a8e9da3d0873063f1ba9f3977839474f10475912d6c"
+  },
+  "analytical_forms.tex": {
+    "new_path": "tex/archive/analytical_forms.tex",
+    "original_sha256": "c559223c6c6be214eefffd8dc0c47523be6a7a3fec342867f31526ea08dd4e38"
+  },
+  "assumptions.json": {
+    "new_path": "configs/assumptions.json",
+    "original_sha256": "02589376ef4bd0216d12b6a744d070c6d31b1a1d92c6403698981a929bfda653"
+  },
+  "audit_refinement_v3.py": {
+    "new_path": "python/audit_refinement_v3.py",
+    "original_sha256": "c676ea91cd9b88c322f2d9abeec0bbc09856619339452d3e7e3dd2e5f31f5747"
+  },
+  "boundary_timing.py": {
+    "new_path": "python/boundary_timing.py",
+    "original_sha256": "5e044c352cc6db22ecedd11bc5e5c49a4f48c4fb4335766536c26f9d6cf62350"
+  },
+  "compiled_model.py": {
+    "new_path": "python/compiled_model.py",
+    "original_sha256": "7a13107845a4e329a76f880319292118a003f1ea452cf122b865dc9011adf846"
+  },
+  "cudaq_compile.py": {
+    "new_path": "python/cudaq_compile.py",
+    "original_sha256": "562151a02a695fc2fb5f03f91e60ef19651c35cc891d163a9f3aeb532877ae9a"
+  },
+  "cudaq_encoded_reference.py": {
+    "new_path": "python/cudaq_encoded_reference.py",
+    "original_sha256": "dbc8836c5d7c894d9175f36994829b3cba62ccb8e59b4701cb09b1bd3e175e96"
+  },
+  "cudaq_minimal_timing.py": {
+    "new_path": "python/cudaq_minimal_timing.py",
+    "original_sha256": "44d5402d9e5a9b5046dead903da0cabb29ce5f9dfec4ac6b59a785767928a95f"
+  },
+  "cudaq_schedule_reproducer.py": {
+    "new_path": "python/cudaq_schedule_reproducer.py",
+    "original_sha256": "944a5c6687e84545570b5e8ef0d58911eebe547925b46df15b49adccf0a883da"
+  },
+  "cudaq_star_gadget.py": {
+    "new_path": "python/cudaq_star_gadget.py",
+    "original_sha256": "854899f0cf1485e27c0dfe469a306ad0df5a52df8f8f4ead52e92ec45eb42723"
+  },
+  "cudaq_surface_probe.py": {
+    "new_path": "python/cudaq_surface_probe.py",
+    "original_sha256": "51d5309e4b68e781e51a66fbd90a4e1033d09d06cef7c5209e4accbad5c105ac"
+  },
+  "cultivation_assumptions.json": {
+    "new_path": "configs/cultivation_assumptions.json",
+    "original_sha256": "2b92b64a6e96ad42867c5ffeee76df14ca568bf853dbe57195b9bfb9d339ce32"
+  },
+  "cultivation_model.py": {
+    "new_path": "python/cultivation_model.py",
+    "original_sha256": "65a41b9a40ed9180285647254699b8cdcd07ae84afec5829cb56a792ca4f694b"
+  },
+  "factory_sensitivity.py": {
+    "new_path": "python/factory_sensitivity.py",
+    "original_sha256": "f263f79ce0a1ad42d02ce4316bb7c433c15898df1c2c8f9a37472def998ccabf"
+  },
+  "hubbard_circuits.py": {
+    "new_path": "python/hubbard_circuits.py",
+    "original_sha256": "2c233da6a83ae6aa6e1adac76f1bd7571d11a9deb4af7ebd1f1836ec457a7eb3"
+  },
+  "make_plots.py": {
+    "new_path": "python/make_plots.py",
+    "original_sha256": "b58ab4d2199a6a961d4f1559e55115d295ec7a3df4331701940f0aa3d21334bf"
+  },
+  "model.py": {
+    "new_path": "python/model.py",
+    "original_sha256": "bbd72594cdced68c580e5e60b2914e0dc8f1d09d0bccf3d915169d0397e8ee86"
+  },
+  "nisq_compilation.py": {
+    "new_path": "python/nisq_compilation.py",
+    "original_sha256": "4ca4012614ef5e2ae43096b94028df063b85e6d739a8acae8bd2981744f522de"
+  },
+  "nisq_observables.py": {
+    "new_path": "python/nisq_observables.py",
+    "original_sha256": "2e834fbc485a698da80b76ba94edf6f137e0dce91fc4b78e2750cc7776dfbefc"
+  },
+  "nisq_refinement.pdf": {
+    "new_path": "tex/archive/nisq_refinement.pdf",
+    "original_sha256": "b8d30a4ce4b3a10528a436e84f6abb6b7f76dfe24894f44a530253dd9b242b85"
+  },
+  "nisq_refinement.tex": {
+    "new_path": "tex/archive/nisq_refinement.tex",
+    "original_sha256": "1b54edf618ae42bd34fdb2442d4c97095293fc040ba3eb7b74ae6bb28bd3d094"
+  },
+  "noisy_small_observable.py": {
+    "new_path": "python/noisy_small_observable.py",
+    "original_sha256": "906b2bf27edeb28bd05eb98e98fc9eb1ba45f7c0b9303e587b86e39555c98964"
+  },
+  "package_results.py": {
+    "new_path": "python/package_results.py",
+    "original_sha256": "2b263e493d41f0519896855b616a48993e63b8710855b95d5bbf29fb32dfd45a"
+  },
+  "parallel_nisq.py": {
+    "new_path": "python/parallel_nisq.py",
+    "original_sha256": "3daed00c76d82077accc3aa78c8b3d231cac89786039a331c3a152ce3d147b32"
+  },
+  "plot_compiled.py": {
+    "new_path": "python/plot_compiled.py",
+    "original_sha256": "f534bf0b5a9378d4c3d56d8ae264b9511c683fc05fcedc8c08c02d36974dfde5"
+  },
+  "plot_nisq_refinement.py": {
+    "new_path": "python/plot_nisq_refinement.py",
+    "original_sha256": "3cb93dcc156d04ce5c75ac9e8b874c8389a9c6aa2d79dc27f7d1d3d67258917f"
+  },
+  "plot_refinement_v3.py": {
+    "new_path": "python/plot_refinement_v3.py",
+    "original_sha256": "196403c75a148bfafabf713a940bf159076dffc1cc06d255c5dc0213e5cdf758"
+  },
+  "references.bib": {
+    "new_path": "tex/archive/references.bib",
+    "original_sha256": "09bc9696991f134a198d07a46d292f6b8eb578df7194bf57705e9753308f9e91"
+  },
+  "refinement_references.bib": {
+    "new_path": "tex/archive/refinement_references.bib",
+    "original_sha256": "658ebead97e15c99acbd187b4d5a9dacd3d457e27c1ad0d1fb3dba979aaf2200"
+  },
+  "refinement_v3.pdf": {
+    "new_path": "tex/archive/refinement_v3.pdf",
+    "original_sha256": "861c034d7b04af77a405cc36afbecc0e84ed698fb63b163587edf1f372dd7f3d"
+  },
+  "refinement_v3.tex": {
+    "new_path": "tex/archive/refinement_v3.tex",
+    "original_sha256": "924c29421b049983c0954c801194b56461c1e11ef677a68a513e64c88938b517"
+  },
+  "refinement_v3_references.bib": {
+    "new_path": "tex/archive/refinement_v3_references.bib",
+    "original_sha256": "20483b03415bf4e0572385809c0d03aba50068a980be4420be30778de78546cf"
+  },
+  "requirements-cudaq.lock": {
+    "new_path": "configs/requirements-cudaq.lock",
+    "original_sha256": "b253262420de1ac93c9c7c31bd6bb50a2579d3ef579a687fe8e119bc7e63155f"
+  },
+  "run_nisq_refinement.py": {
+    "new_path": "python/run_nisq_refinement.py",
+    "original_sha256": "a3b183752185a408c143067c687cb90befdfe1cc9c84ff17e3d51caeee0ab595"
+  },
+  "run_parallel_refinement.py": {
+    "new_path": "python/run_parallel_refinement.py",
+    "original_sha256": "e23f29f3d4220c9a8dcf208f268b8f9ac2ee6565a47201d2c87b37834e6331d5"
+  },
+  "small_dynamics.py": {
+    "new_path": "python/small_dynamics.py",
+    "original_sha256": "e3ca9b9c1d5903b3e4c8946d49c3e946fc959fc11e973b515ca718f8acd3cff3"
+  },
+  "star_parallel.py": {
+    "new_path": "python/star_parallel.py",
+    "original_sha256": "d9d3a7632f676bfaa8de6d82e9a15902d01e71c7d58023ad2009832a465a2add"
+  },
+  "test_compiled_model.py": {
+    "new_path": "tests/test_compiled_model.py",
+    "original_sha256": "135e164a44499b0ae22074fad201873957ed6900baf2ab6173e841a069bc9eaf"
+  },
+  "test_hubbard_circuits.py": {
+    "new_path": "tests/test_hubbard_circuits.py",
+    "original_sha256": "49c74e33a84a3fbe0836c7ca60590af5b5e201fd7d034289038fa00251431be8"
+  },
+  "test_model.py": {
+    "new_path": "tests/test_model.py",
+    "original_sha256": "e86c01f871b389beafe0fc617ebf9ccb69b3dc32b0582b2116cce99294eb25cc"
+  },
+  "test_nisq_refinement.py": {
+    "new_path": "tests/test_nisq_refinement.py",
+    "original_sha256": "a06f23fe1d07e3cbbdb37f50987fc37e8478834751304e818610c0a0cb7b133e"
+  },
+  "test_refinement_v3.py": {
+    "new_path": "tests/test_refinement_v3.py",
+    "original_sha256": "cbecf8d54c5ec4e52c3e7309df4dd803ce0f44abe8d2302dc4ae50e1bfed48b5"
+  }
+}
