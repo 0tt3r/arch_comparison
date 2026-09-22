@@ -30,7 +30,10 @@ tested. We retain this distinction while developing a common basis for
 architecture optimization and hybrid strategies.
 For immediate discussion, we also provide a simpler analytical comparison
 with experimentally anchored circuit scales, measured finite-patch time
-dependence, and per-arm error-budget optimization.
+dependence, and per-arm error-budget optimization. Direct $4\times4$
+calibration at $\tau=1$ reveals ordering-dependent finite-size corrections
+beyond the earlier planning margin. Layout and source-supply sensitivities
+show why faster consumption need not translate into proportional area savings.
 \end{abstract}
 
 \section{Back-of-the-envelope+ discussion example}\label{sec:discussion}
@@ -218,6 +221,135 @@ the transfer from finite patches to large lattices. The earlier four-step
 compiled reference and fixed-allocation discussion results are retained as
 historical comparisons. The remainder develops their resource laws and
 implementation evidence.
+
+\section{Delivery rate and protected area}\label{sec:delivery}
+Faster consumption helps only when its extra area and state supply are
+included. We reoptimize the error budgets, source count, and replicas for
+three data-block designs from Litinski~\cite{litinski}. For $n$ stored
+logical qubits their tile counts and worst-case T-consumption times are
+\begin{equation}
+ (A,c_T)_{\mathrm{compact}}=(1.5n+3,9),\quad
+ (A,c_T)_{\mathrm{intermediate}}=(2n+4,5),\quad
+ (A,c_T)_{\mathrm{fast}}=(2n+\sqrt{8n}+1,1).
+\end{equation}
+Here $c_T$ is in code clocks, each containing $d$ syndrome cycles. We use
+$n=2L^2+6$, round the tile count upward, and retain six additional tiles
+per delivery or injection lane. The fast-block expression is a reference
+area formula, not a placed floorplan. Its relative overhead at small $L$
+is larger than the asymptotic $4/3$ ratio.
+
+The earlier discussion model already assumes four effective lanes and
+divides its nine-clock T cost by four. It is therefore not the paper's
+serial compact block. For the whole-block comparison we do not divide the
+published T rate by the analog-lane count. We retain a separate, explicitly
+uncompiled scenario with four fast T ports, charging the fast data area and
+four lane allowances. Whether those ports can execute independent Pauli
+products at that rate requires a dependency and routing construction.
+
+STAR retains eighteen clocks per analog rotation. Its effective parallelism
+is varied over $b_A\in\{1,2,4,8,16\}$, with area charged for every lane.
+The hybrid varies analog lanes and T consumption independently. For $m$
+sources and $b_T$ T ports, the competing stages are
+\begin{align}
+ t_{\mathrm{supply}}&=\lceil N_T/m\rceil\,s(d)t_{\mathrm{cyc}},\\
+ t_{\mathrm{consume}}&=d\left[\frac{c_TN_T}{b_T}
+       +\frac{18R_{\mathrm{analog}}+C_{\mathrm{Cliff}}}{b_A}\right]
+       t_{\mathrm{cyc}}.
+\end{align}
+The shot duration uses their maximum, plus initialization and feedforward.
+The whole-block T rate sets $b_T=1$. Both FT and hybrid receive the same
+source menu, extended through $1024$ sources so faster consumers can be
+supplied; selected optima must lie below that endpoint. The menu search is
+discrete, and analog parallelism remains an assumption rather than a
+compiled schedule.
+
+At strict $4\times4$, $\tau=1$, the single fast block reduces FT's
+$1.43$ million-qubit reference to $0.86$ million. Four fast ports reduce it
+to $0.37$ million, where state supply limits further speedup. Thus the
+reference does not receive a universal factor-of-nine improvement.
+STAR and hybrid select two analog lanes at this point, requiring about
+$61{,}000$ and $63{,}000$ qubits. At loose precision one replica often
+fits the week; then extra throughput can increase total area.
+Figures~\ref{fig:delivery-capacity} and~\ref{fig:delivery-bottlenecks}
+separate these effects. These sensitivities retain the same $3\times3$
+planning coefficients, so they isolate delivery from finite-size calibration.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{delivery_capacity.pdf}
+\caption{Encoded capacity at $\tau=1$ after reoptimizing budgets and state
+supply. The dotted reference retains four effective lanes. The solid menu
+adds whole-block designs and analog-lane choices; the dashed menu also
+allows four fast T ports. Menus are nested and share the expanded source
+choices. Parallel rates are conditional assumptions. Staircases use only
+the sampled sizes, with $L=48$ the sweep endpoint.}
+\label{fig:delivery-capacity}
+\end{figure}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{delivery_bottlenecks.pdf}
+\caption{Supply and consumption durations at strict $4\times4$, $\tau=1$,
+with each layout's budgets and source count reoptimized. These stages
+overlap: their maximum enters shot time. The fastest FT sensitivity becomes
+supply-limited, while the hybrid also pays for its analog rotations.}
+\label{fig:delivery-bottlenecks}
+\end{figure}
+
+\section{Direct calibration of the $4\times4$ example}\label{sec:large-patch}
+We compute the exact reference evolution in the
+$N_\uparrow=N_\downarrow=8$ sector of the $4\times4$ OBC lattice.
+Its $\binom{16}{8}^2=165{,}636{,}900$ amplitudes fit a matrix-free
+calculation with four complex state vectors, using about $10$ GB of memory.
+At $\tau=1$, the central doublon at coordinate $(2,2)$ is
+$0.1452313819$. The sampling convention remains $D_*=0.1$ and the
+absolute targets remain $0.001$ and $0.01$; we do not silently redefine the
+requested precision using the newly calculated signal.
+
+The plaquette coefficient $|D_r-D_{\mathrm{exact}}|r^2$ changes from
+$0.262431$ at $r=16$ to $0.261828$ at $r=32$, a $0.23\%$ difference.
+It is about $20\%$ above the $3\times3$ value. The termwise coefficient
+changes from $0.188386$ to $0.187732$, a $0.35\%$ difference, and is
+about $2.45$ times its $3\times3$ value. The $4\times3$ coefficients,
+$0.2453$ and $0.1392$, lie between the square-patch results, as
+Figure~\ref{fig:large-patch} shows. The earlier $10\%$ planning margin therefore does not cover even
+this $\tau=1$ transfer. Exact finite-lattice evolution resolves that
+specific uncertainty; it does not establish an infinite-lattice coefficient.
+
+We keep two resource calculations separate. The directly measured menu
+allows only tested step counts and charges their actual observable error
+plus a $10^{-10}$ numerical allowance. A second sensitivity interpolates
+with $C/r^2$, taking $C$ to be $1.1$ times the largest measured $4\times4$
+coefficient, with the old planning envelope retained as a lower floor.
+The latter lets each architecture select intermediate step counts, which
+matters especially for NISQ's exponential cost. Its selected counts are
+not all directly checked. Both tables retain the same error-budget search,
+noise, and resource-state assumptions. NISQ additionally transfers the
+plaquette accuracy to its experimental circuit-count proxy; its residual
+mitigation bias remains assumed. We do not replace larger-lattice or
+longer-time curves using this single finite-lattice calibration.
+
+With the interpolated $4\times4$ coefficients, the strict reference STAR
+and hybrid areas remain about $71{,}000$ and $73{,}000$ qubits: extra
+steps still fit within one replica's week. FT requires about $1.88$ million
+qubits with reference delivery, $1.16$ million with one fast block, and
+$0.385$ million under the four-fast-port assumption. Effective NISQ
+changes from $36$ to $72$ qubits, conditional on its assumed mitigation.
+The directly measured doubling grid instead gives $2196$ effective NISQ
+qubits because $r=32$ overshoots its interpolated optimum near $21$.
+That difference is a step-menu cost, not an architectural conclusion.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{large_patch_calibration.pdf}
+\caption{Direct Trotter errors at $\tau=1$ on three finite patches, with
+exact references on each same lattice. Both orderings exhibit $r^{-2}$
+convergence, with coefficients that depend on the patch. The dashed line
+is the previous $3\times3$ planning envelope, including its $10\%$ margin.
+The $4\times4$ observable is at $(2,2)$; smaller patches use $(1,1)$.
+This comparison calibrates the finite $4\times4$ example and does not
+certify large-$L$ or long-time transfer.}
+\label{fig:large-patch}
+\end{figure}
 
 \section{The fixed-device question}
 The same physical qubits can buy more simultaneous samples, stronger logical
@@ -1004,6 +1136,42 @@ handoff schedules with residual-channel validation. Qubitization remains
 a separately identified later algorithm comparison.
 
 \appendix
+\section{Matrix-free finite-lattice reference}
+Writing the state as a matrix indexed by up- and down-spin occupation masks,
+we apply
+\begin{equation}
+ H\Psi=h_\uparrow\Psi+\Psi h_\downarrow^{\mathsf T}+V\odot\Psi.
+\end{equation}
+Each hopping matrix is sparse within a single spin sector; no full-sector
+Hamiltonian is stored. Fermionic signs count occupied sites between the
+hopping endpoints in the snake order. For $U/J=4$, the triangle bound is
+$\|H\|\leq2|E|+N=64$ on $4\times4$. We evaluate
+\begin{equation}
+ e^{-iH\tau}\psi_0=J_0(a)\psi_0+
+ 2\sum_{k\geq1}(-i)^kJ_k(a)T_k(H/64)\psi_0,\qquad a=64\tau,
+\end{equation}
+using the three-term Chebyshev recurrence. The bound
+\begin{equation}
+ |J_k(a)|\leq\frac{(|a|/2)^k}{k!}
+       \exp\!\left(\frac{a^2}{4(k+1)}\right)
+\end{equation}
+follows by bounding the absolute Bessel series; successive right-hand
+sides have ratio at most $|a|/[2(k+1)]$. A geometric tail therefore selects
+a degree with state truncation error below $10^{-12}$. For a $[0,1]$
+observable, state error $\eta$ gives observable error at most
+$2\eta+\eta^2$. This controls polynomial truncation, separately from
+floating-point error. The computed $4\times4$ norm error is about
+$10^{-13}$.
+
+Trotter hopping stages use exact two-state rotations. Plaquette stages
+use the fermionic Hadamard decomposition already employed by the compiler.
+Complete state vectors for the exact reference and both orderings agree
+with the independent Python implementation on $2\times2$, $3\times2$,
+and $3\times3$ to better than $2\times10^{-11}$. Large-run outputs retain
+all-site doublons, norms, input and executable hashes, and atomic case
+records. The step convergence criterion is a $5\%$ agreement between the
+two finest observable-error coefficients, not a proof of bulk convergence.
+
 \section{Logical-fault commutation and its limitation}\label{app:c9}
 A branch-independent fault channel $\mathcal F$ outside a complete PEC
 cancellation block, or commuting through its noise channel $\mathcal E$,

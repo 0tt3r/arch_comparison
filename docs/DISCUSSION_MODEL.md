@@ -15,6 +15,10 @@ lattice. Both [earlier](../results/discussion_v1/summary.md)
 [discussion versions](../results/discussion_v2/summary.md) retain their data
 and original figures.
 
+The [delivery sensitivity](DELIVERY_AND_LARGE_PATCH.md) adds explicit compact,
+intermediate, and fast data blocks, reoptimizes source supply, and varies
+analog parallelism. It preserves the curves above as the reference.
+
 ## Time dependence and algorithm choice
 
 We measured the local error for **both termwise and plaquette Strang orderings**

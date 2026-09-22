@@ -1,0 +1,24 @@
+{
+  "rows": [
+    {
+      "algorithm": "plaquette",
+      "steps": [
+        8,
+        16,
+        32
+      ],
+      "relative_tail_coefficient_spread": 0.0022954592087503743
+    },
+    {
+      "algorithm": "termwise",
+      "steps": [
+        8,
+        16,
+        32
+      ],
+      "relative_tail_coefficient_spread": 0.0034706079465627554
+    }
+  ],
+  "criterion": "Two finest |D_r-D_exact| r^2 coefficients agree within 5%; all r=8,16,32 measured",
+  "scope": "4x4 tau=1 central coordinate (2,2)"
+}

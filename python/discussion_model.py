@@ -62,6 +62,19 @@ def compiled_reference(L):
     return json.loads((ROOT/f'results/refinement_v3/parallel_L{L}_observable/result.json').read_text())
 
 
+def data_block_tiles(L,c):
+    """Paper block areas, or the original effective-layout convention.
+
+    n includes six algorithm work qubits. Injection/delivery lanes are an
+    additional declared charge, not part of Litinski's block formulas.
+    """
+    n=2*L*L+6;style=c.get('data_block','reference')
+    areas={'reference':1.5*n,'compact':1.5*n+3,
+           'intermediate':2*n+4,'fast':2*n+sqrt(8*n)+1}
+    if style not in areas:raise ValueError(style)
+    return ceil(areas[style])+c['extra_tiles_per_lane']*c['parallel_lanes']
+
+
 def estimate(L,tau,arm,c,epsilon,steps=None):
     if L<2 or L%2 or tau<=0 or epsilon<=0:raise ValueError('Require even L >= 2, tau > 0, epsilon > 0')
     r=step_count(tau,epsilon,c) if steps is None else steps;N=L*L
@@ -95,7 +108,7 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
                 'nisq_model':model,'two_qubit_gates':G,'depth':depth,'distance':0}
 
     lanes=c['parallel_lanes']
-    data_tiles=ceil(1.5*(2*N+6))+c['extra_tiles_per_lane']*lanes
+    data_tiles=data_block_tiles(L,c)
     if arm=='star':
         w=workload(L,tau,r,'termwise',c['u_over_j'])
         chi=4*c['star_alpha']*c['p']*w.theta+4*c['star_floor']*w.rotations
@@ -108,7 +121,9 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
         d,seconds,_=solved
         return {**base,**sampling_cost(2*data_tiles*d*d,seconds,chi,c,epsilon),
                 'algorithm':'termwise Strang','distance':d,'rotations':w.rotations,
-                'theta':w.theta,'lanes':lanes}
+                'theta':w.theta,'lanes':lanes,'data_tiles':data_tiles,
+                'delivery_bottleneck':'analog rotations',
+                'analog_seconds':w.rotations*c['star_clocks_per_rotation']*d*c['cycle_seconds']/lanes}
 
     if arm not in ('ft','hybrid'):raise ValueError(arm)
     if c['p']!=c['nisq_anchor_p']:raise ValueError('Cultivation reference is anchored only at p=0.001')
@@ -129,21 +144,33 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
     candidates=[]
     for factories in c['factory_choices']:
         tiles=data_tiles+factories*(1+12*cleanup)
-        def duration(d):
+        # A paper whole-block T rate must not be divided again by the number
+        # of analog lanes. The old rate remains the default for exact replay.
+        T_ports=c.get('T_consumption_ports',lanes)
+        def delivery(d):
             source=c['source_cycles_per_T']*c.get('source_cycle_multiplier',1)+2*d
             service=(15*source+11*d)/(1-15*qsource) if cleanup else source
             supply=ceil(nt/factories)*service
-            consume=(c['ft_clocks_per_T']*nt+c['star_clocks_per_rotation']*analog+(2*w.rotations if arm=='ft' else 0))*d/lanes
-            return (2*d+max(supply,consume))*c['cycle_seconds']+(nt+analog)*c['feedforward_seconds']/lanes+c['reset_seconds']+c['measurement_seconds']
+            consume=(c['ft_clocks_per_T']*nt/T_ports+(c['star_clocks_per_rotation']*analog+(2*w.rotations if arm=='ft' else 0))/lanes)*d
+            return supply,consume,service
+        def duration(d):
+            supply,consume,_=delivery(d)
+            return (2*d+max(supply,consume))*c['cycle_seconds']+(nt/T_ports+analog/lanes)*c['feedforward_seconds']+c['reset_seconds']+c['measurement_seconds']
         solved=minimum_distance(tiles,duration,log(epsilon*c['logical_fraction'])-log_amp,c)
         if solved is None:continue
         d,_,_=solved;d=max(d,c['source_end_distance']);seconds=duration(d)
         q=2*tiles*d*d+factories*c['source_qubits']
+        supply,consume,service=delivery(d)
         candidates.append({**base,**sampling_cost(q,seconds,chi,c,epsilon),
                            'algorithm':'plaquette Strang','distance':d,'T_count':nt,
                            'theta':w.theta,'analog_rotations':analog,'fixed_T':w.fixed_T,
                            'T_per_rotation':T_per_rotation,'factories':factories,
-                           'cleanup_levels':cleanup,'magic_error':qout,'lanes':lanes})
+                           'cleanup_levels':cleanup,'magic_error':qout,'lanes':lanes,
+                           'data_tiles':data_tiles,'protected_tiles':tiles,'T_consumption_ports':T_ports,
+                           'supply_seconds':supply*c['cycle_seconds'],
+                           'consumption_seconds':consume*c['cycle_seconds'],
+                           'source_service_cycles':service,
+                           'delivery_bottleneck':'supply' if supply>consume else 'consumption'})
     feasible=[v for v in candidates if v['log10_Q_min'] is not None]
     return min(feasible,key=lambda v:v['log10_Q_min']) if feasible else {**base,'log10_Q_min':None}
 

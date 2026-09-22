@@ -1,0 +1,39 @@
+{
+  "role": "memory_smoke",
+  "jobid": "7790745.imgt1",
+  "Job_Name": "hubbard4-smoke",
+  "job_state": "F",
+  "queue": "backfill",
+  "resources_used": {
+    "cpupercent": 1100,
+    "cput": "00:03:07",
+    "mem": "5236720kb",
+    "ncpus": 128,
+    "vmem": "5779632kb",
+    "walltime": "00:00:27"
+  },
+  "Resource_List": {
+    "allow_account_check_failure": "True",
+    "allow_negative_allocation": "True",
+    "award_category": "NA",
+    "award_type": "NA",
+    "burn_ratio": 18.3253,
+    "current_allocation": -15966968832,
+    "ncpus": 128,
+    "ni_resource": "improv",
+    "nodect": 1,
+    "overburn": "False",
+    "place": "scatter",
+    "project_priority": 2,
+    "route_backfill": "True",
+    "select": "1:ncpus=128",
+    "total_allocation": 921600000,
+    "walltime": "00:20:00"
+  },
+  "Exit_status": 0,
+  "comment": "Job run at Tue Sep 22 at 14:59 on (i531:ncpus=128) and finished",
+  "exec_host": "i531/0*128",
+  "stime": "Tue Sep 22 14:59:45 2026",
+  "obittime": "Tue Sep 22 15:00:29 2026",
+  "Submit_arguments": "-r y -q backfill -o results/dynamics_4x4/smoke.pbs.log pbs/dynamics_smoke.pbs"
+}

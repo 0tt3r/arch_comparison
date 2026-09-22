@@ -125,3 +125,59 @@ of the caller's working directory, except explicit user-supplied relative paths.
 move. Other planning drafts are in `docs/plans/`. The accepted decisions are in
 [WORKING_DECISIONS.md](WORKING_DECISIONS.md); chronological reviews are in
 `docs/archive/`. Earlier TeX source and PDFs are in `tex/archive/`.
+
+## Delivery menus and the large finite patch
+
+`make delivery` reoptimizes the encoded layouts and writes
+`results/delivery_v1/` plus the delivery figures. It uses the saved v3 physics
+coefficients so the layout effect is isolated. The source-count menu, block
+rates, and analog-lane choices are in `configs/delivery_sensitivity.json`.
+`python python/delivery_sensitivity.py --check` audits the saved error budgets,
+logical/magic bounds, source-menu endpoint, replicas, and throughput conventions.
+
+The large solver needs GCC with C++17/OpenMP, plus the science Python environment.
+Build and run its independent controls before submitting a new calculation:
+
+```bash
+mkdir -p build
+g++ -O3 -std=c++17 -fopenmp cpp/hubbard_sector.cpp -o build/hubbard_sector
+python -m pytest tests/test_large_dynamics.py -q
+sha256sum cpp/hubbard_sector.cpp python/large_dynamics.py build/hubbard_sector python/run_checked_dynamics.py > build/dynamics_inputs.sha256
+```
+
+The tests compile a separate temporary executable and do not replace a binary
+used by an active PBS job. The production driver rejects full 4 × 4 runs outside
+a PBS allocation. Query current limits, reservations, job counts, and allocation
+balance before submitting; scripts contain the workspace path and pinned Python.
+
+```bash
+qsub -r y -q backfill -o results/dynamics_4x4/smoke.pbs.log pbs/dynamics_smoke.pbs
+# Inspect terminal exit status and all four full-size smoke records first.
+qsub -r y -q backfill -o results/dynamics_4x4/checked_steps.pbs.log pbs/dynamics_checked_steps.pbs
+```
+
+The checked-step driver reuses only contract-matching completed cases and runs
+r = 8,16,32 for both orderings. It adds r = 64 only if the two finest coefficients
+disagree by more than 5%. `numactl --interleave=all` avoids placing the entire
+state vector in one memory domain. The saved same-node benchmark compares
+identical one-step circuits and records the speedup and numerical agreement.
+The initial run was stopped after a converged saved plaquette r = 32 point;
+its intentional nonzero PBS exit is recorded separately from successful resumes.
+Do not run two drivers into the same case directory concurrently.
+
+For a fresh run with changed inputs, use a new output directory (and adapt the
+checked-step runner path). Existing results deliberately reject a different
+source/binary contract. Each completed case is atomic; an interrupted case
+restarts from its initial state. No state-vector checkpoint is retained.
+
+After the step menu is complete:
+
+```bash
+python python/large_patch_analysis.py
+make paper
+make audit
+```
+
+This produces direct measured-step costs and a separately labeled interpolation
+sensitivity at L = 4, tau = 1. The main capacity curves retain their original
+finite-patch transfer assumptions. Long-time 4 × 4 calibration is not included.

@@ -102,9 +102,12 @@ def optimize(L,tau,arm,c,epsilon,options=None,C_override=None,refine=True):
                     # then by more statistical allowance, to avoid gratuitous work.
                     key=(row['log10_Q_min'],log(row['qubits_per_copy'])+log(row['seconds_per_attempt'])+row['log10_total_shots']*log(10),-stat)
                     if best is None or key<best[0]:best=(key,row)
-    steps=step_candidates(C,tau,epsilon,options)
+    steps=options.get('explicit_step_candidates')
+    if steps is None:steps=step_candidates(C,tau,epsilon,options)
+    elif not steps or any(not isinstance(r,int) or r<ceil(options['minimum_steps_per_tau']*tau) for r in steps):
+        raise ValueError('Explicit step menu must contain admissible positive integers')
     for r in steps:evaluate_steps(r)
-    if best is not None and refine:
+    if best is not None and refine and 'explicit_step_candidates' not in options:
         center=best[1]['r'];minimum=max(1,ceil(options['minimum_steps_per_tau']*tau))
         for r in range(max(minimum,center-2),center+3):
             if r not in steps:evaluate_steps(r)

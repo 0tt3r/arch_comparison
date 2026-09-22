@@ -1,0 +1,17 @@
+cpp/hubbard_sector.cpp: OK
+python/large_dynamics.py: OK
+build/hubbard_sector: OK
+	linux-vdso.so.1 (0x0000155555551000)
+	/gpfs/fs1/soft/improv/software/custom-built/xalt/xalt/lib64/libxalt_init.so (0x0000155555514000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000155554f8f000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000155554c0d000)
+	libgomp.so.1 => /lib64/libgomp.so.1 (0x00001555549d5000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00001555547bd000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015555459d000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001555541c6000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000155553fc2000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000155555324000)
+4x4_tau1_benchmark_r2_t8 seconds 2.62 norm 134000
+4x4_tau1_benchmark_r2_t16 seconds 2.53 norm 134000
+4x4_tau1_benchmark_r2_t32 seconds 2.67 norm 134000
+4x4_tau1_benchmark_r2_t64 seconds 2.84 norm 134000

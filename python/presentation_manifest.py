@@ -46,16 +46,22 @@ def check_content():
     discussion=json.loads((ROOT/'results/discussion_v3/validation.json').read_text())
     assert discussion['status'].startswith('PASS:')
     assert discussion['scenario_points']==len(json.loads((ROOT/'results/discussion_v3/costs.json').read_text()))
+    delivery=json.loads((ROOT/'results/delivery_v1/validation.json').read_text())
+    assert delivery['status'].startswith('PASS:')
+    assert delivery['rows']==len(json.loads((ROOT/'results/delivery_v1/costs.json').read_text()))
+    large=json.loads((ROOT/'results/dynamics_4x4/validation.json').read_text())
+    assert large['status'].startswith('PASS:')
     return {'threshold_rows':len(saved),'frontier_points':len(frontier),
             'discussion_scenario_points':discussion['scenario_points'],
             'discussion_calibration_cases':discussion['calibration_cases'],
+            'delivery_scenario_points':delivery['rows'],'large_patch_measurements':large['measured_rows'],
             'manuscript_figures':len(figures),'status':'PASS: discrete inversion, manuscript references, and artifact paths'}
 
 
 def inventory():
     sources=[ROOT/'Makefile',ROOT/'pytest.ini',ROOT/'README.md']
     for folder,pattern in [('python','*.py'),('tests','*.py'),('configs','*'),('tex','*.tex'),
-                           ('tex','*.bib'),('docs','*.md')]:
+                           ('tex','*.bib'),('docs','*.md'),('cpp','*.cpp'),('pbs','*.pbs')]:
         sources.extend(p for p in (ROOT/folder).glob(pattern) if p.is_file())
     sources.extend([ROOT/'results/README.md',ROOT/'tex/archive/README.md'])
     inputs=[ROOT/'results/refinement_v3'/name for name in (
@@ -63,7 +69,7 @@ def inventory():
         'noisy_small.json','accuracy_calibration.pdf','postselection_bias.pdf')]
     inputs.extend(ROOT/f'results/refinement_v3/parallel_L{L}_observable/result.json' for L in (2,4,6,8))
     artifacts=[ROOT/'tex/main.pdf']+sorted((ROOT/'figures').glob('*'))
-    for folder in sorted((ROOT/'results').glob('discussion_v*')):
+    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4']:
         artifacts.extend(p for p in sorted(folder.rglob('*')) if p.is_file())
     artifacts.extend(p for p in sorted(OUT.iterdir()) if p.is_file() and p.name!='manifest.json')
     return {key:{str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}

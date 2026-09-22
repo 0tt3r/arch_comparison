@@ -1,0 +1,450 @@
+[
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 16,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13130874307133378,
+    "signed_error": 0.0009608022826531615,
+    "coefficient": 0.24596538435920934,
+    "norm_error": 2.3092638912203256e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r16_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 16,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.13130874307133503,
+    "signed_error": 0.000960802282653328,
+    "coefficient": 0.24596538435925197,
+    "norm_error": 2.3092638912203256e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r16_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13058759972260892,
+    "signed_error": 0.0002396589339282995,
+    "coefficient": 0.2454107483425787,
+    "norm_error": 1.056932319443149e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r32_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.13058759972260775,
+    "signed_error": 0.0002396589339260513,
+    "coefficient": 0.24541074834027654,
+    "norm_error": 1.056932319443149e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r32_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 64,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13040782165784026,
+    "signed_error": 5.98808691596453e-05,
+    "coefficient": 0.24527204007790715,
+    "norm_error": 2.7045032879868813e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r64_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 64,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.13040782165784093,
+    "signed_error": 5.9880869159228967e-05,
+    "coefficient": 0.24527204007620185,
+    "norm_error": 2.7045032879868813e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r64_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 8,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13422578123377732,
+    "signed_error": 0.003877840445096703,
+    "coefficient": 0.248181788486189,
+    "norm_error": 3.219646771412954e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r8_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 8,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.13422578123377785,
+    "signed_error": 0.003877840445096148,
+    "coefficient": 0.24818178848615347,
+    "norm_error": 3.219646771412954e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r8_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 16,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.12980152504346099,
+    "signed_error": -0.0005464157452196305,
+    "coefficient": 0.13988243077622542,
+    "norm_error": 6.88338275267597e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r16_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 16,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.12983992363498462,
+    "signed_error": -0.0005080171536970823,
+    "coefficient": 0.13005239134645308,
+    "norm_error": 6.88338275267597e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r16_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13021184917099476,
+    "signed_error": -0.00013609161768585176,
+    "coefficient": 0.1393578165103122,
+    "norm_error": 1.1246559239452836e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r32_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.13022141655790637,
+    "signed_error": -0.00012652423077533226,
+    "coefficient": 0.12956081231394023,
+    "norm_error": 1.1246559239452836e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r32_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 64,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13031394968969126,
+    "signed_error": -3.3991098989355484e-05,
+    "coefficient": 0.13922754146040006,
+    "norm_error": 3.2440716779547074e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r64_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 64,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.13031633948277055,
+    "signed_error": -3.1601305911149735e-05,
+    "coefficient": 0.12943894901206932,
+    "norm_error": 3.2440716779547074e-13,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r64_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 8,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.12812863832542618,
+    "signed_error": -0.002219302463254441,
+    "coefficient": 0.14203535764828423,
+    "norm_error": 2.90878432451791e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r8_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 8,
+    "site": [
+      2,
+      1
+    ],
+    "exact_doublon": 0.1303479407886817,
+    "doublon": 0.1282841454926567,
+    "signed_error": -0.0020637952960249895,
+    "coefficient": 0.13208289894559933,
+    "norm_error": 2.90878432451791e-14,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r8_t2.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 16,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.14523138188205315,
+    "doublon": 0.1462565019764092,
+    "signed_error": 0.0010251200943560412,
+    "coefficient": 0.26243074415514656,
+    "norm_error": 1.2390088954816747e-13,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r16_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 16,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14625650197640785,
+    "signed_error": 0.001025120094351517,
+    "coefficient": 0.26243074415398837,
+    "norm_error": 1.2390088954816747e-13,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r16_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.14523138188205315,
+    "doublon": 0.1454870736253045,
+    "signed_error": 0.0002556917432513517,
+    "coefficient": 0.26182834508938413,
+    "norm_error": 1.142419492339286e-13,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r32_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14548707362530405,
+    "signed_error": 0.0002556917432477157,
+    "coefficient": 0.2618283450856609,
+    "norm_error": 1.142419492339286e-13,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r32_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 8,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.14523138188205315,
+    "doublon": 0.14936951058498674,
+    "signed_error": 0.004138128702933591,
+    "coefficient": 0.26484023698774983,
+    "norm_error": 1.4210854715202004e-14,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r8_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 8,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14936951058498846,
+    "signed_error": 0.00413812870293212,
+    "coefficient": 0.2648402369876557,
+    "norm_error": 1.4210854715202004e-14,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r8_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 16,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.14523138188205315,
+    "doublon": 0.14459267960603273,
+    "signed_error": -0.0006387022760204197,
+    "coefficient": 0.16350778266122745,
+    "norm_error": 9.547918011776346e-14,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r16_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 16,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14449549836421335,
+    "signed_error": -0.0007358835178429834,
+    "coefficient": 0.18838618056780376,
+    "norm_error": 9.547918011776346e-14,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r16_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.14523138188205315,
+    "doublon": 0.14507233024035673,
+    "signed_error": -0.00015905164169641162,
+    "coefficient": 0.1628688810971255,
+    "norm_error": 1.4410694859634532e-13,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r32_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14504804949339178,
+    "signed_error": -0.00018333238866455326,
+    "coefficient": 0.18773236599250254,
+    "norm_error": 1.4410694859634532e-13,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r32_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 8,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.14523138188205315,
+    "doublon": 0.1426361987716986,
+    "signed_error": -0.002595183110354532,
+    "coefficient": 0.16609171906269005,
+    "norm_error": 9.769962616701378e-15,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r8_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 8,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14224649241586704,
+    "signed_error": -0.0029848894661893,
+    "coefficient": 0.1910329258361152,
+    "norm_error": 9.769962616701378e-15,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r8_t16.json"
+  }
+]

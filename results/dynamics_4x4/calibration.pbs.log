@@ -1,0 +1,6 @@
+cpp/hubbard_sector.cpp: OK
+python/large_dynamics.py: OK
+build/hubbard_sector: OK
+4x4_tau1_exact_r0_t16 seconds 160.97 norm 0.9999999999998871
+4x4_tau1_plaquette_r16_t16 seconds 240.1 norm 0.9999999999998761
+4x4_tau1_plaquette_r32_t16 seconds 474.97 norm 0.9999999999998858

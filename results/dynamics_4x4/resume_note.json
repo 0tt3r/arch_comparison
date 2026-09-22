@@ -1,0 +1,11 @@
+{
+  "job": "7790746.imgt1",
+  "status": "intentionally stopped after saved converged r=32 plaquette point",
+  "plaquette_coefficients": [
+    0.26243074415398837,
+    0.2618283450856609
+  ],
+  "relative_spread": 0.0022954592087503743,
+  "reason": "Resume missing r=8 and termwise cases with benchmarked interleaved memory; skip r=64 unless the tail fails convergence",
+  "completed_cases_preserved": true
+}

@@ -1,0 +1,18 @@
+#!/bin/bash -l
+#PBS -N hubbard4-numa
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128,place=scatter,walltime=00:10:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1
+sha256sum -c build/dynamics_inputs.sha256
+numactl --hardware
+/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python python/large_dynamics.py \
+  --patch 4x4 --algorithms plaquette --steps 1 --threads 16 --out results/dynamics_4x4/numa_smoke/default16
+for threads in 16 32; do
+  numactl --interleave=all /home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python python/large_dynamics.py \
+    --patch 4x4 --algorithms plaquette --steps 1 --threads "$threads" --out "results/dynamics_4x4/numa_smoke/interleave$threads"
+done

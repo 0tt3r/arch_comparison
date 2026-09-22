@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#PBS -N hubbard4-cal
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128,place=scatter,walltime=02:00:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1
+sha256sum -c build/dynamics_inputs.sha256
+/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python python/large_dynamics.py \
+  --patch 4x4 --tau 1 --steps 16 32 64 --threads 16 --out results/dynamics_4x4/tau1

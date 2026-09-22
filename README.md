@@ -15,6 +15,14 @@ is also available. The fourth panel follows tau = L/4, stopping at L = 32 to
 stay within the measured time interval. Run `make discussion` to regenerate
 these estimates from saved calibration.
 
+The new [encoded-delivery comparison](figures/delivery_capacity.pdf) tests
+whole-block consumption rates, analog lanes, and shared source supply.
+[Details and the large-patch method](docs/DELIVERY_AND_LARGE_PATCH.md) separate
+published block rates from uncompiled parallelism assumptions. The
+[completed 4 × 4 calculation](results/dynamics_4x4/summary.md) now checks
+finite-lattice transfer at tau = 1; [this figure](figures/large_patch_calibration.pdf)
+shows the ordering-dependent difference from the smaller patches.
+
 Start with the **[main manuscript](tex/main.pdf)** ([LaTeX](tex/main.tex),
 [bibliography](tex/references.bib)). It brings together the analytical resource
 laws, CUDA-Q compilation, mitigation, STAR, FTQC and hybrid supply, and the
@@ -27,7 +35,7 @@ The separate [compiled-reference capacity plot](figures/capacity_vs_qubits.pdf)
 retains the more detailed previous implementations.
 
 These are conditional four-step circuit costs. Four steps fail the accuracy
-target on the small square patches checked; L ≥ 4 accuracy remains uncalibrated.
+target on the small square patches checked; the current 4 × 4 calibration uses different step counts.
 The staircases show only tested sizes, and reaching 8 × 8 marks the end of the
 current sweep. The [underlying CSV](results/presentation_v1/capacity_thresholds.csv)
 retains the original area thresholds.
@@ -51,6 +59,8 @@ vector PDF, and PNG in `figures/`.
 | Location | Purpose |
 |---|---|
 | `python/` | Models, compilers, plotting, build and audit scripts |
+| `cpp/` | Matrix-free fixed-spin-sector dynamics kernel |
+| `pbs/` | Bounded Improv smoke and calibration jobs |
 | `tests/` | Independent mathematical and implementation checks |
 | `configs/` | Assumptions, compiler dependency lock, historical filename map |
 | `tex/main.tex` | One complete current manuscript |

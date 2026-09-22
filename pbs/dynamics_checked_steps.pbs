@@ -1,0 +1,12 @@
+#!/bin/bash -l
+#PBS -N hubbard4-checked
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128,place=scatter,walltime=00:45:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1
+sha256sum -c build/dynamics_inputs.sha256
+numactl --interleave=all /home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python python/run_checked_dynamics.py

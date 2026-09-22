@@ -1,0 +1,16 @@
+{
+  "status": "PASS: budgets, logical and magic faults, replicas, no duplicated T rate, delivery lower bounds, menu dominance, and source-menu endpoint",
+  "rows": 792,
+  "selected": 216,
+  "sha256": {
+    "python/discussion_model.py": "a7a69bf1a8ad2d44918153757f05ff2dcb627d7bea70c1247b946a5da7234c99",
+    "python/budget_optimization.py": "11d30ac233111d9eec2a81243e43437d3fcaeb13237820b66ee95218aa892816",
+    "python/delivery_sensitivity.py": "ff21ea27861e04e2b607be854b070237cef51b5d77416f1f5a0b51bdfa3eaf5c",
+    "configs/delivery_sensitivity.json": "9b907e55fcf544597325d6327da07ad03259ef0f7a500ba52dfa1f09e1adfe08",
+    "configs/discussion_model.json": "848bb309d2d8dd50d0bb2b360444a91034db61e9d0a8d28892460f3493746ac0",
+    "configs/assumptions.json": "02589376ef4bd0216d12b6a744d070c6d31b1a1d92c6403698981a929bfda653",
+    "configs/budget_optimization.json": "debe6551044aa8294b7e15d64281d4f3f1688ba3fa8111d42de9e507ef91f153",
+    "results/discussion_v3/calibration.json": "8d04d276d884b33e387a3ecc86ca0b9b2bb676660f4ed225adc41f6cb798f36a",
+    "results/discussion_v3/finite_step_guard.json": "de8c1baea018fa4b7b166cf20870db6b07d489dae49b4cddcd234b93228f8c00"
+  }
+}

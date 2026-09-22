@@ -1,0 +1,54 @@
+{
+  "sizes": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    16,
+    20,
+    24,
+    32,
+    40,
+    48
+  ],
+  "precisions": [
+    0.001,
+    0.01
+  ],
+  "tau": 1,
+  "analog_lane_choices": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "factory_choices": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "blocks": {
+    "compact": {
+      "clocks_per_T": 9
+    },
+    "intermediate": {
+      "clocks_per_T": 5
+    },
+    "fast": {
+      "clocks_per_T": 1
+    }
+  },
+  "source": "Litinski, Quantum 3, 128 (2019), sections 2.1-2.3; data n=2L^2+6, formulas rounded upward, plus six tiles per delivery lane.",
+  "scope": "Paper whole-block T rates are not multiplied by analog-lane count. STAR lanes remain an assumed effective parallelism, not a compiled schedule. Fast four-port sensitivity is explicitly uncompiled. Source choice and error budgets are reoptimized for each layout. Factory menu is enlarged for all layouts."
+}
