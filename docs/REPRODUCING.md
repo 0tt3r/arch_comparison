@@ -180,4 +180,43 @@ make audit
 
 This produces direct measured-step costs and a separately labeled interpolation
 sensitivity at L = 4, tau = 1. The main capacity curves retain their original
-finite-patch transfer assumptions. Long-time 4 × 4 calibration is not included.
+finite-patch transfer assumptions. The separate follow-up below extends time.
+
+## Direct headline checks and the time extension
+
+`make patch-study` regenerates `results/dynamics_followup_v1/` analysis and the
+patch/time and capacity figures from saved raw cases. It does not launch jobs.
+The [method note](DIRECT_CHECKS_AND_TIME_EXTENSION.md) distinguishes validation
+of the original allocations from subsequent measured-error reoptimization.
+
+`configs/dynamics_followup.json` fixes the selected row set, observed site,
+thread count, and convergence rule. `configs/patch_sensitivity.json` fixes the
+capacity sweep. The three completed submissions are recorded in
+`results/dynamics_followup_v1/submissions.json`, with terminal accounting in
+`jobs.json`. Each task owns a separate case directory.
+
+For a new scientific run, use a new result directory and update the runner/PBS
+paths and input manifest together. Follow the cluster preflight and smoke
+requirements above; do not duplicate active writers or overwrite the frozen
+production executable. The existing submission pattern is:
+
+```bash
+qsub -r y -q backfill -v TASK=selected -o results/dynamics_followup_v1/selected.pbs.log pbs/dynamics_followup.pbs
+qsub -r y -q backfill -v TASK=tau2 -o results/dynamics_followup_v1/tau2.pbs.log pbs/dynamics_followup.pbs
+qsub -r y -q backfill -v TASK=tau4 -o results/dynamics_followup_v1/tau4.pbs.log pbs/dynamics_followup.pbs
+```
+
+The scripts check `inputs.sha256` before execution. That file includes the
+source, executable, runner, configuration, and original selected-row input.
+Rebuilding on another system requires a new binary contract and result
+directory; the saved production binary itself is not distributed.
+
+After terminal completion and the case census:
+
+```bash
+make patch-study
+python python/dynamics_followup_analysis.py --check
+make test
+make paper
+make audit
+```

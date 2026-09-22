@@ -2,7 +2,7 @@ PYTHON ?= python3
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: discussion delivery figures paper test audit
+.PHONY: discussion delivery patch-study figures paper test audit
 
 discussion:
 	$(PYTHON) python/run_discussion_v3.py
@@ -10,7 +10,10 @@ discussion:
 delivery:
 	$(PYTHON) python/delivery_sensitivity.py
 
-figures: discussion delivery
+patch-study:
+	$(PYTHON) python/dynamics_followup_analysis.py
+
+figures: discussion delivery patch-study
 	$(PYTHON) python/plot_capacity.py
 	$(PYTHON) python/draw_architectures.py
 
@@ -26,4 +29,5 @@ audit:
 	$(PYTHON) python/check_discussion_v3.py
 	$(PYTHON) python/delivery_sensitivity.py --check
 	$(PYTHON) python/large_patch_analysis.py --check
+	$(PYTHON) python/dynamics_followup_analysis.py --check
 	$(PYTHON) python/presentation_manifest.py

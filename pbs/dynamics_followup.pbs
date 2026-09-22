@@ -1,0 +1,16 @@
+#!/bin/bash -l
+#PBS -N hubbard4-followup
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128,place=scatter,walltime=01:00:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1
+case "${TASK:?Specify TASK=selected, tau2, or tau4}" in
+    selected|tau2|tau4) ;;
+    *) exit 2 ;;
+esac
+sha256sum -c results/dynamics_followup_v1/inputs.sha256
+numactl --interleave=all /home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python python/run_dynamics_followup.py "$TASK"

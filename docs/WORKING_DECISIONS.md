@@ -153,3 +153,20 @@ optimality is not claimed.
 The L=2 resource point uses its own measured 2x2 coefficients and finite-step
 checks; the 3x3 transfer applies to L>=4. This avoids discarding a directly
 measured small-system reference.
+
+The next calibration pass preserves the old selected rows and checks all 16
+headline tau=1 allocations directly on 4x4 before changing their error splits.
+The error criterion is the saved Trotter reserve, including a separate 1e-10
+numerical allowance. A subsequent optimization over measured errors is labeled
+separately. The reference signal D*=0.1 and both absolute precision targets
+remain fixed; the calculated doublon does not redefine the sampling convention.
+
+The same frozen matrix-free solver extends 4x4 to tau=2,4, with both orderings,
+three initial step counts per ordering/time, and a bounded convergence rule.
+New cases and scheduler provenance live in dynamics_followup_v1; the earlier
+dynamics_4x4 evidence is preserved. The capacity sensitivity holds reference
+delivery and the expanded shared source-count menu fixed. Its added-patch
+envelope retains the old 3x3 envelope and every measured 4x3/4x4 coefficient
+through each requested time, with 10% margin. This remains a finite-patch
+planning sensitivity, not a bulk bound or a tau=8 extension. Faster encoded
+layouts remain separately identifiable in delivery_v1.

@@ -1,0 +1,18 @@
+{
+  "output": "results/dynamics_followup_v1",
+  "selected_input": "results/dynamics_4x4/interpolated.json",
+  "headline_layouts": {
+    "nisq": ["effective", "pec_two_qubit", "compiled_pec"],
+    "star": ["reference"],
+    "hybrid": ["reference"],
+    "ft": ["reference", "fast_b1", "fast_four_ports"]
+  },
+  "times": [2, 4],
+  "threads": 16,
+  "site": [2, 2],
+  "initial_steps_per_tau": [8, 16, 32],
+  "maximum_steps_per_tau": 128,
+  "maximum_relative_tail_spread": 0.05,
+  "numerical_allowance": 1e-10,
+  "scope": "Check saved tau=1 allocations before reoptimization; extend finite 4x4 dynamics to tau=2,4. No bulk certificate or tau=8 extrapolation."
+}

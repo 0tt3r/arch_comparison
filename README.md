@@ -1,12 +1,23 @@
 # Hubbard dynamics on a fixed qubit array
 
-For the team discussion, start with the **[back-of-the-envelope+ summary](results/discussion_v3/summary.md)**
-and its [assumptions and formulas](docs/DISCUSSION_MODEL.md).
+For the team discussion, start with the **[latest capacity and direct-check summary](results/dynamics_followup_v1/summary.md)**
+and the **[main manuscript](tex/main.pdf)**. The analytical
+[assumptions and formulas](docs/DISCUSSION_MODEL.md) remain the common model.
 
-![Back-of-the-envelope capacity scenarios](figures/discussion_capacity.png)
+![Capacity sensitivity to the finite-patch accuracy model](figures/patch_capacity.png)
 
-The curves optimize each arm's error allocation, step count, and resource-state
-supply. Trotter coefficients are measured through tau = 8 for both termwise
+The current comparison includes exact 4 × 4 calibration at tau = 1,2,4.
+It shows the effect of adding larger patches while holding reference delivery and source
+menus fixed. Both curves optimize the error allocation and step count. All
+16 saved tau = 1 headline allocations now pass their directly measured
+Trotter allowances. See the [method and scope](docs/DIRECT_CHECKS_AND_TIME_EXTENSION.md).
+Larger-lattice transfer and effective NISQ residual bias remain assumptions.
+
+The earlier **[discussion-v3 reference](results/discussion_v3/summary.md)**
+retains the 3 × 3 planning envelope and the longer time grid:
+
+Its curves optimize each arm's error allocation, step count, and resource-state
+supply. Small-patch Trotter coefficients are measured through tau = 8 for both termwise
 and plaquette orderings; the planning envelope avoids isolated small-patch
 cancellations. See the [calibration figure](figures/time_calibration.pdf).
 Larger-lattice transfer and effective NISQ residual bias remain assumptions.
@@ -21,7 +32,8 @@ whole-block consumption rates, analog lanes, and shared source supply.
 published block rates from uncompiled parallelism assumptions. The
 [completed 4 × 4 calculation](results/dynamics_4x4/summary.md) now checks
 finite-lattice transfer at tau = 1; [this figure](figures/large_patch_calibration.pdf)
-shows the ordering-dependent difference from the smaller patches.
+shows the ordering-dependent difference from the smaller patches. The
+[time extension](figures/patch_time_extension.pdf) adds the tau = 2,4 checks.
 
 Start with the **[main manuscript](tex/main.pdf)** ([LaTeX](tex/main.tex),
 [bibliography](tex/references.bib)). It brings together the analytical resource
@@ -29,7 +41,7 @@ laws, CUDA-Q compilation, mitigation, STAR, FTQC and hybrid supply, and the
 small-system accuracy checks.
 
 The principal comparison is **maximum modeled lattice size versus available
-physical qubits**, subject to a one-week runtime cutoff:
+physical qubits**, subject to a one-week runtime cutoff.
 
 The separate [compiled-reference capacity plot](figures/capacity_vs_qubits.pdf)
 retains the more detailed previous implementations.

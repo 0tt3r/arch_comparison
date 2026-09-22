@@ -120,9 +120,10 @@ completed cases are reused only when their entire calculation contract matches.
 The PBS scripts verify frozen input hashes before running. No state vectors
 or executables are committed.
 
-This calibrates one finite 4 × 4 lattice. It does not establish a bulk
-coefficient or validate the tau = 4 and 8 curves. Those remain finite-patch
-sensitivities until larger-space and longer-time checks are performed.
+This initial calculation calibrates one finite 4 × 4 lattice at tau = 1.
+The [follow-up](DIRECT_CHECKS_AND_TIME_EXTENSION.md) checks the selected
+headline step counts and extends time to tau = 2,4. Neither calculation
+establishes a bulk coefficient or validates a 4 × 4 transfer at tau = 8.
 
 ## Completed finite-lattice result
 
@@ -150,3 +151,10 @@ interpolated optimum near 21. This is a step-menu penalty, not evidence of
 a worse architecture. Reporting that table alone would introduce a new
 comparison artifact. Exact r = 8,16,32 costs and interpolated optima are
 therefore labeled separately.
+
+The follow-up directly checks every selected headline r before reallocating
+any error budget. All 16 saved allocations pass. Using their measured errors
+then lowers strict reference FT to 1.66 million qubits and the single fast
+block to 0.99 million; reference STAR, hybrid, and effective NISQ keep the same
+areas. The earlier interpolation table remains frozen as the input to that
+test. See the [new summary](../results/dynamics_followup_v1/summary.md).

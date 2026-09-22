@@ -14,6 +14,7 @@ model outputs, and source hashes used at that stage:
 | `discussion_v2` | Archived cubic-time, fixed-allocation example and its figures (source at commit `26b9a07`) |
 | `delivery_v1` | Reoptimized data-block, analog-lane, and shared-source delivery sensitivities |
 | `dynamics_4x4` | Matrix-free exact reference, directly measured Trotter steps, PBS provenance, and finite-lattice resource sensitivity |
+| `dynamics_followup_v1` | Direct checks of saved headline allocations, 4 × 4 evolution at tau = 2,4, and isolated patch-calibration capacity sensitivity |
 | `discussion_v3` | Measured time dependence by ordering, joint budget/source optimization, finite-patch and grid checks |
 
 The principal current figures are in [../figures](../figures), and the full

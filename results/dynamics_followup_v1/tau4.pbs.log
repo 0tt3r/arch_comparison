@@ -1,0 +1,25 @@
+cpp/hubbard_sector.cpp: OK
+build/hubbard_sector: OK
+python/large_dynamics.py: OK
+python/run_dynamics_followup.py: OK
+python/budget_optimization.py: OK
+python/small_dynamics.py: OK
+python/discussion_model.py: OK
+python/project_paths.py: OK
+pbs/dynamics_followup.pbs: OK
+configs/dynamics_followup.json: OK
+results/dynamics_4x4/interpolated.json: OK
+results/dynamics_4x4/tau1/4x4_tau1_termwise_r16_t16.json: OK
+results/dynamics_4x4/tau1/4x4_tau1_plaquette_r8_t16.json: OK
+results/dynamics_4x4/tau1/4x4_tau1_termwise_r32_t16.json: OK
+results/dynamics_4x4/tau1/4x4_tau1_plaquette_r32_t16.json: OK
+results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json: OK
+results/dynamics_4x4/tau1/4x4_tau1_plaquette_r16_t16.json: OK
+results/dynamics_4x4/tau1/4x4_tau1_termwise_r8_t16.json: OK
+4x4_tau4_exact_r0_t16 seconds 196.52 norm 1.0000000000000773
+4x4_tau4_plaquette_r32_t16 seconds 120.29 norm 0.9999999999996767
+4x4_tau4_plaquette_r64_t16 seconds 238.23 norm 0.9999999999995506
+4x4_tau4_plaquette_r128_t16 seconds 480.31 norm 0.9999999999992424
+4x4_tau4_termwise_r32_t16 seconds 112.53 norm 0.9999999999998384
+4x4_tau4_termwise_r64_t16 seconds 223.7 norm 1.0000000000002536
+4x4_tau4_termwise_r128_t16 seconds 446.23 norm 0.9999999999994827

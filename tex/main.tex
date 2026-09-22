@@ -31,8 +31,9 @@ architecture optimization and hybrid strategies.
 For immediate discussion, we also provide a simpler analytical comparison
 with experimentally anchored circuit scales, measured finite-patch time
 dependence, and per-arm error-budget optimization. Direct $4\times4$
-calibration at $\tau=1$ reveals ordering-dependent finite-size corrections
-beyond the earlier planning margin. Layout and source-supply sensitivities
+checks validate the Trotter allowances at the selected headline step counts;
+time extensions assess ordering-dependent finite-size corrections.
+Layout and source-supply sensitivities
 show why faster consumption need not translate into proportional area savings.
 \end{abstract}
 
@@ -45,6 +46,11 @@ and the hybrid using a common total-error target. Each arm can choose its
 error allocation, step count, and resource-state supply within the declared
 search. This removes a fixed allocation that previously forced unnecessary
 cleanup at the strict $4\times4$ FT point.
+The current finite-patch capacity sensitivity is shown in
+Figure~\ref{fig:patch-capacity}, and the directly checked $4\times4$
+allocations in Table~\ref{tab:direct-budgets}. We first develop the common
+model using the original $3\times3$ reference, retaining its longer-time
+and $\tau=L/4$ scenarios for comparison.
 
 \paragraph{Ordering-specific time dependence.}
 We extend exact fixed-sector calculations on $2\times2$ and $3\times3$
@@ -186,7 +192,7 @@ is an assumed estimator scenario, not a demonstrated accuracy result.}
 \label{fig:discussion}
 \end{figure}
 
-At $\tau=1$, the central areas become
+Using the $3\times3$ planning reference at $\tau=1$, the central areas are
 \begin{center}
 \small
 \begin{tabular}{rrrrrr}
@@ -295,7 +301,7 @@ supply-limited, while the hybrid also pays for its analog rotations.}
 \label{fig:delivery-bottlenecks}
 \end{figure}
 
-\section{Direct calibration of the $4\times4$ example}\label{sec:large-patch}
+\section{Direct step checks and finite-patch time dependence}\label{sec:large-patch}
 We compute the exact reference evolution in the
 $N_\uparrow=N_\downarrow=8$ sector of the $4\times4$ OBC lattice.
 Its $\binom{16}{8}^2=165{,}636{,}900$ amplitudes fit a matrix-free
@@ -315,28 +321,62 @@ Figure~\ref{fig:large-patch} shows. The earlier $10\%$ planning margin therefore
 this $\tau=1$ transfer. Exact finite-lattice evolution resolves that
 specific uncertainty; it does not establish an infinite-lattice coefficient.
 
-We keep two resource calculations separate. The directly measured menu
-allows only tested step counts and charges their actual observable error
-plus a $10^{-10}$ numerical allowance. A second sensitivity interpolates
-with $C/r^2$, taking $C$ to be $1.1$ times the largest measured $4\times4$
-coefficient, with the old planning envelope retained as a lower floor.
-The latter lets each architecture select intermediate step counts, which
-matters especially for NISQ's exponential cost. Its selected counts are
-not all directly checked. Both tables retain the same error-budget search,
-noise, and resource-state assumptions. NISQ additionally transfers the
-plaquette accuracy to its experimental circuit-count proxy; its residual
-mitigation bias remains assumed. We do not replace larger-lattice or
-longer-time curves using this single finite-lattice calibration.
+\paragraph{Validate before reallocating.}
+The initial $4\times4$ resource sensitivity interpolated between measured
+steps using $C/r^2$, with a $10\%$ margin. We now directly evaluate every
+selected step count for the headline reference designs: effective and two
+PEC NISQ models, reference STAR and hybrid, and reference, single-fast-block,
+and four-fast-port FT. The two precision targets give $16$ allocations
+sharing nine circuits. All satisfy
+\begin{equation}
+ |D_r-D_{\mathrm{exact}}|+10^{-10}
+ \leq \eps f_T^{\mathrm{saved}},
+\end{equation}
+using their \emph{original} Trotter fraction $f_T^{\mathrm{saved}}$.
+The measured errors use $89.3\%$--$90.9\%$ of these allowances. No change
+to statistics or another error component is needed to pass these checks.
 
-With the interpolated $4\times4$ coefficients, the strict reference STAR
-and hybrid areas remain about $71{,}000$ and $73{,}000$ qubits: extra
-steps still fit within one replica's week. FT requires about $1.88$ million
-qubits with reference delivery, $1.16$ million with one fast block, and
-$0.385$ million under the four-fast-port assumption. Effective NISQ
-changes from $36$ to $72$ qubits, conditional on its assumed mitigation.
-The directly measured doubling grid instead gives $2196$ effective NISQ
-qubits because $r=32$ overshoots its interpolated optimum near $21$.
-That difference is a step-menu cost, not an architectural conclusion.
+We then separately reoptimize with the measured Trotter error and the same
+$10^{-10}$ numerical allowance. Table~\ref{tab:direct-budgets} shows the
+strict estimates at each originally selected $r$. Reference FT falls from
+$1.88$ to $1.66$ million qubits, and the single fast block from $1.16$ to
+$0.99$ million, because the smaller charged Trotter error leaves more
+allowance for sampling. STAR and hybrid remain single-copy calculations.
+The saved Trotter allowances were already adequate; these reductions come
+from using their remaining allowance. Searching all measured steps gives the
+same headline areas, sometimes at a different $r$.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Design & Saved $r$ & Saved $Q$ & Measured-error budget $Q$ \\
+\midrule
+NISQ effective & 21 & 72 & 72 \\
+STAR reference & 33 & 71,442 & 71,442 \\
+Hybrid reference & 41 & 73,348 & 73,348 \\
+FT reference & 33 & 1,875,882 & 1,655,190 \\
+FT single fast block & 29 & 1,155,490 & 988,112 \\
+FT four fast ports & 33 & 385,052 & 385,052 \\
+\bottomrule
+\end{tabular}
+\caption{Direct $4\times4$ checks at $\tau=1$, $\eps=0.001$. Both
+columns use the same step count, hardware, and source menu. The last
+column reallocates the smaller measured Trotter error before minimizing
+resources. Effective NISQ retains its assumed mitigation bias and variance;
+four fast ports retain the uncompiled throughput assumption.}
+\label{tab:direct-budgets}
+\end{table}
+
+Checking the selected NISQ count $r=21$ removes the earlier artificial
+restriction to $r=8,16,32$, which had inflated its measured-menu cost to
+$2196$ qubits. This validates the Trotter component only: plaquette accuracy
+is still transferred to the experimental gate-count proxy, and mitigation
+bias remains unmeasured. At loose precision the two-qubit PEC scenario also
+fits one $36$-qubit copy at $r=8$, whereas its strict estimate exceeds
+$10^{12}$ qubits. The full-noise PEC proxy is much more costly. These
+differences remain visible in the saved tables and should not be read as
+an architecture-independent NISQ limit.
 
 \begin{figure}[t]
 \centering
@@ -349,6 +389,66 @@ The $4\times4$ observable is at $(2,2)$; smaller patches use $(1,1)$.
 This comparison calibrates the finite $4\times4$ example and does not
 certify large-$L$ or long-time transfer.}
 \label{fig:large-patch}
+\end{figure}
+
+\paragraph{Longer time and the capacity sensitivity.}
+We extend the same exact $4\times4$ reference and both product formulas
+to $\tau=2,4$. At each time, the initial counts are $8\tau,16\tau,32\tau$;
+further doubling is required if the two finest coefficients disagree by
+more than $5\%$. Figure~\ref{fig:patch-time-extension} compares the converged
+tails with the smaller patches. The observed site remains $(2,2)$ and
+each product formula is compared with exact evolution on that same lattice.
+The converged-pair coefficients on $4\times4$ are $1.096$ and $0.775$
+for plaquette and termwise evolution at $\tau=2$, and $4.193$ and $3.029$
+at $\tau=4$. The finest pairs agree within $0.36\%$ in all four cases.
+The $\tau=4$ plaquette value is close to $4\times3$ and below $3\times3$;
+the termwise value exceeds both smaller patches. A single multiplicative
+finite-size correction would miss this dependence on ordering and time.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{patch_time_extension.pdf}
+\caption{Ordering-specific Trotter coefficients through $\tau=4$ on three
+finite patches. Solid points use converged tail pairs; the dashed envelope
+also covers measured coarser-step coefficients and earlier sampled times,
+with a $10\%$ margin. The larger patches have only three time nodes;
+unsampled time peaks and larger-lattice corrections remain possible.}
+\label{fig:patch-time-extension}
+\end{figure}
+
+To isolate this physics input, we keep the reference delivery assumptions
+and the expanded common source menu fixed and reoptimize the resource
+budgets under two coefficient policies. The first is the earlier
+$3\times3$ envelope. The second retains that envelope and adds all
+measured $4\times3$ and $4\times4$ coefficients through the requested
+time, including finite-step corrections, with the same $10\%$ margin.
+The $L=2$ point keeps its own calibration in both cases.
+Figure~\ref{fig:patch-capacity} reports the resulting capacity sensitivity.
+It does not replace a finite-patch assumption with a bulk error bound:
+the new curves still transfer coefficients to $L>4$, and their optimized
+step counts have not all been checked directly. No $4\times4$ coefficient
+is inferred at $\tau=8$.
+The additional patches move several discrete thresholds while retaining
+the strong precision dependence in this reference model. For example,
+at $\tau=2$, $Q=10^6$, and strict precision, effective NISQ falls from
+$L=4$ to $L=2$, whereas reference STAR and hybrid remain at $L=4$.
+This is a sensitivity to the assumed mitigation and finite-patch models;
+it is not a general NISQ limit.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{patch_capacity.pdf}
+\caption{Largest modeled lattice side versus available qubits, changing
+only the finite-patch accuracy model. Dotted curves use the original
+$3\times3$ envelope; solid curves also include the $4\times3$ and
+$4\times4$ measurements. Delivery and source menus are identical, with
+error allocations reoptimized. Both policies retain direct $L=2$
+calibration. NISQ effective mitigation remains an assumed envelope;
+two-qubit-only PEC and the full compiled-noise PEC proxy are shown
+alongside it. All curves use a one-week cutoff, $p=10^{-3}$, and
+the same sparse size grid through $L=48$. A missing curve means that no
+sampled lattice fits that panel's qubit and time budgets.}
+\label{fig:patch-capacity}
 \end{figure}
 
 \section{The fixed-device question}
@@ -1130,8 +1230,10 @@ Small-patch calibration explains why a common algorithmic correction does
 not cancel from the resource comparison: increasing $r$ reduces a shared
 Trotter error but enters each architecture's cost differently. Likewise,
 physical truncation could reduce all three arms if its bias is controlled.
-The next scientific dependencies are a common accuracy-qualified workload,
-a controlled spatial truncation estimate, and physical injection/growth and
+Direct $4\times4$ checks now settle the Trotter component for the selected
+headline workloads. The remaining scientific dependencies are transfer of
+accuracy to larger lattices, a controlled spatial truncation estimate,
+empirical NISQ mitigation bias, and physical injection/growth and
 handoff schedules with residual-channel validation. Qubitization remains
 a separately identified later algorithm comparison.
 

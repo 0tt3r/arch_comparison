@@ -37,3 +37,15 @@ def test_tail_bound_controls_scalar_exponential():
         x=np.linspace(-1,1,101)
         assert tail<1e-12
         assert np.max(abs(np.polynomial.chebyshev.chebval(x,c)-np.exp(-1j*a*x)))<2e-12
+
+
+@pytest.mark.parametrize('algorithm',['exact','plaquette','termwise'])
+def test_long_time_full_state_control(algorithm,tmp_path):
+    model=SplitSector(2,2);tau=4.;r=32
+    path=tmp_path/'long_state.bin'
+    solve(2,2,tau,algorithm,0 if algorithm=='exact' else r,tmp_path,2,state_path=path)
+    actual=np.fromfile(path,dtype=np.complex128).reshape(model.shape)
+    up=np.argsort(np.argsort(model.up));down=np.argsort(np.argsort(model.down))
+    actual=actual[np.ix_(up,down)].ravel()
+    expected=model.exact(tau) if algorithm=='exact' else model.trotter(tau,r,algorithm)
+    assert np.linalg.norm(actual-expected)<2e-11

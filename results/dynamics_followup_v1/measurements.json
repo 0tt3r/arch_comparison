@@ -1,0 +1,546 @@
+[
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 16,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14625650197640785,
+    "signed_error": 0.001025120094351517,
+    "coefficient": 0.26243074415398837,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r16_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14548707362530405,
+    "signed_error": 0.0002556917432477157,
+    "coefficient": 0.2618283450856609,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r32_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 8,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14936951058498846,
+    "signed_error": 0.00413812870293212,
+    "coefficient": 0.2648402369876557,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r8_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 16,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14449549836421335,
+    "signed_error": -0.0007358835178429834,
+    "coefficient": 0.18838618056780376,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r16_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14504804949339178,
+    "signed_error": -0.00018333238866455326,
+    "coefficient": 0.18773236599250254,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r32_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 8,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14224649241586704,
+    "signed_error": -0.0029848894661893,
+    "coefficient": 0.1910329258361152,
+    "source": "results/dynamics_4x4/tau1/4x4_tau1_termwise_r8_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 16,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13130874307133378,
+    "signed_error": 0.0009608022826531615,
+    "coefficient": 0.24596538435920934,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r16_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13058759972260892,
+    "signed_error": 0.0002396589339282995,
+    "coefficient": 0.2454107483425787,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r32_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 64,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13040782165784026,
+    "signed_error": 5.98808691596453e-05,
+    "coefficient": 0.24527204007790715,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r64_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 8,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13422578123377732,
+    "signed_error": 0.003877840445096703,
+    "coefficient": 0.248181788486189,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_plaquette_r8_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 16,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.12980152504346099,
+    "signed_error": -0.0005464157452196305,
+    "coefficient": 0.13988243077622542,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r16_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13021184917099476,
+    "signed_error": -0.00013609161768585176,
+    "coefficient": 0.1393578165103122,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r32_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 64,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.13031394968969126,
+    "signed_error": -3.3991098989355484e-05,
+    "coefficient": 0.13922754146040006,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r64_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x3",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 8,
+    "site": [
+      1,
+      1
+    ],
+    "exact_doublon": 0.13034794078868062,
+    "doublon": 0.12812863832542618,
+    "signed_error": -0.002219302463254441,
+    "coefficient": 0.14203535764828423,
+    "source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_termwise_r8_t2.json",
+    "exact_source": "results/dynamics_4x4/rectangle_tau1/4x3_tau1_exact_r0_t2.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 10,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14786821799531658,
+    "signed_error": 0.002636836113260238,
+    "coefficient": 0.2636836113260238,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r10_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 19,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14595768973501877,
+    "signed_error": 0.0007263078529624323,
+    "coefficient": 0.2621971349194381,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r19_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 21,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14582569891163297,
+    "signed_error": 0.0005943170295766298,
+    "coefficient": 0.26209381004329374,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r21_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 29,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14554276361953475,
+    "signed_error": 0.00031138173747841114,
+    "coefficient": 0.26187204121934377,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r29_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 33,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14547180094453502,
+    "signed_error": 0.0002404190624786806,
+    "coefficient": 0.2618163590392832,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r33_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 41,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14538709268462421,
+    "signed_error": 0.00015571080256787662,
+    "coefficient": 0.2617498591166006,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r41_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 11,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.14366638339449195,
+    "signed_error": -0.0015649984875643896,
+    "coefficient": 0.18936481699529115,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_termwise_r11_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 1.0,
+    "algorithm": "termwise",
+    "r": 33,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14523138188205634,
+    "doublon": 0.1450590041119647,
+    "signed_error": -0.0001723777700916307,
+    "coefficient": 0.18771939162978582,
+    "source": "results/dynamics_followup_v1/tau1/4x4_tau1_termwise_r33_t16.json",
+    "exact_source": "results/dynamics_4x4/tau1/4x4_tau1_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 2.0,
+    "algorithm": "plaquette",
+    "r": 16,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14369309094063426,
+    "doublon": 0.1480168574581609,
+    "signed_error": 0.004323766517526639,
+    "coefficient": 1.1068842284868197,
+    "source": "results/dynamics_followup_v1/tau2/4x4_tau2_plaquette_r16_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau2/4x4_tau2_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 2.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14369309094063426,
+    "doublon": 0.14476330786149685,
+    "signed_error": 0.0010702169208625933,
+    "coefficient": 1.0959021269632956,
+    "source": "results/dynamics_followup_v1/tau2/4x4_tau2_plaquette_r32_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau2/4x4_tau2_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 2.0,
+    "algorithm": "plaquette",
+    "r": 64,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14369309094063426,
+    "doublon": 0.14395996747678008,
+    "signed_error": 0.0002668765361458214,
+    "coefficient": 1.0931262920532845,
+    "source": "results/dynamics_followup_v1/tau2/4x4_tau2_plaquette_r64_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau2/4x4_tau2_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 2.0,
+    "algorithm": "termwise",
+    "r": 16,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14369309094063426,
+    "doublon": 0.14063802287880972,
+    "signed_error": -0.0030550680618245396,
+    "coefficient": 0.7820974238270821,
+    "source": "results/dynamics_followup_v1/tau2/4x4_tau2_termwise_r16_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau2/4x4_tau2_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 2.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14369309094063426,
+    "doublon": 0.14293608039782343,
+    "signed_error": -0.0007570105428108265,
+    "coefficient": 0.7751787958382863,
+    "source": "results/dynamics_followup_v1/tau2/4x4_tau2_termwise_r32_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau2/4x4_tau2_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 2.0,
+    "algorithm": "termwise",
+    "r": 64,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14369309094063426,
+    "doublon": 0.14350426401677774,
+    "signed_error": -0.0001888269238565221,
+    "coefficient": 0.7734350801163146,
+    "source": "results/dynamics_followup_v1/tau2/4x4_tau2_termwise_r64_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau2/4x4_tau2_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 4.0,
+    "algorithm": "plaquette",
+    "r": 128,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14544090457644773,
+    "doublon": 0.14569609110834073,
+    "signed_error": 0.00025518653189299245,
+    "coefficient": 4.180976138534788,
+    "source": "results/dynamics_followup_v1/tau4/4x4_tau4_plaquette_r128_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau4/4x4_tau4_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 4.0,
+    "algorithm": "plaquette",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14544090457644773,
+    "doublon": 0.14958385463822846,
+    "signed_error": 0.004142950061780726,
+    "coefficient": 4.242380863263463,
+    "source": "results/dynamics_followup_v1/tau4/4x4_tau4_plaquette_r32_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau4/4x4_tau4_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 4.0,
+    "algorithm": "plaquette",
+    "r": 64,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14544090457644773,
+    "doublon": 0.14646461950016684,
+    "signed_error": 0.00102371492371911,
+    "coefficient": 4.193136327553475,
+    "source": "results/dynamics_followup_v1/tau4/4x4_tau4_plaquette_r64_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau4/4x4_tau4_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 4.0,
+    "algorithm": "termwise",
+    "r": 128,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14544090457644773,
+    "doublon": 0.14525667534487993,
+    "signed_error": -0.0001842292315678007,
+    "coefficient": 3.0184117300068465,
+    "source": "results/dynamics_followup_v1/tau4/4x4_tau4_termwise_r128_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau4/4x4_tau4_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 4.0,
+    "algorithm": "termwise",
+    "r": 32,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14544090457644773,
+    "doublon": 0.14244091434865333,
+    "signed_error": -0.0029999902277944024,
+    "coefficient": 3.071989993261468,
+    "source": "results/dynamics_followup_v1/tau4/4x4_tau4_termwise_r32_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau4/4x4_tau4_exact_r0_t16.json"
+  },
+  {
+    "patch": "4x4",
+    "tau": 4.0,
+    "algorithm": "termwise",
+    "r": 64,
+    "site": [
+      2,
+      2
+    ],
+    "exact_doublon": 0.14544090457644773,
+    "doublon": 0.1447013765515546,
+    "signed_error": -0.0007395280248931324,
+    "coefficient": 3.0291067899622703,
+    "source": "results/dynamics_followup_v1/tau4/4x4_tau4_termwise_r64_t16.json",
+    "exact_source": "results/dynamics_followup_v1/tau4/4x4_tau4_exact_r0_t16.json"
+  }
+]

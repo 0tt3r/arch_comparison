@@ -1,0 +1,30 @@
+{
+  "task": "tau2",
+  "tau": 2.0,
+  "rows": [
+    {
+      "algorithm": "plaquette",
+      "steps": [
+        16,
+        32,
+        64
+      ],
+      "relative_tail_coefficient_spread": 0.0025329222762828607
+    },
+    {
+      "algorithm": "termwise",
+      "steps": [
+        16,
+        32,
+        64
+      ],
+      "relative_tail_coefficient_spread": 0.0022494368155234006
+    }
+  ],
+  "status": "complete",
+  "site": [
+    2,
+    2
+  ],
+  "scope": "Tail convergence on this finite OBC lattice; no bulk error bound"
+}

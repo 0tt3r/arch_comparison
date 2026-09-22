@@ -1,0 +1,16 @@
+{
+  "task": "selected",
+  "cases": [
+    "results/dynamics_4x4/tau1/4x4_tau1_plaquette_r8_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r10_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r19_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r21_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r29_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r33_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_plaquette_r41_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_termwise_r11_t16.json",
+    "results/dynamics_followup_v1/tau1/4x4_tau1_termwise_r33_t16.json"
+  ],
+  "row_count": 16,
+  "status": "complete"
+}
