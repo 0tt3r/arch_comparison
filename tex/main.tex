@@ -28,7 +28,115 @@ four-step resource curves are conditional circuit comparisons, since that
 step count fails the observable-accuracy target on both square patches
 tested. We retain this distinction while developing a common basis for
 architecture optimization and hybrid strategies.
+For immediate discussion, we also provide a simpler analytical comparison
+with experimentally anchored circuit scales and explicit scenario ranges.
 \end{abstract}
+
+\section{Back-of-the-envelope+ discussion example}\label{sec:discussion}
+To expose the architectural tradeoffs quickly, we use a small set of
+analytical laws with adjustable constants. The hardware remains
+$p=10^{-3}$, $10$ ns gates, $100$ ns measurement/reset, $240$ ns syndrome
+cycles, and a one-week budget $B$. We take $U/J=4$, $r=\lceil4\tau\rceil$,
+and the accepted $\eps=0.001$ reference, with $0.01$ as a sensitivity.
+For this illustration we assume that Trotter and mitigation biases fit the
+remaining error budget. We use the Gaussian planning count
+\begin{equation}
+ M_0=\left\lceil\frac{1.96^2D_*(1-D_*)}{(\eps/2)^2}\right\rceil,
+ \qquad
+ Q_{\mathrm{week}}=q\max\left(1,
+ \left\lceil\frac{M_0Ft_{\mathrm{shot}}}{B}\right\rceil\right),
+ \quad D_*=0.1,
+\end{equation}
+where $F$ is an effective sampling overhead and $q$ the area of a complete
+sampler. At strict precision $M_0\simeq1.38\times10^6$. This Gaussian
+approximation replaces the more conservative Hoeffding bound only in the
+discussion model.
+
+\paragraph{NISQ.}
+The Willow implementation supplies a useful circuit anchor:
+$4372$ entanglers and depth $294$ at $L=6$, $r=3$~\cite{phasecraftwillow2025}.
+We interpolate its scale as
+\begin{equation}
+ G_2=4372\frac r3\left(\frac L6\right)^3,\qquad
+ D_{\mathrm{circ}}=294\frac r3\frac L6,\qquad
+ \log F_{\mathrm{NISQ}}=\log(\eta_*)\frac p{10^{-3}}\frac{G_2}{4372}.
+\end{equation}
+We choose $\eta_*=100$ and vary it from $10$ to $1000$. This is an assumed
+effective cost of observable mitigation, selection, and training, not a fit
+to experimental accuracy or shot counts. It replaces the product of inverse
+gate channels in the discussion curve. The duration uses our reference
+clock, and $q=\lceil\sqrt{2L^2+2}\rceil^2$ includes square packing.
+
+\paragraph{STAR.}
+Termwise second-order evolution gives, in our angle convention,
+\begin{equation}
+ \Theta=(5L^2-4L)\tau,\qquad
+ R=[16L(L-1)+2L^2-2]r+1,\qquad
+ \log F_{\mathrm{STAR}}=4\alpha p\Theta+4fR.
+\end{equation}
+We retain $\alpha=1.5$, choose $f=10^{-5}$, and use $18$ code clocks per
+completed rotation divided by $b=4$ effective parallel lanes~\cite{akahoshi,toshio}.
+The scenario range uses $f=0$ to $10^{-4}$ and $b=8$ to $1$. Lane count
+stands for sustained delivery; it is not obtained from a physical schedule.
+
+\paragraph{FTQC.}
+We use the existing plaquette inventory and logarithmic synthesis fit,
+giving $N_T=T_{\mathrm{fixed}}+R_{\mathrm{plaq}}T_{\mathrm{per\ rotation}}$
+and $F_{\mathrm{FT}}=1$. A rounded cultivated-state source occupies $1024$
+qubits, supplies a state in $100$ syndrome cycles plus $2d$ handoff cycles,
+and has reference output error $2\times10^{-9}$~\cite{gidney2024cultivation}.
+One $15$-to-$1$ cleanup stage is added when the total magic-state error
+exceeds its budget. We charge the greater of supply time and consumption
+time, with nine code clocks per T divided by four effective lanes. Source
+count is optimized from $1$ to $16$; the scenario range varies service time
+by $0.5$ to $4$ and lanes from $8$ to $1$.
+
+Both encoded arms choose distance using the existing surface-code fit and
+per-attempt logical-fault budget. Data and operation space occupy
+$\lceil1.5(2L^2+6)\rceil+6b$ tiles, with additional FT supply/buffer resources.
+The implementations are adapted to each architecture: termwise STAR,
+plaquette FTQC, and a native swap-network proxy for NISQ. All evolve the
+full lattice. Figure~\ref{fig:discussion} shows the resulting comparison.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{discussion_capacity.pdf}
+\caption{Fast analytical comparison at $\eps=0.001$. Lines use central
+assumptions; bands span declared scenarios, not confidence intervals.
+The circuit-count anchor is experimental, while the effective NISQ sampling
+penalty is assumed. The chosen step count and mitigation biases are not
+accuracy-calibrated. Only even lattice sides are evaluated.}
+\label{fig:discussion}
+\end{figure}
+
+At $\tau=1$, the central scenarios give the following example:
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+Available $Q$ & NISQ lattice & STAR lattice & FTQC lattice\\
+\midrule
+$100$ & $6\times6$ & --- & ---\\
+$10^4$ & $8\times8$ & --- & ---\\
+$10^5$ & $8\times8$ & $4\times4$ & $4\times4$\\
+$10^6$ & $8\times8$ & $8\times8$ & $4\times4$\\
+$10^7$ & $8\times8$ & $10\times10$ & $8\times8$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For a $6\times6$ problem, the corresponding areas are $81$, about
+$1.2\times10^5$, and $2.3\times10^6$ qubits. At $0.01$ absolute precision
+they become $81$, $1.0\times10^5$, and $1.3\times10^5$. The strict FT case
+needs a cleanup stage and multiple replicas; the loose case does not.
+These examples expose the precision and delivery assumptions that the group
+can vary, rather than fixing an architecture ranking.
+
+The full-lattice scaling in this toy comparison is
+$\log F_{\mathrm{NISQ}}=O(prL^3)$ and
+$\log F_{\mathrm{STAR}}=O(pL^2\tau+frL^2)$, while FTQC has polynomial cost
+with logarithmic synthesis and protection factors. Different routing,
+observable support, or growing lane count can change these powers.
+The remainder of the manuscript develops the more detailed reference models;
+their numerical artifacts remain separate from this discussion example.
 
 \section{The fixed-device question}
 The same physical qubits can buy more simultaneous samples, stronger logical

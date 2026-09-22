@@ -2,9 +2,12 @@ PYTHON ?= python3
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: figures paper test audit
+.PHONY: discussion figures paper test audit
 
-figures:
+discussion:
+	$(PYTHON) python/discussion_model.py
+
+figures: discussion
 	$(PYTHON) python/plot_capacity.py
 	$(PYTHON) python/draw_architectures.py
 

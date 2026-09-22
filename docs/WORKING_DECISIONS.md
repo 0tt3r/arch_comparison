@@ -97,3 +97,13 @@ without asserting numerical floorplans. The complete current narrative is now
 tex/main.tex with tex/references.bib, and earlier notes live in tex/archive/.
 Code, tests, and configurations have separate directories. The user requested
 a commit of all changes after the checks pass.
+
+The user subsequently requested a quick back-of-the-envelope+ example for
+discussion, rather than making rigorous experimental reconciliation a
+prerequisite. The new discussion model uses simple per-arm laws and declared
+scenario bands, with experimental NISQ gate/depth anchors and an assumed
+effective sampling overhead. It retains the strict target and adds the
+0.01 absolute sensitivity; it uses a Gaussian planning shot count and assumes
+the remaining bias budget is affordable. These discussion scenarios are
+separate from the earlier compiled-reference artifacts. They do not change
+their scientific inputs or retrospectively claim a fit to experimental data.

@@ -7,6 +7,11 @@ Set `OPENBLAS_NUM_THREADS=1` and `OMP_NUM_THREADS=1` for the bounded examples.
 
 ## Current figures and manuscript
 
+For the fast analytical discussion example alone, run `make discussion`.
+Edit `configs/discussion_model.json` for the scenario knobs. This regenerates
+`results/discussion_v1/` and the two `discussion_capacity` figures without
+calling CUDA-Q or a dynamics solver. See [DISCUSSION_MODEL.md](DISCUSSION_MODEL.md).
+
 ```bash
 conda activate qb_gsee
 make test

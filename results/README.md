@@ -10,6 +10,7 @@ model outputs, and source hashes used at that stage:
 | `nisq_v2` | Native Rzz compilation, exact cones, parity acceptance, factory sensitivities |
 | `refinement_v3` | Parallel compilation, patch dynamics, noisy observables, cultivation, STAR retries |
 | `presentation_v1` | Capacity inversion and the repository/presentation provenance record |
+| `discussion_v1` | Fast analytical scenarios, assumptions, and team-discussion tables |
 
 The principal current figures are in [../figures](../figures), and the full
 story is in [../tex/main.pdf](../tex/main.pdf). Presentation changes do not

@@ -1,5 +1,16 @@
 # Hubbard dynamics on a fixed qubit array
 
+For the team discussion, start with the **[back-of-the-envelope+ summary](results/discussion_v1/summary.md)**
+and its [assumptions and formulas](docs/DISCUSSION_MODEL.md).
+
+![Back-of-the-envelope capacity scenarios](figures/discussion_capacity.png)
+
+The curves use simple analytical laws for NISQ, STAR, and FTQC, with declared
+scenario bands. The NISQ circuit scale is anchored to Willow; its effective
+mitigation overhead is assumed, not fitted. A
+[0.01 absolute-precision sensitivity](figures/discussion_capacity_loose.pdf)
+is also available. Run `make discussion` to regenerate these estimates quickly.
+
 Start with the **[main manuscript](tex/main.pdf)** ([LaTeX](tex/main.tex),
 [bibliography](tex/references.bib)). It brings together the analytical resource
 laws, CUDA-Q compilation, mitigation, STAR, FTQC and hybrid supply, and the
@@ -8,7 +19,8 @@ small-system accuracy checks.
 The principal comparison is now **maximum tested lattice size versus available
 physical qubits**, subject to a one-week runtime cutoff:
 
-![Maximum tested lattice size versus available physical qubits](figures/capacity_vs_qubits.png)
+The separate [compiled-reference capacity plot](figures/capacity_vs_qubits.pdf)
+retains the more detailed previous implementations.
 
 These are conditional four-step circuit costs. Four steps fail the accuracy
 target on the small square patches checked; L ≥ 4 accuracy remains uncalibrated.
