@@ -1,0 +1,61 @@
+{
+  "L": 4,
+  "tau": 1.0,
+  "r": 4,
+  "absolute_error": 0.001,
+  "statistical_error": 0.0005,
+  "confidence": 0.95,
+  "ideal_shot_bound": 7377759,
+  "circuit_qubits": 32,
+  "qubits_per_copy": 36,
+  "seconds_per_attempt": 9.84e-06,
+  "exposure": {
+    "two_qubit": 10.592709711787041,
+    "one_qubit": 4.120137351645971,
+    "idle": 5.168073889190907,
+    "spam": 0.13613618160576926
+  },
+  "scenarios": [
+    {
+      "scenario": "reference",
+      "scope": "Current sufficient PEC shot budget",
+      "chi": 20.017057134229688,
+      "gamma2": 493511704.67169327,
+      "shot_budget": 3641010420746927,
+      "single_copy_seconds": 35827542540.149765,
+      "copies": 59239,
+      "physical_qubit_budget": 2132604
+    },
+    {
+      "scenario": "zero_idle",
+      "scope": "Noise sensitivity; same gates and duration",
+      "chi": 14.84898324503878,
+      "gamma2": 2810809.9691905393,
+      "shot_budget": 20737478547486,
+      "single_copy_seconds": 204056788.9072546,
+      "copies": 338,
+      "physical_qubit_budget": 12168
+    },
+    {
+      "scenario": "two_qubit_noise_only",
+      "scope": "Diagnostic: all other noise channels removed",
+      "chi": 10.592709711787041,
+      "gamma2": 39843.30686075907,
+      "shot_budget": 293954315782,
+      "single_copy_seconds": 2892510.467292194,
+      "copies": 5,
+      "physical_qubit_budget": 180
+    },
+    {
+      "scenario": "no_mitigation_multiplier",
+      "scope": "Shot throughput only; hardware bias not corrected",
+      "chi": 0.0,
+      "gamma2": 1.0,
+      "shot_budget": 7377759,
+      "single_copy_seconds": 72.59714856000001,
+      "copies": 1,
+      "physical_qubit_budget": 36
+    }
+  ],
+  "interpretation": "Sufficient budgets for a specified PEC implementation, not necessary NISQ resources"
+}

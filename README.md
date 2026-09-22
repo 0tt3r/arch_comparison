@@ -16,6 +16,13 @@ The staircases show only tested sizes, and reaching 8 × 8 marks the end of the
 current sweep. The [underlying CSV](results/presentation_v1/capacity_thresholds.csv)
 retains the original area thresholds.
 
+The NISQ curve is a **sufficient gatewise-PEC sampling budget**, not an
+optimized NISQ limit. Its 4 × 4 circuit uses 32 active qubits (36 including
+square packing); the strict-precision estimate buys 59,239 replicas to
+complete the prescribed shot budget within a week. See the
+[experimental comparison and cost breakdown](docs/NISQ_EXPERIMENT_COMPARISON.md)
+for why this does not predict the resources used in the Phasecraft experiments.
+
 The [architecture overview](figures/architecture_overview.pdf) and
 [patch/supply detail](figures/architecture_detail.pdf) explain resource roles.
 The [rotation protocols](figures/rotation_protocols.pdf) show the distinction

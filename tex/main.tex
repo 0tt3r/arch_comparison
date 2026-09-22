@@ -166,6 +166,9 @@ rejection is charged in delivery time, not counted again as whole-circuit
 rejection. Integer replicas are retained where they matter. Packing is an
 area-budget reference; a global square placement, calibration overhead, and
 control bandwidth are not yet modeled in the encoded curves.
+For PEC, $Q_{\min}$ is the minimum replica area that meets this sufficient
+sampling bound for the chosen implementation. It is not a lower bound on
+the qubits needed by another estimator, or even a tight cost for this one.
 
 The principal output is now
 \begin{equation}\label{eq:lmax}
@@ -185,8 +188,9 @@ it has not yet been accuracy-qualified.
 \includegraphics[width=\linewidth]{capacity_vs_qubits.pdf}
 \caption{Largest tested Hubbard lattice within one week versus available
 physical qubits. Left: the accepted relative-precision reference. Right: the
-loose absolute-precision sensitivity. NISQ uses the parallel native local-PEC
-circuit at nominal idle noise; STAR chooses among one, two, four, and eight
+loose absolute-precision sensitivity. NISQ uses a sufficient gatewise-PEC
+sampling bound on the compiled observable cone at nominal idle noise; it
+does not represent optimized NISQ capacity. STAR chooses among one, two, four, and eight
 reference injection lanes; FTQC and hybrid use the packed cultivation supply
 scenario with zero additional handoff error. These are conditional $r=4$
 costs, not accuracy-qualified dynamics capacities. That step count fails the
@@ -340,6 +344,34 @@ $12168$ with zero idle on the same circuit. Idle has decreased substantially
 but remains material. The gain combines scheduling, placement, fusion, and
 observable algebra; zero idle is a sensitivity rather than a demonstrated
 alternate schedule.
+
+\subsection{What the million-qubit estimate means}
+The $4\times4$ circuit occupies $32$ active qubits, packed into a $36$-qubit
+square. At the strict precision, the reference assigns
+$\Gamma^2=e^{20.017}\simeq4.94\times10^8$ and a sufficient budget of
+$N_0\Gamma^2\simeq3.64\times10^{15}$ shots. At $9.84~\mu\mathrm{s}$ per
+attempt, this requires $59239$ copies to fit within one week, giving
+$Q_{\min}=2132604$. The large area is entirely a sampling-throughput cost.
+For the same circuit, duration, and precision, removing idle noise gives
+$Q_{\min}=12168$; retaining only two-qubit noise gives $Q_{\min}=180$.
+These are noise ablations, not demonstrated improvements or alternative
+predictions for the declared device.
+
+Experiments require an additional calibration of the NISQ model.
+Phasecraft and Quantinuum simulated a $7\times4$ lattice with $56$ qubits,
+using training with fermionic linear optics (TFLO) and time-series
+smoothing~\cite{alam2025}. The Willow study reached $6\times6$ with $72$
+fermionic-mode qubits, using TFLO, symmetry selection, and other
+application-specific processing~\cite{phasecraftwillow2025}. Our gatewise
+PEC bound does not describe these estimators. Nor do those demonstrations
+establish our particular $0.001$ absolute-error contract at every
+interacting data point. Their compilation is also a relevant benchmark:
+Willow's published $4\times4$ formula gives $1620$ CZ gates at four steps,
+where our reference uses $2648$ native $R_{ZZ}$ gates. This comparison needs
+the respective gate implementations and schedules, not only a gate-count
+ratio. We therefore retain the current curve as a specified PEC reference;
+the resource frontier for experimentally informed physical estimators
+remains unestablished.
 
 \subsection{Exact circuit cones and physical truncation}
 For the original plaquette block ordering, the sufficient interior cones

@@ -20,5 +20,6 @@
   "archive_build": "PASS: refinement_v3 rebuilt in build/ without replacing archive",
   "historical_tex_pdf_bib": "Original pre-move hashes preserved",
   "scientific_artifacts": "v3 frozen artifact audit and current-code numerical replay passed",
-  "architecture_figure_review": "PASS: shared Clifford patches distinguished from temporary STAR preparation and FT T-state supply; spatial and protocol PNGs visually inspected"
+  "architecture_figure_review": "PASS: shared Clifford patches distinguished from temporary STAR preparation and FT T-state supply; spatial and protocol PNGs visually inspected",
+  "nisq_sampling_audit": "PASS: 32 active qubits, 36-qubit footprint, 59239 reference replicas; four diagnostic budgets recomputed"
 }

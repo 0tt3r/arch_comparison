@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 import sys
 
-from plot_capacity import costs,maximum_tested_side
+from plot_capacity import costs,maximum_tested_side,nisq_sampling_audit
 from project_paths import ROOT
 
 OUT=ROOT/'results/presentation_v1'
@@ -20,6 +20,7 @@ def sha(path):
 def check_content():
     saved=json.loads((OUT/'capacity_thresholds.json').read_text())
     assert saved==costs() and len(saved)==32
+    assert json.loads((OUT/'nisq_sampling_audit.json').read_text())==nisq_sampling_audit()
     frontier=json.loads((OUT/'capacity_frontiers.json').read_text())
     for row in frontier:
         points=[r for r in saved if r['arm']==row['arm'] and r['absolute_error']==row['absolute_error']]
