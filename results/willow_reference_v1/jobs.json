@@ -1,0 +1,17 @@
+{
+  "smoke_job": "7791283.imgt1",
+  "production_job": "7791284.imgt1",
+  "account": "QC_NA_Sim",
+  "queue": "backfill",
+  "nodes": 1,
+  "ncpus": 128,
+  "openmp_threads": 16,
+  "launch": "numactl --interleave=all",
+  "smoke_walltime": "00:10:00",
+  "production_walltime": "00:40:00",
+  "submission_note": "Initial debug submission was rejected before a job was created because allocation hours were exhausted. Both actual jobs use allocation-exempt backfill.",
+  "commands": [
+    "qsub -r y -q backfill -l walltime=00:10:00 -v TASK=smoke -o results/willow_reference_v1/smoke.pbs.log pbs/willow_reference.pbs",
+    "qsub -r y -q backfill -l walltime=00:40:00 -v TASK=production -o results/willow_reference_v1/production.pbs.log pbs/willow_reference.pbs"
+  ]
+}

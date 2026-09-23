@@ -39,6 +39,15 @@ groups are empty in this archive, so the interacting comparisons retain their
 finite-bond MPS scope. See the [methods](docs/WILLOW_BENCHMARK.md).
 `make willow-benchmark` regenerates these results offline.
 
+The **[matched interacting reference](results/willow_reference_v1/summary.md)**
+adds independent continuous evolution and ideal experimental circuits for
+4×4, U=4 and zero flux, at all 24 saved times and all three step counts.
+It separates observed experimental discrepancy from Trotter error and checks
+the approximate classical references. The reconstructed swap-network order
+reproduces all 288 available free-circuit reference points after the published
+diagonal symmetry averaging. See the [methods](docs/WILLOW_REFERENCE.md);
+`make willow-reference` regenerates the comparison offline.
+
 The **[same-task algorithm and component study](results/frontier_v1/summary.md)**
 adds open-boundary qubitization, 24 million decoded growth shots toward distances
 13 and 25, explicit magic-state transport, measured exposure diagnostics, and a

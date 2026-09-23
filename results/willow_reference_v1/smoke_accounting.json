@@ -1,0 +1,35 @@
+{
+  "job_state": "F",
+  "Exit_status": 0,
+  "queue": "backfill",
+  "Account_Name": "QC_NA_Sim",
+  "exec_host": "i169/0*128",
+  "resources_used": {
+    "cpupercent": 904,
+    "cput": "00:04:18",
+    "mem": "2431960kb",
+    "ncpus": 128,
+    "vmem": "2828544kb",
+    "walltime": "00:00:34"
+  },
+  "Resource_List": {
+    "allow_account_check_failure": "True",
+    "allow_negative_allocation": "True",
+    "award_category": "NA",
+    "award_type": "NA",
+    "burn_ratio": 18.5265,
+    "current_allocation": -16152412160,
+    "ncpus": 128,
+    "ni_resource": "improv",
+    "nodect": 1,
+    "overburn": "False",
+    "place": "scatter",
+    "project_priority": 2,
+    "route_backfill": "True",
+    "select": "1:ncpus=128",
+    "total_allocation": 921600000,
+    "walltime": "00:10:00"
+  },
+  "stime": "Wed Sep 23 06:38:49 2026",
+  "obittime": "Wed Sep 23 06:39:41 2026"
+}

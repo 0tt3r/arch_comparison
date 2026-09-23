@@ -31,6 +31,9 @@ accuracy requirement without assuming that a trained estimator achieves it.
 Published resource ledgers and experimental data provide separate checks on
 the accounting: they constrain operating points on their original tasks,
 without certifying a common observable accuracy.
+Matched experimental circuit and Hamiltonian references resolve the competing
+effects of refinement: reduced Trotter error and growing observed circuit
+discrepancy, with partial cancellation in the final observable.
 Direct $4\times4$ dynamics constrain the Trotter component, while transfer to
 larger lattices, complete injection channels, and full routed schedules remain
 conditional. The comparison supports operation-dependent protection and hybrid
@@ -427,8 +430,95 @@ The experimental comparison therefore constrains the physical arm at two
 levels: a directly measured circuit and sampling cost, and an
 observable-dependent comparison with available references. It supports useful
 small-footprint dynamics without certifying every local observable at
-$0.01$ or $0.001$. A matched interacting circuit and continuous reference
-would resolve more than another refinement of the gate-count constants.
+$0.01$ or $0.001$. We now calculate a matched interacting reference for
+the main $4\times4$ example.
+
+\subsection{Separating circuit error from experimental discrepancy}\label{sec:willow-reference}
+For the $4\times4$, $U=4$, zero-flux center-hole input, we compute both
+continuous Hamiltonian dynamics and the ideal experimental circuits at all
+24 saved times and all three step counts. This input has seven up spins,
+eight down spins and a hole at $(1,1)$; it differs from the half-filled
+N\'eel input in our resource baseline. Its fixed-particle sector contains
+$\binom{16}{7}\binom{16}{8}=147232800$ amplitudes.
+
+The circuit uses the hopping order specified by the swap network in
+Appendix D2 of Ref.~\cite{phasecraftwillow2025}. In a fixed fermionic frame,
+each step is an ordered half sweep of hopping terms, all onsite rotations,
+and the reverse hopping half sweep. Independent orbital evolution reproduces
+the archived $U=0$ circuit references at all 288 saved combinations of size,
+flux, step count and time. This check requires the archive's diagonal symmetry
+averaging: the maximum local-$Z$ discrepancy falls from $0.345$ without
+averaging to below $6\times10^{-15}$ with it. We apply the same averaging
+to the interacting circuit observables.
+For this input and zero-flux Hamiltonian, diagonal reflection leaves the
+continuous target unchanged. The ordered finite-step circuit can break that
+symmetry, so applying the averaging to its reference matters.
+
+Continuous evolution uses matrix-free Chebyshev propagation in increments
+of $0.05$, with a conservative spectral bound of $64$. We retain the
+analytical state-truncation bound and check floating-point behavior through
+full-state comparisons with independent small-system Fock-space calculations
+and a separate direct propagation to $Jt=1$. Ideal circuits use exact
+two-mode hopping and onsite phase updates. These are numerical references
+for the specified finite-system unitary, not noisy hardware simulations.
+
+Let $D_H$ denote continuous dynamics, $D_C$ the ideal circuit result, and
+$\widehat D$ the published experimental estimate. Then
+\begin{equation}\label{eq:willow-error-decomposition}
+ \widehat D-D_H=(\widehat D-D_C)+(D_C-D_H).
+\end{equation}
+The first contribution contains finite sampling and experimental processing
+effects. The second is deterministic circuit error. Squaring and averaging
+therefore retains a cross term; the two RMS differences cannot be added or
+interpreted as independent error bars. We report observed discrepancies
+without identifying them with the ensemble bias of an estimator.
+
+The two contributions respond oppositely to refinement:
+\begin{center}
+\small
+\begin{tabular}{rrrr}
+\toprule
+Steps & Experiment--circuit RMS & Circuit--continuous RMS & Total RMS\\
+\midrule
+1 & $0.00469$ & $0.04481$ & $0.04429$\\
+2 & $0.00764$ & $0.01973$ & $0.01581$\\
+3 & $0.00946$ & $0.01315$ & $0.01030$\\
+\bottomrule
+\end{tabular}
+\end{center}
+More steps improve the ideal dynamics while the observed circuit discrepancy
+grows. At three steps the total RMS is smaller than the circuit error alone
+because the signed contributions partially cancel. This is a measured
+depth--accuracy tradeoff in the tested experimental pipeline, not a
+projection of its performance beyond three steps.
+
+At three steps, $71.4\%$ of the 384 local time-site points lie within
+$0.01$, while the largest difference is $0.0400$. The bond-2048 MPS reference
+differs from continuous dynamics by $0.00214$ RMS and at most $0.00909$.
+Thus its previous use gave a reasonable overall accuracy scale, but could
+not resolve a $0.001$ comparison. These statements concern the saved data
+set; they are not statistical coverage guarantees.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{willow_matched_reference.pdf}
+\caption{Matched interacting reference for the $4\times4$, $U=4$, zero-flux
+center-hole experiment. Upper panels: spatial mean and central-site doublons
+at three steps. Lower left: local-doublon RMS differences across sites at each
+time. Lower right: RMS differences
+over all 24 times and 16 sites versus step count. The ideal circuit includes
+the same diagonal averaging as the processed estimates. Signed discrepancies
+can reinforce or cancel, so the three RMS curves do not add. The experimental
+curves retain finite sampling and processing error; no larger-lattice transfer
+is assumed.}\label{fig:willow-reference}
+\end{figure}
+
+This comparison tests useful dynamics on the experiment's actual small
+device. It neither substitutes a fitted mitigation exponent into the capacity
+model nor transfers this input's Trotter coefficient to the N\'eel baseline.
+The distinction between a roughly $0.01$ RMS experimental result and a
+specified local-observable error budget remains central to comparing the
+physical and encoded architectures.
 
 \clearpage
 \section{Earlier physical-error and algorithm sensitivities}\label{sec:physics-sweep}

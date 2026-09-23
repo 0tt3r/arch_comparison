@@ -1,0 +1,12 @@
+{
+  "reference_records": 97,
+  "continuous_times": 24,
+  "circuit_points": 72,
+  "maximum_norm_error": 2.930988785010413e-14,
+  "maximum_accumulated_state_tail": 2.9165968595622113e-13,
+  "direct_vs_incremental_max_observable_difference": 1.4460654895742664e-14,
+  "status": "PASS: complete matched-reference census, exact-state controls, direct/incremental comparison, U=0 ordering replay, and signed error accounting",
+  "free_circuit_reference_points": 288,
+  "maximum_free_circuit_Z_difference": 5.551115123125783e-15,
+  "scope": "4x4 U=4 zero-flux center-hole experiment only. Observed discrepancies include sampling and processing; no ensemble bias certificate or 6x6 extrapolation."
+}

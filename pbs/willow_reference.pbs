@@ -1,0 +1,17 @@
+#!/bin/bash -l
+#PBS -N willow-reference
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128
+#PBS -l place=scatter
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1
+case "${TASK:?Specify smoke or production}" in
+    smoke|production) ;;
+    *) exit 2 ;;
+esac
+numactl --interleave=all /home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python -u python/willow_sector.py --task "$TASK"

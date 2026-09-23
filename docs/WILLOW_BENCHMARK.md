@@ -6,6 +6,10 @@ The gate counts, hardware footprint, attempted shots and processing can be
 checked directly. Observable accuracy still depends on the available reference.
 This pass leaves the integrated architecture comparison unchanged.
 
+The subsequent [matched-reference calculation](WILLOW_REFERENCE.md) supplies
+an independent interacting reference for the 4×4, U=4, zero-flux subset.
+The archive limitations below still describe the supplied public data.
+
 ## Declared data selection and provenance
 
 We use [Zenodo 17881822](https://zenodo.org/records/17881822), version 1.0.1,

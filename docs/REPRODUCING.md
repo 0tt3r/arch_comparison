@@ -41,6 +41,13 @@ while the full 8.8 GB archive MD5 is explicitly not verified. The reduction
 preserves randomized-compilation groups and uses h5py. `make willow-figures`
 redraws the saved results without downloading or reducing shots again.
 
+`make willow-reference` analyzes the saved 4×4 interacting sector results and
+regenerates the matched-reference figure. `make willow-reference-check` replays
+the numerical accounting and free-circuit ordering controls offline. The
+[methods](WILLOW_REFERENCE.md) describe the separate PBS calculation, its
+initial-state and ordering contract, and its numerical checks. These Make
+targets do not submit jobs or rerun the 147-million-amplitude solver.
+
 ## Same-task algorithms and larger components
 
 See [FRONTIER_WORK.md](FRONTIER_WORK.md). `make frontier` regenerates the

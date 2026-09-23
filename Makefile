@@ -4,7 +4,17 @@ QEC_PYTHON ?= /home/ac.otten/soft/mambaforge/envs/stim/bin/python
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check
+.PHONY: discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
+
+willow-reference:
+	$(PYTHON) python/willow_reference_analysis.py
+	$(PYTHON) python/plot_willow_reference.py
+
+willow-reference-figures:
+	$(PYTHON) python/plot_willow_reference.py
+
+willow-reference-check:
+	$(PYTHON) python/willow_reference_analysis.py --check
 
 willow-benchmark:
 	$(PYTHON) python/willow_benchmark.py
@@ -81,7 +91,7 @@ implementation-check:
 	$(PYTHON) python/implementation_analysis.py --check
 	$(QEC_PYTHON) python/star_growth_probe.py --check
 
-figures: discussion delivery patch-study implementation-figures frontier-figures integrated-figures published-figures willow-figures
+figures: discussion delivery patch-study implementation-figures frontier-figures integrated-figures published-figures willow-figures willow-reference-figures
 	$(PYTHON) python/physics_sweep.py --plot
 	$(PYTHON) python/plot_capacity.py
 	$(PYTHON) python/draw_architectures.py
@@ -108,4 +118,5 @@ audit:
 	$(PYTHON) python/integrated_comparison.py --check
 	$(PYTHON) python/published_benchmarks.py --check
 	$(PYTHON) python/willow_benchmark.py --check
+	$(PYTHON) python/willow_reference_analysis.py --check
 	$(PYTHON) python/presentation_manifest.py

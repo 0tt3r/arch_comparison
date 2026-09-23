@@ -284,3 +284,22 @@ derived-observable uncertainty uses a stated upper bound rather than independent
 error propagation. Increasing repetitions of fixed randomized circuits and
 increasing the number of independent circuits are separate sampling scenarios.
 Their extrapolated variance does not establish useful observable accuracy.
+
+## Matched interacting Willow reference
+
+The next calculation supplies the missing interacting reference for the
+declared 4×4, U=4, zero-flux central-hole subset. It retains all 24 saved times
+and all three step counts. It does not change the original half-filled
+Néel resource task or transfer an experimental error coefficient into it.
+
+The paper's swap-network hopping order reproduces all 288 archived U=0
+circuit-reference points, after the diagonal averaging applied in the archive.
+The new fixed-particle solver supports the actual (7,8) input and reuses the
+frozen matrix-free kernels. Independent small-system full-state tests and a
+direct-versus-incremental time-propagation comparison check its implementation.
+
+Observed experimental discrepancy, deterministic circuit error and approximate
+classical reference error are reported separately. Their signed contributions
+can cancel, so the analysis retains the cross term in squared RMS error.
+This gives a direct accuracy comparison for an actual experimental workload
+without interpreting one data set as an estimator-bias certificate.
