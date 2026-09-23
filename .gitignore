@@ -20,3 +20,6 @@ build/
 /results/cudaq_v1/**/full_ft_p0.mlir
 /results/cudaq_v1/**/full_ft_pbc.mlir
 /results/cudaq_v1/**/physical_p3.mlir
+
+# PBS job logs
+*.o[0-9]*

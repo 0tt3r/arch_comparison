@@ -1,0 +1,103 @@
+{
+  "status": "complete",
+  "contract": {
+    "distance": 5,
+    "basis": "x",
+    "p": 0.0001,
+    "rounds": 100,
+    "target_shots": 65536,
+    "seed": 2026092303,
+    "batch": 4096,
+    "program_sha256": "7ac67e90bae1f9ba437e78f521f567dc1cf5b2f2d833c21e3067be888b04fe9c",
+    "decoder": "pymatching MWPM; correlations disabled"
+  },
+  "shots": 65536,
+  "failures": 0,
+  "interval95": [
+    0.0,
+    5.6286249336939024e-05
+  ],
+  "finite_window_per_round": 0.0,
+  "finite_window_interval95": [
+    0.0,
+    5.628938603161371e-07
+  ],
+  "batches": [
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ],
+    [
+      4096,
+      0
+    ]
+  ],
+  "elapsed_seconds": 1.9556693620979786,
+  "shots_per_second": 33510.77706187262,
+  "circuit_sha256": "3fce1288d350aa11cc5d0ee7c30fa8bb08e23855cfaf6c8d3fec3bbcc3bdb93b",
+  "host": "i226",
+  "pbs_job": "7791319.imgt1",
+  "stim": "1.16.dev0",
+  "pymatching": "2.3.1",
+  "numpy": "2.2.6",
+  "scipy": "1.17.1",
+  "python": "3.14.3 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 22:51:43) [GCC 14.3.0]",
+  "machine": "x86_64",
+  "peak_rss_kib": 130152
+}

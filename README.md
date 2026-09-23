@@ -1,5 +1,14 @@
 # Hubbard dynamics on a fixed qubit array
 
+**Latest: [optimization round](results/optimization_round_v1/summary.md)**
+([findings and methods](docs/OPTIMIZATION_ROUND.md)). It implements the five changes agreed in
+[OPUS55_REVIEW.md](OPUS55_REVIEW.md) §0 and reports which choices change the capacity leader.
+It leads with the time-growing workload (τ = L/4). Companion notes cover the
+[raw-RUS versus PCEC question](docs/RAW_RUS_NOTE.md) and the
+[Stim calibration of the surface-code law](docs/SURFACE_LAW.md) (Λ = 7.4 rather than 10 at p = 10⁻³; not yet propagated).
+
+![Time-growing capacity after the optimization round](figures/optimization_round_capacity.png)
+
 Start with the **[integrated comparison and NISQ requirements](results/integrated_v1/summary.md)**.
 This updates the encoded capacity comparison with the existing angle-dependent
 STAR channels, acceptance and growth scenarios, and FT's tested synthesis menu.

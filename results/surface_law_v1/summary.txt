@@ -1,0 +1,5 @@
+Completed 96 million fixed shots in 38.7 minutes; fit.json and docs/SURFACE_LAW.md contain the results.
+p=1e-3: Lambda=7.41 [7.20,7.62], A_sum=0.0773 [0.0724,0.0825] (95%; A_sum sums X/Z components).
+p=1e-4: Lambda=89.2 [63.5,146], A_sum=0.125 [0.0618,0.336]; d=7 has upper bounds only.
+Training-law extrapolation at p=1e-3 adds 4-6 distance units and costs 1.32-1.46 times d^2 over the requested grid.
+The full-range exponential is rejected; long-memory d>=5 gives Lambda=7.97 [7.82,8.11]. The law is shared by STAR/FT; comparison with NISQ changes.

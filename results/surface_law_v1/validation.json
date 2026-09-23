@@ -1,0 +1,79 @@
+{
+  "status": "pass",
+  "rows": [
+    {
+      "distance": 3,
+      "basis": "x",
+      "graphlike_distance": 3,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    },
+    {
+      "distance": 3,
+      "basis": "z",
+      "graphlike_distance": 3,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    },
+    {
+      "distance": 5,
+      "basis": "x",
+      "graphlike_distance": 5,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    },
+    {
+      "distance": 5,
+      "basis": "z",
+      "graphlike_distance": 5,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    },
+    {
+      "distance": 7,
+      "basis": "x",
+      "graphlike_distance": 7,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    },
+    {
+      "distance": 7,
+      "basis": "z",
+      "graphlike_distance": 7,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    },
+    {
+      "distance": 9,
+      "basis": "x",
+      "graphlike_distance": 9,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    },
+    {
+      "distance": 9,
+      "basis": "z",
+      "graphlike_distance": 9,
+      "noiseless_shots": 256,
+      "logical_flip_shots": 256,
+      "packed_decode_equal": true,
+      "macro_layers_per_round": 6
+    }
+  ],
+  "stim": "1.16.dev0",
+  "pymatching": "2.3.1"
+}

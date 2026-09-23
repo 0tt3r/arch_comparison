@@ -1,0 +1,80 @@
+Job Id: 7791324.imgt1
+    Job_Name = surf-law-3
+    Job_Owner = otten@i533.lcrc.anl.gov
+    resources_used.cpupercent = 83
+    resources_used.cput = 00:04:01
+    resources_used.mem = 206196kb
+    resources_used.ncpus = 128
+    resources_used.vmem = 712376kb
+    resources_used.walltime = 00:04:19
+    job_state = F
+    queue = backfill
+    server = imgt1
+    Account_Name = QC_NA_Sim
+    Checkpoint = u
+    ctime = Wed Sep 23 08:28:53 2026
+    Error_Path = i533.lcrc.anl.gov:/lcrc/project/QC_NA_Sim/architecture_compari
+	son/surf-law-3.e7791324
+    exec_host = i506/0*128
+    exec_vnode = (i506:ncpus=128)
+    Hold_Types = n
+    Join_Path = oe
+    Keep_Files = doe
+    Mail_Points = a
+    mtime = Wed Sep 23 08:33:31 2026
+    Output_Path = i533.lcrc.anl.gov:/lcrc/project/QC_NA_Sim/architecture_compar
+	ison/results/surface_law_v1/worker3.scheduler.log
+    Priority = 0
+    qtime = Wed Sep 23 08:28:53 2026
+    Rerunable = True
+    Resource_List.allow_account_check_failure = True
+    Resource_List.allow_negative_allocation = True
+    Resource_List.award_category = NA
+    Resource_List.award_type = NA
+    Resource_List.burn_ratio = 18.5331
+    Resource_List.current_allocation = -16158516224
+    Resource_List.ncpus = 128
+    Resource_List.ni_resource = improv
+    Resource_List.nodect = 1
+    Resource_List.overburn = False
+    Resource_List.place = scatter
+    Resource_List.project_priority = 2
+    Resource_List.route_backfill = True
+    Resource_List.select = 1:ncpus=128
+    Resource_List.total_allocation = 921600000
+    Resource_List.walltime = 00:30:00
+    stime = Wed Sep 23 08:28:54 2026
+    obittime = Wed Sep 23 08:33:30 2026
+    session_id = 3012017
+    jobdir = /home/ac.otten
+    substate = 92
+    Variable_List = PBS_O_HOME=/home/ac.otten,PBS_O_LANG=C.UTF-8,
+	PBS_O_LOGNAME=otten,
+	PBS_O_PATH=/gpfs/fs1/home/ac.otten/soft/codex/codex-path:/home/ac.otte
+	n/.local/bin:/home/otten/soft:/gpfs/fs1/soft/improv/software/custom-bui
+	lt/xalt/xalt/bin:/usr/lpp/mmfs/bin:/home/ac.otten/.codex/tmp/arg0/codex
+	-arg082uCKF:/gpfs/fs1/home/ac.otten/soft/codex/codex-path:/home/ac.otte
+	n/.local/bin:/home/otten/soft:/gpfs/fs1/soft/improv/software/spack-buil
+	t/linux-rhel8-zen3/gcc-12.3.0/tmux-3.4-5r76eot/bin:/gpfs/fs1/home/ac.ot
+	ten/.juliaup/bin:/home/ac.otten/soft/mambaforge/condabin:/usr/share/Mod
+	ules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/gpfs/fs1/ho
+	me/software/lcrc/improv/bin:/opt/pbs/bin:/home/otten/soft/julia-1.4.2/b
+	in:/home/ac.otten/bin:/home/otten/soft/julia-1.4.2/bin:/home/ac.otten/b
+	in,PBS_O_MAIL=/var/spool/mail/otten,PBS_O_SHELL=/bin/bash,
+	PBS_O_INTERACTIVE_AUTH_METHOD=resvport,PBS_O_HOST=i533.lcrc.anl.gov,
+	PBS_O_WORKDIR=/lcrc/project/QC_NA_Sim/architecture_comparison,
+	PBS_O_SYSTEM=Linux,PBS_O_QUEUE=backfill
+    comment = Job run at Wed Sep 23 at 08:28 on (i506:ncpus=128) and finished
+    etime = Wed Sep 23 08:28:53 2026
+    umask = 22
+    run_count = 1
+    eligible_time = 00:00:03
+    Stageout_status = 1
+    Exit_status = 0
+    Submit_arguments = -r y -o /lcrc/project/QC_NA_Sim/architecture_comparison/
+	results/surface_law_v1/worker3.scheduler.log results/surface_law_v1/wor
+	ker3.pbs
+    history_timestamp = 1790170411
+    project = QC_NA_Sim
+    Submit_Host = i533.lcrc.anl.gov
+

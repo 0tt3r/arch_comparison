@@ -74,7 +74,11 @@ def check_content():
     reference=json.loads((ROOT/'results/willow_reference_v1/validation.json').read_text())
     assert reference['status'].startswith('PASS:')
     assert (reference['continuous_times'],reference['circuit_points'],reference['reference_records'])==(24,72,97)
-    return {'matched_willow_reference_records':reference['reference_records'],
+    rounds=json.loads((ROOT/'results/optimization_round_v1/validation.json').read_text())
+    assert rounds['status'].startswith('PASS:')
+    assert rounds['resource_rows']==len(json.loads((ROOT/'results/optimization_round_v1/costs.json').read_text()))
+    return {'optimization_round_rows':rounds['resource_rows'],'optimization_round_v1_replays':rounds['v1_replays'],
+            'matched_willow_reference_records':reference['reference_records'],
             'willow_cases':willow['cases'],'willow_attempted_shots':willow['attempted_shots'],
             'published_star_rows':published['star_rows'],'published_ft_rows':published['ft_rows'],
             'experimental_shot_batches':published['experimental_shot_batches'],
@@ -103,7 +107,7 @@ def inventory():
         'noisy_small.json','accuracy_calibration.pdf','postselection_bias.pdf')]
     inputs.extend(ROOT/f'results/refinement_v3/parallel_L{L}_observable/result.json' for L in (2,4,6,8))
     artifacts=[ROOT/'tex/main.pdf']+sorted((ROOT/'figures').glob('*'))
-    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1',ROOT/'results/physics_sweep_v1',ROOT/'results/workshop_reconciliation_v1',ROOT/'results/implementation_v1',ROOT/'results/frontier_v1',ROOT/'results/integrated_v1',ROOT/'results/published_benchmarks_v1',ROOT/'results/willow_v1',ROOT/'results/willow_reference_v1']:
+    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1',ROOT/'results/physics_sweep_v1',ROOT/'results/workshop_reconciliation_v1',ROOT/'results/implementation_v1',ROOT/'results/frontier_v1',ROOT/'results/integrated_v1',ROOT/'results/published_benchmarks_v1',ROOT/'results/willow_v1',ROOT/'results/willow_reference_v1',ROOT/'results/optimization_round_v1']:
         artifacts.extend(p for p in sorted(folder.rglob('*')) if p.is_file())
     artifacts.extend(p for p in sorted(OUT.iterdir()) if p.is_file() and p.name!='manifest.json')
     return {key:{str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}

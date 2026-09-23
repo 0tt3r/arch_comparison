@@ -1,0 +1,51 @@
+{
+  "status": "complete",
+  "contract": {
+    "distance": 7,
+    "basis": "x",
+    "p": 0.001,
+    "rounds": 70,
+    "target_shots": 10000,
+    "seed": 2026092301,
+    "batch": 4096,
+    "program_sha256": "7ac67e90bae1f9ba437e78f521f567dc1cf5b2f2d833c21e3067be888b04fe9c",
+    "decoder": "pymatching MWPM; correlations disabled"
+  },
+  "shots": 10000,
+  "failures": 12,
+  "interval95": [
+    0.0006202063772964036,
+    0.0020952192793709757
+  ],
+  "finite_window_per_round": 1.7163166964032465e-05,
+  "finite_window_interval95": [
+    8.865512139353352e-06,
+    2.999369356711624e-05
+  ],
+  "batches": [
+    [
+      4096,
+      5
+    ],
+    [
+      4096,
+      7
+    ],
+    [
+      1808,
+      0
+    ]
+  ],
+  "elapsed_seconds": 2.198091294616461,
+  "shots_per_second": 4549.401576036392,
+  "circuit_sha256": "30d3ef0a201c9c6e550753ffa33c8e8daee69a4f17ba969979304a9cff012887",
+  "host": "i533",
+  "pbs_job": null,
+  "stim": "1.16.dev0",
+  "pymatching": "2.3.1",
+  "numpy": "2.2.6",
+  "scipy": "1.17.1",
+  "python": "3.14.3 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 22:51:43) [GCC 14.3.0]",
+  "machine": "x86_64",
+  "peak_rss_kib": 984148
+}

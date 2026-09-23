@@ -12,36 +12,265 @@
 \maketitle
 
 \begin{abstract}
-We compare three uses of the same nearest-neighbor array: physical-qubit
-computation with error mitigation, partially protected STAR computation, and
-fully fault-tolerant surface-code computation. The application is a local
-doublon observable after a Fermi--Hubbard quench. We organize the comparison
-around the largest lattice accessible with a given number of physical qubits
-and one week of execution. A common accounting model separates sampling,
+Error mitigation, partial protection, and full fault tolerance compete for the
+same physical qubits, and the comparison between them is decided by choices
+that are usually fixed before it begins. In this work, we compare the three on
+one nearest-neighbor array for a local doublon observable after a
+Fermi--Hubbard quench, with one week of execution and an evolution time that
+grows with the lattice. A common accounting model separates sampling,
 mitigation exposure, logical protection, non-Clifford supply, and parallel
-replicas. Explicit compilation, finite-lattice dynamics, and component noise
-calculations identify the assumptions that control the comparison. The current
-integrated model prices STAR's angle-dependent error, acceptance, and retries
-together, combines measured growth components under explicit composition
-assumptions, and selects individual or Hamming-weight synthesis for FT.
-Source and layout alternatives remain scenario bands. For physical-qubit
-computation, we solve for the sampling overhead and remaining systematic offset
-needed to compete with the selected encoded implementations. This exposes the
-accuracy requirement without assuming that a trained estimator achieves it.
-Published resource ledgers and experimental data provide separate checks on
-the accounting: they constrain operating points on their original tasks,
-without certifying a common observable accuracy.
-Matched experimental circuit and Hamiltonian references resolve the competing
-effects of refinement: reduced Trotter error and growing observed circuit
-discrepancy, with partial cancellation in the final observable.
-Direct $4\times4$ dynamics constrain the Trotter component, while transfer to
-larger lattices, complete injection channels, and full routed schedules remain
-conditional. The comparison supports operation-dependent protection and hybrid
-strategies in identified regimes; it does not establish an unconditional
-ordering of the architectures.
+replicas, and optimizes each architecture's step count, error allocation, and
+delivery. We then promote five previously fixed choices to optimization
+variables: raw repeat-until-success injection, analog parallelism,
+fault-tolerant T delivery, separate source and data distances, and Richardson
+extrapolation of the Trotter error. Joint optimization of T-consumption ports,
+factories, and Hamming-weight phasing changes the leader most often. With all
+five choices at a physical error of $10^{-3}$, full fault tolerance leads
+beyond about $6\times10^5$ physical qubits; at an absolute error of $10^{-3}$,
+this point moves from $1.6\times10^7$ to $6\times10^5$ qubits. STAR, and a
+hybrid that draws only its fixed-angle rotations from magic-state
+cultivation, saturate near $\tau=2$--3, and no STAR-only window remains. These
+orderings are conditional on declared delivery models, finite-patch Trotter
+transfer, a reference surface-code law shared by both encoded arms, and an
+assumed mitigation overhead for physical qubits; a circuit-level calibration
+of that law raises the encoded patch area by a factor of about 1.4 at $p=10^{-3}$ and is
+not yet propagated. Published resource ledgers
+and experimental data check the accounting on their original tasks. Physical
+qubits pay per gate, STAR per radian, and full fault tolerance per logarithm;
+for this workload, the radians grow faster.
 \end{abstract}
 
+\section{Which choices change the leader}\label{sec:optimization-round}
+The integrated comparison of Sec.~\ref{sec:integrated} fixed several choices
+that control its ordering: four analog lanes, one T-consumption port,
+Hamming-weight batches of at most 16 rotations, a data distance no smaller
+than the cultivation output distance, noisy probabilistic coherent error
+cancellation (PCEC) for every analog rotation, and a single Trotter branch.
+It also measured capacity as the largest fully evolved lattice at fixed
+$\tau=1$. In this section, we replace that headline by a time-growing
+workload, promote the five choices to optimization variables, and ask which
+of them changes the capacity leader. Each change is tested alone and all
+five together against a reference menu that reproduces the integrated
+model; 335 of 336 replayed cases agree to $10^{-9}$ in $\log_{10}Q$. The
+remaining case, a STAR design costed at $10^{78.7}$ qubits, is removed by
+an exposure cutoff ($\chi>120$) that cannot affect capacity below $10^{9}$
+qubits.
+
+\paragraph{The headline workload grows with the lattice.}
+A local observable at fixed $\tau$ stops depending on $L$ once the lattice
+contains its light cone. For free fermions ($U=0$), the central doublon at
+$\tau=1$ differs from its $L=60$ value by $2.4\times10^{-3}$ at $L=6$ and by
+$2.4\times10^{-4}$ at $L=8$. Fixed-time capacity beyond $L\approx8$
+therefore measures the cost of evolving a full lattice, which remains a
+useful implementation benchmark, rather than a more converged answer. We
+lead with $\tau=L/4$ for $L=4,8,\ldots,32$, for which the relevant region and
+the lattice grow together. At $\tau\in\{1,2,4\}$ the Trotter coefficient is
+the measured $4\times4$ envelope used in Sec.~\ref{sec:integrated}; at other
+times we apply the same running-maximum rule to every measured patch through
+$\tau$. We stress that the free-fermion numbers motivate this choice but do
+not bound interacting dynamics; interacting bulk convergence and patches
+larger than $4\times4$ remain open.
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{@{}p{0.17\linewidth}p{0.36\linewidth}p{0.40\linewidth}@{}}
+\toprule
+Change & Optimized quantity & Declared assumption\\
+\midrule
+Raw RUS & Raw repeat-until-success (RUS) channel beside noisy PCEC for STAR and hybrid rotations &
+Same generator-fault instrument; coherent residue and retry tail charged to the error budget\\
+Lanes & Analog lanes, 1--128 &
+Six tiles per lane; at most $L$ lanes for termwise Jordan--Wigner rotations and $N$ for plaquette rotations; more than four lanes use the fast block\\
+FT delivery & T-consumption ports (1--128), factories, and Hamming-weight batches up to 1024, jointly &
+Two tiles per extra port; ports use the fast block; serial rotation sequences, Eq.~\eqref{eq:serial-t}; no analog-lane tiles in the FT block\\
+Distances & Data distance separate from the cultivation output distance &
+Transfer charged as $2\max(d,15)$ cycles per state; STAR receivers keep their measured growth targets\\
+Richardson & Single branch or branches $(r,2r)$ with coefficients $(-\frac13,\frac43)$ &
+Branch-specific time, variance, mitigation, and bias, Eq.~\eqref{eq:richardson-time}\\
+\bottomrule
+\end{tabular}
+\caption{The five changes tested in this section. Each enters the same
+optimizer over step count, error allocation, and source menu used in
+Sec.~\ref{sec:integrated}. Tile charges and concurrency limits are declared
+delivery models, not compiled schedules.}\label{tab:optimization-switches}
+\end{table}
+
+\paragraph{Richardson branches are costed individually.}
+Consider two product-formula branches with step counts $r$ and $2r$ and
+coefficients $c=(-\frac13,\frac43)$, which cancel the leading $r^{-2}$ error
+of the second-order formula~\cite{endo2019algorithmic,low2019multiproduct}.
+With per-attempt variance multipliers $F_i=e^{\chi_i}$ and attempt times
+$t_i$, the optimal allocation of shots between branches gives a total sampling
+time
+\begin{equation}\label{eq:richardson-time}
+ T_{\rm sample}=\frac{N_0}{m}\Big(\sum_i|c_i|\sqrt{F_i\,t_i}\Big)^2,
+\end{equation}
+where $N_0$ is the ideal shot count and $m$ the number of replicas. With equal
+$F$ and $t_2=2t_1$, Eq.~\eqref{eq:richardson-time} costs
+$(\frac13+\frac43\sqrt2)^2=4.92$ base-branch runtimes, so extrapolation pays
+only when the Trotter allowance it frees buys more than that. The branches
+share hardware and code distance. Branch biases add with weights $|c_i|$, so
+the logical, magic, and synthesis allowances are divided by $\|c\|_1=5/3$
+after each branch's own $\Gamma$ amplification. The residual Trotter error is
+$K_4/r^4$. On the $4\times4$ plaquette patch at $\tau=1$, the measured
+$|4E(2r)-E(r)|r^4/3$ equals $0.0514$ at both $r=8$ and $r=16$, so the
+residual is cleanly fourth order, as expected for a symmetric
+formula~\cite{childs2021trotter}. We use 1.1 times the running maximum of this
+quantity over all signed same-patch pairs through $\tau$, and keep the base
+step count at $r\geq8\tau$. For physical qubits, each branch pays its own
+mitigation exponent.
+
+\paragraph{Ports cannot parallelize a synthesized rotation.}
+A synthesized rotation is a serial T sequence, whereas the rotations of one
+plaquette stage are independent. With $P$ consumption ports, the serial T
+depth of one shot is
+\begin{equation}\label{eq:serial-t}
+ N_T^{\rm serial}=n_T\sum_s m_s\left\lceil\frac{R_s}{P}\right\rceil
+ +\frac{N_T-n_TR}{P},
+\end{equation}
+where $s$ labels plaquette stages, each repeated $m_s$ times with $R_s$
+synthesized rotations, $n_T$ is the T count per rotation, $R=\sum_s m_sR_s$,
+and $N_T$ is the total T count including fixed-angle and Toffoli states. At
+$P=1$, Eq.~\eqref{eq:serial-t} reduces to $N_T$ and reproduces the integrated
+model. Larger Hamming-weight batches therefore trade parallel width for fewer
+synthesized rotations, and the optimizer must buy ports, factories, and batch
+size together. Additional factories are not cheap: with one cleanup level,
+each costs $1024+13\cdot2d^2$ qubits, or 22{,}890 at $d=29$.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{optimization_round_capacity.pdf}
+\caption{Capacity for the time-growing workload $\tau=L/4$ after the
+optimization round. Solid curves use all five changes; thin dashed curves of
+the same color use the reference menu. Bands give the STAR and hybrid
+zero-growth sensitivity. NISQ curves assume the effective mitigation overhead
+of Sec.~\ref{sec:discussion} or apply two-qubit PEC. $L=32$ ($\tau=8$) is the
+sampled ceiling. Delivery models are declared, and interacting bulk
+convergence is not established.}\label{fig:optimization-capacity}
+\end{figure}
+
+\paragraph{Full fault tolerance separates earlier.}
+Figure~\ref{fig:optimization-capacity} shows the time-growing capacity. At
+$p=10^{-3}$ and $\eps=0.01$, encoded computation overtakes the effective NISQ
+line at about $2\times10^5$ physical qubits, and full fault tolerance leads
+alone beyond $6\times10^5$ qubits, reaching the $\tau=8$ ceiling at
+$7\times10^6$. STAR saturates at $L=8$ ($\tau=2$) and the hybrid at $L=12$
+($\tau=3$). Physical-qubit computation stays at $\tau=1$ even with the assumed
+effective overhead. At $\eps=0.001$, the point beyond which full fault
+tolerance leads moves from $1.6\times10^7$ qubits under the reference menu to
+$6\times10^5$. At $p=10^{-4}$ the same point moves from $1.3\times10^7$ to
+$3\times10^6$ qubits at $\eps=0.001$, and the analog arms saturate later,
+at $L=16$ (STAR) and $L=20$ (hybrid) for $\eps=0.01$. The hybrid injects the
+variable plaquette angles in analog and draws its fixed $\pi/8$ rotations
+from the same cultivated source as full fault tolerance; with all five
+changes it never falls below STAR.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{optimization_round_leaders.pdf}
+\caption{Encoded capacity leader for each configuration (rows), qubit budget
+(columns), time family, physical error, and precision. Numbers give the
+leader's lattice side; hatched cells are ties. The reference menu is the top
+row of each panel.}\label{fig:optimization-leaders}
+\end{figure}
+
+\paragraph{Delivery, not injection, moves the leader most often.}
+Figure~\ref{fig:optimization-leaders} and Table~\ref{tab:optimization-changes}
+attribute the changes. Out of 64 cells, joint T delivery changes the leader
+in 8. At $48\times48$, $\tau=1$, and $\eps=0.001$, whole-group phasing with
+batches of 512 reduces the T count from $1.34\times10^7$ to $3.1\times10^6$,
+while 32 ports and 1024 factories reduce the attempt time from 105~s to 2~s;
+the required area falls from $10^{9.4}$ to $10^{7.9}$ qubits although
+factories occupy 57\% of it. Richardson extrapolation changes six cells, all
+at $\eps=0.001$, and helps every encoded arm. Separate distances let full
+fault tolerance run at $d=9$--13 instead of 15 at $p=10^{-4}$. Either this
+change or optimized lanes turns the only cell in which STAR led alone
+($p=10^{-4}$, $\eps=0.01$, $Q=10^5$) into a tie. No STAR-only
+window remains.
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{@{}lrp{0.62\linewidth}@{}}
+\toprule
+Change & Cells & Mechanism\\
+\midrule
+FT delivery & 8 & Larger batches cut synthesized rotations; ports and factories cut the attempt time\\
+Richardson & 6 & Base step count $8\tau$ with a $K_4/r^4$ residual frees the Trotter allowance at $\eps=0.001$\\
+Lanes & 4 & Parallel analog injection, mainly for the hybrid\\
+Distances & 4 & Full fault tolerance at $d<15$ when $p=10^{-4}$\\
+Raw RUS & 1 & Lower STAR and hybrid exposure within the restricted instrument\\
+All five & 15 & Mostly earlier separation of full fault tolerance\\
+\bottomrule
+\end{tabular}
+\caption{Cells, out of 64, in which each change alters the encoded capacity
+leader relative to the reference menu.}\label{tab:optimization-changes}
+\end{table}
+
+\paragraph{Raw RUS is a model option, not a conclusion.}
+Within our instrument, averaging over RUS branches cancels the coherent term
+to first order. With success probability one half and conjugation on failure,
+the first-order coefficient of the $m$th retry's coherent term is
+$2^{-m-1}-\sum_{n>m}2^{-n-1}=0$, while dephasing keeps the weights $2^{-m}$.
+Raw RUS then carries about half of noisy PCEC's dephasing; with the growth
+bound composed, the exposure falls from 0.685 to 0.452 at $4\times4$ and from
+12.6 to 8.0 at $16\times16$. Toshio \textit{et al.}~\cite{toshio} average the
+same branches in their Appendix~E, yet report a raw-RUS prefactor slightly
+larger than with PCEC and a logarithmic angle dependence. We have not
+reconciled the two. Raw RUS changes the leader in only one cell, so the
+conclusions about full fault tolerance do not depend on it. The STAR and
+hybrid gains in Fig.~\ref{fig:optimization-capacity} do; for example,
+$16\times16$ STAR at $\tau=1$ and $\eps=0.01$ falls from $10^{10.1}$ to
+$10^{8.0}$ qubits with raw RUS alone.
+
+\paragraph{The surface-code law is calibrated but not yet propagated.}
+Both encoded arms use $p_L(d)=A(p/p_{\rm th})^{(d+1)/2}$ per patch per round
+with $A=0.1$ and $p_{\rm th}=0.01$, a suppression factor $\Lambda=10$ at
+$p=10^{-3}$. A circuit-level memory calibration under our noise model and
+240~ns schedule, using Stim and PyMatching~\cite{gidney2021stim,higgott2023sparse}
+with $7.8\times10^7$ training and $1.8\times10^7$ holdout shots at $d=3$--9,
+gives $\Lambda=7.41$ (95\% profile interval 7.20--7.62) and a summed X/Z
+amplitude of 0.077 at $p=10^{-3}$. A fit restricted to $d\geq5$ gives
+$\Lambda=7.97$, and a single law is statistically rejected across $d=3$--9,
+so the exponential is an approximate resource model. At $p=10^{-4}$,
+$\Lambda=89$ with a wide interval (64--146). The fitted law raises the required
+distance by 4--6 at $p=10^{-3}$, or 1.3--1.5 times the patch area, and by at
+most 2 at $p=10^{-4}$. Because STAR and full fault tolerance share the law, it
+creates no arm-specific advantage, although their different volumes and
+distance rounding can still shift relative costs. It does move both encoded
+arms relative to physical-qubit computation by roughly the area factor. The
+curves in this section use the reference law; surgery, correlated noise, and
+distances above 9 remain uncalibrated.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{optimization_round_fixed_tau.pdf}
+\caption{Fixed-time benchmark at $\tau=1$, drawn as in
+Fig.~\ref{fig:optimization-capacity}. Beyond $L\approx8$ these curves compare
+the cost of evolving full lattices, not the accuracy of a local
+answer.}\label{fig:optimization-fixed-tau}
+\end{figure}
+
+The fixed-time benchmark in Fig.~\ref{fig:optimization-fixed-tau} shows the
+same ordering with larger analog gains: at $p=10^{-3}$, $\eps=0.01$, and
+$10^8$ qubits, STAR reaches $L=16$ and the hybrid $L=24$, compared with 12 and
+16 under the reference menu. The conclusions remain conditional on the declared lane,
+port, and transfer charges, on the transfer of the finite-patch Trotter
+envelope beyond $\tau=4$ and beyond $4\times4$, on the reference
+surface-code law discussed below, and on the assumed NISQ mitigation
+overhead. For the time-growing workload, full fault tolerance
+leads alone in every cell with at least $10^7$ qubits and in three of four
+cells at $10^6$, where the fourth is a tie with the hybrid. The analog arms
+pay per radian and full fault tolerance per logarithm; in this workload the
+radians grow faster.
+
+\clearpage
+
 \section{Integrated comparison and accuracy requirements}\label{sec:integrated}
+Section~\ref{sec:optimization-round} supersedes the capacity ordering of this
+section by optimizing five of its fixed choices; this section defines the
+reference menu that it reproduces.
 The central question is which hardware and algorithm assumptions determine
 the least expensive way to obtain a useful observable. We lead with absolute
 error $\eps=0.01$ and keep $\eps=0.001$ equally visible. The current comparison
@@ -2314,6 +2543,31 @@ handoff schedules with residual-channel validation. The same-Hamiltonian
 qubitization comparison in Section~\ref{sec:qsvt-comparison} does not
 reverse the tested ordering; its routed implementation and tighter
 state-dependent locality bounds remain unvalidated.
+
+\section{Conclusions}\label{sec:conclusions}
+We compared error mitigation, STAR partial protection, and full surface-code
+fault tolerance for Fermi--Hubbard dynamics on one nearest-neighbor array,
+organizing the comparison by the largest time-growing workload that fits a
+qubit budget within one week. The common accounting model reproduced its
+earlier results and then optimized five choices that had been fixed. The
+resulting picture is the one the exposure variables predict. Physical-qubit
+computation saturates logarithmically in the device size; STAR and the hybrid
+saturate at a wall set by their accumulated rotation angle; and full fault
+tolerance pays a large fixed area and then keeps scaling. With delivery
+optimized, full fault tolerance separates at about $6\times10^5$ qubits at
+$p=10^{-3}$ for both precisions studied.
+
+Several limitations remain. Lane, port, and transfer charges are declared
+rather than compiled. The Trotter envelope is measured only through
+$4\times4$ patches and is transferred beyond $\tau=4$. The calibrated
+surface-code law ($\Lambda\approx7.4$ rather than 10 at $p=10^{-3}$) is not yet
+propagated, the effective NISQ overhead is assumed, and the raw-RUS
+cancellation in our restricted instrument disagrees with the branch-averaged
+analysis of Ref.~\cite{toshio}. The most useful next calculations are a
+compiled schedule for parallel analog injection, propagation of the
+calibrated surface-code law, and interacting convergence checks on larger
+patches. Each could move a boundary; the parallel-injection schedule is the
+one that could reorder STAR and full fault tolerance.
 
 \appendix
 \section{Matrix-free finite-lattice reference}

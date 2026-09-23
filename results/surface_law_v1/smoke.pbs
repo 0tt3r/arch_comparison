@@ -1,0 +1,15 @@
+#!/bin/bash -l
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -N surface-smoke
+#PBS -l select=1:ncpus=128
+#PBS -l walltime=00:03:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+exec > results/surface_law_v1/smoke.log 2>&1
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMBA_NUM_THREADS=1
+PY=/home/ac.otten/soft/mambaforge/envs/stim/bin/python
+"$PY" -u python/surface_law_calibration.py sample --distance 9 --rounds 180 --shots 16384 --seed 2026092302 --group smoke
+"$PY" -u python/surface_law_calibration.py sample --distance 5 --rounds 100 --p .0001 --shots 65536 --seed 2026092303 --group smoke

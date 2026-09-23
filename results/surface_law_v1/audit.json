@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "fixed_shot_cells": 28,
+  "shots": 78000000,
+  "failures": 162736,
+  "snapshot_files_unchanged": 216,
+  "concurrent_changes_observed": [
+    "Makefile",
+    "python/optimization_round.py",
+    "python/plot_optimization_round.py",
+    "python/raw_rus_check.py",
+    "python/presentation_manifest.py",
+    "python/__pycache__/optimization_round.cpython-312.pyc",
+    "docs/OPTIMIZATION_ROUND.md"
+  ],
+  "critical_calibration_inputs_unchanged": [
+    "PLAN.md",
+    "configs/assumptions.json",
+    "python/star_growth_probe.py"
+  ],
+  "task_write_scope": [
+    "python/surface_law_calibration.py",
+    "results/surface_law_v1/",
+    "docs/SURFACE_LAW.md"
+  ],
+  "runtime_seconds_sum": 980.7021685983054,
+  "circuit_hashes_verified": true,
+  "manifest_verified": true,
+  "complete_census": true,
+  "holdout_cells": 12,
+  "holdout_shots": 18000000,
+  "active_sampling_locks": 0,
+  "fit_sha256": "b41c49a5f066e1206da7af32dab34146b068e0d26df5cf3fa826f205dd3cf20b"
+}

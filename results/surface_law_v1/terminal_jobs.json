@@ -1,0 +1,96 @@
+{
+  "status": "all terminal F/0",
+  "jobs": [
+    {
+      "job": "7791319.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:00:30",
+      "role": "smoke"
+    },
+    {
+      "job": "7791321.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:00:27",
+      "role": "training"
+    },
+    {
+      "job": "7791322.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:01:33",
+      "role": "training"
+    },
+    {
+      "job": "7791323.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:03:44",
+      "role": "training"
+    },
+    {
+      "job": "7791324.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:04:19",
+      "role": "training"
+    },
+    {
+      "job": "7791325.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:02:47",
+      "role": "training"
+    },
+    {
+      "job": "7791326.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:05:26",
+      "role": "training"
+    },
+    {
+      "job": "7791328.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:00:42",
+      "role": "holdout"
+    },
+    {
+      "job": "7791329.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:02:24",
+      "role": "holdout"
+    },
+    {
+      "job": "7791330.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:07:06",
+      "role": "holdout"
+    },
+    {
+      "job": "7791331.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:19:46",
+      "role": "holdout"
+    },
+    {
+      "job": "7791332.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:00:53",
+      "role": "holdout"
+    },
+    {
+      "job": "7791333.imgt1",
+      "state": "F",
+      "exit_status": 0,
+      "walltime": "00:08:17",
+      "role": "holdout"
+    }
+  ]
+}

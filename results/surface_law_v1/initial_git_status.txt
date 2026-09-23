@@ -1,0 +1,16 @@
+ M .gitignore
+ M Makefile
+?? OPUS55_REVIEW.md
+?? configs/optimization_round.json
+?? crossover_martin/
+?? docs/OPTIMIZATION_ROUND.md
+?? fh_iqus_idears/
+?? nisq_ftqc_crossover_v4.zip
+?? pbs/optimization_round.pbs
+?? python/optimization_round.py
+?? python/plot_optimization_round.py
+?? python/raw_rus_check.py
+?? python/surface_law_calibration.py
+?? results/optimization_round_v1/
+?? results/surface_law_v1/
+?? tests/test_optimization_round.py

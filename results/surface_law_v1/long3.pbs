@@ -1,0 +1,15 @@
+#!/bin/bash -l
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -N surf-long-3
+#PBS -l select=1:ncpus=128
+#PBS -l walltime=00:22:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+exec > results/surface_law_v1/long3.log 2>&1
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMBA_NUM_THREADS=1
+PY=/home/ac.otten/soft/mambaforge/envs/stim/bin/python
+"$PY" -u results/surface_law_v1/worker_snapshot.py sample --p 0.001 --distance 9 --shots 500000 --rounds 900 --basis x --seed 202609240300 --group holdout
+"$PY" -u results/surface_law_v1/worker_snapshot.py sample --p 0.001 --distance 9 --shots 500000 --rounds 900 --basis z --seed 202609240301 --group holdout

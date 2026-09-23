@@ -4,7 +4,23 @@ QEC_PYTHON ?= /home/ac.otten/soft/mambaforge/envs/stim/bin/python
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
+.PHONY: surface-law-audit raw-rus-check optimization-round optimization-round-figures optimization-round-check discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
+
+surface-law-audit:
+	$(QEC_PYTHON) python/surface_law_calibration.py audit > /dev/null
+
+raw-rus-check:
+	$(PYTHON) -B python/raw_rus_check.py > /dev/null
+
+optimization-round:
+	$(PYTHON) python/optimization_round.py --workers $${WORKERS:-1}
+	$(PYTHON) python/plot_optimization_round.py
+
+optimization-round-figures:
+	$(PYTHON) python/plot_optimization_round.py
+
+optimization-round-check:
+	$(PYTHON) python/optimization_round.py --check
 
 willow-reference:
 	$(PYTHON) python/willow_reference_analysis.py
@@ -91,7 +107,7 @@ implementation-check:
 	$(PYTHON) python/implementation_analysis.py --check
 	$(QEC_PYTHON) python/star_growth_probe.py --check
 
-figures: discussion delivery patch-study implementation-figures frontier-figures integrated-figures published-figures willow-figures willow-reference-figures
+figures: optimization-round-figures discussion delivery patch-study implementation-figures frontier-figures integrated-figures published-figures willow-figures willow-reference-figures
 	$(PYTHON) python/physics_sweep.py --plot
 	$(PYTHON) python/plot_capacity.py
 	$(PYTHON) python/draw_architectures.py
@@ -119,4 +135,7 @@ audit:
 	$(PYTHON) python/published_benchmarks.py --check
 	$(PYTHON) python/willow_benchmark.py --check
 	$(PYTHON) python/willow_reference_analysis.py --check
+	$(PYTHON) python/optimization_round.py --check
+	$(PYTHON) -B python/raw_rus_check.py > /dev/null
+	$(QEC_PYTHON) python/surface_law_calibration.py audit > /dev/null
 	$(PYTHON) python/presentation_manifest.py

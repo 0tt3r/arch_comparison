@@ -1,0 +1,17 @@
+#!/bin/bash -l
+#PBS -N opt-round
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128
+#PBS -l place=scatter
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -r y
+# Resumable: completed work items are kept in results/optimization_round_v1/costs.json.
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1 NUMBA_NUM_THREADS=1
+PY=/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python
+"$PY" -V
+"$PY" -u python/optimization_round.py --workers "${WORKERS:-120}"
+"$PY" -u python/optimization_round.py --check

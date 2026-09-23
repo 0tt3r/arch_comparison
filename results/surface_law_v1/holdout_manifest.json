@@ -1,0 +1,139 @@
+{
+  "cases": [
+    {
+      "worker": 0,
+      "p": 0.001,
+      "distance": 3,
+      "shots": 500000,
+      "rounds": 300,
+      "basis": "x",
+      "seed": 202609240000,
+      "batch": 4096,
+      "key": "d3_x_p0.001_r300_s202609240000"
+    },
+    {
+      "worker": 0,
+      "p": 0.001,
+      "distance": 3,
+      "shots": 500000,
+      "rounds": 300,
+      "basis": "z",
+      "seed": 202609240001,
+      "batch": 4096,
+      "key": "d3_z_p0.001_r300_s202609240001"
+    },
+    {
+      "worker": 1,
+      "p": 0.001,
+      "distance": 5,
+      "shots": 500000,
+      "rounds": 500,
+      "basis": "x",
+      "seed": 202609240100,
+      "batch": 4096,
+      "key": "d5_x_p0.001_r500_s202609240100"
+    },
+    {
+      "worker": 1,
+      "p": 0.001,
+      "distance": 5,
+      "shots": 500000,
+      "rounds": 500,
+      "basis": "z",
+      "seed": 202609240101,
+      "batch": 4096,
+      "key": "d5_z_p0.001_r500_s202609240101"
+    },
+    {
+      "worker": 2,
+      "p": 0.001,
+      "distance": 7,
+      "shots": 500000,
+      "rounds": 700,
+      "basis": "x",
+      "seed": 202609240200,
+      "batch": 4096,
+      "key": "d7_x_p0.001_r700_s202609240200"
+    },
+    {
+      "worker": 2,
+      "p": 0.001,
+      "distance": 7,
+      "shots": 500000,
+      "rounds": 700,
+      "basis": "z",
+      "seed": 202609240201,
+      "batch": 4096,
+      "key": "d7_z_p0.001_r700_s202609240201"
+    },
+    {
+      "worker": 3,
+      "p": 0.001,
+      "distance": 9,
+      "shots": 500000,
+      "rounds": 900,
+      "basis": "x",
+      "seed": 202609240300,
+      "batch": 4096,
+      "key": "d9_x_p0.001_r900_s202609240300"
+    },
+    {
+      "worker": 3,
+      "p": 0.001,
+      "distance": 9,
+      "shots": 500000,
+      "rounds": 900,
+      "basis": "z",
+      "seed": 202609240301,
+      "batch": 4096,
+      "key": "d9_z_p0.001_r900_s202609240301"
+    },
+    {
+      "worker": 4,
+      "p": 0.0001,
+      "distance": 3,
+      "shots": 2000000,
+      "rounds": 300,
+      "basis": "x",
+      "seed": 202609240400,
+      "batch": 4096,
+      "key": "d3_x_p0.0001_r300_s202609240400"
+    },
+    {
+      "worker": 4,
+      "p": 0.0001,
+      "distance": 3,
+      "shots": 2000000,
+      "rounds": 300,
+      "basis": "z",
+      "seed": 202609240401,
+      "batch": 4096,
+      "key": "d3_z_p0.0001_r300_s202609240401"
+    },
+    {
+      "worker": 5,
+      "p": 0.0001,
+      "distance": 5,
+      "shots": 5000000,
+      "rounds": 500,
+      "basis": "x",
+      "seed": 202609240500,
+      "batch": 4096,
+      "key": "d5_x_p0.0001_r500_s202609240500"
+    },
+    {
+      "worker": 5,
+      "p": 0.0001,
+      "distance": 5,
+      "shots": 5000000,
+      "rounds": 500,
+      "basis": "z",
+      "seed": 202609240501,
+      "batch": 4096,
+      "key": "d5_z_p0.0001_r500_s202609240501"
+    }
+  ],
+  "role": "Independent fixed-shot 100d validation of duration extrapolation. Not pooled into the original fixed-design calibration or its exact cell intervals.",
+  "reason": "The initial fit shows possible finite-distance curvature and noisy endpoint corrections at d9.",
+  "worker_sha256": "7ac67e90bae1f9ba437e78f521f567dc1cf5b2f2d833c21e3067be888b04fe9c"
+}
