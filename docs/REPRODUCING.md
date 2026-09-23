@@ -32,6 +32,15 @@ No mitigation pipeline is refitted. The 8.8 GB Willow archive is documented
 as available but is not downloaded by these commands. The original archives
 are not required to regenerate the committed report and figures.
 
+The subsequent [Willow benchmark](WILLOW_BENCHMARK.md) uses
+`make willow-benchmark` and `make willow-check` for offline replay.
+To repeat its retrieval, run `python python/willow_archive.py`, then
+`python python/willow_data.py`. Selected HTTP ranges transfer about 1.06 GB;
+the extracted cache needs 2.24 GB. Member CRCs and SHA-256 hashes are checked,
+while the full 8.8 GB archive MD5 is explicitly not verified. The reduction
+preserves randomized-compilation groups and uses h5py. `make willow-figures`
+redraws the saved results without downloading or reducing shots again.
+
 ## Same-task algorithms and larger components
 
 See [FRONTIER_WORK.md](FRONTIER_WORK.md). `make frontier` regenerates the

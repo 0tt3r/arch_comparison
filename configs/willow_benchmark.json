@@ -1,0 +1,23 @@
+{
+  "record": "https://zenodo.org/records/17881822",
+  "version": "1.0.1",
+  "source_pdf": "refs/2510.26845v1.pdf",
+  "source_url": "https://arxiv.org/abs/2510.26845v1",
+  "url": "https://zenodo.org/api/records/17881822/files/programmable_simulation_fermi_hubbard.zip/content",
+  "archive_bytes": 8798281890,
+  "published_archive_md5": "799f77a65a6366a8f89dfc8ea16d8202",
+  "license": "CC BY 4.0",
+  "initial_state": "center_hole",
+  "sizes": [4, 6],
+  "fluxes": ["0", "pi"],
+  "interactions": [0, 4, 8],
+  "steps": [1, 2, 3],
+  "twirls": 20,
+  "shots_per_twirl": 10000,
+  "expected_times": 24,
+  "table_I": {
+    "4": {"gates_per_step": 400, "gates_offset": 20, "depth_per_step": 64, "depth_offset": 6, "physical_qubits": 34},
+    "6": {"gates_per_step": 1440, "gates_offset": 52, "depth_per_step": 96, "depth_offset": 6, "physical_qubits": 74}
+  },
+  "scope": "All center-hole square endpoints, both fluxes, all three interactions and all available step counts. Raw and published processed values; no mitigation refit."
+}

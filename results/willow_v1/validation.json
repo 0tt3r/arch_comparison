@@ -1,0 +1,12 @@
+{
+  "status": "PASS: declared archive census, reference separation, and sampling arithmetic",
+  "cases": 36,
+  "shot_batches": 864,
+  "attempted_shots": 172800000,
+  "raw_pipeline_replayed": 36,
+  "comparisons": 624,
+  "interacting_exact_groups_empty": 24,
+  "maximum_early_free_reference_difference": 0.004748201252520609,
+  "maximum_first_time_circuit_difference": 1.5016393953626306e-05,
+  "scope": "No interacting exact truth is supplied. Published processed estimates are reused. Design extrapolations use 20 observed twirls and are not bias or accuracy certificates."
+}

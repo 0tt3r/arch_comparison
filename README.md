@@ -30,6 +30,15 @@ gadgets or an experimental mitigation model. See the
 [methods and confidence table](docs/PUBLISHED_BENCHMARKS.md);
 `make published-benchmarks` reproduces the report and figures offline.
 
+The **[Willow data follow-up](results/willow_v1/summary.md)** reduces 36
+superconducting workloads spanning 4×4 and 6×6, both fluxes, three interactions
+and one to three Trotter steps. It reconstructs the archive's selection and
+symmetry processing, separates free-circuit and continuous references, and
+compares observed accuracy and sampling costs. The interacting exact reference
+groups are empty in this archive, so the interacting comparisons retain their
+finite-bond MPS scope. See the [methods](docs/WILLOW_BENCHMARK.md).
+`make willow-benchmark` regenerates these results offline.
+
 The **[same-task algorithm and component study](results/frontier_v1/summary.md)**
 adds open-boundary qubitization, 24 million decoded growth shots toward distances
 13 and 25, explicit magic-state transport, measured exposure diagnostics, and a

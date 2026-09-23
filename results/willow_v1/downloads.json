@@ -1,0 +1,670 @@
+{
+  "url": "https://zenodo.org/api/records/17881822/files/programmable_simulation_fermi_hubbard.zip/content",
+  "archive_bytes": 8798281890,
+  "archive_md5_verified": false,
+  "published_archive_md5": "799f77a65a6366a8f89dfc8ea16d8202",
+  "selected_compressed_bytes": 1064614249,
+  "index_sha256": "6690b05d012b9cb9bc6a8e4164e37849e49cf63a6b3705a3db91caf493ce72e8",
+  "config_sha256": "3f6d4d70aa524364cf9d9b014920293f6ab30aef2cfaecea41e1fc7b1f784f6f",
+  "downloader_sha256": "c66af2d110fc547bb135daa71174e55310ff44e65ba2090600477e627a62dfbc",
+  "files": [
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_0/trotter_layers_1/shots.h5",
+      "size": 12339011,
+      "compressed": 12167532,
+      "offset": 713,
+      "crc": 4179981339,
+      "compression": 8,
+      "sha256": "b6fe72f620d744d2904e12a583ea9984682e0c43808ca014097a02ab64aa22d0"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_0/trotter_layers_1/exp_vals.h5",
+      "size": 15912704,
+      "compressed": 1473380,
+      "offset": 12168398,
+      "crc": 3571102437,
+      "compression": 8,
+      "sha256": "67ee14c79815b2b03be3f825fd65d6e2e841f8189e6eab4e98ea240ef0087520"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_0/trotter_layers_2/shots.h5",
+      "size": 13264556,
+      "compressed": 13093740,
+      "offset": 13642079,
+      "crc": 4031491322,
+      "compression": 8,
+      "sha256": "a6cd46b2bf8c8257ccb71bb424f5974f9d769cb6ddaaa3f669956cd2261c0dbb"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_0/trotter_layers_2/exp_vals.h5",
+      "size": 15912704,
+      "compressed": 1471112,
+      "offset": 26735972,
+      "crc": 1956335436,
+      "compression": 8,
+      "sha256": "b71f514d5a4f8567117209bc8844344dee88a9d14b96120fa1718e6b1ba01388"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_0/trotter_layers_3/shots.h5",
+      "size": 13859261,
+      "compressed": 13688494,
+      "offset": 28207385,
+      "crc": 1059140700,
+      "compression": 8,
+      "sha256": "99b60302874e381fc3eab78b3851911c7ce78f8457f1f80854b1bad4563d8aeb"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_0/trotter_layers_3/exp_vals.h5",
+      "size": 15912704,
+      "compressed": 1469684,
+      "offset": 41896032,
+      "crc": 104078053,
+      "compression": 8,
+      "sha256": "cfb38c10135583607cd55b7d9b869bbc21ce8b88f4aa8d0623f98f46c47de843"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_4/trotter_layers_1/shots.h5",
+      "size": 11320831,
+      "compressed": 11149199,
+      "offset": 43366145,
+      "crc": 3857796437,
+      "compression": 8,
+      "sha256": "a3618f4c428f657fec296e012da28f0e0181e60e10f6b099e1f53b4e7911c963"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_4/trotter_layers_1/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1329209,
+      "offset": 54515497,
+      "crc": 3346322416,
+      "compression": 8,
+      "sha256": "325cadedb37db5aa16f28e6f3c8ebb6eaa8952dd5947e89cee9551f610429181"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_4/trotter_layers_2/shots.h5",
+      "size": 12836729,
+      "compressed": 12666054,
+      "offset": 55845007,
+      "crc": 169942179,
+      "compression": 8,
+      "sha256": "97bf4fc44b1a10bcf327ae0709ba4908082ce6dc041c1d40b09ffc15f5f874a5"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_4/trotter_layers_2/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1329215,
+      "offset": 68511214,
+      "crc": 123693193,
+      "compression": 8,
+      "sha256": "51660ded58b90ce1207bdb6286a8ef8c91c42dcf343f4adae66bcd7ed855982e"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_4/trotter_layers_3/shots.h5",
+      "size": 13661600,
+      "compressed": 13490717,
+      "offset": 69840730,
+      "crc": 3580973772,
+      "compression": 8,
+      "sha256": "9bc4a8ed92bea93699a07dd18527fa00a16a8f83d73b0204257783ff14119959"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_4/trotter_layers_3/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1329058,
+      "offset": 83331600,
+      "crc": 2410235246,
+      "compression": 8,
+      "sha256": "9a52d92cca5a4f8928ef85781cb5ed29e729c821929c2254dc94d7df446d6e13"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_8/trotter_layers_1/shots.h5",
+      "size": 11126649,
+      "compressed": 10954612,
+      "offset": 84661087,
+      "crc": 2796353329,
+      "compression": 8,
+      "sha256": "52904db136785e6e0e8b0f6faf903f13d001c1d58107dc13170008c5829e3c76"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_8/trotter_layers_1/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1323688,
+      "offset": 95615852,
+      "crc": 3569942454,
+      "compression": 8,
+      "sha256": "803a4b674ae4e19479df8f2d48e67ec6d95f6a34ea259af6d52a51f52a7dee41"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_8/trotter_layers_2/shots.h5",
+      "size": 11638461,
+      "compressed": 11467344,
+      "offset": 96939841,
+      "crc": 1108882880,
+      "compression": 8,
+      "sha256": "7266024689420c1a031747cd6cfdd99691ee765c10a135cb6712a7e49b465182"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_8/trotter_layers_2/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1322628,
+      "offset": 108407338,
+      "crc": 3917811393,
+      "compression": 8,
+      "sha256": "5122ef7e5390824a94ba8011a349340d090a1116d77b437e077d9336878b6692"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_8/trotter_layers_3/shots.h5",
+      "size": 12619021,
+      "compressed": 12448065,
+      "offset": 109730267,
+      "crc": 1903067359,
+      "compression": 8,
+      "sha256": "d20cbbea619344bded6ec844fe09e053c720f65f15560e766dec88d8b33e492f"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_0/U_8/trotter_layers_3/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1322852,
+      "offset": 122178485,
+      "crc": 998197100,
+      "compression": 8,
+      "sha256": "f43574d0ad8a22d274da00702557c9226de9d9b2f72d4498e3b362b9c4178e18"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_0/trotter_layers_1/shots.h5",
+      "size": 11393387,
+      "compressed": 11221982,
+      "offset": 123501893,
+      "crc": 2740995790,
+      "compression": 8,
+      "sha256": "296955555fd0a8fac971e5e9a959ad3400e2c486d8a1200c089a4d898aef5ffb"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_0/trotter_layers_1/exp_vals.h5",
+      "size": 15912704,
+      "compressed": 1462646,
+      "offset": 134724029,
+      "crc": 3799266858,
+      "compression": 8,
+      "sha256": "5d704efde873ddfccbdbcbb6d5855e7c277b05ab3ce99e51417e191b3990802c"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_0/trotter_layers_2/shots.h5",
+      "size": 12659889,
+      "compressed": 12489376,
+      "offset": 136186978,
+      "crc": 3419719253,
+      "compression": 8,
+      "sha256": "4bfb688e5e47c0c6d06e1cb7294ffd30d511b19d2b8a7ce86d42c11d4b030081"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_0/trotter_layers_2/exp_vals.h5",
+      "size": 15912704,
+      "compressed": 1461331,
+      "offset": 148676508,
+      "crc": 1311419447,
+      "compression": 8,
+      "sha256": "30103104d6d06842dbc34826673e5e86d53ab5733257d32e593af4aa68f30fdc"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_0/trotter_layers_3/shots.h5",
+      "size": 13510714,
+      "compressed": 13340356,
+      "offset": 150138142,
+      "crc": 884564301,
+      "compression": 8,
+      "sha256": "7df150137b211ef8d483f001863e40e8caac2a7bf486a216c2301a053299ff3b"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_0/trotter_layers_3/exp_vals.h5",
+      "size": 15912704,
+      "compressed": 1459183,
+      "offset": 163478652,
+      "crc": 2501812963,
+      "compression": 8,
+      "sha256": "3472bc630414305065a0be30f0ddab70c218ffcaba7284e78c9400baa3274c50"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_4/trotter_layers_1/shots.h5",
+      "size": 11282239,
+      "compressed": 11110856,
+      "offset": 164938267,
+      "crc": 3534270886,
+      "compression": 8,
+      "sha256": "b8ae3ff588b8f2b8b7c19eb8b8019c77abd1d2a8bba1a9157c3b97d467233b6f"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_4/trotter_layers_1/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1329062,
+      "offset": 176049277,
+      "crc": 2993818752,
+      "compression": 8,
+      "sha256": "1c99adfcb2b29eb0e53d670569fe7b2849c8b1785b6dce6e4da6716b295d3948"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_4/trotter_layers_2/shots.h5",
+      "size": 12822245,
+      "compressed": 12651402,
+      "offset": 177378642,
+      "crc": 3532447946,
+      "compression": 8,
+      "sha256": "8f13283cfef9c0a481b8faac421a642659d6604a859994f3f3bbc21c1a6b8be0"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_4/trotter_layers_2/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1329498,
+      "offset": 190030198,
+      "crc": 452583532,
+      "compression": 8,
+      "sha256": "375e21a3074f56d33221cda67c0b2a200477d1733e573d6a16feaba31ff6cbc6"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_4/trotter_layers_3/shots.h5",
+      "size": 13637619,
+      "compressed": 13467156,
+      "offset": 191359999,
+      "crc": 3144154343,
+      "compression": 8,
+      "sha256": "5a24ccf6142d2facf8cf49630774aad00a5ab230943091eea89ffbfa07dcd789"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_4/trotter_layers_3/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1330200,
+      "offset": 204827309,
+      "crc": 451676355,
+      "compression": 8,
+      "sha256": "d5481cac5f244319b12cd66db95ac531d9f34e612bc320fd6a11e447b58d9aa2"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_8/trotter_layers_1/shots.h5",
+      "size": 10748655,
+      "compressed": 10576980,
+      "offset": 206157941,
+      "crc": 2716014209,
+      "compression": 8,
+      "sha256": "56d3eace3db0f4a33f0863b0c33ade3dd8c823a69f85b55e61b504b19d467d73"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_8/trotter_layers_1/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1324393,
+      "offset": 216735075,
+      "crc": 1044914083,
+      "compression": 8,
+      "sha256": "afd17141499a20a62ddc2146f4803e81f6fb3aaa0262da0c5872cebbfa9107f3"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_8/trotter_layers_2/shots.h5",
+      "size": 11707340,
+      "compressed": 11536206,
+      "offset": 218059771,
+      "crc": 3964407271,
+      "compression": 8,
+      "sha256": "629e03933fe2927b6dbf6f1258af9e2fd6b86ba3c71e4e2b5d53e127555a330b"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_8/trotter_layers_2/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1324304,
+      "offset": 229596131,
+      "crc": 344523891,
+      "compression": 8,
+      "sha256": "22095fea6f8638a34866286ba254522fdccb39162bb35ddb702811bb091aa103"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_8/trotter_layers_3/shots.h5",
+      "size": 12774129,
+      "compressed": 12603643,
+      "offset": 230920738,
+      "crc": 558834181,
+      "compression": 8,
+      "sha256": "e3e8f60cb306a3f448df10e5ce247757a091c2f342f4b934d8fb9d7f9c4beac5"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/4x4/mag_field_pi/U_8/trotter_layers_3/exp_vals.h5",
+      "size": 14676912,
+      "compressed": 1324264,
+      "offset": 243524535,
+      "crc": 3350920361,
+      "compression": 8,
+      "sha256": "b69d0a4afa0abb56684806d5876e046863b6a418f66dd8af115d351984b13764"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_0/trotter_layers_1/shots.h5",
+      "size": 37493468,
+      "compressed": 37324446,
+      "offset": 1337182625,
+      "crc": 1737426316,
+      "compression": 8,
+      "sha256": "efd573331d8f01e479b3ed21eabdb3d4ba895838f1cb7b10a2528760e2fa4e94"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_0/trotter_layers_1/exp_vals.h5",
+      "size": 62896768,
+      "compressed": 7825789,
+      "offset": 1374507224,
+      "crc": 1746965649,
+      "compression": 8,
+      "sha256": "6ee1bebd25e8626c7494b5875864157fe4a85142c42046fda5cbdf4107dc6c99"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_0/trotter_layers_2/shots.h5",
+      "size": 38844691,
+      "compressed": 38675623,
+      "offset": 1382333314,
+      "crc": 2438992989,
+      "compression": 8,
+      "sha256": "4af05eb5c7c0e23759aa23d8139882c18652a158ca7d3fef3e02e6b0fee77ff0"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_0/trotter_layers_2/exp_vals.h5",
+      "size": 62896768,
+      "compressed": 7819659,
+      "offset": 1421009090,
+      "crc": 2844185767,
+      "compression": 8,
+      "sha256": "f1eb89085c9ff37e0cac66da31a3f4e85eb6ca05e6c7ce4a205a251ebb5e9ab6"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_0/trotter_layers_3/shots.h5",
+      "size": 39385054,
+      "compressed": 39215257,
+      "offset": 1428829050,
+      "crc": 2972190325,
+      "compression": 8,
+      "sha256": "55d22f547123c0b0b600f463aaacef28243d3b1f7c35552cba02f87a185c3770"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_0/trotter_layers_3/exp_vals.h5",
+      "size": 62896768,
+      "compressed": 7808933,
+      "offset": 1468044460,
+      "crc": 1155588703,
+      "compression": 8,
+      "sha256": "6bc593ab1bdc6958a9b8e45e6d5f1c02c4b8a9adcd25333579d72dcb2036e48e"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_4/trotter_layers_1/shots.h5",
+      "size": 37067738,
+      "compressed": 36898996,
+      "offset": 1475853822,
+      "crc": 1240005395,
+      "compression": 8,
+      "sha256": "22126f9147bed2eb6e8949f1a1bf6ebb456da29beb559884516c7ed0fd0268a1"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_4/trotter_layers_1/exp_vals.h5",
+      "size": 56694120,
+      "compressed": 7100524,
+      "offset": 1512752971,
+      "crc": 2149300643,
+      "compression": 8,
+      "sha256": "7552e739cede74d29c57efbbfb7b013cb96b5e2e02f42142f616627b41091af3"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_4/trotter_layers_2/shots.h5",
+      "size": 38731739,
+      "compressed": 38562548,
+      "offset": 1519853796,
+      "crc": 2434364362,
+      "compression": 8,
+      "sha256": "0a26a197b738550e8c4bade7a5c3e10edf90b4768d1e4236cc3b4c14cd3ea0e1"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_4/trotter_layers_2/exp_vals.h5",
+      "size": 56694120,
+      "compressed": 7101046,
+      "offset": 1558416497,
+      "crc": 965848163,
+      "compression": 8,
+      "sha256": "0ed76236e357f38b6006acd9d20ab71f855ef6392839c698e486f3fd0fd10c31"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_4/trotter_layers_3/shots.h5",
+      "size": 39343558,
+      "compressed": 39174152,
+      "offset": 1565517844,
+      "crc": 1989958720,
+      "compression": 8,
+      "sha256": "116a8d07c740fe6d9f365885a3e64374a5136a0eb80cfff66d41bbfa9d696e37"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_4/trotter_layers_3/exp_vals.h5",
+      "size": 56694120,
+      "compressed": 7098130,
+      "offset": 1604692149,
+      "crc": 3712893350,
+      "compression": 8,
+      "sha256": "ebfa14b7e3f187348b004bb56fb1e32bf3f44c6ba48e895707b80b2ce40fae67"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_8/trotter_layers_1/shots.h5",
+      "size": 36722552,
+      "compressed": 36553072,
+      "offset": 1611790708,
+      "crc": 4241015457,
+      "compression": 8,
+      "sha256": "9c123b691b5ae51bd48a8f4780956ba711fc5d1f95415e04bb637b49fa824a2e"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_8/trotter_layers_1/exp_vals.h5",
+      "size": 56694120,
+      "compressed": 7063567,
+      "offset": 1648343933,
+      "crc": 218131808,
+      "compression": 8,
+      "sha256": "a7000093437d3a27e381d52c37d34edac8c0f0f4f5d193e5219dce235f5cc4f2"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_8/trotter_layers_2/shots.h5",
+      "size": 38549396,
+      "compressed": 38380662,
+      "offset": 1655407801,
+      "crc": 1328651948,
+      "compression": 8,
+      "sha256": "2ed54a58ab823ad49093271856f7edd1ca1ad7e87c4dfb4489295160b894dca3"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_8/trotter_layers_2/exp_vals.h5",
+      "size": 56694120,
+      "compressed": 7061387,
+      "offset": 1693788616,
+      "crc": 172308406,
+      "compression": 8,
+      "sha256": "6d9d7aef1d2677ba8bc498a3a67f7be5113df8c4bc5f193602f05d48b931340e"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_8/trotter_layers_3/shots.h5",
+      "size": 39312681,
+      "compressed": 39143822,
+      "offset": 1700850304,
+      "crc": 3496363260,
+      "compression": 8,
+      "sha256": "08d434428420bc5defdf03d1a5e08ac1ec6393b11e53dbbf130540505a896aae"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_0/U_8/trotter_layers_3/exp_vals.h5",
+      "size": 56694120,
+      "compressed": 7059718,
+      "offset": 1739994279,
+      "crc": 3716594944,
+      "compression": 8,
+      "sha256": "8b6cfc74b87caf52581a6cb3ca5a315794a56eb898b4dff9eb98f2974b7d6e85"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_0/trotter_layers_1/shots.h5",
+      "size": 37307236,
+      "compressed": 37139524,
+      "offset": 1747054553,
+      "crc": 3723429437,
+      "compression": 8,
+      "sha256": "d2fb1fe6cb926ab005ab27adc28c54b3754b27f3670bb28f1009c8ea8508f315"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_0/trotter_layers_1/exp_vals.h5",
+      "size": 62896776,
+      "compressed": 7763971,
+      "offset": 1784194231,
+      "crc": 1056054263,
+      "compression": 8,
+      "sha256": "97ddb75f0e1031c9a68d90e8aea8e5290c5ac906faf132a3b209643cd9be85ef"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_0/trotter_layers_2/shots.h5",
+      "size": 38832230,
+      "compressed": 38663903,
+      "offset": 1791958505,
+      "crc": 2930413632,
+      "compression": 8,
+      "sha256": "2fceb91f34de740e24506b57b7cca1a4540a7c20a719f7f0663adbb33c121a53"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_0/trotter_layers_2/exp_vals.h5",
+      "size": 62896776,
+      "compressed": 7750671,
+      "offset": 1830622562,
+      "crc": 3092230858,
+      "compression": 8,
+      "sha256": "47dedaec48f1b1fb0cca84d998c9f5ee571f009b50d3483b25ee768306dbbba5"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_0/trotter_layers_3/shots.h5",
+      "size": 39408861,
+      "compressed": 39239646,
+      "offset": 1838373536,
+      "crc": 1875716984,
+      "compression": 8,
+      "sha256": "b7dc76df6ad92f6891932950a3938a746b80eb509a6eaf640d5a4307865173e8"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_0/trotter_layers_3/exp_vals.h5",
+      "size": 62896776,
+      "compressed": 7746124,
+      "offset": 1877613336,
+      "crc": 371779782,
+      "compression": 8,
+      "sha256": "93baaae4482ba2bf88452fc53e8543b687534d95eee5ec3be3a134f92c47ea93"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_4/trotter_layers_1/shots.h5",
+      "size": 37179903,
+      "compressed": 37011146,
+      "offset": 1885359892,
+      "crc": 4178029359,
+      "compression": 8,
+      "sha256": "fcf7ef1861e7cbbc9563cae139ef2850753f2af10c12021279e54ae2f05938ee"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_4/trotter_layers_1/exp_vals.h5",
+      "size": 56694128,
+      "compressed": 7099477,
+      "offset": 1922371192,
+      "crc": 938796641,
+      "compression": 8,
+      "sha256": "63921c801c8fd3353b7abe8734a608e4c206201bcde016bebc472ed9383c2141"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_4/trotter_layers_2/shots.h5",
+      "size": 38877453,
+      "compressed": 38707991,
+      "offset": 1929470972,
+      "crc": 886488678,
+      "compression": 8,
+      "sha256": "8bd8c19a92aa1871e6dd311f350488c4e1244cf1e06f81f94d69c78cb4908a14"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_4/trotter_layers_2/exp_vals.h5",
+      "size": 56694128,
+      "compressed": 7092869,
+      "offset": 1968179117,
+      "crc": 3893171698,
+      "compression": 8,
+      "sha256": "d8ba98c8876efe5dc387b12481d1522cff611570750bd929cc288e6296cf89cd"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_4/trotter_layers_3/shots.h5",
+      "size": 39409669,
+      "compressed": 39239898,
+      "offset": 1975272289,
+      "crc": 1087587967,
+      "compression": 8,
+      "sha256": "8d7937499332ff92aa33766474fe1767725603fe49e733a7239ddc1a2223d96e"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_4/trotter_layers_3/exp_vals.h5",
+      "size": 56694128,
+      "compressed": 7092559,
+      "offset": 2014512341,
+      "crc": 1353088615,
+      "compression": 8,
+      "sha256": "0e42a4c0ade4cb31af48d64e8781a0da6b3aa793b1f16fae5c58a35ecb400568"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_8/trotter_layers_1/shots.h5",
+      "size": 36670887,
+      "compressed": 36502716,
+      "offset": 2021605332,
+      "crc": 1105450907,
+      "compression": 8,
+      "sha256": "514ea7f33ae8e4f1a42b8fd03826fe83f893bb1f5f41ba333dcef7a93504e8a6"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_8/trotter_layers_1/exp_vals.h5",
+      "size": 56694128,
+      "compressed": 7072513,
+      "offset": 2058108202,
+      "crc": 3378533610,
+      "compression": 8,
+      "sha256": "9a78f03f62489150bf0cd7ec6151b96c8c41f305e3fef089facd29b503d84a24"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_8/trotter_layers_2/shots.h5",
+      "size": 38644656,
+      "compressed": 38476432,
+      "offset": 2065181018,
+      "crc": 558955826,
+      "compression": 8,
+      "sha256": "49a9bc50d45aa564077f435fb9d54794417f183e088edc0b8805bf3a0ae3584b"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_8/trotter_layers_2/exp_vals.h5",
+      "size": 56694128,
+      "compressed": 7064678,
+      "offset": 2103657604,
+      "crc": 2214397794,
+      "compression": 8,
+      "sha256": "331d2d5f33442bf56397dbaaad09a366ef3efb1ce42907c870535c8ff725eafe"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_8/trotter_layers_3/shots.h5",
+      "size": 39346964,
+      "compressed": 39177870,
+      "offset": 2110722585,
+      "crc": 2173255840,
+      "compression": 8,
+      "sha256": "2c2e873908914e8f5c193aa7846f49fb080173b0cb3afd31bfc4f102ab1247c2"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/center_hole/6x6/mag_field_pi/U_8/trotter_layers_3/exp_vals.h5",
+      "size": 56694128,
+      "compressed": 7065244,
+      "offset": 2149900609,
+      "crc": 752292045,
+      "compression": 8,
+      "sha256": "1db78630d9180658ecb5929425a0720d0c20716ab250fe34691da0d872b22b24"
+    },
+    {
+      "name": "programmable_simulation_fermi_hubbard/initial_states.json",
+      "size": 5563,
+      "compressed": 265,
+      "offset": 8798107282,
+      "crc": 2155958777,
+      "compression": 8,
+      "sha256": "a951c10b9e76f0aa63029d31a74d947fed4abe6583f60bee8daaf7683e3e9823"
+    }
+  ],
+  "verification": "Selected member sizes and CRCs from pinned HTTPS archive; SHA-256 of every extracted file. Full archive MD5 not checked."
+}

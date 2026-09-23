@@ -5,6 +5,7 @@ model outputs, and source hashes used at that stage:
 
 | Directory | Content |
 |---|---|
+| `willow_v1` | 36 public superconducting workloads, 172.8M attempted-shot reduction, selection/symmetry reconstruction, free-circuit versus continuous references, and randomized-circuit sampling design |
 | `published_benchmarks_v1` | TopQAD Table IV area/time replay, calibrated growth transfer, reduced Phasecraft raw shots and processed observables, source availability and confidence table |
 | `integrated_v1` | Current component-informed STAR/hybrid and synthesis-selected FT capacity; explicit NISQ offset/variance requirements and training sensitivities |
 | `frontier_v1` | Same-Hamiltonian QSVT costs, 24M growth shots at distances 13/25, geometric magic delivery, independent exposure diagnostics, centered locality certificate |

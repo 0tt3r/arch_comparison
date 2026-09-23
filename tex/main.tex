@@ -319,13 +319,116 @@ the spatial mean. The useful low-shot experimental curves therefore do not
 imply the distinct $0.001$ local-observable contract, while a gatewise PEC
 budget for that contract does not predict the experiment's shot count.
 
-Willow shot-level and processed data are also public~\cite{willowdata2025}.
-We inspected the archive metadata and README; its $8.8\,\mathrm{GB}$ archive
-has not been reduced in this pass. The present checks establish consistency
-of published operating points with the accounting and identify the inputs
-still requiring prediction: observable accuracy for a chosen physical
-estimator, full noisy injection and growth, and complete magic-state delivery.
-They do not reduce the architecture scenario bands to statistical error bars.
+These checks establish consistency of published operating points with the
+accounting and identify the inputs still requiring prediction: observable
+accuracy for a chosen physical estimator, full noisy injection and growth,
+and complete magic-state delivery. They do not reduce the architecture scenario
+bands to statistical error bars. We next examine the superconducting data,
+whose geometry is closer to our baseline.
+
+\subsection{Willow: observed accuracy and the sampling design}\label{sec:willow}
+The public Willow data~\cite{phasecraftwillow2025,willowdata2025} permit a
+direct check across circuit depths and lattice sizes. Our declared selection
+contains all center-hole cases at $4\times4$ and $6\times6$, with zero or
+$\pi$ flux, $U=0,4,8$, and one to three Trotter steps. Each of the 36 cases
+has 24 nonzero evolution times and 200,000 attempted shots per time, organized
+as 20 randomized compilations of 10,000 shots. The reduction therefore covers
+$172.8$ million attempted shots. These are reused public measurements, not
+new quantum runs.
+
+The physical footprint is 34 or 74 qubits, including two ancillas, while
+32 or 72 modes encode the fermions. Table I of the paper gives
+$G_2=400r+20$ at $4\times4$ and $G_2=1440r+52$ at $6\times6$.
+At three steps these are 1220 and 4372 two-qubit gates. The circuit scale
+is consistent with our native-gate proxy. Its estimator, however, uses
+selection, training, symmetry and shared time-series information. A single
+time series costs $4.8$ million attempted shots, with an additional $U=0$
+training series whose cost can be shared by interacting targets.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{willow_operating_points.pdf}
+\caption{Willow experimental operating points. Upper panels show the spatial
+mean doublon at $U=4$, zero flux and three steps, with finite-bond MPS
+references. Lower panels compare all local doublons at all 24 measured times
+as the step count changes. The $U=0$ reference is independent continuous
+free-fermion evolution, but the experimental estimator uses $U=0$ training.
+The interacting references are approximate MPS calculations. Differences
+are not certified experimental errors, and the $0.01$ line is a guide.}
+\label{fig:willow-operating}
+\end{figure}
+
+For $U=4$, zero flux and three steps, processed local doublons differ from
+the bond-2048 reference by $0.0096$ RMS at $4\times4$ and $0.0479$ at
+$6\times6$. For the spatial means the differences are $0.0068$ and $0.0451$.
+The median reported standard errors of the constituent local $Z$ estimates
+are $0.0156$ and $0.0810$, respectively. These observed operating points
+help explain a useful physical-qubit calculation with tens of qubits, while
+leaving the stricter accuracy requirement in our architecture comparison open.
+The interacting exact-reference groups are empty in this archive, despite
+the paper showing exact $4\times4$ comparisons. We therefore retain the
+approximate-reference qualification even at $4\times4$.
+
+Two archive conventions affect the comparison. First, values labeled
+\texttt{raw} already include number selection and diagonal symmetry averaging.
+The randomized-compilation means must receive equal weight after rejection;
+pooling all accepted shots gives different weights. We reproduce these raw
+means in all 36 workloads, with number-deviation thresholds of zero at
+$4\times4$, two at zero-flux $6\times6$, and one at $\pi$-flux $6\times6$.
+Second, the $U=0$
+\texttt{exact} values change with step count and describe the free circuit,
+not continuous dynamics. We compute a separate continuous FLO reference by
+orbital evolution, checked against the existing many-body sector solver.
+The supplied initial-state JSON is inconsistent with the center-hole labels;
+we instead identify and check the product input from its zero-time reference
+occupations. These distinctions are recorded in the data audit.
+
+The processed archive supplies marginal $Z$ and $ZZ$ errors, without their
+cross-covariances. For a derived observable $O=\sum_i c_i O_i$, we retain
+the covariance-independent upper bound
+\begin{equation}\label{eq:willow-derived-se}
+ \operatorname{SE}(O)\leq\sum_i |c_i|\operatorname{SE}(O_i).
+\end{equation}
+We do not infer independent sites or treat this statistical bound as a bound
+on total error. The figures show the derived central values rather than
+presenting that loose bound as a measured confidence interval.
+
+\paragraph{Additional sampling must specify what is repeated.}
+Shots of one randomized circuit share its noise realization. Let $K$ be the
+number of independent randomized circuits, $a$ the variance of their
+conditional expectations, and $v/n$ the typical variance of each conditional
+sample mean. A useful planning decomposition is
+\begin{equation}\label{eq:willow-sampling}
+ \operatorname{Var}(\widehat O)\simeq\frac{a+v/n}{K}.
+\end{equation}
+Increasing $n$ at fixed $K$ leaves the $a/K$ contribution. Increasing the
+number of independent circuit realizations reduces both contributions.
+We estimate them from the 20 recorded groups, retaining acceptance, and
+separate that planning extrapolation from the directly measured variance of
+their mean. The inferred $a$ is uncertain and is not an irreducible hardware
+error floor.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{willow_sampling_design.pdf}
+\caption{Measured acceptance and a sampling-design sensitivity. Left: strict
+number-sector acceptance, with median and range across the declared times,
+fluxes and interactions. Right: the central doublon's sampling uncertainty
+at $U=4$, zero flux, three steps and $Jt=1$, before TFLO and smoothing.
+The right panel retains the corresponding published number filter: exact
+sector at $4\times4$ and up to two total number deviations at $6\times6$.
+Dots show standard errors across the observed circuit groups. Curves
+extrapolate Equation~\eqref{eq:willow-sampling}, assuming independent new
+groups with the same distribution. They do not predict mitigation accuracy.}
+\label{fig:willow-sampling}
+\end{figure}
+
+The experimental comparison therefore constrains the physical arm at two
+levels: a directly measured circuit and sampling cost, and an
+observable-dependent comparison with available references. It supports useful
+small-footprint dynamics without certifying every local observable at
+$0.01$ or $0.001$. A matched interacting circuit and continuous reference
+would resolve more than another refinement of the gate-count constants.
 
 \clearpage
 \section{Earlier physical-error and algorithm sensitivities}\label{sec:physics-sweep}

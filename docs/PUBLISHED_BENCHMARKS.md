@@ -5,6 +5,10 @@ answer a narrower question than an architecture ranking: can the common resource
 accounting explain the published operating points, and which ingredients have
 actually been checked? The integrated capacity curves retain their inputs.
 
+The subsequent [Willow follow-up](WILLOW_BENCHMARK.md) now reduces the
+superconducting data; the availability-only statement below records this
+earlier pass's scope.
+
 ## STAR and FT: reconstruct the published ledger
 
 We transcribe Table IV of the local, hashed

@@ -266,3 +266,21 @@ smoothing. This supplies an experimental operating point without making a large
 mitigation-transfer study a prerequisite for discussion. Willow shot data are
 public; their metadata and README have been checked, but their archive has not
 yet been reduced. See `docs/PUBLISHED_BENCHMARKS.md` and its confidence table.
+
+## Willow data follow-up
+
+The subsequent `results/willow_v1` pass reduces the declared 36 center-hole
+workloads at 4×4 and 6×6, retaining randomized-compilation groups and the
+authors' processed estimates. A shot census, selection/symmetry reconstruction,
+and continuous free-fermion reference replace an assumed experimental sampling
+penalty with measured operating points. They do not fit a universal exponent
+or change the current architecture curves.
+
+The pinned archive has empty interacting exact-reference groups and a malformed
+initial-state JSON. Both are reported. Valid zero-time reference occupations
+identify the product input; finite-bond MPS remains an approximate interacting
+comparator. Covariances between processed Z/ZZ estimates are not supplied, so
+derived-observable uncertainty uses a stated upper bound rather than independent
+error propagation. Increasing repetitions of fixed randomized circuits and
+increasing the number of independent circuits are separate sampling scenarios.
+Their extrapolated variance does not establish useful observable accuracy.

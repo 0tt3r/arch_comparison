@@ -1,0 +1,12 @@
+{
+  "python/willow_benchmark.py": "893dd07de6558811a35cbaa913d96c734c30aa74dfd4ed7092f43785330cb09d",
+  "python/willow_data.py": "b3cb364f197891e240e1b0c72e0dee40da9989dabe33d23b1057989befd42db9",
+  "python/willow_archive.py": "c66af2d110fc547bb135daa71174e55310ff44e65ba2090600477e627a62dfbc",
+  "python/phasecraft_data.py": "86c2c283419d1ce630c5dcbfebd895ccdd89ce2a374b2a6031e07ce9f5ead321",
+  "configs/willow_benchmark.json": "3f6d4d70aa524364cf9d9b014920293f6ab30aef2cfaecea41e1fc7b1f784f6f",
+  "refs/2510.26845v1.pdf": "5fb25f137ac0356561a144769a8daa5f28e6631f0eddab537bfe89a6ee7c3ec3",
+  "results/willow_v1/reduced.json.gz": "f033abfea5d70bdfa42e0e884e7b950e2d0b00adbb0343dfb4898a6023a1648b",
+  "results/willow_v1/downloads.json": "fb43cd0db62f969310418ee6adf58323f6424fced607aae2813dbd5ecc76a34c",
+  "results/willow_v1/archive_index.json": "6690b05d012b9cb9bc6a8e4164e37849e49cf63a6b3705a3db91caf493ce72e8",
+  "results/willow_v1/initial_states_supplied.json": "a951c10b9e76f0aa63029d31a74d947fed4abe6583f60bee8daaf7683e3e9823"
+}
