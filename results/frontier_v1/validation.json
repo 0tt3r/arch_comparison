@@ -1,0 +1,10 @@
+{
+  "status": "PASS: same-task budgets and source-menu replay, geometric reservations, saved channel data, growth census and PBS F/0",
+  "algorithm_costs": 128,
+  "encoding_inventories": 8,
+  "delivery_schedules": 8,
+  "held_out_estimators": 384,
+  "growth_cases": 24,
+  "growth_shots": 24000000,
+  "scope": "Calculation and component validation; not a full physical injection or routed qubitization implementation"
+}

@@ -1,0 +1,8 @@
+python/frontier_growth.py: OK
+python/star_growth_probe.py: OK
+configs/frontier_study.json: OK
+pbs/frontier_growth.pbs: OK
+/home/ac.otten/soft/mambaforge/envs/stim/bin/python 1.16.dev0 2.3.1
+d9_d25_x_p0.001 0 1000 10.708656219299883
+d9_d25_z_p0.001 0 1000 10.70967014087364
+{'status': 'PASS: complete fixed-shot census and source/circuit contracts', 'cases': 2, 'shots': 2000}

@@ -1,0 +1,35 @@
+{
+  "status": "complete",
+  "contract": {
+    "key": "d5_d13_x_p0.001",
+    "di": 5,
+    "df": 13,
+    "p": 0.001,
+    "basis": "x",
+    "shots": 1000000,
+    "seed": 3383964129,
+    "sources": {
+      "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+      "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+      "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+    }
+  },
+  "shots": 1000000,
+  "failures": 60,
+  "rate": 6e-05,
+  "interval95": [
+    4.578662345890185e-05,
+    7.72312279749927e-05
+  ],
+  "simultaneous_upper95": 8.578825793198168e-05,
+  "circuit_sha256": "0003df10df152252b3766c6c03561497e80f1feca1d7a36f9f8bf3cc11d3e362",
+  "detectors": 2188,
+  "physical_qubits": 337,
+  "elapsed_seconds": 19.87427264598955,
+  "peak_rss_kib": 151344,
+  "host": "i009",
+  "pbs_job": "7790943.imgt1",
+  "stim": "1.16.dev0",
+  "pymatching": "2.3.1",
+  "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+}

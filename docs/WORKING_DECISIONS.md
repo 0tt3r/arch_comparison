@@ -216,3 +216,18 @@ supply are charged. FT buffers are explicit, and its source/surgery footprint
 and decoded physical circuit remain outside the logical-stage schedule.
 Locality differences are relative to a finite reference with nearby boundaries,
 not a bulk convergence certificate.
+
+The same-Hamiltonian qubitization comparison is now a separately identified
+calculation (`results/frontier_v1`), with explicit polynomial, selection,
+amplification, synthesis, source, and sampling costs. It uses open boundaries
+and the particle-hole-centered Hamiltonian; the installed periodic Hubbard
+encoding is not silently substituted. A fast-block Trotter comparator uses the
+same source menu. Neither routed SELECT nor full Hamming-weight delivery is
+validated by these aggregate curves.
+
+The larger growth campaign measures 24 million shots through distance 25,
+starting from ideal encoded inputs. Simultaneous confidence bounds replace
+zero-failure point estimates when discussing a floor. The centered locality
+certificate is a deliberately loose sufficient bound, not a measured light-cone
+radius. These additions preserve the preceding baseline and supplied workshop
+code; see `docs/FRONTIER_WORK.md` for the completed calculation scope.

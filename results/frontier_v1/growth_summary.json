@@ -1,0 +1,993 @@
+{
+  "cases": [
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d13_x_p0.0001",
+        "di": 13,
+        "df": 13,
+        "p": 0.0001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 306337606,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "1728508c1f9aa4c7422ad661a48b5bfce88bc75f1efc5771a422f2b0f8230618",
+      "detectors": 2268,
+      "physical_qubits": 337,
+      "elapsed_seconds": 10.027009252007701,
+      "peak_rss_kib": 158680,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d13_x_p0.001",
+        "di": 13,
+        "df": 13,
+        "p": 0.001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 617274048,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "38550e2f829510a76dd36008dcea3dc720b7f2fa2d8523cc31b48f54ca2a2428",
+      "detectors": 2268,
+      "physical_qubits": 337,
+      "elapsed_seconds": 20.368656648002798,
+      "peak_rss_kib": 158284,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d13_z_p0.0001",
+        "di": 13,
+        "df": 13,
+        "p": 0.0001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 3534634354,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "61b6a41ab98818323694b0dc94325df397b3f3cc6cbd975c087631bcfef046f9",
+      "detectors": 2268,
+      "physical_qubits": 337,
+      "elapsed_seconds": 10.027961993997451,
+      "peak_rss_kib": 156108,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d13_z_p0.001",
+        "di": 13,
+        "df": 13,
+        "p": 0.001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 3187965304,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "4c8db37ae6f19cf2f328ea99d023a21d93c3473a9138fc48c823ba7bd9412982",
+      "detectors": 2268,
+      "physical_qubits": 337,
+      "elapsed_seconds": 20.199401387988473,
+      "peak_rss_kib": 158484,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d25_x_p0.0001",
+        "di": 13,
+        "df": 25,
+        "p": 0.0001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 1013701363,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "b7a73b9f35ae47d9734fdcffbed383f08da112ab3e52ec12b4f871ef3a8935fc",
+      "detectors": 15672,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 76.24995079499786,
+      "peak_rss_kib": 310460,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d25_x_p0.001",
+        "di": 13,
+        "df": 25,
+        "p": 0.001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 1138664544,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "0eb2daa7d0380bcd61a772eeb19f8d89c28929d7338594d2296d8c15d61bb2fd",
+      "detectors": 15672,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 168.88021723400743,
+      "peak_rss_kib": 286196,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d25_z_p0.0001",
+        "di": 13,
+        "df": 25,
+        "p": 0.0001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 1140564513,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "1a5b71129ff28265999b226721c3d35af49db4a92d85bc6c5d5807fb2d196b5f",
+      "detectors": 15672,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 76.06756068899995,
+      "peak_rss_kib": 300620,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d13_d25_z_p0.001",
+        "di": 13,
+        "df": 25,
+        "p": 0.001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 3277683331,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "1b5ac6001af9b97f0e097956bb3f3a984583a2e389190f5321da861bb21f0533",
+      "detectors": 15672,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 163.6245632039936,
+      "peak_rss_kib": 300088,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d13_x_p0.0001",
+        "di": 5,
+        "df": 13,
+        "p": 0.0001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 3541955684,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "0025c07cb9b9c7934b5a38704c2c259ad478cde77dfbc305e708e8d03f3730eb",
+      "detectors": 2188,
+      "physical_qubits": 337,
+      "elapsed_seconds": 9.73689570800343,
+      "peak_rss_kib": 151316,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d13_x_p0.001",
+        "di": 5,
+        "df": 13,
+        "p": 0.001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 3383964129,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 60,
+      "rate": 6e-05,
+      "interval95": [
+        4.578662345890185e-05,
+        7.72312279749927e-05
+      ],
+      "simultaneous_upper95": 8.578825793198168e-05,
+      "circuit_sha256": "0003df10df152252b3766c6c03561497e80f1feca1d7a36f9f8bf3cc11d3e362",
+      "detectors": 2188,
+      "physical_qubits": 337,
+      "elapsed_seconds": 19.87427264598955,
+      "peak_rss_kib": 151344,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d13_z_p0.0001",
+        "di": 5,
+        "df": 13,
+        "p": 0.0001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 684729269,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "abc131058d78a289529b69824279de3532a339958ca2c253f730162830bba87d",
+      "detectors": 2188,
+      "physical_qubits": 337,
+      "elapsed_seconds": 9.685715720013832,
+      "peak_rss_kib": 155336,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d13_z_p0.001",
+        "di": 5,
+        "df": 13,
+        "p": 0.001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 2685827204,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 175,
+      "rate": 0.000175,
+      "interval95": [
+        0.00015003365886144724,
+        0.00020293284378702583
+      ],
+      "simultaneous_upper95": 0.0002164163466377926,
+      "circuit_sha256": "b4f83b3eba9780b12395e2792bc0a43fe8bd856e13166406caec4bc88f2a444d",
+      "detectors": 2188,
+      "physical_qubits": 337,
+      "elapsed_seconds": 20.05484202801017,
+      "peak_rss_kib": 155328,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d25_x_p0.0001",
+        "di": 5,
+        "df": 25,
+        "p": 0.0001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 252833710,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "da4fd578c31e2943d0f407b4a7baa293ccbd34ffbc2eef656f6a7e7edc9a361e",
+      "detectors": 15592,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 77.19687486998737,
+      "peak_rss_kib": 267108,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d25_x_p0.001",
+        "di": 5,
+        "df": 25,
+        "p": 0.001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 413975761,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 51,
+      "rate": 5.1e-05,
+      "interval95": [
+        3.797307819480252e-05,
+        6.705504306473441e-05
+      ],
+      "simultaneous_upper95": 7.507200640948801e-05,
+      "circuit_sha256": "d3a67b86d95da9c8946614642e9252da1307e486cc1a0d754b3a77da0dead6de",
+      "detectors": 15592,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 165.4272004680097,
+      "peak_rss_kib": 258908,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d25_z_p0.0001",
+        "di": 5,
+        "df": 25,
+        "p": 0.0001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 429609972,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "b8fa0e35340facd817c9d8520786da511e2d8cf2c1c0059600e5020a233cb320",
+      "detectors": 15592,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 75.29381982999621,
+      "peak_rss_kib": 271388,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d5_d25_z_p0.001",
+        "di": 5,
+        "df": 25,
+        "p": 0.001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 4485796152,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 419,
+      "rate": 0.000419,
+      "interval95": [
+        0.0003798431738623839,
+        0.0004610962041840073
+      ],
+      "simultaneous_upper95": 0.0004811126539238684,
+      "circuit_sha256": "b0b25cbb9789229c2416e0edbdde85535d85000767118bb149f5e824ccebff1c",
+      "detectors": 15592,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 171.44798906199867,
+      "peak_rss_kib": 267100,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d13_x_p0.0001",
+        "di": 9,
+        "df": 13,
+        "p": 0.0001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 782161059,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "e780172f400e18bcce1bb50ae16f69eafbcb1bdd5ce70c9549aac473c88480f7",
+      "detectors": 2220,
+      "physical_qubits": 337,
+      "elapsed_seconds": 10.057759277013247,
+      "peak_rss_kib": 151668,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d13_x_p0.001",
+        "di": 9,
+        "df": 13,
+        "p": 0.001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 3510747795,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "d30201ef85f358ba1b4892ed981f4cb7f2c18ee104c2c459f3657f4a5a1b3182",
+      "detectors": 2220,
+      "physical_qubits": 337,
+      "elapsed_seconds": 20.366229202001705,
+      "peak_rss_kib": 151664,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d13_z_p0.0001",
+        "di": 9,
+        "df": 13,
+        "p": 0.0001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 3317323314,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "db79e360d3b4b4cf6d9e974d1e57436e373bf0be8dccc0eee7b88fec2a4a5ffe",
+      "detectors": 2220,
+      "physical_qubits": 337,
+      "elapsed_seconds": 9.745259493007325,
+      "peak_rss_kib": 156728,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d13_z_p0.001",
+        "di": 9,
+        "df": 13,
+        "p": 0.001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 3233006459,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "5b6322270b9fe9e5901ac178cee427667cb830486ee2340d1b016f879cd4de23",
+      "detectors": 2220,
+      "physical_qubits": 337,
+      "elapsed_seconds": 20.57667183999729,
+      "peak_rss_kib": 156720,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d25_x_p0.0001",
+        "di": 9,
+        "df": 25,
+        "p": 0.0001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 2843891006,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "ac2352c3c64309c842f591e4e08e572e802cdd09d01bdd66758b9db1b397c9ef",
+      "detectors": 15624,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 75.48569254999165,
+      "peak_rss_kib": 267124,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d25_x_p0.001",
+        "di": 9,
+        "df": 25,
+        "p": 0.001,
+        "basis": "x",
+        "shots": 1000000,
+        "seed": 3915138503,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "2cc2e34e05172b61b82be6afce3cdccb57f5dc7b75b5d1b1090f34a429c0dc79",
+      "detectors": 15624,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 166.18689080700278,
+      "peak_rss_kib": 258924,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d25_z_p0.0001",
+        "di": 9,
+        "df": 25,
+        "p": 0.0001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 2727430287,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "341a2a86ac4942ea317db9e056b6e33d95b4a8e103d856ec7c169e47b374655d",
+      "detectors": 15624,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 75.13470882800175,
+      "peak_rss_kib": 265048,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    },
+    {
+      "status": "complete",
+      "contract": {
+        "key": "d9_d25_z_p0.001",
+        "di": 9,
+        "df": 25,
+        "p": 0.001,
+        "basis": "z",
+        "shots": 1000000,
+        "seed": 229336096,
+        "sources": {
+          "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+          "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+          "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+        }
+      },
+      "shots": 1000000,
+      "failures": 0,
+      "rate": 0.0,
+      "interval95": [
+        0,
+        3.688872650206488e-06
+      ],
+      "simultaneous_upper95": 6.173767046123731e-06,
+      "circuit_sha256": "4c90a43fefbf22ceb6a8999135d8406ccdcc34859260f810c82e69e1b8c68e4b",
+      "detectors": 15624,
+      "physical_qubits": 1249,
+      "elapsed_seconds": 163.35190414299723,
+      "peak_rss_kib": 265000,
+      "host": "i009",
+      "pbs_job": "7790943.imgt1",
+      "stim": "1.16.dev0",
+      "pymatching": "2.3.1",
+      "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+    }
+  ],
+  "pairs": [
+    {
+      "di": 5,
+      "df": 13,
+      "p": 0.001,
+      "failures": {
+        "x": 60,
+        "z": 175
+      },
+      "pauli_total_upper": 0.00030220460456977427,
+      "chi_per_growth_upper": 0.001209183876035965,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 5,
+      "df": 13,
+      "p": 0.0001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 9,
+      "df": 13,
+      "p": 0.001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 9,
+      "df": 13,
+      "p": 0.0001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 13,
+      "df": 13,
+      "p": 0.001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 13,
+      "df": 13,
+      "p": 0.0001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 5,
+      "df": 25,
+      "p": 0.001,
+      "failures": {
+        "x": 51,
+        "z": 419
+      },
+      "pauli_total_upper": 0.0005561846603333564,
+      "chi_per_growth_upper": 0.002225976925210156,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 5,
+      "df": 25,
+      "p": 0.0001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 9,
+      "df": 25,
+      "p": 0.001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 9,
+      "df": 25,
+      "p": 0.0001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 13,
+      "df": 25,
+      "p": 0.001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    },
+    {
+      "di": 13,
+      "df": 25,
+      "p": 0.0001,
+      "failures": {
+        "x": 0,
+        "z": 0
+      },
+      "pauli_total_upper": 1.2347534092247463e-05,
+      "chi_per_growth_upper": 4.93907462254228e-05,
+      "scope": "Union of X/Z campaign upper bounds, conditional on a common Pauli logical-channel interpretation; ideal encoded input, target memory and readout included, not injected-state error"
+    }
+  ],
+  "shots": 24000000,
+  "status": "PASS: 24 complete cells, source/circuit hashes, simultaneous intervals, PBS F/0",
+  "accounting_sha256": "beec19a992d041efc0959be8ab1a85538e6b292ac7fe64d5f5e502d4e7163fd9"
+}

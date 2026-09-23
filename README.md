@@ -1,8 +1,16 @@
 # Hubbard dynamics on a fixed qubit array
 
-The new **[implementation checks](results/implementation_v1/summary.md)** measure
+The **[same-task algorithm and component study](results/frontier_v1/summary.md)**
+adds open-boundary qubitization, 24 million decoded growth shots toward distances
+13 and 25, explicit magic-state transport, measured exposure diagnostics, and a
+centered locality certificate. The tested QSVT implementation does not beat the
+best tested Trotter scenario; the larger growth data constrain a component rather
+than validating full STAR injection. See the [methods and replay](docs/FRONTIER_WORK.md)
+and the updated [main manuscript](tex/main.pdf).
+
+The **[implementation checks](results/implementation_v1/summary.md)** measure
 held-out NISQ mitigation bias, STAR channel and small-patch growth behavior,
-CUDA-Q Hamming-weight arithmetic with nearest-neighbor delivery, and finite-patch
+CUDA-Q Hamming-weight arithmetic with nearest-neighbor data routing, and finite-patch
 truncation. See the [methods](docs/IMPLEMENTATION_CHECKS.md). These constrain the
 assumptions behind the capacity comparison without silently replacing it.
 

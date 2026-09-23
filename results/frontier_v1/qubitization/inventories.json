@@ -1,0 +1,186 @@
+[
+  {
+    "L": 2,
+    "variant": "generic_amplitudes",
+    "alpha": 12.0,
+    "pauli_terms": 20,
+    "lcu_terms": 20,
+    "encoding": {
+      "LogicalQubits": 14,
+      "T": 124,
+      "Clifford": 628,
+      "Rotations": 64
+    },
+    "reflection": {
+      "LogicalQubits": 7,
+      "T": 32,
+      "Clifford": 146,
+      "Rotations": 1
+    },
+    "logical_qubits": 21,
+    "selection_and_junk": 5,
+    "signature_qubits": 14,
+    "terms_sha256": "4151f6c1c171ec7f081b432bc85915a0a56917743638ad8aa14b7e0e8469fe45"
+  },
+  {
+    "L": 2,
+    "variant": "split_uniform",
+    "alpha": 12.0,
+    "pauli_terms": 20,
+    "lcu_terms": 24,
+    "encoding": {
+      "LogicalQubits": 14,
+      "T": 164,
+      "Clifford": 812,
+      "Rotations": 4
+    },
+    "reflection": {
+      "LogicalQubits": 7,
+      "T": 32,
+      "Clifford": 146,
+      "Rotations": 1
+    },
+    "logical_qubits": 21,
+    "selection_and_junk": 5,
+    "signature_qubits": 14,
+    "terms_sha256": "4151f6c1c171ec7f081b432bc85915a0a56917743638ad8aa14b7e0e8469fe45"
+  },
+  {
+    "L": 4,
+    "variant": "generic_amplitudes",
+    "alpha": 64.0,
+    "pauli_terms": 112,
+    "lcu_terms": 112,
+    "encoding": {
+      "LogicalQubits": 40,
+      "T": 508,
+      "Clifford": 2880,
+      "Rotations": 256
+    },
+    "reflection": {
+      "LogicalQubits": 9,
+      "T": 48,
+      "Clifford": 214,
+      "Rotations": 1
+    },
+    "logical_qubits": 49,
+    "selection_and_junk": 7,
+    "signature_qubits": 40,
+    "terms_sha256": "e2d97670a0e4860ab8ec931264d914f7b714ccfc9f26ac08161433752f68e91a"
+  },
+  {
+    "L": 4,
+    "variant": "split_uniform",
+    "alpha": 64.0,
+    "pauli_terms": 112,
+    "lcu_terms": 128,
+    "encoding": {
+      "LogicalQubits": 40,
+      "T": 508,
+      "Clifford": 2782,
+      "Rotations": 0
+    },
+    "reflection": {
+      "LogicalQubits": 9,
+      "T": 48,
+      "Clifford": 214,
+      "Rotations": 1
+    },
+    "logical_qubits": 49,
+    "selection_and_junk": 7,
+    "signature_qubits": 40,
+    "terms_sha256": "e2d97670a0e4860ab8ec931264d914f7b714ccfc9f26ac08161433752f68e91a"
+  },
+  {
+    "L": 6,
+    "variant": "generic_amplitudes",
+    "alpha": 156.0,
+    "pauli_terms": 276,
+    "lcu_terms": 276,
+    "encoding": {
+      "LogicalQubits": 82,
+      "T": 2044,
+      "Clifford": 11156,
+      "Rotations": 1024
+    },
+    "reflection": {
+      "LogicalQubits": 11,
+      "T": 64,
+      "Clifford": 282,
+      "Rotations": 1
+    },
+    "logical_qubits": 93,
+    "selection_and_junk": 9,
+    "signature_qubits": 82,
+    "terms_sha256": "82de7a52690e493f8402308f5b786a618b2bb9505ab1bc73ec0680eef03dbb93"
+  },
+  {
+    "L": 6,
+    "variant": "split_uniform",
+    "alpha": 156.0,
+    "pauli_terms": 276,
+    "lcu_terms": 312,
+    "encoding": {
+      "LogicalQubits": 82,
+      "T": 2180,
+      "Clifford": 11316,
+      "Rotations": 4
+    },
+    "reflection": {
+      "LogicalQubits": 11,
+      "T": 64,
+      "Clifford": 282,
+      "Rotations": 1
+    },
+    "logical_qubits": 93,
+    "selection_and_junk": 9,
+    "signature_qubits": 82,
+    "terms_sha256": "82de7a52690e493f8402308f5b786a618b2bb9505ab1bc73ec0680eef03dbb93"
+  },
+  {
+    "L": 8,
+    "variant": "generic_amplitudes",
+    "alpha": 288.0,
+    "pauli_terms": 512,
+    "lcu_terms": 512,
+    "encoding": {
+      "LogicalQubits": 138,
+      "T": 2044,
+      "Clifford": 13744,
+      "Rotations": 1024
+    },
+    "reflection": {
+      "LogicalQubits": 11,
+      "T": 64,
+      "Clifford": 282,
+      "Rotations": 1
+    },
+    "logical_qubits": 149,
+    "selection_and_junk": 9,
+    "signature_qubits": 138,
+    "terms_sha256": "0565525be09a18c1c4606ccb01ea76aacb5c168f7a85fa272f721d0ebbffe299"
+  },
+  {
+    "L": 8,
+    "variant": "split_uniform",
+    "alpha": 288.0,
+    "pauli_terms": 512,
+    "lcu_terms": 576,
+    "encoding": {
+      "LogicalQubits": 139,
+      "T": 4180,
+      "Clifford": 22418,
+      "Rotations": 4
+    },
+    "reflection": {
+      "LogicalQubits": 12,
+      "T": 72,
+      "Clifford": 316,
+      "Rotations": 1
+    },
+    "logical_qubits": 151,
+    "selection_and_junk": 10,
+    "signature_qubits": 139,
+    "terms_sha256": "0565525be09a18c1c4606ccb01ea76aacb5c168f7a85fa272f721d0ebbffe299"
+  }
+]

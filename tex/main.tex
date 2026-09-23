@@ -196,6 +196,65 @@ These measurements show that a more parallel ordering need not reduce
 the local-observable error. They neither establish bulk convergence nor
 replace the frozen accuracy envelope.
 
+\subsection{Qubitized dynamics for the same Hamiltonian}\label{sec:qsvt-comparison}
+We also count a qubitized implementation of the open-boundary Hamiltonian,
+using pyLIQTR and Qualtran components with quantum singular value
+transformation (QSVT)~\cite{gilyen2019,babbush2018}. The specialized Hubbard
+encoding in the installed library has periodic boundaries; using it directly
+would change the task. The centered open-boundary Pauli expansion instead has
+\begin{equation}
+ \alpha=\sum_\ell |h_\ell|=4L(L-1)+\frac{U}{4}L^2,
+ \qquad \alpha\big|_{L=4,U=4}=64.
+\end{equation}
+At $U=4$, hopping coefficients have magnitude $1/2$ and onsite coefficients
+have magnitude one. Repeating each onsite Pauli twice makes all LCU weights
+equal. There are $8L(L-1)+2L^2$ entries, exactly 128 at $L=4$, so PREPARE
+requires only seven Hadamards there. The controlled block encoding costs
+508 T gates and no arbitrary rotations. Generic amplitude preparation at
+the same point costs 508 T gates plus 256 arbitrary rotations. A local
+adapter places coefficient signs in SELECT and magnitudes in PREPARE;
+zero-weight padding selects the identity. The Hamiltonian is independently
+checked against full fermionic creation and annihilation operators on
+$2\times2$.
+
+We use half-amplitude cosine and sine polynomials and combine their
+controlled branches, giving accepted amplitude $1/4$ before amplification.
+The accounting includes rejected attempts, zero through three oblivious
+amplification steps, polynomial and phase-realization error, rotation
+synthesis, conditional logical-fault bias, and the shared magic-state source
+menu. Appendix~\ref{app:qsvt-budget} gives the approximation budget.
+These are constructive polynomial and compiled-component counts; large-degree
+phase lists and routed SELECT circuits have not been validated. Both algorithms
+use the fast data block here. A QSVT sensitivity either omits extra Clifford
+serialization or charges all counted Cliffords plus two Clifford slots per T;
+neither choice is a physical nearest-neighbor SELECT schedule.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{frontier_algorithms.pdf}
+\caption{Same-task FT algorithm comparison at $p=10^{-3}$ and one week.
+The vertical coordinate is the largest tested side among $L=2,4,6,8$;
+the plateau at eight is the test ceiling. Trotter uses the finite-patch
+accuracy envelope and optimized budgets, with individual synthesis or the
+aggregate Hamming-weight scenario. QSVT uses the cheaper of the repaired
+generic and equal-weight encodings, with state selection and amplification
+charged. The dotted curve adds Clifford serialization. These conditional
+costs do not include a fully routed SELECT or full Hamming-weight layout.}
+\label{fig:frontier-algorithms}
+\end{figure}
+
+At $L=4,\tau=1,\eps=0.001$, the selected QSVT circuit uses 551,403 T
+states per attempt and costs $9.51\times10^6$ physical qubits under the
+T-service timing assumption. Individual Trotter uses 192,332 T states and
+$1.34\times10^6$ qubits; the Hamming-weight scenario uses 82,336 T states
+and $1.77\times10^5$ qubits. At $\eps=0.01$, the respective QSVT and
+individual-Trotter costs are $1.60\times10^5$ and $9.29\times10^4$ qubits.
+QSVT does not beat the better Trotter scenario at any of the 32 tested
+size, time, and precision points. This comparison does not exclude a more
+structured open-boundary encoding or a coherent observable estimator.
+The $\tau=8$ Trotter comparison still uses only the $3\times3$ time envelope,
+so its transfer to larger lattices remains particularly uncertain.
+
 \section{Testing the assumptions behind the capacity curves}\label{sec:implementation}
 The capacity comparison depends on three implementation claims: that a
 physical estimator can afford its residual bias, that an angle-dependent
@@ -343,6 +402,24 @@ check that the detector and logical records are meaningful. These memory
 components include final readout and exclude noisy initial injection;
 they cannot establish the distance-25 arbitrary-angle growth floor.
 
+
+A larger fixed-shot campaign extends the same protocol to
+initial distances $d_i=5,9,13$ and final distances $d_f=13,25$ at
+$p=10^{-3},10^{-4}$ in both bases. All 24 cases complete one million
+shots, following a two-case PBS topology smoke. Both jobs finish with
+zero exit status, and the case census retains seeds and circuit hashes.
+At $p=10^{-3}$, $5\to25$ produces 51 X-basis and 419 Z-basis
+failures; $5\to13$ produces 60 and 175. Every other case has zero observed
+failures. A zero count has simultaneous one-sided upper bound
+$6.174\times10^{-6}$ per component, using a 5\% family error budget over
+all 24 intervals. If the two basis tests describe a common Pauli channel,
+their union bounds its total error by $1.235\times10^{-5}$ for zero-failure
+pairs. Thus these data constrain growth at the data-code distance but do
+not yet certify a $10^{-5}$ total floor. They also show that the initial
+patch distance matters even when the final patch is large. Initial
+injection faults remain excluded, and we do not subtract the no-growth
+control from a measured campaign error.
+
 \subsection{FT: arithmetic savings versus a routed schedule}
 An explicit onsite layer on 16 sites tests the repeated-angle count model.
 Parity CNOTs turn $e^{-i\theta Z_\uparrow Z_\downarrow}$ into equal $R_z$
@@ -387,6 +464,41 @@ resource improvement is supported at the T-count level; its runtime and
 area improvement require a better joint routing, arithmetic, and delivery
 implementation than is assumed by a count-only comparison.
 
+
+We then replace abstract delivery by a conservative geometric construction.
+A magic state enters at a perimeter output port, moves by adjacent SWAPs
+through the patch array, and is consumed next to the target. Reversing the
+SWAPs restores every displaced data qubit. Tests verify the complete channel
+on entangled data in both injection outcomes. Each SWAP costs three adjacent
+CX operations, and the injection takes five logical clocks. The schedule
+reserves the traversed patches and their surgery mediators until return.
+Embedding patch centers at pitch two and retaining the perimeter gives
+225 tiles for batches one and four, or 289 for batches eight and sixteen.
+These footprints include gaps and corners; the reference source area is
+charged separately, with one bounded output buffer per port.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{frontier_components.pdf}
+\caption{Larger growth components and geometric FT delivery. Left: one
+million shots per basis at $p=10^{-3}$. Circles are measured rates, with segments reaching simultaneous upper
+bounds; downward triangles mark upper bounds where no failures were observed.
+The experiments include target memory and readout but start from an ideal
+encoded state. Right: the same compiled onsite stage with abstract delivery
+(dashed) or explicit SWAP transport and restoration (solid). Port count,
+state supply, and data routing are held fixed within each pair. The geometric
+construction is deliberately conservative and does not establish an optimal
+surgery layout.}\label{fig:frontier-components}
+\end{figure}
+
+With one port, explicit delivery changes the batch-one and batch-16 stage
+times to 581.118 and 358.890\,ms. Four ports reduce these to 100.518 and
+84.102\,ms. Batches four and eight can be slower despite using fewer T
+states. The ranking is therefore a property of the arithmetic, placement,
+and transport together. We retain this isolated stage as a separate layout
+scenario rather than extrapolating its transport penalty to every operation
+in the capacity plot.
+
 \subsection{Locality: the observable and its Trotter error differ}
 We compare exact doublon values on nested patches with the same N\'eel
 pattern, $U=4$, and observed coordinate $(1,1)$. The smaller patches are
@@ -414,6 +526,69 @@ properly centered larger-patch or independently bounded locality study
 as a distinct requirement. At fixed time, a validated local approximation
 would also change the task metric: once its patch fits, maximum full-lattice
 size no longer measures the cost of that one observable.
+
+
+A state-independent certificate supplies a complementary sufficient condition.
+We center the observable, $O=D-I/2$, so $\|O\|=1/2$, and remove onsite
+interactions by a product interaction picture. A two-spin hopping bond has
+norm $2J$. The commutator recursion~\cite{nachtergaele2006} and Duhamel's
+formula give the deliberately loose bound
+\begin{equation}\label{eq:local-certificate}
+ \delta_{\rm spatial}(R,\tau)\leq
+ \min\left\{1,\frac{2}{7}\sum_{n\geq R+1}\frac{(28|\tau|)^n}{n!}\right\}.
+\end{equation}
+Here the retained patch contains the graph ball of radius $R$ around the
+observed site, and its initial reduced state agrees with the full system.
+There are at most four first bonds and seven bonds touching each subsequent
+bond. The first omitted boundary crossing needs at least $R+1$ bonds;
+Appendix~\ref{app:local-certificate} details the counting.
+The geometric tail majorant first meets a 0.0025 allowance at $R=78$ for
+$\tau=1$, corresponding to an enclosing $157\times157$ square.
+This sufficient radius is not an estimate of the physical light cone.
+The bound is too loose to certify the proposed six- or eight-site-wide
+patches, while the direct finite-reference checks reject the smallest
+truncations. A tight bulk truncation estimate remains separate scientific work.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{frontier_locality.pdf}
+\caption{Sufficient locality radius from Eq.~\eqref{eq:local-certificate}
+(left) and measured finite-reference differences (right). These are different
+quantities: a loose uniform bound cannot locate the physical light cone,
+and agreement with one finite reference cannot bound its outer boundary.}
+\label{fig:frontier-locality}
+\end{figure}
+
+\subsection{Do the measured costs collapse onto exposure?}
+The exposure laws organize the accounting, but a collapse requires an
+independently obtained ordinate. We use exact noisy eight-qubit expectations,
+held-out affine fits, and enumerated STAR channels rather than plotting an
+assumed variance law against its own exponent. For each NISQ circuit,
+$\chi_{\rm PEC}$ sums the gate, idle, and SPAM inverse-norm contributions.
+The measured variance multiplier divides the estimator variance per attempt
+by $D_{\rm ideal}(1-D_{\rm ideal})$; acceptance and fitted slope are included.
+Training uncertainty and all six million training shots per fit remain in
+the campaign ledger, although the ordinate isolates inference variance.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{frontier_exposure.pdf}
+\caption{Independent exposure diagnostics. Left and center: matched-noise
+held-out tests at $p=10^{-3},10^{-4}$, with crosses marking failure of the
+0.005 bias allowance in the left panel. Small variance does not imply small
+bias. The dashed diagonal is the separate whole-circuit PEC inverse-norm
+reference. Right: $q/(p|\theta|)$ from the exact generator-fault submodel at
+$p=10^{-3}$, separating raw, ideal-PCEC, and noisy-PCEC channels. Generic extraction faults and
+growth are absent from these channel curves.}\label{fig:frontier-exposure}
+\end{figure}
+
+The trained estimators have much smaller variance than the PEC reference,
+but some fail the held-out bias requirement at the same exposure. These
+data do not support a universal variance-and-bias collapse onto one scalar.
+Likewise, STAR's normalized error depends on the correction channel and
+injection distance. The useful outcome is a test of the law's domain:
+exposure alone is insufficient to certify an estimator or a full injection
+protocol.
 
 \section{Reconciliation of the workshop calculations}\label{sec:reconciliation}
 We evaluate the two supplied workshop implementations at $4\times4$,
@@ -1657,8 +1832,10 @@ Direct $4\times4$ checks now settle the Trotter component for the selected
 headline workloads. The remaining scientific dependencies are transfer of
 accuracy to larger lattices, a controlled spatial truncation estimate,
 empirical NISQ mitigation bias, and physical injection/growth and
-handoff schedules with residual-channel validation. Qubitization remains
-a separately identified later algorithm comparison.
+handoff schedules with residual-channel validation. The same-Hamiltonian
+qubitization comparison in Section~\ref{sec:qsvt-comparison} does not
+reverse the tested ordering; its routed implementation and tighter
+state-dependent locality bounds remain unvalidated.
 
 \appendix
 \section{Matrix-free finite-lattice reference}
@@ -1714,6 +1891,63 @@ The logical STAR instrument of Section~\ref{sec:rus} instead verifies local
 Z covariance under its stated Pauli fault model. A physical implementation
 must justify that model across injection, growth, retries, and any selection
 before the more favorable budget becomes its default.
+
+\section{QSVT approximation and selection budget}\label{app:qsvt-budget}
+For $x=\alpha\tau$, the Jacobi--Anger expansion has coefficients
+$J_0(x)$ and $2(-i)^nJ_n(x)$. Truncation after degree $D$ has uniform
+operator-error bound $2\sum_{n>D}|J_n(x)|$. We sum the finite Bessel tail
+and bound the remainder using
+$|J_n(x)|\leq(|x|/2)^n/n!$ and a geometric majorant. The even and odd
+parts approximate cosine and sine, each divided by two; the branch LCU
+divides by two again. The resulting block approximates $U/4$.
+We reserve half of its error allowance for polynomial truncation and half
+for classical phase realization. The latter is a required tolerance on
+phase generation, not a numerical validation of every large-degree phase list.
+
+After $j=0,1,2,3$ oblivious amplification steps, the accepted singular-value
+polynomials are respectively
+\begin{align}
+ P_1(a)&=a, &P_3(a)&=3a-4a^3,\\
+ P_5(a)&=5a-20a^3+16a^5, &
+ P_7(a)&=7a-56a^3+112a^5-64a^7.
+\end{align}
+Their ideal amplitudes are $a_j=\sin[(2j+1)\arcsin(1/4)]$.
+For a block error $\delta$, telescoping each matrix monomial gives
+$\eta_j\leq C_j\delta$, where
+$C_j=\sum_n n|c_n|(1/4+\delta)^{n-1}$ for $P_{2j+1}(a)=\sum_nc_na^n$.
+The acceptance is at least $(a_j-\eta_j)^2$, and a conservative conditional
+observable-error bound is $4\eta_j/(a_j-\eta_j)$.
+Independent tests check both the amplification unitary and noncommuting
+matrix perturbations. Rotation synthesis receives a further operator-error
+allowance chosen with the same normalization bound. A stochastic circuit
+fault of probability $q$ is charged at conditional bias $2q/P$ for acceptance
+lower bound $P$, rather than using the deterministic-circuit bound $q$.
+Shots include failed selection and a conservative fault-related acceptance
+reserve. Resource estimates retain the reference synthesis fit and source
+model, including cleanup when the selected budget requires it.
+
+\section{A conservative centered truncation bound}\label{app:local-certificate}
+In the interaction picture of the onsite terms, each even hopping operator
+remains supported on its two sites and keeps norm $2J$. Disjoint even
+fermionic operators commute, so the usual commutator recursion applies
+without interpreting Jordan--Wigner strings as physical propagation.
+Duhamel's formula expresses the difference between full and truncated
+Heisenberg observables as an integral over omitted boundary bonds.
+Iterating the commutator recursion inside the retained patch produces a
+chain of overlapping bonds terminating at that boundary. A chain of length
+$n$ contributes at most $\|D-I/2\|(4|\tau|)^n/n!$.
+There are at most $4\cdot7^{n-1}$ such chains before imposing the endpoint
+condition, and no boundary-reaching chain has $n<R+1$. Summing gives
+Eq.~\eqref{eq:local-certificate}. Time dependence in the interaction picture
+does not change the uniform norm or ordered-simplex bounds.
+For $x=28|\tau|$ and $R+2>x$, the numerical implementation uses
+\begin{equation}
+ \sum_{n\geq R+1}\frac{x^n}{n!}
+ \leq \frac{x^{R+1}}{(R+1)!}\frac{1}{1-x/(R+2)}.
+\end{equation}
+The operator-norm bound also bounds the expectation difference for consistent
+initial reduced states. Values use double precision with a small positive
+roundoff margin; no interval-arithmetic certification is claimed.
 
 \section{Compilation, checks, and reproducibility}
 The installed CPU CUDA-Q Logical environment compiles the common analog

@@ -1,0 +1,7 @@
+{
+  "scope": "Complete the next comparison layer: larger growth components, same-Hamiltonian qubitization, geometric T delivery, independent exposure diagnostics, and centered locality bounds",
+  "growth": {"pairs": [[5,13],[9,13],[13,13],[5,25],[9,25],[13,25]], "p_values": [0.001,0.0001], "bases": ["x","z"], "shots_per_case": 1000000, "seed": 202609240, "family_delta": 0.05, "workers": 8},
+  "qubitization": {"sizes": [2,4,6,8], "times": [1,2,4,8], "errors": [0.01,0.001], "u_over_j": 4, "simulation_fraction": 0.25, "synthesis_fraction": 0.10},
+  "delivery": {"ports": [1,4], "batch_sizes": [1,4,8,16], "code_distance": 25, "source_rounds": 150, "cycle_ns": 240},
+  "locality": {"times": [0.1,0.25,0.5,1,2,4,8], "allowances": [0.0025,0.00125], "max_radius": 160}
+}

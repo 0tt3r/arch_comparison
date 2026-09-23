@@ -5,6 +5,18 @@ Matplotlib, Numba, pytest, and packaging is sufficient for the models, tests, pl
 and manuscript helper. The existing `qb_gsee` environment provides these.
 Set `OPENBLAS_NUM_THREADS=1` and `OMP_NUM_THREADS=1` for the bounded examples.
 
+## Same-task algorithms and larger components
+
+See [FRONTIER_WORK.md](FRONTIER_WORK.md). `make frontier` regenerates the
+open-boundary pyLIQTR/Qualtran counts, geometric delivery, exposure diagnostics,
+and locality bounds, using the completed growth campaign. `make frontier-figures`
+only replays saved arithmetic and plots. `make frontier-check` checks saved
+accounting plus the Stim circuit hashes. The science environment additionally
+needs pyLIQTR 1.4.2, Qualtran, and Cirq for the compiler/uniform-preparation test;
+exact installed versions are recorded in the qubitization results. No PBS job
+is submitted by these Make targets. A fresh growth campaign requires its own
+output contract and the supplied PBS runner, as described in the methods.
+
 ## Estimator and implementation checks
 
 The four new bounded studies and exact rerun commands are described in

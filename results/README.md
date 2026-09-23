@@ -5,6 +5,7 @@ model outputs, and source hashes used at that stage:
 
 | Directory | Content |
 |---|---|
+| `frontier_v1` | Same-Hamiltonian QSVT costs, 24M growth shots at distances 13/25, geometric magic delivery, independent exposure diagnostics, centered locality certificate |
 | `implementation_v1` | Held-out NISQ bias/variance, STAR projected channels and decoded growth probes, explicit CUDA-Q FT arithmetic, nested finite-patch checks |
 | `physics_sweep_v1` | Frozen-baseline p/precision sweep, source/injection scenarios, Hamming-weight and compact-encoding costs, small-patch ordering experiment |
 | `workshop_reconciliation_v1` | Shared-task adapters, native count/delivery differences, identical STAR ledger, captured workshop Python sources |

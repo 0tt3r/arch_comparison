@@ -1,0 +1,35 @@
+{
+  "status": "complete",
+  "contract": {
+    "key": "d9_d25_x_p0.0001",
+    "di": 9,
+    "df": 25,
+    "p": 0.0001,
+    "basis": "x",
+    "shots": 1000000,
+    "seed": 2843891006,
+    "sources": {
+      "python/frontier_growth.py": "9bbae5960de569e70ff409b77209429e41b88c12abc3e6c2e1f2ce5a013e7081",
+      "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+      "configs/frontier_study.json": "bea31725bcca2108bd68bdf6a71632b6cf7911375c66fb12a2c84cd16f3ba384"
+    }
+  },
+  "shots": 1000000,
+  "failures": 0,
+  "rate": 0.0,
+  "interval95": [
+    0,
+    3.688872650206488e-06
+  ],
+  "simultaneous_upper95": 6.173767046123731e-06,
+  "circuit_sha256": "ac2352c3c64309c842f591e4e08e572e802cdd09d01bdd66758b9db1b397c9ef",
+  "detectors": 15624,
+  "physical_qubits": 1249,
+  "elapsed_seconds": 75.48569254999165,
+  "peak_rss_kib": 267124,
+  "host": "i009",
+  "pbs_job": "7790943.imgt1",
+  "stim": "1.16.dev0",
+  "pymatching": "2.3.1",
+  "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+}

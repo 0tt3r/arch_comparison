@@ -1,0 +1,15 @@
+#!/bin/bash -l
+#PBS -N fh-growth-frontier
+#PBS -A QC_NA_Sim
+#PBS -q debug
+#PBS -l select=1:ncpus=128,place=scatter,walltime=00:20:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMBA_NUM_THREADS=1
+sha256sum -c results/frontier_v1/growth_inputs.sha256
+/home/ac.otten/soft/mambaforge/envs/stim/bin/python -c 'import sys,stim,pymatching; print(sys.executable,stim.__version__,pymatching.__version__)'
+args=()
+if [[ "${FRONTIER_MODE:-smoke}" == smoke ]]; then args+=(--smoke); fi
+/home/ac.otten/soft/mambaforge/envs/stim/bin/python -u python/frontier_growth.py "${args[@]}" --workers 8
