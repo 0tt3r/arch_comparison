@@ -231,3 +231,19 @@ zero-failure point estimates when discussing a floor. The centered locality
 certificate is a deliberately loose sufficient bound, not a measured light-cone
 radius. These additions preserve the preceding baseline and supplied workshop
 code; see `docs/FRONTIER_WORK.md` for the completed calculation scope.
+
+## Current integration and accuracy requirements
+
+The integrated comparison in `results/integrated_v1` is the current entry point.
+It combines the existing STAR generator-fault instrument with explicit growth
+composition scenarios, jointly prices acceptance and retries, and selects FT's
+individual/Hamming-weight synthesis and compact/fast delivery alternatives.
+Historical curves retain their original inputs and interpretation.
+
+NISQ residual accuracy is treated as a requirement to solve for, not an assumed
+experimental result. The new tables give affordable variance multipliers and
+remaining systematic offsets at specified qubit budgets, including a training
+cost sensitivity. A large held-out mitigation study is deferred until these
+requirements show that it could change an architecture conclusion. All three
+arms retain the same standard for identifying assumptions versus measurements.
+No unconditional NISQ boundary beyond a particular lattice size is established.

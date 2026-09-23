@@ -1,0 +1,7 @@
+{
+  "status": "PASS: component composition, budgets, replicas and break-even identities",
+  "resource_rows": 864,
+  "threshold_rows": 12428,
+  "channel_points": 4221,
+  "scope": "Component-informed scenarios, not confidence intervals or full injection validation. Growth bounds refer to ideally encoded input, growth, memory and readout. Applying a bound as an independent error per RUS growth is a composition assumption. Further distance growth is charged as a protected handoff. Cultivation quality is held at its p=1e-3 anchor. FT/HWP delivery remains an aggregate layout model. NISQ thresholds use Gaussian planning and keep the unknown systematic offset explicit."
+}

@@ -1,5 +1,23 @@
 # Hubbard dynamics on a fixed qubit array
 
+Start with the **[integrated comparison and NISQ requirements](results/integrated_v1/summary.md)**.
+This updates the encoded capacity comparison with the existing angle-dependent
+STAR channels, acceptance and growth scenarios, and FT's tested synthesis menu.
+The NISQ figure asks what sampling overhead and remaining systematic offset
+would be needed to match or beat the selected encoded implementations.
+It does not assume that an experimental mitigation method attains those values.
+
+![Updated capacity comparison](figures/integrated_capacity.png)
+
+![NISQ accuracy and sampling requirements](figures/nisq_requirements.png)
+
+The bands span declared component and supply scenarios, not confidence intervals.
+No unconditional NISQ size boundary or complete physical injection/surgery
+validation is claimed. See the [methods](docs/INTEGRATED_COMPARISON.md),
+[main manuscript](tex/main.pdf), and [reproduction commands](docs/REPRODUCING.md).
+`make integrated` resumes the new calculation; `make integrated-figures` redraws
+saved results. Earlier result versions below remain available for comparison.
+
 The **[same-task algorithm and component study](results/frontier_v1/summary.md)**
 adds open-boundary qubitization, 24 million decoded growth shots toward distances
 13 and 25, explicit magic-state transport, measured exposure diagnostics, and a
@@ -14,13 +32,13 @@ CUDA-Q Hamming-weight arithmetic with nearest-neighbor data routing, and finite-
 truncation. See the [methods](docs/IMPLEMENTATION_CHECKS.md). These constrain the
 assumptions behind the capacity comparison without silently replacing it.
 
-For the team discussion, start with the **[physical-error and algorithm comparison](results/physics_sweep_v1/summary.md)**
-and the **[main manuscript](tex/main.pdf)**. The analytical
+The earlier **[physical-error and algorithm comparison](results/physics_sweep_v1/summary.md)**
+retains the scalar injection law as a controlled reference. The analytical
 [assumptions and formulas](docs/DISCUSSION_MODEL.md) remain the common model.
 
 ![Achievable lattice size versus physical qubits, physical error, and precision](figures/physical_error_capacity.png)
 
-The new sweep varies p = 0.001, 0.0003, and 0.0001 at 0.01 and 0.001 absolute
+That historical sweep varies p = 0.001, 0.0003, and 0.0001 at 0.01 and 0.001 absolute
 error. All 144 matching p = 0.001 cases reproduce the frozen baseline.
 Source quality and STAR floors at lower p are explicit scenarios, not new
 gadget calibrations. Both precision targets remain prominent.

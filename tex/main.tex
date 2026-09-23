@@ -19,34 +19,172 @@ doublon observable after a Fermi--Hubbard quench. We organize the comparison
 around the largest lattice accessible with a given number of physical qubits
 and one week of execution. A common accounting model separates sampling,
 mitigation exposure, logical protection, non-Clifford supply, and parallel
-replicas. Explicit circuit compilation and small-patch dynamics identify the
-mechanisms that control the comparison: idle exposure depends strongly on
-the schedule; STAR depends on both total rotation angle and accumulated
-injection floors; FT depends on supply and consumption together; and Trotter
-refinement changes the cost of these architectures differently. The compiled
-four-step reference curves are conditional circuit comparisons, since that
-step count fails the observable-accuracy target on both square patches
-tested. We retain this distinction while developing a common basis for
-architecture optimization and hybrid strategies.
-For immediate discussion, we also provide a simpler analytical comparison
-with experimentally anchored circuit scales, measured finite-patch time
-dependence, and per-arm error-budget optimization. Direct $4\times4$
-checks validate the Trotter allowances at the selected headline step counts;
-time extensions assess ordering-dependent finite-size corrections.
-Layout and source-supply sensitivities
-show why faster consumption need not translate into proportional area savings.
-We now vary physical error and precision with the calibrated workload held
-fixed, and test local encoding and repeated-angle synthesis as separate
-algorithm choices. Hamming-weight phasing reduces the modeled strict-precision
-FT area by factors of approximately six at the three sizes tested, while
-its workspace can outweigh the benefit at loose precision. A subsequent
-explicit layer confirms the T-count saving but shows that routing can erase
-the runtime advantage with a faster source. Held-out noisy-estimator tests,
-projected STAR channels and decoded growth probes, and nested exact patches
-separate measured implementation evidence from the remaining assumptions.
+replicas. Explicit compilation, finite-lattice dynamics, and component noise
+calculations identify the assumptions that control the comparison. The current
+integrated model prices STAR's angle-dependent error, acceptance, and retries
+together, combines measured growth components under explicit composition
+assumptions, and selects individual or Hamming-weight synthesis for FT.
+Source and layout alternatives remain scenario bands. For physical-qubit
+computation, we solve for the sampling overhead and remaining systematic offset
+needed to compete with the selected encoded implementations. This exposes the
+accuracy requirement without assuming that a trained estimator achieves it.
+Direct $4\times4$ dynamics constrain the Trotter component, while transfer to
+larger lattices, complete injection channels, and full routed schedules remain
+conditional. The comparison supports operation-dependent protection and hybrid
+strategies in identified regimes; it does not establish an unconditional
+ordering of the architectures.
 \end{abstract}
 
-\section{Physical error, precision, and algorithm choice}\label{sec:physics-sweep}
+\section{Integrated comparison and accuracy requirements}\label{sec:integrated}
+The central question is which hardware and algorithm assumptions determine
+the least expensive way to obtain a useful observable. We lead with absolute
+error $\eps=0.01$ and keep $\eps=0.001$ equally visible. The current comparison
+in Figure~\ref{fig:integrated-capacity} combines the existing component evidence
+with the common resource accounting. It supersedes the older scalar-coefficient
+capacity figure as our discussion result. Earlier calculations remain below
+as controlled comparisons and reproducible historical references.
+
+At $p=10^{-3}$ and $Q=10^6$, the central scenario reaches lattice sides
+10, 12, and 12 for STAR, hybrid, and FT at $\eps=0.01$, respectively.
+At $\eps=0.001$, the sides are 4, 6, and 4. The scenario ranges overlap
+at these budgets. At $Q=10^7$ and loose precision, FT reaches side 32
+while STAR and hybrid reach side 12; FT also leads across the declared
+scenario menu there. These are conditional finite-lattice comparisons,
+with the same accuracy-transfer and delivery limitations as the figure.
+Conversely, at $p=10^{-4}$, $Q=10^5$, and $\eps=0.01$, STAR reaches
+side 8 while hybrid and FT reach side 6 throughout this scenario menu.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{integrated_capacity.pdf}
+\caption{Current component-informed capacity at $\tau=1$ and a one-week cutoff.
+STAR and hybrid use angle-dependent generator-fault channels with noisy PCEC,
+preparation acceptance, RUS retries, and explicit growth scenarios. FT selects
+individual or Hamming-weight synthesis and compact or fast one-port blocks.
+Solid encoded curves use growth-campaign upper limits as an independent
+component in the analog instrument. Bands include a zero-growth sensitivity
+for seed 9 and a slower rejection/supply scenario; they are not confidence
+intervals. The previous STAR line is shown for comparison. The NISQ effective
+line still assumes that its residual-error reserve is achievable, while the
+two-qubit PEC line describes the specified inverse-channel reference.
+Larger-lattice Trotter transfer and aggregate delivery remain assumptions;
+$L=48$ is the sampled ceiling.}\label{fig:integrated-capacity}
+\end{figure}
+
+\paragraph{Injection error and acceptance are coupled.}
+Replacing the old coefficient $\alpha=1.5$ with a larger constant would omit
+the dependence of preparation cost on angle and injection distance. Instead,
+we evaluate the existing restricted instrument at every distinct workload
+angle, including noisy probabilistic coherent error cancellation (PCEC) and
+repeat-until-success (RUS) corrections. For transverse channel multiplier $c_j$,
+the dephasing inverse contributes
+\begin{equation}\label{eq:integrated-channel}
+ \chi=-2\sum_j\log(\operatorname{Re}c_j),\qquad
+ b_{\rm coh}\leq\frac12\left[
+ \prod_j\left(1+\frac{|\operatorname{Im}c_j|}{\operatorname{Re}c_j}\right)-1\right].
+\end{equation}
+Rotation multiplicities enter the sums and products. The coherent term and
+finite RUS tail consume explicit error allowance, in addition to the existing
+reserve for unmodeled effects. This is a generator-fault submodel with ideal
+syndrome projection; detector rejection is still a declared model.
+
+We consider injection seeds 5, 9, and 25, with measured growth anchors at
+distances 13 and 25 where available. The central scenario inserts each
+seed's simultaneous X/Z campaign upper limit as an independent dephasing
+component during growth. Those experiments include memory and readout and
+start with an ideally encoded state; their composition with arbitrary-angle
+injection is an assumption. Seed 25 avoids growth and pays its own acceptance.
+The zero-growth sensitivity is available for seed 9, whose zero observed
+failures constrain an upper limit rather than establish zero error. We make
+no inference about the untested distance-7 seed.
+
+When the data distance exceeds the growth anchor, we stretch the reference
+service time by their distance ratio and charge a further protected handoff.
+The extra time and logical volume are explicit, but the corresponding channel
+has not been measured. The distance-13 receiver is included to avoid imposing
+the distance-25 area at low physical error. Analog parallelism retains the
+four-lane aggregate assumption. Cultivation quality and source choices are
+shared by FT and hybrid, including the slower-source scenario.
+
+\paragraph{Synthesis is selected before comparing architectures.}
+The FT menu includes individual synthesis and Hamming-weight batches 4, 8,
+and 16, with workspace and measurement-assisted uncomputation charged.
+Compact and fast blocks each have one T-consumption port. The checked
+arithmetic savings enter the comparison, while routing remains an aggregate
+assumption. The measured slowdown of one explicit onsite transport schedule
+is not treated as a full-program correction. Thus changes to the preferred
+batch or architecture remain possible when complete schedules are available.
+
+\paragraph{NISQ accuracy is a requirement to solve for.}
+For a fixed physical estimator, let $F$ be its variance per attempted circuit
+relative to $v_*=D_*(1-D_*)=0.09$, and let $b$ be its remaining systematic
+offset. Rejection is included in $F$. At footprint $a$, attempt duration $t_a$,
+and deadline $T$, the evaluation budget after training is
+\begin{equation}\label{eq:nisq-attempt-budget}
+ M=\max\left\{0,
+ \left\lfloor\frac{Q}{a}\right\rfloor
+ \left\lfloor\frac{T}{t_a}\right\rfloor-M_{\rm train}\right\}.
+\end{equation}
+The Gaussian planning condition and its two equivalent requirements are
+\begin{align}
+ e_T+b+z\sqrt{Fv_*/M}&\leq\eps,\label{eq:nisq-accuracy-requirement}\\
+ F_{\max}(b,r)&=\frac{M(\eps-e_T-b)^2}{z^2v_*},\qquad
+ b_{\max}(F,r)=\eps-e_T-z\sqrt{Fv_*/M},\label{eq:nisq-break-even}
+\end{align}
+where $z=1.96$ and $e_T=C/r^2$. An exhausted allowance is infeasible.
+Figure~\ref{fig:nisq-requirements} optimizes over a declared integer-step menu;
+the estimator must achieve its $F$ and $b$ at the selected $r$. We do not
+assume that its overhead is independent of refinement.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{nisq_requirements.pdf}
+\caption{Requirements for physical-qubit computation at $Q=10^6$, $p=10^{-3}$,
+and $\tau=1$. Each curve gives the largest affordable variance multiplier as
+a function of the allowed systematic offset. Solid curves match the fastest
+fitting member of the selected encoded implementations; dashed curves require
+a tenfold speedup. Both also meet the week cutoff. Bands span the encoded
+scenarios, with steps reselected along each curve. The panel assumes zero
+training charge; saved tables also charge six million training attempts.
+The affordable region lies to the left of a curve. These are Gaussian planning
+requirements on an unknown estimator, not predictions of an experimental
+pipeline's accuracy.}\label{fig:nisq-requirements}
+\end{figure}
+
+For a requested speedup $s$, we set
+$T=\min(T_{\rm week},T_{\rm encoded}/s)$, with $s=1$ or 10.
+The encoded comparator is the fastest fitting member of the three selected
+implementations within that scenario. Those implementations were optimized
+for one-week area, not reoptimized over all allocations for runtime at this
+particular $Q$. If no encoded copy fits, only the one-week physical requirement
+is reported. Training uses zero or six million additional equal-duration
+attempts as explicit sensitivities. A real pipeline must also account for
+uncertainty in its trained correction and any shared time-series information.
+
+For example, at $4\times4$, $Q=10^6$, and $p=10^{-3}$, allowing a
+remaining offset $b=0.001$ at $\eps=0.01$ gives
+$F_{\max}=3.3\times10^7$ at 13 steps, with a 67-second encoded comparator.
+At $\eps=0.001$, allowing $b=10^{-4}$ gives
+$F_{\max}=8.1\times10^7$ at 40 steps, with a 14-hour comparator.
+These central-scenario examples charge no training. The larger affordable
+multiplier in the strict case follows from the longer encoded runtime; it
+does not make physical accuracy easier. An actual estimator must attain
+both the stated offset and variance at the corresponding circuit depth.
+
+The scientific decision is whether plausible accuracy and sampling costs fall
+on one side of these boundaries. A detailed mitigation-transfer calculation
+is most useful where resolving that question could change the ranking.
+We apply the same distinction between measured components and assumed
+composition to all three architectures. A capacity leader is called robust
+only when its worst capacity across this scenario menu exceeds the best
+capacity of both other encoded arms. Overlaps remain unresolved, and this
+criterion establishes no unconditional NISQ size boundary.
+
+\clearpage
+\section{Earlier physical-error and algorithm sensitivities}\label{sec:physics-sweep}
+This section retains the previous scalar-coefficient comparison. Its numbers
+are historical controlled sensitivities; Section~\ref{sec:integrated} is the
+current integrated result.
 We lead the workshop example with $0.01$ absolute error on the local doublon
 observable and retain $0.001$ as a second principal target. Figure~\ref{fig:p-capacity}
 varies $p$ from $10^{-3}$ to $10^{-4}$ while keeping the clocks, Hamiltonian,

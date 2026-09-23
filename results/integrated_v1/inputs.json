@@ -1,0 +1,20 @@
+{
+  "python/integrated_comparison.py": "c502d5109da843b22b04d28aeebf78a759e2b69a54fcd10ce55d7a027a207e38",
+  "configs/integrated_comparison.json": "c7a0e87fa50589a72cc1392293d7f26b7f8db0b3a03af83a78be3ffa2beac760",
+  "python/star_channel_study.py": "872399214b96170517ec8661a7d62a683e0e8529c1aa91e0f3bab3f741453b8d",
+  "python/physics_sweep.py": "dd4ade51eb57b6fe62e577fb5d42b8d47f0d5ad6d757ab02d5dcfccc7eb45549",
+  "python/discussion_model.py": "ab19e593b1e2f6def4000201d621566e65541032abb4772892791aaf89af9c98",
+  "python/budget_optimization.py": "f10f97e77443c66473426907f95b487c37166b63ca8d61e1bb952303b7d7c1e2",
+  "python/resource_extensions.py": "66a50d58f49ee8956df1cf56938a96efa23c6ed76736c0b11fdaf7003ffa9cd9",
+  "python/model.py": "bbd72594cdced68c580e5e60b2914e0dc8f1d09d0bccf3d915169d0397e8ee86",
+  "python/dynamics_followup_analysis.py": "20a10544b05f897294d4b6a0d92f1a91c2abfca6e48b66c653ac0a2b5d86068c",
+  "configs/assumptions.json": "02589376ef4bd0216d12b6a744d070c6d31b1a1d92c6403698981a929bfda653",
+  "configs/discussion_model.json": "848bb309d2d8dd50d0bb2b360444a91034db61e9d0a8d28892460f3493746ac0",
+  "configs/budget_optimization.json": "debe6551044aa8294b7e15d64281d4f3f1688ba3fa8111d42de9e507ef91f153",
+  "results/discussion_v3/calibration.json": "8d04d276d884b33e387a3ecc86ca0b9b2bb676660f4ed225adc41f6cb798f36a",
+  "results/discussion_v3/finite_step_guard.json": "de8c1baea018fa4b7b166cf20870db6b07d489dae49b4cddcd234b93228f8c00",
+  "results/dynamics_followup_v1/measurements.json": "ab9e19ffebec81b234a9df1349e94b13833ca10f631c2efa16382be17bf4c004",
+  "results/frontier_v1/growth_summary.json": "ba96516267ae3edf5aaf270734ba2695c12736eba52e6eb3c0c290352f770cf7",
+  "results/implementation_v1/star_channels.json": "39b8e9e1614e3207b0d3b9d440417c7818cec01c0c8bdd010d8261c57e1088f8",
+  "results/physics_sweep_v1/costs.json": "6eed177e7583a9480d8ff93f1e7cd2a9d281a1d5894a0f48c4d27bf1b4323621"
+}

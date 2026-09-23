@@ -1,0 +1,29 @@
+{
+  "physical_errors": [0.001, 0.0001],
+  "precisions": [0.01, 0.001],
+  "times": [1, 2],
+  "sizes": [2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48],
+  "qubit_budgets": [100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000],
+  "injection_seeds": [5, 9, 25],
+  "growth_target": 25,
+  "growth_targets": [13, 25],
+  "rus_cap": 48,
+  "hwp_batches": [1, 4, 8, 16],
+  "factory_choices": [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
+  "scenarios": {
+    "component": {"growth": "upper", "detector_factor": 1, "source_cycle_multiplier": 1},
+    "zero_growth": {"growth": "zero_d9", "detector_factor": 1, "source_cycle_multiplier": 1},
+    "slow": {"growth": "upper", "detector_factor": 4, "source_cycle_multiplier": 4}
+  },
+  "layouts": {
+    "compact": {"data_block": "compact", "ft_clocks_per_T": 9, "T_consumption_ports": 1},
+    "fast": {"data_block": "fast", "ft_clocks_per_T": 1, "T_consumption_ports": 1}
+  },
+  "break_even_sizes": [4, 6, 8],
+  "break_even_qubit_budgets": [1000, 100000, 1000000, 10000000],
+  "bias_fractions": [0, 0.1, 0.3, 0.5, 0.8, 0.9, 0.95],
+  "speedups": [1, 10],
+  "training_attempts": [0, 6000000],
+  "variance_multipliers": [1, 10, 100, 1000, 10000, 1000000],
+  "scope": "Component-informed scenarios, not confidence intervals or full injection validation. Growth bounds refer to ideally encoded input, growth, memory and readout. Applying a bound as an independent error per RUS growth is a composition assumption. Further distance growth is charged as a protected handoff. Cultivation quality is held at its p=1e-3 anchor. FT/HWP delivery remains an aggregate layout model. NISQ thresholds use Gaussian planning and keep the unknown systematic offset explicit."
+}

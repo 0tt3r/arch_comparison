@@ -5,6 +5,17 @@ Matplotlib, Numba, pytest, and packaging is sufficient for the models, tests, pl
 and manuscript helper. The existing `qb_gsee` environment provides these.
 Set `OPENBLAS_NUM_THREADS=1` and `OMP_NUM_THREADS=1` for the bounded examples.
 
+## Current integrated comparison
+
+`make integrated` evaluates the existing STAR instrument at actual workload
+angles, integrates the measured growth components as explicit scenarios, and
+selects FT synthesis/layout alternatives. It also generates the NISQ accuracy
+and sampling requirements. It launches no noisy-dynamics simulation or PBS job.
+Channel results and completed resource cases resume under pinned inputs.
+`make integrated-figures` uses saved results; `make integrated-check` audits
+their contracts and accounting. See [INTEGRATED_COMPARISON.md](INTEGRATED_COMPARISON.md)
+for the physical and statistical assumptions.
+
 ## Same-task algorithms and larger components
 
 See [FRONTIER_WORK.md](FRONTIER_WORK.md). `make frontier` regenerates the

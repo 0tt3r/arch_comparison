@@ -4,7 +4,17 @@ QEC_PYTHON ?= /home/ac.otten/soft/mambaforge/envs/stim/bin/python
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check
+.PHONY: discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check
+
+integrated:
+	$(PYTHON) python/integrated_comparison.py
+	$(PYTHON) python/plot_integrated.py
+
+integrated-figures:
+	$(PYTHON) python/plot_integrated.py
+
+integrated-check:
+	$(PYTHON) python/integrated_comparison.py --check
 
 frontier:
 	$(PYTHON) python/qubitization_study.py
@@ -51,7 +61,7 @@ implementation-check:
 	$(PYTHON) python/implementation_analysis.py --check
 	$(QEC_PYTHON) python/star_growth_probe.py --check
 
-figures: discussion delivery patch-study implementation-figures frontier-figures
+figures: discussion delivery patch-study implementation-figures frontier-figures integrated-figures
 	$(PYTHON) python/physics_sweep.py --plot
 	$(PYTHON) python/plot_capacity.py
 	$(PYTHON) python/draw_architectures.py
@@ -75,4 +85,5 @@ audit:
 	$(QEC_PYTHON) python/star_growth_probe.py --check
 	$(PYTHON) python/frontier_analysis.py --check
 	$(QEC_PYTHON) python/frontier_growth.py --check
+	$(PYTHON) python/integrated_comparison.py --check
 	$(PYTHON) python/presentation_manifest.py

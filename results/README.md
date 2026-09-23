@@ -5,6 +5,7 @@ model outputs, and source hashes used at that stage:
 
 | Directory | Content |
 |---|---|
+| `integrated_v1` | Current component-informed STAR/hybrid and synthesis-selected FT capacity; explicit NISQ offset/variance requirements and training sensitivities |
 | `frontier_v1` | Same-Hamiltonian QSVT costs, 24M growth shots at distances 13/25, geometric magic delivery, independent exposure diagnostics, centered locality certificate |
 | `implementation_v1` | Held-out NISQ bias/variance, STAR projected channels and decoded growth probes, explicit CUDA-Q FT arithmetic, nested finite-patch checks |
 | `physics_sweep_v1` | Frozen-baseline p/precision sweep, source/injection scenarios, Hamming-weight and compact-encoding costs, small-patch ordering experiment |
