@@ -18,6 +18,12 @@ MEASURED = [('Willow', 216), ('Helios-1', 1504)]
 TARGETS = [('RSA-2048', 2.5e8), ('FeMoco', 3.4e8)]
 
 
+def published_factories(p):
+    """FT with the Litinski (2019) factories alongside cultivation (results/quops_sensitivity_v1)."""
+    rows = read(ROOT/'results/quops_sensitivity_v1/capability.json')
+    return {v['Q']: v['score'] for v in rows if v['variant'] == 'litinski_sources' and v['arm'] == 'ft' and v['p'] == p}
+
+
 def main():
     table = read(OUT/'capability.json')
     cfg = settings()
@@ -31,7 +37,8 @@ def main():
                 y[y == 0] = np.nan
                 ax.step(Q, y, where='post', color=COLORS[arm], ls=STYLE[mode], lw=2 if mode == 'standard' else 1.4)
                 if arm == 'ft' and mode == 'standard':
-                    better = np.array([v['ft_better_source'] for v in rows], float)
+                    menu = published_factories(p)
+                    better = np.array([menu[v['Q']] for v in rows], float)
                     better[better == 0] = np.nan
                     ax.fill_between(Q, y, np.fmax(better, y), step='post', color=COLORS['ft'], alpha=.15, lw=0)
         for name, value in MEASURED:
@@ -49,7 +56,7 @@ def main():
     handles += [Line2D([], [], color='#555555', ls='-', label='standard threshold'),
                 Line2D([], [], color='#555555', ls='--', label='1/γ² throughput scenario')]
     from matplotlib.patches import Patch
-    handles.append(Patch(color=COLORS['ft'], alpha=.2, label='FTQC with a 100× better T source'))
+    handles.append(Patch(color=COLORS['ft'], alpha=.2, label='FTQC with published distillation factories'))
     fig.legend(handles=handles, loc='lower center', ncol=3, frameon=False, fontsize=9, bbox_to_anchor=(.5, -.02))
     fig.suptitle('QUOPS capability on a nearest-neighbor array, one week')
     fig.text(.5, -.08, 'Standard: mean polarization ≥ 1/√e. Dashed: declared scenario in which a 1/γ² throughput penalty must fit in one week.\n'

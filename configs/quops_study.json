@@ -101,7 +101,9 @@
       5
     ],
     "better_source_error": 2e-11,
-    "better_source_note": "Declared sensitivity: cultivated states at 2e-11 instead of 2e-9, with the same footprint and timing, to show which FT features are set by source quality."
+    "better_source_note": "Declared sensitivity: cultivated states at 2e-11 instead of 2e-9, with the same footprint and timing, to show which FT features are set by source quality.",
+    "litinski_factories": "configs/optimization_round_v3.json",
+    "source_menu_note": "Set ft.source_menu = 'litinski' to add the published factories of Litinski (2019) at matching p, read from the table in litinski_factories (used by python/quops_sensitivity.py)."
   },
   "grid": {
     "integer_widths_to": 64,

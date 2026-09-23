@@ -1,0 +1,6 @@
+{
+  "temporal_global_0.001": "Shared slope rejected: geometry-specific fits and raw cells must be retained. Profile intervals are conditional, not prediction guarantees.",
+  "temporal_local_p0.0001_d5_l1": "Only the shortest tested merge has outcome-only failures. The displayed Lambda_t point reaches the imposed log-slope limit 15; no finite unconstrained MLE is identified. Read profile95=[289.424..., null] as a lower profile bound and an unbounded upper endpoint, not a precise suppression estimate.",
+  "weak_cells": "Do not rank or claim agreement to a factor of two for d=7 at p=0.0001; every matched-R_m total count is below 30.",
+  "memory_denominator": "A_X+A_Z is the conservative sum of two logical-component rates, not an exact any-Pauli rate. Finite-window endpoints and this convention contribute to ratios below one."
+}

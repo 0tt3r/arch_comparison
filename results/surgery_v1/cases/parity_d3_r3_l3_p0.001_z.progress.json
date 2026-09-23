@@ -1,0 +1,170 @@
+{
+  "status": "running",
+  "case": {
+    "kind": "parity",
+    "d": 3,
+    "p": 0.001,
+    "rm": 3,
+    "length": 3,
+    "basis": "z",
+    "shots": 1000000,
+    "id": "parity_d3_r3_l3_p0.001_z",
+    "seed": 302749240266,
+    "batch": 25000
+  },
+  "meta": {
+    "observables": [
+      "parity",
+      "data_a_bit",
+      "data_b_bit",
+      "data_phase"
+    ],
+    "rounds": 9,
+    "volume": 27.0,
+    "volume_with_split_idle": 27.833333333333332,
+    "nominal_volume": 27,
+    "gap_data_columns": 9,
+    "geometry_checks": 768,
+    "harness": "ideal encoded Bell inputs and ancilla; terminal commuting Pauli readout; noisy pre/post storage and bridge preparation/readout",
+    "split_readout_extra_ns": 100,
+    "syndrome_round_ns": 240,
+    "pre_rounds": 3,
+    "post_rounds": 3
+  },
+  "shots": 500000,
+  "histogram": [
+    481695,
+    2885,
+    1225,
+    1227,
+    1425,
+    1038,
+    9,
+    6,
+    10081,
+    137,
+    76,
+    64,
+    68,
+    64,
+    0,
+    0
+  ],
+  "batches": [
+    {
+      "shots": 25000,
+      "failures": 884,
+      "histogram_sha256": "f3eaa255a1fefb236f81547462a867c4f5c35c49027b23500453297bc304a5c2"
+    },
+    {
+      "shots": 25000,
+      "failures": 901,
+      "histogram_sha256": "cb951ecbd85d4801859914789151963854b923c4ef12e16eae069831b4a5ae5d"
+    },
+    {
+      "shots": 25000,
+      "failures": 900,
+      "histogram_sha256": "ccf8739c5e2b6344f691f7dbcf7d62349b66af924416fab5f7edaa45ced0bb5d"
+    },
+    {
+      "shots": 25000,
+      "failures": 936,
+      "histogram_sha256": "ce4c6063f4378b6ad2768a10df36779b5ad2b4f120f1348d2f861c65dd303aa5"
+    },
+    {
+      "shots": 25000,
+      "failures": 897,
+      "histogram_sha256": "e7129645f3be7d1f010553ae1d5143936e905e8ffc408ab53e75df6929b0bd97"
+    },
+    {
+      "shots": 25000,
+      "failures": 910,
+      "histogram_sha256": "f81ee9eea2eb7f8c1aaadc05f9d058b6d98872ceb4d8f989b13cfd370fe33efc"
+    },
+    {
+      "shots": 25000,
+      "failures": 884,
+      "histogram_sha256": "5c0cde0259522797991e09ea2c0cb350ec7366747afc056dd191f0f68e190fca"
+    },
+    {
+      "shots": 25000,
+      "failures": 963,
+      "histogram_sha256": "ebbbb9f250f6d851fcec63a291b9b8fcf176e0f05481032c439ccce2e5d309c0"
+    },
+    {
+      "shots": 25000,
+      "failures": 900,
+      "histogram_sha256": "22ec3b0ecd3ac432f914bf5f6ef6ab76bb75f76d0c0c3fb363468fd089682705"
+    },
+    {
+      "shots": 25000,
+      "failures": 895,
+      "histogram_sha256": "9d46740f15b204d2380005010a1084b97609785259b47a27958af1e565172f81"
+    },
+    {
+      "shots": 25000,
+      "failures": 917,
+      "histogram_sha256": "6af5bf6c7351b49b56e7132a5ef708729f39e80e08e30338e7f49a8b76a97226"
+    },
+    {
+      "shots": 25000,
+      "failures": 917,
+      "histogram_sha256": "692ce1b601bb277061eca22675b887d6d7111f83f9f3ecc2a65b550cdc5e64f8"
+    },
+    {
+      "shots": 25000,
+      "failures": 903,
+      "histogram_sha256": "54780adcb68f7a503ccf3569f154fa0ac096ec1c0f2cc1551a07a06b046493ec"
+    },
+    {
+      "shots": 25000,
+      "failures": 958,
+      "histogram_sha256": "a3530e737f41ee8ca054539d293769d2d2a099e05a75807a97d0b313652cfd2e"
+    },
+    {
+      "shots": 25000,
+      "failures": 962,
+      "histogram_sha256": "e8b99a25da4ae349c9e974a5690828e14f30ad50c70c8d54f13bc4aaa9b7babe"
+    },
+    {
+      "shots": 25000,
+      "failures": 923,
+      "histogram_sha256": "68fa9ef1b917ea52ed2be1215371b052765d0cb42a0edd2a87ffb1948c218120"
+    },
+    {
+      "shots": 25000,
+      "failures": 918,
+      "histogram_sha256": "2b910189afe68ba4d8f86749658accc68b0b5a2cc1bfe752be7fdf688aafe823"
+    },
+    {
+      "shots": 25000,
+      "failures": 900,
+      "histogram_sha256": "4bebe4acdd0b4c7b168cd5fb5144d107003a604da60639a4c4eec5f231e6e04e"
+    },
+    {
+      "shots": 25000,
+      "failures": 948,
+      "histogram_sha256": "6de4cb2bdf907fe70194cfb3876f24aa12ea0985ff2fea34367c0fdfdb68c89c"
+    },
+    {
+      "shots": 25000,
+      "failures": 889,
+      "histogram_sha256": "e7f3a45977a18b7f8a2486e41924c2e38908ff466f722005f0366b9fc6818d24"
+    }
+  ],
+  "source_sha256": "4abd15f590193783e9eb951219b3443ffcca1deefa3f0d657198291e9e0ed469",
+  "circuit_sha256": "d1060568e9e503efc5896946dd75fec61e6c98e4528eedf01b4b94c3b20376a7",
+  "dem_sha256": "56b1e7f08aec6134c530fa207b78fab0d685ef0a1c6b6d81487e2dbd97b2272a",
+  "graphlike_distance": 3,
+  "single_fault_check": {
+    "mechanisms": 3193,
+    "misdecoded": 0,
+    "scope": "all single undecomposed detector-error-model mechanisms; not an exhaustive multi-fault distance proof"
+  },
+  "noiseless_check": true,
+  "logical_flip_check": true,
+  "detectors": 240,
+  "elapsed_seconds": 1.3060838258825243,
+  "host": "i032",
+  "job": "7791770.imgt1"
+}

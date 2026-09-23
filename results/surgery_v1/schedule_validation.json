@@ -1,0 +1,29 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "d": 3,
+      "rounds": 3,
+      "noise_locations_equal": true,
+      "CZ_slots_equal": true
+    },
+    {
+      "d": 5,
+      "rounds": 3,
+      "noise_locations_equal": true,
+      "CZ_slots_equal": true
+    },
+    {
+      "d": 7,
+      "rounds": 3,
+      "noise_locations_equal": true,
+      "CZ_slots_equal": true
+    },
+    {
+      "d": 9,
+      "rounds": 3,
+      "noise_locations_equal": true,
+      "CZ_slots_equal": true
+    }
+  ]
+}

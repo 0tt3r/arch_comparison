@@ -23,3 +23,10 @@ build/
 
 # PBS job logs
 *.o[0-9]*
+
+# Surgery calibration: circuits and DEMs are rebuilt by `surgery_calibration.py audit`;
+# the retired detector-basis run and smoke tests stay local.
+/results/surgery_v1/cases/*.stim
+/results/surgery_v1/cases/*.dem
+/results/surgery_v1/retired_detector_basis/
+/results/surgery_v1/smoke/

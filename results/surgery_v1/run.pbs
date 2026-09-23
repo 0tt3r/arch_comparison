@@ -1,0 +1,21 @@
+#!/bin/bash -l
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -N surgery-local
+#PBS -l select=1:ncpus=128
+#PBS -l walltime=00:45:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+exec > results/surgery_v1/run.log 2>&1
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMBA_NUM_THREADS=1
+SURGERY_PY=/home/ac.otten/soft/mambaforge/envs/stim/bin/python
+hostname
+"$SURGERY_PY" -V
+"$SURGERY_PY" -c 'import stim,pymatching;print(stim.__version__,pymatching.__version__)'
+"$SURGERY_PY" -u python/surgery_calibration.py smoke --workers 6
+"$SURGERY_PY" -u python/surgery_calibration.py run --workers 112 --hours .60
+"$SURGERY_PY" -u python/surgery_calibration.py analyze
+"$SURGERY_PY" -u python/surgery_calibration.py audit --replay
+"$SURGERY_PY" -u python/surgery_calibration.py plot

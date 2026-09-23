@@ -1,0 +1,11 @@
+{
+  "physical_circuits_identical": true,
+  "old_witness": "ExplainedError {\n    dem_error_terms: D318[coords 0,0,5] D325[coords 0,0,5] D394[coords 0,0,6] D408[coords 0,0,6] D422[coords 0,0,6]\n    CircuitErrorLocation {\n        flipped_pauli_product: Y196[coords 2,36]*X127[coords 3,35]\n        Circuit location stack trace:\n            (after 38 TICKs)\n            at instruction #788 (DEPOLARIZE2) in the circuit\n            at targets #111 to #112 of the instruction\n            resolving to DEPOLARIZE2(0.0001) 196[coords 2,36] 127[coords 3,35]\n    }\n}",
+  "old_circuit_sha256": "79600870f3e0697c17fb59d5d4a0c26b6df436c3e5531107255aa49965b752e5",
+  "new_single_fault": {
+    "mechanisms": 18907,
+    "misdecoded": 0,
+    "scope": "all single undecomposed detector-error-model mechanisms; not an exhaustive multi-fault distance proof"
+  },
+  "scope": "Representative d=5,l=3,p=1e-4 cell: only detector/observable record basis changes; physical gates and noise identical"
+}

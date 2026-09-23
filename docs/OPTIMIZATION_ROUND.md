@@ -14,6 +14,39 @@ transitions move about 1.3–1.4× later at p = 10⁻³ and barely at 10⁻⁴. 
 manuscript uses v2. `qsub -v ROUND=v2 pbs/optimization_round.pbs` reproduces it;
 `make optimization-round-v2-check` audits it.
 
+## Round v3: delivery sensitivity
+
+`--round v3` (`configs/optimization_round_v3.json`, `results/optimization_round_v3/`) varies one declared
+delivery charge at a time around the fully optimized v2 design ('all'), time-growing Hubbard family only;
+'all' must reproduce round v2 exactly. Lifting the analog lane cap from L to N (a local fermionic
+encoding) changes no crossover; lane charges of 3 or 12 tiles move the analog window's edges by 5–10%;
+8 tiles per extra FT port delays FT at strict precision from 4.0 to 4.4×10⁵ qubits; a 100× better T
+source moves FT's never-behind point at p = 10⁻⁴, ε = 10⁻³ from 2.7×10⁶ to 1.2×10⁵ qubits. Only the
+12-tile lanes and the better source change any leader (two cells each). STAR is limited by exposure,
+not delivery. Random-circuit counterparts: [QUOPS_SENSITIVITY.md](QUOPS_SENSITIVITY.md).
+
+Two further configurations attribute the hybrid's advantage and replace the declared better source.
+
+- **STAR on the plaquette circuit** (`star_plaquette`). The plaquette circuit's fixed π/8
+  rotations are injected by the STAR instrument instead of distilled factories (the hybrid with no
+  factories). This is worse than STAR on the termwise circuit beyond L = 8: at p = 10⁻³, ε = 0.01,
+  L = 12 needs 10¹⁷·⁴ qubits against 10¹⁰·⁴ (STAR, termwise) and 10⁶·³ (hybrid). The hybrid's
+  capacity falls by 4–6 sites at every budget from 10⁶ qubits. The hybrid's advantage therefore
+  comes entirely from distilling the large fixed angles, not from the plaquette circuit, as the
+  per-radian law predicts: the π/8 rotations carry 11× the plaquette circuit's dynamic angle and
+  7× the termwise circuit's total (L = 12, r = 24).
+- **Published factories** (`litinski_sources`). The distillation protocols of Litinski, Quantum 3,
+  205 (2019), Tables 1–2 (7 at p = 10⁻³, 5 at p = 10⁻⁴; published qubits, cycles, and output
+  errors, plus one delivery tile) are offered alongside cultivation. At p = 10⁻³, ε = 0.01 nothing
+  moves: cultivation stays optimal for FT through L = 28. At strict precision the published
+  factories reproduce the declared 100× source. At p = 10⁻⁴, ε = 10⁻³ FT is never behind from
+  1.2×10⁵ qubits instead of 2.7×10⁶ (declared source: 1.2×10⁵). At 10⁶ qubits FT's capacity rises
+  from L = 8 to 20 and it takes the lead from the hybrid. At p = 10⁻³, ε = 10⁻³ FT is strictly
+  ahead from 8.4×10⁵ qubits instead of 1.3×10⁷, and reaching L = 32 costs 10⁷·⁷ qubits instead
+  of 10⁸·⁵. The chosen factories are (15-to-1)⁶×(15-to-1) two-level protocols at p = 10⁻³ and
+  single-level (15-to-1)₁₁,₅,₅ at p = 10⁻⁴. The hybrid gains too (for example L = 12 at p = 10⁻³,
+  ε = 10⁻³: 10¹⁰·³ → 10⁹·⁵), but less, because its exposure, not its magic budget, sets its size.
+
 ## Findings (round v1, reference law)
 
 Headline: time-growing workload τ = L/4, all five changes, one week. Exact tables are in the [summary](../results/optimization_round_v1/summary.md).

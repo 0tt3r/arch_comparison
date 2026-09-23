@@ -1,0 +1,311 @@
+{
+  "description": "Round v3: delivery sensitivity around the fully optimized v2 menu ('all'), time-growing Hubbard family only. Each configuration changes one declared delivery assumption; 'all' must reproduce round v2. 'star_plaquette' injects the plaquette circuit's fixed pi/8 rotations through the STAR instrument (hybrid arm with no factories). 'litinski_sources' offers the published distillation factories of Litinski, Quantum 3, 205 (2019), Tables 1 and 2, at the matching p alongside cultivation.",
+  "physical_errors": [
+    0.001,
+    0.0001
+  ],
+  "precisions": [
+    0.01,
+    0.001
+  ],
+  "families": {
+    "tau_L_over_4": {
+      "kind": "proportional",
+      "scale": 0.25,
+      "sizes": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32
+      ]
+    }
+  },
+  "qubit_budgets": [
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    10000000,
+    100000000,
+    1000000000
+  ],
+  "configurations": {
+    "all": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true
+    },
+    "lanes_N": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "lane_cap": "N"
+    },
+    "lane_tiles_3": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "tiles_per_lane": 3
+    },
+    "lane_tiles_12": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "tiles_per_lane": 12
+    },
+    "port_tiles_8": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "tiles_per_port": 8
+    },
+    "better_source": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "source_error": 2e-11
+    },
+    "star_optimistic": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "lane_cap": "N",
+      "tiles_per_lane": 3
+    },
+    "star_plaquette": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "fixed_T_analog": true
+    },
+    "litinski_sources": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "source_menu": "litinski"
+    }
+  },
+  "scenarios": {
+    "component": {
+      "growth": "upper",
+      "detector_factor": 1,
+      "source_cycle_multiplier": 1
+    },
+    "zero_growth": {
+      "growth": "zero_d9",
+      "detector_factor": 1,
+      "source_cycle_multiplier": 1
+    }
+  },
+  "scenario_configurations": {},
+  "reference_lanes": 4,
+  "lane_choices": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "compact_lane_limit": 4,
+  "concurrency_width": {
+    "termwise": "L",
+    "plaquette": "N"
+  },
+  "port_choices": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "extra_tiles_per_port": 2,
+  "reference_hwp_batches": [
+    1,
+    4,
+    8,
+    16
+  ],
+  "extended_hwp_batches": [
+    1,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "richardson": {
+    "coefficients": [
+      -0.3333333333333333,
+      1.3333333333333333
+    ],
+    "step_ratio": 2,
+    "residual_margin": 1.1
+  },
+  "chi_prune": 120,
+  "scope": "Analytical capacity model with the integrated_v1 component instruments. Concurrency widths, per-lane and per-port tile charges, and the source-to-data transfer are declared assumptions, not compiled schedules. Richardson residuals are the measured finite-patch envelope of |(4E(2r)-E(r))/3| r^4 at r >= 8 tau. The time-growing family uses the running maximum of all measured patches through each time; no patch larger than 4x4 is measured. Interacting bulk convergence is not established. v2 uses the Stim-calibrated surface-code law for both encoded arms; its fit is memory-only at d=3-9 and is extrapolated to the distances used here. Round v3 varies one declared delivery assumption at a time: analog-lane concurrency cap (L for Jordan-Wigner supports versus N, as a local fermionic encoding would allow), tiles per lane (3, 6, 12), tiles per extra FT port (2 versus 8), and cultivation source error (2e-9 versus 2e-11).",
+  "surface_law": {
+    "source": "results/surface_law_v1/fit.json",
+    "amplitude": "A_patch_union_bound",
+    "note": "Per-p fit: surface_A = A_x + A_z (conservative sum), surface_threshold = p * Lambda. Memory calibration at d=3-9; larger d, surgery and correlated noise are extrapolations."
+  },
+  "baseline_configuration": "all",
+  "replay_round": "v2",
+  "litinski_factories": {
+    "_note": "Litinski (2019), refs/1905.06903v3.pdf, Tables 1-2: protocol, output error per T state, physical qubits, code cycles per round, T outputs per round. Rows at p_phys = 1e-3 and 1e-4 respectively.",
+    "0.001": [
+      [
+        "(15-to-1)_{17,7,7}",
+        4.5e-08,
+        4620,
+        42.6,
+        1
+      ],
+      [
+        "(15-to-1)_{9,5,5}x(15-to-1)_{21,9,11}",
+        6.1e-10,
+        7780,
+        469,
+        1
+      ],
+      [
+        "(15-to-1)^6_{13,5,5}x(20-to-4)_{23,11,13}",
+        1.4e-10,
+        43300,
+        130,
+        4
+      ],
+      [
+        "(15-to-1)^4_{13,5,5}x(20-to-4)_{27,13,15}",
+        2.6e-11,
+        46800,
+        157,
+        4
+      ],
+      [
+        "(15-to-1)^6_{11,5,5}x(15-to-1)_{25,11,11}",
+        2.7e-12,
+        30700,
+        82.5,
+        1
+      ],
+      [
+        "(15-to-1)^6_{13,5,5}x(15-to-1)_{29,11,13}",
+        3.3e-14,
+        39100,
+        97.5,
+        1
+      ],
+      [
+        "(15-to-1)^6_{17,7,7}x(15-to-1)_{41,17,17}",
+        4.5e-20,
+        73400,
+        128,
+        1
+      ]
+    ],
+    "0.0001": [
+      [
+        "(15-to-1)_{7,3,3}",
+        4.4e-08,
+        810,
+        18.1,
+        1
+      ],
+      [
+        "(15-to-1)_{9,3,3}",
+        9.3e-10,
+        1150,
+        18.1,
+        1
+      ],
+      [
+        "(15-to-1)_{11,5,5}",
+        1.9e-11,
+        2070,
+        30.0,
+        1
+      ],
+      [
+        "(15-to-1)^4_{9,3,3}x(20-to-4)_{15,7,9}",
+        2.4e-15,
+        16400,
+        90.3,
+        4
+      ],
+      [
+        "(15-to-1)^4_{9,3,3}x(15-to-1)_{25,9,9}",
+        6.3e-25,
+        18600,
+        67.8,
+        1
+      ]
+    ]
+  }
+}
