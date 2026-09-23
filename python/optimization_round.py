@@ -16,8 +16,9 @@ import csv
 import hashlib
 import json
 import multiprocessing as mp
+from dataclasses import replace
 from functools import lru_cache
-from math import ceil, exp, expm1, isclose, log, log10, log1p, sqrt
+from math import ceil, exp, expm1, isclose, log, log10, log1p, pi, sqrt
 
 import numpy as np
 
@@ -32,7 +33,8 @@ from resource_extensions import plaquette_rotation_stages, source_error, synthes
 from star_channel_study import preparation, raw_rus_details, rus_channel
 
 ROUNDS = {'v1': ('configs/optimization_round.json', 'results/optimization_round_v1'),
-          'v2': ('configs/optimization_round_v2.json', 'results/optimization_round_v2')}
+          'v2': ('configs/optimization_round_v2.json', 'results/optimization_round_v2'),
+          'v3': ('configs/optimization_round_v3.json', 'results/optimization_round_v3')}
 CONFIG, OUT = (ROOT/x for x in ROUNDS['v1'])
 ENCODED = ('star', 'hybrid', 'ft')
 NISQ = ('nisq_effective', 'nisq_pec')
@@ -239,6 +241,45 @@ def component_exposure(w, p, seed, scenario, target, mode):
 
 # ---------------------------------------------------------------- shared ledgers
 
+def apply_delivery(c, sw):
+    """Declared delivery sensitivities (round v3); absent keys keep the reference values."""
+    changes = {k: sw[v] for k, v in (('extra_tiles_per_lane', 'tiles_per_lane'), ('source_error', 'source_error')) if v in sw}
+    return {**c, **changes}
+
+
+def source_menu(c, sw, cleanup_choices):
+    """T sources: cultivation with optional 15-to-1 cleanup, plus Litinski (2019) factories at matching p.
+
+    tiles: protected tiles charged per factory (delivery, plus cleanup tiles);
+    qubits: physical qubits per factory outside the protected block.
+    """
+    q0 = source_error(c)
+    menu = [dict(name='cultivation', cleanup=k, error=35*q0**3 if k else q0, tiles=1+12*k,
+                 qubits=c['source_qubits']) for k in cleanup_choices]
+    if sw.get('source_menu') == 'litinski':
+        for name, error, qubits, cycles, outputs in settings()['litinski_factories'].get(repr(c['p']), []):
+            menu.append(dict(name=name, cleanup=0, error=error, tiles=1, qubits=qubits,
+                             cycles_per_T=cycles/outputs))
+    return menu
+
+
+def source_service(src, c, d, transfer):
+    """Code cycles between T outputs of one factory."""
+    if src['name'] != 'cultivation':
+        return src['cycles_per_T'] + 2*transfer
+    raw = c['source_cycles_per_T']*c['source_cycle_multiplier'] + 2*transfer
+    return (15*raw+11*d)/(1-15*source_error(c)) if src['cleanup'] else raw
+
+
+def analog_fixed_T(w):
+    """Plaquette workload whose fixed pi/8 rotations are injected by the STAR instrument."""
+    return replace(w, dynamic_angles=w.dynamic_angles+((pi/8, w.fixed_T),), fixed_T=0) if w.fixed_T else w
+
+
+def port_tile_charge(sw):
+    return sw.get('tiles_per_port', settings()['extra_tiles_per_port'])
+
+
 def base_config(p, scenario):
     return {**v1.configuration(p, 'component'), **settings()['scenarios'][scenario], **(surface_law(p) or {})}
 
@@ -290,7 +331,8 @@ def lane_menu(L, algorithm, sw):
     cfg = settings()
     if not sw['optimize_lanes']:
         return [cfg['reference_lanes']]
-    cap = L if cfg['concurrency_width'][algorithm] == 'L' else L*L
+    width = sw.get('lane_cap', cfg['concurrency_width'][algorithm])
+    cap = L if width == 'L' else L*L
     return [n for n in cfg['lane_choices'] if n <= cap] or [1]
 
 
@@ -329,7 +371,7 @@ def analog_layouts(arm, lanes, sw):
             if name == 'fast' or lanes <= settings()['compact_lane_limit']]
 
 
-def encoded_candidate(L, arm, c, epsilon, branches, fractions, cleanup, layout, lanes, sw):
+def encoded_candidate(L, arm, c, epsilon, branches, fractions, src, layout, lanes, sw):
     """Vectorized integrated_v1.encoded_candidate over ports, factories and distance.
 
     branches: sequence of (weight, workload, component). The hardware, including
@@ -343,12 +385,12 @@ def encoded_candidate(L, arm, c, epsilon, branches, fractions, cleanup, layout, 
     nts = [w.fixed_T if arm == 'hybrid' else 0 for _, w, _ in branches]
     nt_any = max(nts) > 0
     ports = np.array(port_menu(L, sw, layout) if nt_any else [1], dtype=float)[:, None, None]
-    port_tiles = settings()['extra_tiles_per_port']*(ports-1) if sw['ft_delivery'] else 0.*ports
+    port_tiles = port_tile_charge(sw)*(ports-1) if sw['ft_delivery'] else 0.*ports
     factories = np.array(local['factory_choices'] if nt_any else [0], dtype=float)[None, :, None]
     minimum = max(target, local['source_end_distance'] if nt_any and not sw['separate_distances'] else 3)
     d = odd_distances(minimum)[None, None, :]
     shape = np.broadcast(ports, factories, d).shape
-    tiles = np.broadcast_to(data_block_tiles(L, local) + port_tiles + factories*(1+12*cleanup), shape)
+    tiles = np.broadcast_to(data_block_tiles(L, local) + port_tiles + factories*src['tiles'], shape)
     cycle = local['cycle_seconds']
     transfer = np.maximum(d, local['source_end_distance']) if sw['separate_distances'] else d
     budget = log(epsilon*fractions['logical']/norm)
@@ -358,8 +400,7 @@ def encoded_candidate(L, arm, c, epsilon, branches, fractions, cleanup, layout, 
         handoff = np.where(d > target, 2*d*cycle*w.rotations/lanes, 0.)
         supply = consume = 0.
         if nt:
-            raw = local['source_cycles_per_T']*local['source_cycle_multiplier'] + 2*transfer
-            service = (15*raw+11*d)/(1-15*source_error(local)) if cleanup else raw
+            service = source_service(src, local, d, transfer)
             supply = np.ceil(nt/factories)*service*cycle
             consume = local['ft_clocks_per_T']*nt*d*cycle/ports
         s = np.broadcast_to(2*d*cycle + np.maximum(analog+handoff+consume, supply)
@@ -376,7 +417,7 @@ def encoded_candidate(L, arm, c, epsilon, branches, fractions, cleanup, layout, 
     di = index[pi, fi]
     s_sel = [s[pi, fi, di] for s in seconds]
     d_sel = d[0, 0, di]
-    q = 2*tiles[pi, fi, di]*d_sel**2 + factories[0, fi, 0]*local['source_qubits']
+    q = 2*tiles[pi, fi, di]*d_sel**2 + factories[0, fi, 0]*src['qubits']
     ok = np.all([s <= local['week_seconds'] for s in s_sel], axis=0)
     if not ok.any():
         return None
@@ -391,7 +432,8 @@ def encoded_candidate(L, arm, c, epsilon, branches, fractions, cleanup, layout, 
     row = final_sampling(float(q[k]), seconds_best, chis, weights, fractions['stat'], local, epsilon)
     first = branches[0][2]
     row.update(distance=int(d_sel[k]), injection_distance=first['seed'], growth_target=target,
-               factories=int(factories[0, fi[k], 0]), cleanup_levels=cleanup, T_count=nts[0],
+               factories=int(factories[0, fi[k], 0]), cleanup_levels=src['cleanup'], T_count=nts[0],
+               T_source=src['name'] if nt_any else None,
                data_tiles=int(data_block_tiles(L, local) + port_tiles[pi[k], 0, 0]),
                protected_tiles=float(tiles[pi[k], fi[k], di[k]]), layout=layout,
                lanes=lanes, T_consumption_ports=int(ports[pi[k], 0, 0]), rus_mode=first['rus_mode'],
@@ -404,7 +446,7 @@ def encoded_candidate(L, arm, c, epsilon, branches, fractions, cleanup, layout, 
 
 
 def optimize_analog(L, tau, arm, epsilon, p, scenario, sw):
-    c = base_config(p, scenario)
+    c = apply_delivery(base_config(p, scenario), sw)
     options = budget_settings()
     algorithm = 'termwise' if arm == 'star' else 'plaquette'
     seeds = [9, 25] if scenario == 'zero_growth' else v1.settings()['injection_seeds']
@@ -427,6 +469,8 @@ def optimize_analog(L, tau, arm, epsilon, p, scenario, sw):
         visited.add((r, richardson))
         plan = branch_plan(r, richardson)
         works = [(weight, workload(L, tau, steps, algorithm, c['u_over_j'])) for steps, weight in plan]
+        if arm == 'hybrid' and sw.get('fixed_T_analog'):
+            works = [(weight, analog_fixed_T(w)) for weight, w in works]
         trotter = trotter_fraction(L, tau, algorithm, r, richardson, epsilon)
         norm = sum(abs(w) for w, _ in works)
         for seed, target in pairs:
@@ -439,12 +483,11 @@ def optimize_analog(L, tau, arm, epsilon, p, scenario, sw):
                     continue
                 instrument = sum(abs(weight)*(b['coherent_bias_bound']+b['rus_tail_bound'])
                                  for weight, _, b in branches)/epsilon
-                for cleanup in options['cleanup_choices'] if arm == 'hybrid' else [0]:
+                digital = arm == 'hybrid' and any(w.fixed_T for _, w, _ in branches)
+                for src in source_menu(c, sw, options['cleanup_choices'] if digital else [0]):
                     magic = 0.
-                    if arm == 'hybrid':
-                        q0 = source_error(c)
-                        q = 35*q0**3 if cleanup else q0
-                        logs = [log(abs(weight)*w.fixed_T*q/epsilon) + b['chi']/2 for weight, w, b in branches]
+                    if digital:
+                        logs = [log(abs(weight)*w.fixed_T*src['error']/epsilon) + b['chi']/2 for weight, w, b in branches]
                         log_magic = float(np.logaddexp.reduce(logs))
                         if log_magic >= 0:
                             continue
@@ -458,7 +501,7 @@ def optimize_analog(L, tau, arm, epsilon, p, scenario, sw):
                         for lanes in lane_menu(L, algorithm, sw):
                             for layout in (analog_layouts(arm, lanes, sw) if arm == 'hybrid' or sw['optimize_lanes'] else ['compact']):
                                 row = encoded_candidate(L, arm, c, epsilon, branches, fractions,
-                                                        cleanup, layout, lanes, sw)
+                                                        src, layout, lanes, sw)
                                 if row is not None:
                                     row.update(L=L, tau=tau, arm=arm, absolute_error=epsilon, p=p,
                                                scenario=scenario, algorithm=algorithm, r=r,
@@ -488,10 +531,9 @@ def optimize_analog(L, tau, arm, epsilon, p, scenario, sw):
 # ---------------------------------------------------------------- full FT
 
 def optimize_ft(L, tau, epsilon, p, scenario, sw):
-    c = base_config(p, scenario)
+    c = apply_delivery(base_config(p, scenario), sw)
     options = budget_settings()
     cfg = settings()
-    q0 = source_error(c)
     batches = [b for b in (cfg['extended_hwp_batches'] if sw['ft_delivery'] else cfg['reference_hwp_batches'])
                if b <= L*L]
     factories = np.array(c['factory_choices'], dtype=float)[None, :, None]
@@ -514,7 +556,7 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
         for layout in v1.settings()['layouts']:
             block = v1.settings()['layouts'][layout]
             ports = np.array(port_menu(L, sw, layout), dtype=float)[:, None, None]
-            port_tiles = settings()['extra_tiles_per_port']*(ports-1) if sw['ft_delivery'] else 0.
+            port_tiles = port_tile_charge(sw)*(ports-1) if sw['ft_delivery'] else 0.
             for batch in batches:
                 style = 'individual' if batch == 1 else 'hamming_weight'
                 for synthesis in options['synthesis_fraction_grid']:
@@ -523,17 +565,16 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
                     plans = [synthesis_plan(w, epsilon/norm, local) for _, w in works]
                     workspace = max(x.get('hwp_workspace', 0) for x in plans)
                     data_tiles = data_block_tiles(L, {**local, 'extra_work_qubits': workspace}) + port_tiles
-                    for cleanup in options['cleanup_choices']:
-                        qout = 35*q0**3 if cleanup else q0
+                    for src in source_menu(c, sw, options['cleanup_choices']):
+                        qout, cleanup = src['error'], src['cleanup']
                         lm = float(np.logaddexp.reduce([log(abs(weight)*x['T_count']*qout/epsilon)
                                                         for (weight, _), x in zip(works, plans)]))
                         if lm >= 0:
                             continue
                         magic = exp(lm)*(1+1e-12)
-                        tiles = data_tiles + factories*(1+12*cleanup)
+                        tiles = data_tiles + factories*src['tiles']
                         transfer = np.maximum(d, c['source_end_distance']) if sw['separate_distances'] else d
-                        source = c['source_cycles_per_T']*c['source_cycle_multiplier'] + 2*transfer
-                        service = (15*source+11*d)/(1-15*q0) if cleanup else source
+                        service = source_service(src, c, d, transfer)
                         clifford_ports = ports if sw['ft_delivery'] else cfg['reference_lanes']
                         durations, serial = [], []
                         for (_, w), x in zip(works, plans):
@@ -567,7 +608,7 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
                             chosen = first if sw['separate_distances'] else np.maximum(first, c['source_end_distance'])
                             di = ((chosen-3)/2).astype(int)
                             s_sel = [s[pi, fi, di] for s in durations]
-                            q = 2*tiles_b[pi, fi, di]*chosen**2 + factories[0, fi, 0]*c['source_qubits']
+                            q = 2*tiles_b[pi, fi, di]*chosen**2 + factories[0, fi, 0]*src['qubits']
                             ok = np.all([s <= c['week_seconds'] for s in s_sel], axis=0)
                             if not ok.any():
                                 continue
@@ -592,7 +633,7 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
                                        extrapolation='richardson' if richardson else 'single', extrapolation_norm=norm,
                                        layout=layout, synthesis=style, hwp_batch_size=batch,
                                        hwp_workspace=workspace, T_count=nt0, branch_T=[x['T_count'] for x in plans],
-                                       T_per_rotation=plans[0]['T_per_rotation'], cleanup_levels=cleanup,
+                                       T_per_rotation=plans[0]['T_per_rotation'], cleanup_levels=cleanup, T_source=src['name'],
                                        magic_error=qout, factories=int(factories[0, fi[k], 0]),
                                        T_consumption_ports=int(ports[pi[k], 0, 0]), distance=int(chosen[k]),
                                        first_feasible_distance=int(first[k]), data_tiles=data_tiles if np.isscalar(data_tiles) else int(data_tiles[pi[k], 0, 0]),
@@ -722,6 +763,8 @@ def _init(channels):
 def phases(items):
     """Configurations sharing expensive PCEC angles run after their cache exists."""
     order = [['v1_menu'], ['raw_rus', 'lanes', 'ft_delivery', 'distances'], ['richardson'], ['all']]
+    listed = {n for names in order for n in names}
+    order.append(sorted({i[0] for i in items} - listed))   # sensitivity configurations of later rounds
     return [[i for i in items if i[0] in names] for names in order]
 
 
@@ -778,11 +821,12 @@ def capacities(rows):
 
 def changes(table):
     """Cells where a switch changes the encoded leader relative to v1_menu."""
+    reference = settings().get('baseline_configuration', 'v1_menu')
     base = {(v['family'], v['p'], v['epsilon'], v['Q']): v for v in table
-            if v['configuration'] == 'v1_menu' and v['scenario'] == 'component'}
+            if v['configuration'] == reference and v['scenario'] == 'component'}
     out = []
     for v in table:
-        if v['configuration'] == 'v1_menu' or v['scenario'] != 'component':
+        if v['configuration'] == reference or v['scenario'] != 'component':
             continue
         b = base[(v['family'], v['p'], v['epsilon'], v['Q'])]
         moved = {a: [b[a], v[a]] for a in ENCODED + NISQ if b[a] != v[a]}
@@ -816,8 +860,17 @@ def validate(rows):
         # The surface-code law cannot affect physical-qubit rows: they must equal round v1.
         base = {item_key(v): v for v in read(ROOT/ROUNDS['v1'][1]/'costs.json')}
         for v in rows:
-            if v['arm'] in NISQ:
+            if v['arm'] in NISQ and item_key(v) in base:
                 a, b = base[item_key(v)]['log10_Q_min'], v['log10_Q_min']
+                assert (a is None) == (b is None) and (a is None or isclose(a, b, abs_tol=1e-12)), item_key(v)
+                replays += 1
+    replay = settings().get('replay_round')
+    if replay:
+        # The reference configuration of a sensitivity round must equal the round it extends.
+        prior = {item_key(v): v for v in read(ROOT/ROUNDS[replay][1]/'costs.json')}
+        for v in rows:
+            if v['configuration'] == 'all':
+                a, b = prior[item_key(v)]['log10_Q_min'], v['log10_Q_min']
                 assert (a is None) == (b is None) and (a is None or isclose(a, b, abs_tol=1e-12)), item_key(v)
                 replays += 1
     for v in rows:

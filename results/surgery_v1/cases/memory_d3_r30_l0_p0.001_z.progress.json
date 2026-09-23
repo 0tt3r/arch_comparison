@@ -1,0 +1,146 @@
+{
+  "status": "running",
+  "case": {
+    "kind": "memory",
+    "d": 3,
+    "p": 0.001,
+    "rm": 30,
+    "length": 0,
+    "basis": "z",
+    "shots": 1000000,
+    "id": "memory_d3_r30_l0_p0.001_z",
+    "seed": 302809240380,
+    "batch": 25000
+  },
+  "meta": {
+    "observables": [
+      "memory"
+    ],
+    "rounds": 30,
+    "volume": 30,
+    "nominal_volume": 30,
+    "harness": "original noisy product-state preparation and destructive readout"
+  },
+  "shots": 500000,
+  "histogram": [
+    490013,
+    9987
+  ],
+  "batches": [
+    {
+      "shots": 25000,
+      "failures": 512,
+      "histogram_sha256": "e1210232ff369608561756a8d427b8cdec8f058d41ef9228c763df3858e21b33"
+    },
+    {
+      "shots": 25000,
+      "failures": 489,
+      "histogram_sha256": "f78dd335f2d8fe72bbd21042673ccd59f0137e24ee7323d4662ab85793b59674"
+    },
+    {
+      "shots": 25000,
+      "failures": 478,
+      "histogram_sha256": "2bb3b3fc2fc0986821e49aaa12aeb7e2e3cac82f79d0c2b36ecf8b47a2f17d40"
+    },
+    {
+      "shots": 25000,
+      "failures": 499,
+      "histogram_sha256": "f93b14235dc18c21ffc491625fbd10225fbe18e7fce90eebb7af7ced1ec710dd"
+    },
+    {
+      "shots": 25000,
+      "failures": 523,
+      "histogram_sha256": "d476bf808a948badf8c08471da3d26c39a42eff2403cf2fa88d033fe45076ded"
+    },
+    {
+      "shots": 25000,
+      "failures": 492,
+      "histogram_sha256": "717ce857db53b8e4644875ee7c24c7a725ee860436b61946530a8cbc9099c1bc"
+    },
+    {
+      "shots": 25000,
+      "failures": 494,
+      "histogram_sha256": "0a364999ae4d10e95854e712ac58eaf6b4d5ee87533a623ff1a18d8d23dda5f9"
+    },
+    {
+      "shots": 25000,
+      "failures": 487,
+      "histogram_sha256": "2572f48bf96b9159377bc419afb0885305017272b06e059edf0925fff4fe911b"
+    },
+    {
+      "shots": 25000,
+      "failures": 472,
+      "histogram_sha256": "7ffe5119be591edf2f06118d465aecd2af18a107dc39edf544e6969c337c7d6a"
+    },
+    {
+      "shots": 25000,
+      "failures": 471,
+      "histogram_sha256": "d8acd1c2d15058f05cf2be1b14b9bf17187052f72c9d41d12ec9c2309b22495b"
+    },
+    {
+      "shots": 25000,
+      "failures": 509,
+      "histogram_sha256": "95dec653d94bc2c91045c326be8744ad7654a91fbd1539518806cd6b88b34cdd"
+    },
+    {
+      "shots": 25000,
+      "failures": 506,
+      "histogram_sha256": "1af0a50a8c8ff2b70dc3f361b3b091af85ce840a2308126ee6e47f854dc1f101"
+    },
+    {
+      "shots": 25000,
+      "failures": 517,
+      "histogram_sha256": "0848df295dda3959f921afa9e1e92662fbb4b864c501ddd7a1f7ea12ed1e4eba"
+    },
+    {
+      "shots": 25000,
+      "failures": 497,
+      "histogram_sha256": "978e1ae38b7ad4dd89152a5e809ba08e63df5d0a26b40b5b045233594d063c06"
+    },
+    {
+      "shots": 25000,
+      "failures": 489,
+      "histogram_sha256": "f78dd335f2d8fe72bbd21042673ccd59f0137e24ee7323d4662ab85793b59674"
+    },
+    {
+      "shots": 25000,
+      "failures": 522,
+      "histogram_sha256": "f81c31265c4b274f91707d649862b8e71b9428fe300f296073eb4c4a6c8f4936"
+    },
+    {
+      "shots": 25000,
+      "failures": 500,
+      "histogram_sha256": "95c65e56d1fd912b579ca57ed635f3082a8836ddf5d59d9182b968ed33d377bf"
+    },
+    {
+      "shots": 25000,
+      "failures": 496,
+      "histogram_sha256": "518a585e378f0b39a3e11c5da2f2b14660baf50f3c691378ea48a992fd35b19e"
+    },
+    {
+      "shots": 25000,
+      "failures": 504,
+      "histogram_sha256": "5cca760b64fe3c9eabe68248eb8da85b5c50988b651536f77a0b55fde651e94e"
+    },
+    {
+      "shots": 25000,
+      "failures": 530,
+      "histogram_sha256": "06bd2dff497be329c300c5958332d4ff4b7711786dac9e773a6744638665f9db"
+    }
+  ],
+  "source_sha256": "4abd15f590193783e9eb951219b3443ffcca1deefa3f0d657198291e9e0ed469",
+  "circuit_sha256": "f5f81377a9d408b483d5d01b4f602247835c2bc90dbe00d66eddd81e8eff3da7",
+  "dem_sha256": "0e149a420acd3d02d279f05abc0552e501ed195139721ffb8e7a6715f8ed3352",
+  "graphlike_distance": 3,
+  "single_fault_check": {
+    "mechanisms": 3243,
+    "misdecoded": 0,
+    "scope": "all single undecomposed detector-error-model mechanisms; not an exhaustive multi-fault distance proof"
+  },
+  "noiseless_check": true,
+  "logical_flip_check": true,
+  "detectors": 240,
+  "elapsed_seconds": 1.1877313922159374,
+  "host": "i032",
+  "job": "7791770.imgt1"
+}

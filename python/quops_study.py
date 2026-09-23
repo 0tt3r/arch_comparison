@@ -169,6 +169,15 @@ def nisq_cost(w, s, p, mode, Q):
 
 # ---------------------------------------------------------------- encoded arms
 
+def surgery_clocks(w):
+    """Code clocks per layer of long-range CNOTs; optional congestion growth with width."""
+    g = settings()['surgery']
+    base = g['clocks_per_cnot_layer']
+    if 'congestion_width' in g:
+        base *= max(1., (w/g['congestion_width'])**g['congestion_exponent'])
+    return base
+
+
 def tiles_block(n):
     """Fast Litinski block: every logical tile has an exposed boundary."""
     return ceil(2*n + sqrt(8*n) + 1)
@@ -179,14 +188,15 @@ def p_logical(d, c):
 
 
 @lru_cache(maxsize=None)
-def star_channel(p, seed, target, mode, g):
-    """Mean over the QUOPS angle distribution of the accepted STAR rotation channel.
+def star_channel(p, seed, target, mode, g, angle_max=pi/8):
+    """Mean over the injected-angle distribution of the accepted STAR rotation channel.
 
-    theta ~ U[0, 2 pi); Clifford parts are absorbed, so the injected angle is
-    wrap(theta), uniform on [-pi/8, pi/8]. By symmetry we average |angle|.
+    For QUOPS, theta ~ U[0, 2 pi) and Clifford parts are absorbed, so the injected
+    angle is uniform on [-pi/8, pi/8]. The angle sweep narrows this to
+    [-angle_max, angle_max]. By symmetry we average |angle|.
     """
     k = settings()['star']['angle_samples']
-    angles = [(i+.5)*(pi/8)/k for i in range(k)]
+    angles = [(i+.5)*angle_max/k for i in range(k)]
     scale = 0. if seed == target else growth_error(seed, p, 1e-10, target)/1e-10
     anchor = g/scale if scale else 0.
     rows = [rus_channel(a, seed, p, mode=mode, floor=anchor, data_distance=target, cap=48) for a in angles]
@@ -239,7 +249,7 @@ def star_cost(w, s, p, mode, Q):
     for seed, target in cfg['seed_targets']:
         g = growth_upper(seed, target, p)
         for rus in cfg['rus_modes']:
-            ch = star_channel(p, seed, target, rus, g)
+            ch = star_channel(p, seed, target, rus, g, cfg.get('angle_max', pi/8))
             rot_loss = embed(w)*x['rotations']*ch['loss']
             if rot_loss > (0.5 if mode == 'standard' else 60):
                 continue
@@ -247,13 +257,25 @@ def star_cost(w, s, p, mode, Q):
                 def tiles_fn(d, lanes=lanes):
                     return tiles_block(w) + cfg['tiles_per_lane']*lanes, 0
                 def layer_fn(d, lanes=lanes, ch=ch):
-                    surgery = settings()['surgery']['clocks_per_cnot_layer']*d*c['cycle_seconds']
+                    surgery = surgery_clocks(w)*d*c['cycle_seconds']
                     rotate = ch['seconds']*d/target*ceil(w/lanes)
                     return surgery + rotate + c['feedforward_seconds']*ceil(w/lanes)
                 row = encoded_search(w, s, p, mode, tiles_fn, layer_fn, lambda d: rot_loss, target)
                 if row and (best is None or row['qubits'] < best['qubits']):
                     best = dict(row, seed=seed, target=target, rus_mode=rus, lanes=lanes, rotation_loss=rot_loss)
     return best
+
+
+def t_sources(c, q0):
+    """Cultivation with optional 15-to-1 cleanup; optionally the Litinski (2019) factories at matching p."""
+    menu = [dict(name='cultivation', cleanup=k, error=35*q0**3 if k else q0, tiles=1+12*k,
+                 qubits=c['source_qubits']) for k in (0, 1)]
+    cfg = settings()['ft']
+    if cfg.get('source_menu') == 'litinski':
+        table = read(ROOT/cfg['litinski_factories'])['litinski_factories']
+        for name, error, qubits, cycles, outputs in table.get(repr(c['p']), []):
+            menu.append(dict(name=name, cleanup=0, error=error, tiles=1, qubits=qubits, cycles_per_T=cycles/outputs))
+    return menu
 
 
 def ft_cost(w, s, p, mode, Q, source=None):
@@ -268,28 +290,28 @@ def ft_cost(w, s, p, mode, Q, source=None):
         # Paper convention: diamond-distance synthesis error eps costs about eps^2 in polarization.
         n_T = ceil(3.02*log2(1/sqrt(zeta)) + .77)
         N_T = x['rotations']*n_T
-        for cleanup in (0, 1):
-            q_T = 35*q0**3 if cleanup else q0
-            magic = N_T*q_T
+        for src in t_sources(c, q0):
+            cleanup = src['cleanup']
+            magic = N_T*src['error']
             if magic + share*allowed > allowed:
                 continue
             for ports in [n for n in cfg['ports'] if n <= w]:
                 for factories in cfg['factories']:
-                    def tiles_fn(d, ports=ports, factories=factories, cleanup=cleanup):
+                    def tiles_fn(d, ports=ports, factories=factories, src=src):
                         return (tiles_block(w) + cfg['tiles_per_port']*(ports-1)
-                                + factories*(1+12*cleanup), factories*c['source_qubits'])
-                    def layer_fn(d, ports=ports, factories=factories, cleanup=cleanup):
-                        surgery = settings()['surgery']['clocks_per_cnot_layer']*d
+                                + factories*src['tiles'], factories*src['qubits'])
+                    def layer_fn(d, ports=ports, factories=factories, src=src):
+                        surgery = surgery_clocks(w)*d
                         consume = ceil(w/ports)*n_T*d
-                        source = c['source_cycles_per_T'] + 2*max(d, c['source_end_distance'])
-                        service = (15*source+11*d)/(1-15*q0) if cleanup else source
+                        source = src.get('cycles_per_T', c['source_cycles_per_T']) + 2*max(d, c['source_end_distance'])
+                        service = (15*source+11*d)/(1-15*q0) if src['cleanup'] else source
                         supply = ceil(w*n_T/factories)*service
                         return (surgery + max(consume, supply))*c['cycle_seconds'] + ceil(w/ports)*n_T*c['feedforward_seconds']
                     row = encoded_search(w, s, p, mode, tiles_fn, layer_fn,
                                          lambda d, z=zeta*x['rotations'], m=magic: z + m, 3)
                     if row and (best is None or row['qubits'] < best['qubits']):
                         best = dict(row, synthesis_share=share, T_per_rotation=n_T, T_count=N_T,
-                                    cleanup_levels=cleanup, ports=ports, factories=factories)
+                                    cleanup_levels=cleanup, T_source=src['name'], ports=ports, factories=factories)
     return best
 
 

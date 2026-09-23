@@ -1,0 +1,146 @@
+{
+  "status": "running",
+  "case": {
+    "kind": "memory",
+    "d": 7,
+    "p": 0.001,
+    "rm": 70,
+    "length": 0,
+    "basis": "x",
+    "shots": 1000000,
+    "id": "memory_d7_r70_l0_p0.001_x",
+    "seed": 303219241159,
+    "batch": 25000
+  },
+  "meta": {
+    "observables": [
+      "memory"
+    ],
+    "rounds": 70,
+    "volume": 70,
+    "nominal_volume": 70,
+    "harness": "original noisy product-state preparation and destructive readout"
+  },
+  "shots": 500000,
+  "histogram": [
+    499557,
+    443
+  ],
+  "batches": [
+    {
+      "shots": 25000,
+      "failures": 22,
+      "histogram_sha256": "7a007b4f205591a42bc9da63b8125b24cdd9aa5af85ebcdeb52ea3a829376bc0"
+    },
+    {
+      "shots": 25000,
+      "failures": 17,
+      "histogram_sha256": "5492616f0aab898eda017ef4b142a5402c10d59221a546a816123646e8e8811f"
+    },
+    {
+      "shots": 25000,
+      "failures": 25,
+      "histogram_sha256": "5b17f8210217b28d627bc4f581e4fcdcdfe1a40dff3bf6e887a92a9eb53c1b6f"
+    },
+    {
+      "shots": 25000,
+      "failures": 26,
+      "histogram_sha256": "2b7b035192e389f657aba2a34316d1a8ef5f928d675b2e7fe00f22b967f6ed2b"
+    },
+    {
+      "shots": 25000,
+      "failures": 25,
+      "histogram_sha256": "5b17f8210217b28d627bc4f581e4fcdcdfe1a40dff3bf6e887a92a9eb53c1b6f"
+    },
+    {
+      "shots": 25000,
+      "failures": 21,
+      "histogram_sha256": "d3963b8572ef38cb517a042fb10ef966570b30f3ff886660dc0c028bc34461a3"
+    },
+    {
+      "shots": 25000,
+      "failures": 18,
+      "histogram_sha256": "aafd4f1b3785b48c04376984e95bd1c584dc1f668f4a0554dc46e520284413bc"
+    },
+    {
+      "shots": 25000,
+      "failures": 21,
+      "histogram_sha256": "d3963b8572ef38cb517a042fb10ef966570b30f3ff886660dc0c028bc34461a3"
+    },
+    {
+      "shots": 25000,
+      "failures": 23,
+      "histogram_sha256": "1670468b72cc80616428cc3abffe8a9dc9f21bee47c5f566b7b555fbf7acda10"
+    },
+    {
+      "shots": 25000,
+      "failures": 25,
+      "histogram_sha256": "5b17f8210217b28d627bc4f581e4fcdcdfe1a40dff3bf6e887a92a9eb53c1b6f"
+    },
+    {
+      "shots": 25000,
+      "failures": 25,
+      "histogram_sha256": "5b17f8210217b28d627bc4f581e4fcdcdfe1a40dff3bf6e887a92a9eb53c1b6f"
+    },
+    {
+      "shots": 25000,
+      "failures": 23,
+      "histogram_sha256": "1670468b72cc80616428cc3abffe8a9dc9f21bee47c5f566b7b555fbf7acda10"
+    },
+    {
+      "shots": 25000,
+      "failures": 21,
+      "histogram_sha256": "d3963b8572ef38cb517a042fb10ef966570b30f3ff886660dc0c028bc34461a3"
+    },
+    {
+      "shots": 25000,
+      "failures": 18,
+      "histogram_sha256": "aafd4f1b3785b48c04376984e95bd1c584dc1f668f4a0554dc46e520284413bc"
+    },
+    {
+      "shots": 25000,
+      "failures": 26,
+      "histogram_sha256": "2b7b035192e389f657aba2a34316d1a8ef5f928d675b2e7fe00f22b967f6ed2b"
+    },
+    {
+      "shots": 25000,
+      "failures": 25,
+      "histogram_sha256": "5b17f8210217b28d627bc4f581e4fcdcdfe1a40dff3bf6e887a92a9eb53c1b6f"
+    },
+    {
+      "shots": 25000,
+      "failures": 19,
+      "histogram_sha256": "22dea9e41ce550049cb13b4bdbbe18fb20018336c291874166fdff57088ed5d9"
+    },
+    {
+      "shots": 25000,
+      "failures": 21,
+      "histogram_sha256": "d3963b8572ef38cb517a042fb10ef966570b30f3ff886660dc0c028bc34461a3"
+    },
+    {
+      "shots": 25000,
+      "failures": 25,
+      "histogram_sha256": "5b17f8210217b28d627bc4f581e4fcdcdfe1a40dff3bf6e887a92a9eb53c1b6f"
+    },
+    {
+      "shots": 25000,
+      "failures": 17,
+      "histogram_sha256": "5492616f0aab898eda017ef4b142a5402c10d59221a546a816123646e8e8811f"
+    }
+  ],
+  "source_sha256": "4abd15f590193783e9eb951219b3443ffcca1deefa3f0d657198291e9e0ed469",
+  "circuit_sha256": "30d3ef0a201c9c6e550753ffa33c8e8daee69a4f17ba969979304a9cff012887",
+  "dem_sha256": "31e7e1e65622451b133cf6cc274706d95d08bb2446583d109079ab218123d2ca",
+  "graphlike_distance": 7,
+  "single_fault_check": {
+    "mechanisms": 61417,
+    "misdecoded": 0,
+    "scope": "all single undecomposed detector-error-model mechanisms; not an exhaustive multi-fault distance proof"
+  },
+  "noiseless_check": true,
+  "logical_flip_check": true,
+  "detectors": 3360,
+  "elapsed_seconds": 22.731121808756143,
+  "host": "i032",
+  "job": "7791770.imgt1"
+}

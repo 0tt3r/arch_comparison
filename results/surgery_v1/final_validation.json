@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "rows_independently_checked": 1054,
+  "cells": 158,
+  "shots": 678000000,
+  "unique_batch_seeds": 27120,
+  "checks": [
+    "all CSV counts from joint histograms",
+    "Clopper-Pearson independently via binomial-test inversion",
+    "tile-round formulas and saved-law predictions",
+    "frozen code and fit snapshot hashes",
+    "no active writers",
+    "terminal PBS accounting"
+  ],
+  "weak_total_cells": 23,
+  "jobs": [
+    {
+      "job": "7791744",
+      "state": "F",
+      "exit_status": 0,
+      "node_seconds": 881,
+      "role": "retired detector-basis diagnostic",
+      "evidence": "results/surgery_v1/retired_detector_basis/7791744.qstat.txt"
+    },
+    {
+      "job": "7791770",
+      "state": "F",
+      "exit_status": 0,
+      "node_seconds": 462,
+      "role": "final corrected campaign",
+      "evidence": "results/surgery_v1/7791770.qstat.txt"
+    }
+  ],
+  "total_node_hours": 0.37305555555555553,
+  "memory_controls_reproduce_fit": true
+}

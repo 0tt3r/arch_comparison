@@ -45,7 +45,9 @@ Both encoded arms use the Stim-calibrated surface-code law ([SURFACE_LAW.md](SUR
 ## Known limitations
 
 Lattice-surgery routing of random long-range CNOTs is assumed congestion-free at two code clocks
-per layer. The one-sided 95% confidence rule and SPAM references are not modeled; with 10⁴ executions
+per layer. The isolated-gadget calibration ([SURGERY_LAW.md](SURGERY_LAW.md)) supports the two clocks
+(2d rounds plus 300 ns) and the memory-volume law (0.73–1.15× at R_m = d) for adjacent CNOTs; congestion
+is not covered. The one-sided 95% confidence rule and SPAM references are not modeled; with 10⁴ executions
 the statistical margin is small. The STAR channel is the restricted instrument of the Hubbard
 study, with the raw-RUS caveat of [RAW_RUS_NOTE.md](RAW_RUS_NOTE.md).
 
@@ -55,8 +57,11 @@ Physical qubits score about 310 at any size (another workshop implementation get
 measured 216 at its own error rates). STAR overtakes them at 10⁴ qubits, leads alone between 10⁴ and
 2.5×10⁴, and saturates at 7×10³. FT is ahead to stay from 3×10⁴ qubits, reaches 10⁴ at 5×10⁴ and
 5.5×10⁶ at 10⁶ (about 800× STAR), then plateaus near 1.1×10⁷ from 3×10⁶ to 1.3×10⁸ qubits, where
-cultivated states (2×10⁻⁹) no longer suffice and cleanup factories are needed. With a declared 100×
-better source the same model reaches the RSA-2048 target (2.5×10⁸) with 4×10⁷ qubits; with the
-baseline source it reaches it only at p = 10⁻⁴ with about 8×10⁸. The dashed curves are a declared
-1/γ² throughput scenario, not the cost of certifying polarization. Figure:
+cultivated states (2×10⁻⁹) no longer suffice and cleanup factories are needed. With the published
+distillation factories of Litinski (2019) added to the source menu
+([QUOPS_SENSITIVITY.md](QUOPS_SENSITIVITY.md)) the plateau disappears: the RSA-2048 target
+(2.5×10⁸) is reached with 2.5×10⁸ qubits at p = 10⁻³ and 10⁷ at p = 10⁻⁴; with cultivation alone
+it is reached only at p = 10⁻⁴ with about 8×10⁸. (A declared 100× better cultivated source,
+`ft_better_source`, reaches it with 4×10⁷ at p = 10⁻³.) The dashed curves are a declared
+1/γ² throughput scenario, not the cost of certifying polarization. The shaded band in the figure is the published-factory menu. Figure:
 [figures/quops_capability.pdf](../figures/quops_capability.pdf).

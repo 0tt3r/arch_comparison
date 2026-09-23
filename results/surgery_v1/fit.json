@@ -1,0 +1,1152 @@
+{
+  "status": "complete",
+  "cells": 158,
+  "shots": 678000000,
+  "temporal": {
+    "0.001": {
+      "status": "fit",
+      "Lambda_t": 23.15614852324239,
+      "Lambda_t_profile95": [
+        22.74965912186693,
+        23.5725519862612
+      ],
+      "B_by_d_length": {
+        "d3_l0": 0.7570625866960823,
+        "d3_l1": 1.3115170779716556,
+        "d3_l3": 2.982044440912337,
+        "d5_l0": 1.1836798451286545,
+        "d5_l1": 3.60434106154259,
+        "d5_l3": 9.486226439040168,
+        "d7_l0": 2.067337355188806,
+        "d7_l1": 9.611775120802728,
+        "d7_l3": 26.423399691354636,
+        "d9_l0": 2.8200192205676053,
+        "d9_l1": 23.11038946018667,
+        "d9_l3": 66.9233677428463
+      },
+      "deviance": 216.12074595247395,
+      "df": 23,
+      "gof_p": 2.4653178257305497e-33,
+      "optimizer_success": true,
+      "failures": 260319,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "0.0001": {
+      "status": "fit",
+      "Lambda_t": 264.5230002551737,
+      "Lambda_t_profile95": [
+        239.8154906922707,
+        292.7519026871798
+      ],
+      "B_by_d_length": {
+        "d3_l0": 0.9325470440509032,
+        "d3_l1": 1.6399017244349485,
+        "d3_l3": 3.969368257632572,
+        "d5_l0": 1.3941579002559334,
+        "d5_l1": 4.835986712307511,
+        "d5_l3": 12.460279742939894,
+        "d7_l0": 4.609835612860317,
+        "d7_l1": 11.52458904836462,
+        "d7_l3": 25.35409597774562
+      },
+      "deviance": 23.965292335720733,
+      "df": 17,
+      "gof_p": 0.12038107506127128,
+      "optimizer_success": true,
+      "failures": 101461,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    }
+  },
+  "temporal_by_geometry": {
+    "p0.001_d3_l0": {
+      "status": "fit",
+      "Lambda_t": 29.063216155883364,
+      "Lambda_t_profile95": [
+        27.511001701995752,
+        30.73621460678676
+      ],
+      "B_by_d_length": {
+        "d3_l0": 0.9586020483247364
+      },
+      "deviance": 2.1969728500698693,
+      "df": 1,
+      "gof_p": 0.13828206077865596,
+      "optimizer_success": true,
+      "failures": 34157,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d3_l1": {
+      "status": "fit",
+      "Lambda_t": 25.42515465664684,
+      "Lambda_t_profile95": [
+        24.454340972618866,
+        26.448929916803202
+      ],
+      "B_by_d_length": {
+        "d3_l1": 1.4454979553699336
+      },
+      "deviance": 0.055097653006669134,
+      "df": 1,
+      "gof_p": 0.814419161137661,
+      "optimizer_success": true,
+      "failures": 59177,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d3_l3": {
+      "status": "fit",
+      "Lambda_t": 22.469042723253626,
+      "Lambda_t_profile95": [
+        21.9325757789134,
+        23.023510195396998
+      ],
+      "B_by_d_length": {
+        "d3_l3": 2.8900617617445477
+      },
+      "deviance": 0.10598911414854228,
+      "df": 1,
+      "gof_p": 0.7447575118634857,
+      "optimizer_success": true,
+      "failures": 134604,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d5_l0": {
+      "status": "fit",
+      "Lambda_t": 19.61708138089276,
+      "Lambda_t_profile95": [
+        16.58087368145258,
+        23.458816814801523
+      ],
+      "B_by_d_length": {
+        "d5_l0": 0.8426541739634628
+      },
+      "deviance": 6.6795819543986,
+      "df": 1,
+      "gof_p": 0.009752349393396467,
+      "optimizer_success": true,
+      "failures": 2307,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d5_l1": {
+      "status": "fit",
+      "Lambda_t": 20.48945232563608,
+      "Lambda_t_profile95": [
+        18.542576550327386,
+        22.724060522437373
+      ],
+      "B_by_d_length": {
+        "d5_l1": 2.805604581017641
+      },
+      "deviance": 0.06451015631319024,
+      "df": 1,
+      "gof_p": 0.7995044452856752,
+      "optimizer_success": true,
+      "failures": 7025,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d5_l3": {
+      "status": "fit",
+      "Lambda_t": 18.13345318741261,
+      "Lambda_t_profile95": [
+        17.110693573628662,
+        19.24099994287527
+      ],
+      "B_by_d_length": {
+        "d5_l3": 5.746242144305288
+      },
+      "deviance": 0.5300438807462342,
+      "df": 1,
+      "gof_p": 0.46658841169368215,
+      "optimizer_success": true,
+      "failures": 18492,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d7_l0": {
+      "status": "fit",
+      "Lambda_t": 25.749016257776923,
+      "Lambda_t_profile95": [
+        13.495519365425423,
+        59.37185974202399
+      ],
+      "B_by_d_length": {
+        "d7_l0": 2.8553136055337984
+      },
+      "deviance": 0.5431138834787816,
+      "df": 1,
+      "gof_p": 0.4611450895368805,
+      "optimizer_success": true,
+      "failures": 174,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d7_l1": {
+      "status": "fit",
+      "Lambda_t": 15.813036564738878,
+      "Lambda_t_profile95": [
+        12.32526946241356,
+        20.788772396700576
+      ],
+      "B_by_d_length": {
+        "d7_l1": 2.9973167919572568
+      },
+      "deviance": 0.48829000907426234,
+      "df": 1,
+      "gof_p": 0.48469108536656635,
+      "optimizer_success": true,
+      "failures": 809,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d7_l3": {
+      "status": "fit",
+      "Lambda_t": 19.549744353163096,
+      "Lambda_t_profile95": [
+        16.479234945566922,
+        23.45014630557394
+      ],
+      "B_by_d_length": {
+        "d7_l3": 15.76928744405609
+      },
+      "deviance": 1.6184532465667871,
+      "df": 1,
+      "gof_p": 0.20330759519924171,
+      "optimizer_success": true,
+      "failures": 2224,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d9_l0": {
+      "status": "fit",
+      "Lambda_t": 21.371454756526866,
+      "Lambda_t_profile95": [
+        7.13937648917836,
+        126.46666312720116
+      ],
+      "B_by_d_length": {
+        "d9_l0": 2.0384152148117995
+      },
+      "deviance": 0.18687396077643825,
+      "df": 1,
+      "gof_p": 0.6655312286053227,
+      "optimizer_success": true,
+      "failures": 41,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d9_l1": {
+      "status": "fit",
+      "Lambda_t": 20.63212988519177,
+      "Lambda_t_profile95": [
+        13.409914675432974,
+        34.30679573448545
+      ],
+      "B_by_d_length": {
+        "d9_l1": 14.485326047364355
+      },
+      "deviance": 1.6451903973511435,
+      "df": 1,
+      "gof_p": 0.19961480990356226,
+      "optimizer_success": true,
+      "failures": 336,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.001_d9_l3": {
+      "status": "fit",
+      "Lambda_t": 13.442054827954697,
+      "Lambda_t_profile95": [
+        10.899072305747163,
+        16.864208210811608
+      ],
+      "B_by_d_length": {
+        "d9_l3": 7.353947666573209
+      },
+      "deviance": 2.8455073492514202,
+      "df": 1,
+      "gof_p": 0.09162966565953967,
+      "optimizer_success": true,
+      "failures": 973,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.0001_d3_l0": {
+      "status": "fit",
+      "Lambda_t": 429.93246824946544,
+      "Lambda_t_profile95": [
+        311.44710121057597,
+        617.0926135546911
+      ],
+      "B_by_d_length": {
+        "d3_l0": 1.5178851391654617
+      },
+      "deviance": 3.4022697999316733,
+      "df": 1,
+      "gof_p": 0.06510677147160496,
+      "optimizer_success": true,
+      "failures": 14155,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.0001_d3_l1": {
+      "status": "fit",
+      "Lambda_t": 249.90850210169586,
+      "Lambda_t_profile95": [
+        206.79107862270268,
+        305.92608197887597
+      ],
+      "B_by_d_length": {
+        "d3_l1": 1.548957938500223
+      },
+      "deviance": 0.6564657926210202,
+      "df": 1,
+      "gof_p": 0.4178104310959502,
+      "optimizer_success": true,
+      "failures": 24892,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.0001_d3_l3": {
+      "status": "fit",
+      "Lambda_t": 250.991986169429,
+      "Lambda_t_profile95": [
+        221.8573324679442,
+        285.47212869756754
+      ],
+      "B_by_d_length": {
+        "d3_l3": 3.765566141845459
+      },
+      "deviance": 1.9203540219459683,
+      "df": 1,
+      "gof_p": 0.16581763843681782,
+      "optimizer_success": true,
+      "failures": 60251,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.0001_d5_l0": {
+      "status": "fit",
+      "Lambda_t": 160.9795634454332,
+      "Lambda_t_profile95": [
+        36.92062802150099,
+        2813.2612584255276
+      ],
+      "B_by_d_length": {
+        "d5_l0": 0.5150689287534412
+      },
+      "deviance": 0.012423388935530966,
+      "df": 1,
+      "gof_p": 0.9112513793323189,
+      "optimizer_success": true,
+      "failures": 160,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.0001_d5_l1": {
+      "status": "fit",
+      "Lambda_t": 3269016.0791556053,
+      "Lambda_t_profile95": [
+        289.4241019073581,
+        null
+      ],
+      "B_by_d_length": {
+        "d5_l1": 741373360.7035848
+      },
+      "deviance": 0.0003395512976567261,
+      "df": 1,
+      "gof_p": 0.9852982788292322,
+      "optimizer_success": true,
+      "failures": 555,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.0001_d5_l3": {
+      "status": "fit",
+      "Lambda_t": 143.97884548691195,
+      "Lambda_t_profile95": [
+        82.29405398196563,
+        286.85860798522145
+      ],
+      "B_by_d_length": {
+        "d5_l3": 3.679736029069046
+      },
+      "deviance": 0.13890326876935433,
+      "df": 1,
+      "gof_p": 0.709373754848601,
+      "optimizer_success": true,
+      "failures": 1430,
+      "law": "q_time_only(d,l,R_m) = B_d,l * Lambda_t^(-(R_m+1)/2)",
+      "warning": "outcome-only errors can include spatial mechanisms; profile intervals and chi-square GOF are asymptotic, conditional on this form; zero-count amplitudes are boundary estimates"
+    },
+    "p0.0001_d7_l0": {
+      "status": "insufficient_failures",
+      "failures": 2
+    },
+    "p0.0001_d7_l1": {
+      "status": "insufficient_failures",
+      "failures": 5
+    },
+    "p0.0001_d7_l3": {
+      "status": "insufficient_failures",
+      "failures": 11
+    }
+  },
+  "multipliers": {
+    "parity_l0_p0.001": {
+      "multiplier": 0.9462485562416917,
+      "profile95": [
+        0.93597571057139,
+        0.9566021978987419
+      ],
+      "deviance": 31.85952358407667,
+      "df": 3,
+      "gof_p": 5.602643957711185e-07,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 32340,
+      "shots": 7000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "parity_l1_p0.001": {
+      "multiplier": 0.9445940693665233,
+      "profile95": [
+        0.9348561484623784,
+        0.9544158265039083
+      ],
+      "deviance": 46.14263059751829,
+      "df": 3,
+      "gof_p": 5.288954587455966e-10,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 35839,
+      "shots": 7000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "parity_l3_p0.001": {
+      "multiplier": 0.95761208952578,
+      "profile95": [
+        0.9489681869907265,
+        0.9663679712188545
+      ],
+      "deviance": 111.32678868999938,
+      "df": 3,
+      "gof_p": 5.685710211917532e-24,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 46550,
+      "shots": 7000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "cnot_l0_p0.001": {
+      "multiplier": 0.9359553562089611,
+      "profile95": [
+        0.9305639957356191,
+        0.9414227598929389
+      ],
+      "deviance": 57.16703799297102,
+      "df": 2,
+      "gof_p": 3.8577619608486094e-13,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 114184,
+      "shots": 6000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "idle_control_l0_p0.001": {
+      "multiplier": 0.933210021534503,
+      "profile95": [
+        0.9227473223358137,
+        0.9437268716363941
+      ],
+      "deviance": 13.82878498698119,
+      "df": 3,
+      "gof_p": 0.003147715998889773,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 30404,
+      "shots": 7000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "idle_control_l1_p0.001": {
+      "multiplier": 0.8957221630280288,
+      "profile95": [
+        0.886225338461107,
+        0.9052653528864003
+      ],
+      "deviance": 11.31418243702501,
+      "df": 3,
+      "gof_p": 0.010142810618922462,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 34008,
+      "shots": 7000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "idle_control_l3_p0.001": {
+      "multiplier": 0.8579152161952601,
+      "profile95": [
+        0.8497056123792193,
+        0.8661593885706714
+      ],
+      "deviance": 31.101479315024335,
+      "df": 3,
+      "gof_p": 8.092363686685658e-07,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 41777,
+      "shots": 7000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "cnot_memory_l0_p0.001": {
+      "multiplier": 0.9840043118284525,
+      "profile95": [
+        0.9783189262444367,
+        0.9897532906851013
+      ],
+      "deviance": 14.720455925446004,
+      "df": 2,
+      "gof_p": 0.000636053446534707,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 113818,
+      "shots": 6000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "cnot_core_l0_p0.001": {
+      "multiplier": 0.9343772634356248,
+      "profile95": [
+        0.927257367185405,
+        0.9415789817539384
+      ],
+      "deviance": 150.8117601328995,
+      "df": 2,
+      "gof_p": 1.7850171130950667e-33,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 65413,
+      "shots": 6000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "parity_l0_p0.0001": {
+      "multiplier": 0.8558800852314334,
+      "profile95": [
+        0.80528749641749,
+        0.9085400648604266
+      ],
+      "deviance": 4.65123463013515,
+      "df": 2,
+      "gof_p": 0.09772309948569892,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 1056,
+      "shots": 20000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "parity_l1_p0.0001": {
+      "multiplier": 0.9100552199941727,
+      "profile95": [
+        0.8603930182374401,
+        0.9616279750112662
+      ],
+      "deviance": 1.8119793683290482,
+      "df": 2,
+      "gof_p": 0.4041417144593832,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 1242,
+      "shots": 20000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "parity_l3_p0.0001": {
+      "multiplier": 0.9438268983905764,
+      "profile95": [
+        0.899092810601652,
+        0.9900143612176426
+      ],
+      "deviance": 3.067757332290057,
+      "df": 2,
+      "gof_p": 0.21569742443701587,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 1656,
+      "shots": 20000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "cnot_l0_p0.0001": {
+      "multiplier": 0.8840978786668164,
+      "profile95": [
+        0.8570198280672827,
+        0.9116929342195963
+      ],
+      "deviance": 12.277392826305004,
+      "df": 2,
+      "gof_p": 0.002157734580152176,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 4018,
+      "shots": 40000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "idle_control_l0_p0.0001": {
+      "multiplier": 0.9121051495450904,
+      "profile95": [
+        0.8584898764787965,
+        0.9679601757086015
+      ],
+      "deviance": 1.2625169844068296,
+      "df": 2,
+      "gof_p": 0.5319219599610023,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 1067,
+      "shots": 20000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "idle_control_l1_p0.0001": {
+      "multiplier": 0.8528897410880167,
+      "profile95": [
+        0.8048457974443701,
+        0.9028499484420313
+      ],
+      "deviance": 3.6505986605734506,
+      "df": 2,
+      "gof_p": 0.16116939402785288,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 1164,
+      "shots": 20000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "idle_control_l3_p0.0001": {
+      "multiplier": 0.8742621548160355,
+      "profile95": [
+        0.8312535818771268,
+        0.9187610184397754
+      ],
+      "deviance": 6.0098877378040925,
+      "df": 2,
+      "gof_p": 0.04954153507115794,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 1534,
+      "shots": 20000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "cnot_memory_l0_p0.0001": {
+      "multiplier": 0.9391782389019844,
+      "profile95": [
+        0.9104911669375846,
+        0.9685010388623342
+      ],
+      "deviance": 18.05568830703851,
+      "df": 2,
+      "gof_p": 0.00012002096123006515,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 4028,
+      "shots": 40000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    },
+    "cnot_core_l0_p0.0001": {
+      "multiplier": 0.9230586534179107,
+      "profile95": [
+        0.8866076557382734,
+        0.9605327622108889
+      ],
+      "deviance": 4.738965086573444,
+      "df": 2,
+      "gof_p": 0.09352911102485956,
+      "law": "q = 1-exp(-multiplier * V * p_L(d))",
+      "failures": 2396,
+      "shots": 40000000,
+      "warning": "descriptive common multiplier; lack of fit means use per-cell ratios"
+    }
+  },
+  "time_below_space": [
+    {
+      "p": 0.001,
+      "d": 3,
+      "length": 0,
+      "smallest_tested_point_estimate": 3,
+      "smallest_tested_separated_intervals": 3,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 3,
+      "length": 1,
+      "smallest_tested_point_estimate": 3,
+      "smallest_tested_separated_intervals": 3,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 3,
+      "length": 3,
+      "smallest_tested_point_estimate": 3,
+      "smallest_tested_separated_intervals": 3,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 5,
+      "length": 0,
+      "smallest_tested_point_estimate": 3,
+      "smallest_tested_separated_intervals": 3,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 5,
+      "length": 1,
+      "smallest_tested_point_estimate": 5,
+      "smallest_tested_separated_intervals": 5,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 5,
+      "length": 3,
+      "smallest_tested_point_estimate": 5,
+      "smallest_tested_separated_intervals": 5,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 7,
+      "length": 0,
+      "smallest_tested_point_estimate": 5,
+      "smallest_tested_separated_intervals": 5,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 7,
+      "length": 1,
+      "smallest_tested_point_estimate": 5,
+      "smallest_tested_separated_intervals": 5,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 7,
+      "length": 3,
+      "smallest_tested_point_estimate": 7,
+      "smallest_tested_separated_intervals": 7,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 9,
+      "length": 0,
+      "smallest_tested_point_estimate": 7,
+      "smallest_tested_separated_intervals": 7,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 9,
+      "length": 1,
+      "smallest_tested_point_estimate": 7,
+      "smallest_tested_separated_intervals": 7,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.001,
+      "d": 9,
+      "length": 3,
+      "smallest_tested_point_estimate": 9,
+      "smallest_tested_separated_intervals": 9,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 3,
+      "length": 0,
+      "smallest_tested_point_estimate": 3,
+      "smallest_tested_separated_intervals": 3,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 3,
+      "length": 1,
+      "smallest_tested_point_estimate": 3,
+      "smallest_tested_separated_intervals": 3,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 3,
+      "length": 3,
+      "smallest_tested_point_estimate": 3,
+      "smallest_tested_separated_intervals": 3,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 5,
+      "length": 0,
+      "smallest_tested_point_estimate": 5,
+      "smallest_tested_separated_intervals": 5,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 5,
+      "length": 1,
+      "smallest_tested_point_estimate": 5,
+      "smallest_tested_separated_intervals": 5,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 5,
+      "length": 3,
+      "smallest_tested_point_estimate": 5,
+      "smallest_tested_separated_intervals": 5,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 7,
+      "length": 0,
+      "smallest_tested_point_estimate": 9,
+      "smallest_tested_separated_intervals": null,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 7,
+      "length": 1,
+      "smallest_tested_point_estimate": 9,
+      "smallest_tested_separated_intervals": null,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    },
+    {
+      "p": 0.0001,
+      "d": 7,
+      "length": 3,
+      "smallest_tested_point_estimate": 7,
+      "smallest_tested_separated_intervals": null,
+      "note": "pointwise 95% intervals; no extrapolation below/above tested R_m"
+    }
+  ],
+  "memory_controls": [
+    {
+      "id": "memory_d3_r30_l0_p0.001_x",
+      "p": 0.001,
+      "d": 3,
+      "basis": "x",
+      "measured": 0.021032,
+      "interval95": [
+        0.020751650744463616,
+        0.021315128347269178
+      ],
+      "q_per_round": 0.0007203820359697183,
+      "endpoint_rounds": -0.1032895891621869,
+      "rounds": 30,
+      "fit_probability": 0.02109467211423577,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 21100,
+      "original_interval95": [
+        0.02081920605320823,
+        0.021383572633669586
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d3_r30_l0_p0.001_z",
+      "p": 0.001,
+      "d": 3,
+      "basis": "z",
+      "measured": 0.019937,
+      "interval95": [
+        0.019663919794419803,
+        0.02021286582433174
+      ],
+      "q_per_round": 0.0006884463054848494,
+      "endpoint_rounds": -0.30862925353829845,
+      "rounds": 30,
+      "fit_probability": 0.02004224067374838,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 19997,
+      "original_interval95": [
+        0.019723516072794774,
+        0.02027326918792121
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d5_r50_l0_p0.001_x",
+      "p": 0.001,
+      "d": 5,
+      "basis": "x",
+      "measured": 0.004848,
+      "interval95": [
+        0.0047127994157982874,
+        0.00498608076641328
+      ],
+      "q_per_round": 9.728143166481085e-05,
+      "endpoint_rounds": -0.29771289423809755,
+      "rounds": 50,
+      "fit_probability": 0.004812272437232312,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 4843,
+      "original_interval95": [
+        0.004707869310046626,
+        0.0049810109083948985
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d5_r50_l0_p0.001_z",
+      "p": 0.001,
+      "d": 5,
+      "basis": "z",
+      "measured": 0.004657,
+      "interval95": [
+        0.0045244958864342835,
+        0.0047923856879919695
+      ],
+      "q_per_round": 9.296878444749436e-05,
+      "endpoint_rounds": -0.5659486028971177,
+      "rounds": 50,
+      "fit_probability": 0.004575190050300659,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 4623,
+      "original_interval95": [
+        0.004490981728523866,
+        0.00475790009557328
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d7_r70_l0_p0.001_x",
+      "p": 0.001,
+      "d": 7,
+      "basis": "x",
+      "measured": 0.000896,
+      "interval95": [
+        0.0008383084883125261,
+        0.0009566131638953742
+      ],
+      "q_per_round": 1.3137025181390103e-05,
+      "endpoint_rounds": -2.3436693617540527,
+      "rounds": 70,
+      "fit_probability": 0.0008880250722176353,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 865,
+      "original_interval95": [
+        0.0008083311628047869,
+        0.0009245912453368688
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d7_r70_l0_p0.001_z",
+      "p": 0.001,
+      "d": 7,
+      "basis": "z",
+      "measured": 0.000832,
+      "interval95": [
+        0.0007764402198654749,
+        0.0008904830278892038
+      ],
+      "q_per_round": 1.2554639065943651e-05,
+      "endpoint_rounds": -6.197994618621312,
+      "rounds": 70,
+      "fit_probability": 0.0008003799133549649,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 788,
+      "original_interval95": [
+        0.0007339538574965205,
+        0.000844970572042813
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d9_r90_l0_p0.001_x",
+      "p": 0.001,
+      "d": 9,
+      "basis": "x",
+      "measured": 0.00013875,
+      "interval95": [
+        0.00012744586370205102,
+        0.00015078784466095307
+      ],
+      "q_per_round": 1.7740428739897418e-06,
+      "endpoint_rounds": -11.202617212767057,
+      "rounds": 90,
+      "fit_probability": 0.00013977064394243843,
+      "fit_point_in_new_interval": true,
+      "original_shots": 500000,
+      "original_failures": 59,
+      "original_interval95": [
+        8.982824282236686e-05,
+        0.0001522087989982263
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d9_r90_l0_p0.001_z",
+      "p": 0.001,
+      "d": 9,
+      "basis": "z",
+      "measured": 0.00012325,
+      "interval95": [
+        0.00011260970845242181,
+        0.00013462464872572154
+      ],
+      "q_per_round": 1.6953966109467248e-06,
+      "endpoint_rounds": -14.678895267393152,
+      "rounds": 90,
+      "fit_probability": 0.00012768305645777245,
+      "fit_point_in_new_interval": true,
+      "original_shots": 500000,
+      "original_failures": 73,
+      "original_interval95": [
+        0.0001144423853190595,
+        0.00018356963158468808
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d3_r30_l0_p0.0001_x",
+      "p": 0.0001,
+      "d": 3,
+      "basis": "x",
+      "measured": 0.00022525,
+      "interval95": [
+        0.00021078180580809524,
+        0.0002404495644079871
+      ],
+      "q_per_round": 7.69430726152592e-06,
+      "endpoint_rounds": -0.633729697725929,
+      "rounds": 30,
+      "fit_probability": 0.0002259037974997602,
+      "fit_point_in_new_interval": true,
+      "original_shots": 5000000,
+      "original_failures": 1126,
+      "original_interval95": [
+        0.00021223811743551987,
+        0.00023874629674433973
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d3_r30_l0_p0.0001_z",
+      "p": 0.0001,
+      "d": 3,
+      "basis": "z",
+      "measured": 0.0002195,
+      "interval95": [
+        0.00020522070419049253,
+        0.00023451077954847065
+      ],
+      "q_per_round": 7.960647096346674e-06,
+      "endpoint_rounds": -3.672397854571189,
+      "rounds": 30,
+      "fit_probability": 0.00020954249769111755,
+      "fit_point_in_new_interval": true,
+      "original_shots": 5000000,
+      "original_failures": 1051,
+      "original_interval95": [
+        0.00019768363034101955,
+        0.0002233010042676172
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d5_r50_l0_p0.0001_x",
+      "p": 0.0001,
+      "d": 5,
+      "basis": "x",
+      "measured": 5.625e-06,
+      "interval95": [
+        4.102916464597217e-06,
+        7.5266854053871345e-06
+      ],
+      "q_per_round": 8.624971237054684e-08,
+      "endpoint_rounds": 11.099720150214026,
+      "rounds": 50,
+      "fit_probability": 5.269805972429875e-06,
+      "fit_point_in_new_interval": true,
+      "original_shots": 10000000,
+      "original_failures": 57,
+      "original_interval95": [
+        4.317127105464611e-06,
+        7.385004918378241e-06
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d5_r50_l0_p0.0001_z",
+      "p": 0.0001,
+      "d": 5,
+      "basis": "z",
+      "measured": 5e-06,
+      "interval95": [
+        3.5720756323024807e-06,
+        6.8085747135598206e-06
+      ],
+      "q_per_round": 8.923526173390217e-08,
+      "endpoint_rounds": 12.50912683918926,
+      "rounds": 50,
+      "fit_probability": 5.5779876779182835e-06,
+      "fit_point_in_new_interval": true,
+      "original_shots": 10000000,
+      "original_failures": 51,
+      "original_interval95": [
+        3.797287267358841e-06,
+        6.705552754574962e-06
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d7_r70_l0_p0.0001_x",
+      "p": 0.0001,
+      "d": 7,
+      "basis": "x",
+      "measured": 0.0,
+      "interval95": [
+        0.0,
+        4.6110982545307367e-07
+      ],
+      "q_per_round": 9.668203557712837e-10,
+      "endpoint_rounds": -66.5,
+      "rounds": 70,
+      "fit_probability": 3.383871183260112e-09,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 0,
+      "original_interval95": [
+        0.0,
+        3.688872650206488e-06
+      ],
+      "intervals_overlap": true
+    },
+    {
+      "id": "memory_d7_r70_l0_p0.0001_z",
+      "p": 0.0001,
+      "d": 7,
+      "basis": "z",
+      "measured": 0.0,
+      "interval95": [
+        0.0,
+        4.6110982545307367e-07
+      ],
+      "q_per_round": 1.0002870169150444e-09,
+      "endpoint_rounds": -66.5,
+      "rounds": 70,
+      "fit_probability": 3.501004541828223e-09,
+      "fit_point_in_new_interval": true,
+      "original_shots": 1000000,
+      "original_failures": 0,
+      "original_interval95": [
+        0.0,
+        3.688872650206488e-06
+      ],
+      "intervals_overlap": true
+    }
+  ],
+  "ratio_intervals": "Numerator-only exact binomial intervals, conditional on saved memory-fit point estimates; not calibration/systematic confidence bands.",
+  "scope": "Specific isolated four-slot rotated-patch constructions with ideal encoded input/output probes; no congestion, twists/Y surgery, correlated noise, or d>9.",
+  "source_sha256": "4abd15f590193783e9eb951219b3443ffcca1deefa3f0d657198291e9e0ed469",
+  "raw_sha256": "e21225cc26ddae9bdcb719b5c93a5b2bcd193e16221056e526c2560100629a42"
+}

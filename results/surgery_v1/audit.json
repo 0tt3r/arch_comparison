@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "cells": 158,
+  "shots": 678000000,
+  "checks": [
+    "fixed-shot manifest census",
+    "batch and observable histograms",
+    "source, circuit, DEM and CSV hashes",
+    "per-case zero-noise and inserted logical-flip controls",
+    "per-case shortest graphlike fault distance",
+    "all single undecomposed DEM mechanisms decoded correctly except intentional R_m=1 time boundary"
+  ],
+  "rebuilt_all_circuits": false,
+  "job": null
+}

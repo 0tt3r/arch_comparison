@@ -91,3 +91,26 @@ def test_calibrated_round_reads_the_stim_fit_and_leaves_v1_on_the_reference_law(
         o.use_round('v1')
     c = o.base_config(1e-3, 'component')
     assert (c['surface_A'], c['surface_threshold']) == (.1, .01)
+
+
+def test_source_menu_defaults_to_cultivation_and_matches_litinski_at_p():
+    c = o.base_config(1e-3, 'component')
+    menu = o.source_menu(c, {}, [0, 1])
+    assert [s['name'] for s in menu] == ['cultivation']*2 and menu[1]['tiles'] == 13
+    assert menu[1]['error'] == pytest.approx(35*menu[0]['error']**3)
+    o.use_round('v3')
+    try:
+        litinski = o.source_menu(o.base_config(1e-4, 'component'), {'source_menu': 'litinski'}, [0, 1])[2:]
+        assert litinski and all(s['tiles'] == 1 for s in litinski)
+        # Four outputs per round share its 90.3 cycles; each output then needs two transfers.
+        s = next(s for s in litinski if '20-to-4' in s['name'])
+        assert o.source_service(s, c, 11, 11) == pytest.approx(90.3/4 + 22)
+    finally:
+        o.use_round('v1')
+
+
+def test_fixed_T_analog_moves_every_pi_over_8_into_the_star_instrument():
+    w = workload(8, 2, 4, 'plaquette', 4.)
+    a = o.analog_fixed_T(w)
+    assert a.fixed_T == 0 and a.rotations == w.rotations + w.fixed_T
+    assert a.theta == pytest.approx(w.theta + w.fixed_T*np.pi/8)

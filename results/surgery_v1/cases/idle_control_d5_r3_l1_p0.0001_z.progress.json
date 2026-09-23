@@ -1,0 +1,1619 @@
+{
+  "status": "running",
+  "case": {
+    "kind": "idle_control",
+    "d": 5,
+    "p": 0.0001,
+    "rm": 3,
+    "length": 1,
+    "basis": "z",
+    "shots": 8000000,
+    "id": "idle_control_d5_r3_l1_p0.0001_z",
+    "seed": 303719242109,
+    "batch": 25000
+  },
+  "meta": {
+    "observables": [
+      "patch0_Z",
+      "patch0_X",
+      "patch1_Z",
+      "patch1_X",
+      "patch2_Z",
+      "patch2_X"
+    ],
+    "rounds": 13,
+    "volume": 29.0,
+    "nominal_volume": 29.0,
+    "volume_with_split_idle": 29.833333333333332,
+    "harness": "matched ideal encoded Bell input/output boundary; independent patches",
+    "pre_rounds": 5,
+    "post_rounds": 5,
+    "split_readout_extra_ns": 100,
+    "syndrome_round_ns": 240,
+    "geometry_checks": 2560
+  },
+  "shots": 7500000,
+  "histogram": [
+    7499956,
+    9,
+    14,
+    0,
+    10,
+    0,
+    0,
+    0,
+    7,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "batches": [
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 2,
+      "histogram_sha256": "890f346c7af226cd38ba18c2ead0a5502d4f87ea38c1aa6c7500c62bdd03ba38"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 2,
+      "histogram_sha256": "ddeb48c6ec0117a368950b3868891e37ab9eb674659ead1ea8eb7c52cf25bd4c"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 2,
+      "histogram_sha256": "78bef137e996baca1fed6ce51c2b025b587e7739b74de7f58ee01fea48b71bfe"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "ec74a269f4651e53a87366d809547991748a93700eab5d184edc9caaa9387681"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "ec74a269f4651e53a87366d809547991748a93700eab5d184edc9caaa9387681"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "8cc2dbe065d4d2902e46c1b0f3bfd5d54490a40d5873506431f6c76a86a068b6"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "ec74a269f4651e53a87366d809547991748a93700eab5d184edc9caaa9387681"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 2,
+      "histogram_sha256": "3441fddb2595e63be84a6daec8dcb5c87a670e2a60b7607fc278cc96f4521922"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "8cc2dbe065d4d2902e46c1b0f3bfd5d54490a40d5873506431f6c76a86a068b6"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "2d46a9e2e2fe5492e9177d5a3627da6d84e02b2b37de76bf1ae0d8be8515fa4a"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 2,
+      "histogram_sha256": "d8c7d27213a7d0cf46eac3b70181021dc44524defcd5471a414163935aca3e4e"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "ec74a269f4651e53a87366d809547991748a93700eab5d184edc9caaa9387681"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "8cc2dbe065d4d2902e46c1b0f3bfd5d54490a40d5873506431f6c76a86a068b6"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "c8e77a36ede6d3a5c7fa032562dbac56f7a54a1c45bf12421117df48e8466032"
+    },
+    {
+      "shots": 25000,
+      "failures": 1,
+      "histogram_sha256": "5ffd80d9613cbf66a9f5bb612ebfe33ae5c25c04a1d4cff63c2d1f1c3cd91c1f"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    },
+    {
+      "shots": 25000,
+      "failures": 0,
+      "histogram_sha256": "81d3eb786da64ccae17796f563bc47c72eafdf5b755a8b88026f31d1ee3a29b9"
+    }
+  ],
+  "source_sha256": "4abd15f590193783e9eb951219b3443ffcca1deefa3f0d657198291e9e0ed469",
+  "circuit_sha256": "f78a67c8eb5b33578f4409a71900a8cf16ab85f8f3812a5697f9186353a41196",
+  "dem_sha256": "198f5b6545c88c7a2e74d6a171e392422293d98416d714c3e72d85674f1a0b60",
+  "graphlike_distance": 5,
+  "single_fault_check": {
+    "mechanisms": 12033,
+    "misdecoded": 0,
+    "scope": "all single undecomposed detector-error-model mechanisms; not an exhaustive multi-fault distance proof"
+  },
+  "noiseless_check": true,
+  "logical_flip_check": true,
+  "detectors": 804,
+  "elapsed_seconds": 27.916431377176195,
+  "host": "i032",
+  "job": "7791770.imgt1"
+}
