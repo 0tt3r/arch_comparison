@@ -194,3 +194,25 @@ native circuit counts, architecture assumptions, and known accounting issues
 remain visible. No ED impossibility line, locality certificate, or nonlocal
 qLDPC architecture is added to the shared nearest-neighbor comparison. A source
 snapshot permits reproduction without modifying the supplied repositories.
+
+## Bounded implementation tests
+
+The four requested follow-ups now have separate evidence in implementation_v1:
+NISQ trained-estimator tests with held-out interacting circuits; a specified
+STAR rotation-fault/PCEC/RUS channel plus independent decoded growth probes;
+explicit CUDA-Q Hamming-weight arithmetic and a constructive NN patch schedule;
+and exact nested-patch differences. The capacity curves remain frozen because
+none of these bounded tests establishes a complete replacement architecture.
+
+Training circuits retain zero-angle interaction noise slots. Training shots,
+acceptance, fitted variance, mismatch bias and Trotter bias are all charged.
+The target remains 0.01 absolute for this estimator check; neither a learned
+large-lattice mitigation exponent nor a hardware accuracy guarantee is inferred.
+
+STAR growth probes use ideal small-patch preparation, fixed 500000 shots per
+case and binomial intervals. They are not fits of the distance-25 injection
+floor. Imperfect PCEC retains its coherent component; retry tails and correction
+supply are charged. FT buffers are explicit, and its source/surgery footprint
+and decoded physical circuit remain outside the logical-stage schedule.
+Locality differences are relative to a finite reference with nearby boundaries,
+not a bulk convergence certificate.

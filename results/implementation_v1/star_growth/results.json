@@ -1,0 +1,367 @@
+{
+  "rows": [
+    {
+      "di": 3,
+      "df": 3,
+      "p": 0.001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 576,
+      "rate": 0.001152,
+      "confidence_interval": [
+        0.0010598779209485033,
+        0.0012499783657942158
+      ],
+      "seed": 20292223,
+      "circuit": "d3_to_d3_x_p0.001.stim",
+      "detectors": 28,
+      "physical_qubits": 17,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 3,
+      "p": 0.001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 553,
+      "rate": 0.001106,
+      "confidence_interval": [
+        0.0010157726852920066,
+        0.0012020857967170394
+      ],
+      "seed": 20292224,
+      "circuit": "d3_to_d3_z_p0.001.stim",
+      "detectors": 28,
+      "physical_qubits": 17,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 3,
+      "p": 0.0001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 4,
+      "rate": 8e-06,
+      "confidence_interval": [
+        2.179734910845554e-06,
+        2.0483049503543202e-05
+      ],
+      "seed": 20291323,
+      "circuit": "d3_to_d3_x_p0.0001.stim",
+      "detectors": 28,
+      "physical_qubits": 17,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 3,
+      "p": 0.0001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 4,
+      "rate": 8e-06,
+      "confidence_interval": [
+        2.179734910845554e-06,
+        2.0483049503543202e-05
+      ],
+      "seed": 20291324,
+      "circuit": "d3_to_d3_z_p0.0001.stim",
+      "detectors": 28,
+      "physical_qubits": 17,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 5,
+      "p": 0.001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 392,
+      "rate": 0.000784,
+      "confidence_interval": [
+        0.000708326812307955,
+        0.0008655508476606035
+      ],
+      "seed": 20292423,
+      "circuit": "d3_to_d5_x_p0.001.stim",
+      "detectors": 122,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 5,
+      "p": 0.001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 519,
+      "rate": 0.001038,
+      "confidence_interval": [
+        0.0009506476141398245,
+        0.0011312143114619983
+      ],
+      "seed": 20292424,
+      "circuit": "d3_to_d5_z_p0.001.stim",
+      "detectors": 122,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 5,
+      "p": 0.0001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 1,
+      "rate": 2e-06,
+      "confidence_interval": [
+        5.063561468659697e-08,
+        1.114323583892303e-05
+      ],
+      "seed": 20291523,
+      "circuit": "d3_to_d5_x_p0.0001.stim",
+      "detectors": 122,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 5,
+      "p": 0.0001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 1,
+      "rate": 2e-06,
+      "confidence_interval": [
+        5.063561468659697e-08,
+        1.114323583892303e-05
+      ],
+      "seed": 20291524,
+      "circuit": "d3_to_d5_z_p0.0001.stim",
+      "detectors": 122,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 7,
+      "p": 0.001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 306,
+      "rate": 0.000612,
+      "confidence_interval": [
+        0.0005453604072312042,
+        0.0006845320945228002
+      ],
+      "seed": 20292623,
+      "circuit": "d3_to_d7_x_p0.001.stim",
+      "detectors": 336,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 7,
+      "p": 0.001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 658,
+      "rate": 0.001316,
+      "confidence_interval": [
+        0.0012174142749830834,
+        0.001420434908649102
+      ],
+      "seed": 20292624,
+      "circuit": "d3_to_d7_z_p0.001.stim",
+      "detectors": 336,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 7,
+      "p": 0.0001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 2,
+      "rate": 4e-06,
+      "confidence_interval": [
+        4.84418924176348e-07,
+        1.4449299842163099e-05
+      ],
+      "seed": 20291723,
+      "circuit": "d3_to_d7_x_p0.0001.stim",
+      "detectors": 336,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 3,
+      "df": 7,
+      "p": 0.0001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 8,
+      "rate": 1.6e-05,
+      "confidence_interval": [
+        6.907688849393831e-06,
+        3.152613369551712e-05
+      ],
+      "seed": 20291724,
+      "circuit": "d3_to_d7_z_p0.0001.stim",
+      "detectors": 336,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 5,
+      "p": 0.001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 106,
+      "rate": 0.000212,
+      "confidence_interval": [
+        0.00017357139144308432,
+        0.0002564021995803163
+      ],
+      "seed": 20312423,
+      "circuit": "d5_to_d5_x_p0.001.stim",
+      "detectors": 132,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 5,
+      "p": 0.001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 103,
+      "rate": 0.000206,
+      "confidence_interval": [
+        0.00016814689137893194,
+        0.00024982943495509887
+      ],
+      "seed": 20312424,
+      "circuit": "d5_to_d5_z_p0.001.stim",
+      "detectors": 132,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 5,
+      "p": 0.0001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 0,
+      "rate": 0.0,
+      "confidence_interval": [
+        0,
+        7.377731692631547e-06
+      ],
+      "seed": 20311523,
+      "circuit": "d5_to_d5_x_p0.0001.stim",
+      "detectors": 132,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 5,
+      "p": 0.0001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 0,
+      "rate": 0.0,
+      "confidence_interval": [
+        0,
+        7.377731692631547e-06
+      ],
+      "seed": 20311524,
+      "circuit": "d5_to_d5_z_p0.0001.stim",
+      "detectors": 132,
+      "physical_qubits": 49,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 7,
+      "p": 0.001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 42,
+      "rate": 8.4e-05,
+      "confidence_interval": [
+        6.054046108163112e-05,
+        0.00011354192029668951
+      ],
+      "seed": 20312623,
+      "circuit": "d5_to_d7_x_p0.001.stim",
+      "detectors": 346,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 7,
+      "p": 0.001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 41,
+      "rate": 8.2e-05,
+      "confidence_interval": [
+        5.8845238194762894e-05,
+        0.00011124063262801643
+      ],
+      "seed": 20312624,
+      "circuit": "d5_to_d7_z_p0.001.stim",
+      "detectors": 346,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 7,
+      "p": 0.0001,
+      "basis": "x",
+      "shots": 500000,
+      "failures": 0,
+      "rate": 0.0,
+      "confidence_interval": [
+        0,
+        7.377731692631547e-06
+      ],
+      "seed": 20311723,
+      "circuit": "d5_to_d7_x_p0.0001.stim",
+      "detectors": 346,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    },
+    {
+      "di": 5,
+      "df": 7,
+      "p": 0.0001,
+      "basis": "z",
+      "shots": 500000,
+      "failures": 0,
+      "rate": 0.0,
+      "confidence_interval": [
+        0,
+        7.377731692631547e-06
+      ],
+      "seed": 20311724,
+      "circuit": "d5_to_d7_z_p0.0001.stim",
+      "detectors": 346,
+      "physical_qubits": 97,
+      "scope": "Ideal input encoding; noisy direct growth/stabilization and final readout; component memory failure with MWPM"
+    }
+  ],
+  "stim": "1.16.dev0",
+  "pymatching": "2.3.1",
+  "source_sha256": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b"
+}

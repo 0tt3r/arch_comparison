@@ -1,0 +1,12 @@
+{
+  "status": "PASS: source hashes, estimator replay, binomial fit checks, channel and finite-patch accounting",
+  "nisq_cases": 144,
+  "held_out_estimates": 384,
+  "training_bootstraps": 16,
+  "star_channels": 1640,
+  "star_workloads": 384,
+  "growth_cases": 20,
+  "growth_shots": 10000000,
+  "ft_stages": 16,
+  "locality_comparisons": 33
+}

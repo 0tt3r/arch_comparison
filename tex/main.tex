@@ -39,7 +39,11 @@ We now vary physical error and precision with the calibrated workload held
 fixed, and test local encoding and repeated-angle synthesis as separate
 algorithm choices. Hamming-weight phasing reduces the modeled strict-precision
 FT area by factors of approximately six at the three sizes tested, while
-its workspace can outweigh the benefit at loose precision.
+its workspace can outweigh the benefit at loose precision. A subsequent
+explicit layer confirms the T-count saving but shows that routing can erase
+the runtime advantage with a faster source. Held-out noisy-estimator tests,
+projected STAR channels and decoded growth probes, and nested exact patches
+separate measured implementation evidence from the remaining assumptions.
 \end{abstract}
 
 \section{Physical error, precision, and algorithm choice}\label{sec:physics-sweep}
@@ -191,6 +195,225 @@ gives 0.2231 and 0.2178, matching the plaquette results on these patches.
 These measurements show that a more parallel ordering need not reduce
 the local-observable error. They neither establish bulk convergence nor
 replace the frozen accuracy envelope.
+
+\section{Testing the assumptions behind the capacity curves}\label{sec:implementation}
+The capacity comparison depends on three implementation claims: that a
+physical estimator can afford its residual bias, that an angle-dependent
+STAR source retains favorable error and acceptance after correction and
+growth, and that FT arithmetic savings survive delivery and routing.
+A fourth question is whether a smaller physical patch can reproduce the
+chosen observable. We test each claim with a bounded calculation. These
+checks add evidence at their stated scale; they do not silently replace
+the full-campaign assumptions in Fig.~\ref{fig:p-capacity}.
+
+\subsection{NISQ: an estimator with measured residual bias}
+We simulate the full eight-qubit density matrix of a $2\times2$ plaquette
+circuit, including the native nearest-neighbor route, gate depolarization,
+idle noise, preparation, and readout. The noise convention is $p_2=p$,
+$p_1=p/10$, and idle error $p$ per 100\,ns. Spin-number selection retains
+outcomes with the correct up/down occupations. Following the training
+principle used in the experimental literature~\cite{phasecraftwillow2025},
+we fit an affine correction to six noninteracting ($U=0$) circuits and
+hold out all interacting tests ($U=2,4$). Training times differ from test
+times. Zero-angle interaction slots remain noisy, so the training circuits
+do not receive a cheaper noise history.
+
+For selected mean $D$ and acceptance $A$, the asymptotic variance per
+physical attempt is $D(1-D)/A$. If the affine estimator is $a+bD$, its test
+variance is multiplied by $b^2$. Each of the six training circuits receives
+$10^6$ attempted shots in the resource model. With training uncertainty
+$V_{\mathrm{train}}$ propagated through both fitted coefficients, we choose
+\begin{equation}
+ S=\left\lceil\frac{b^2D(1-D)/A}
+ { (\eps_{\mathrm{stat}}/1.96)^2-V_{\mathrm{train}}}\right\rceil,
+ \qquad \eps_{\mathrm{stat}}=0.0025,\label{eq:trained-shots}
+\end{equation}
+when the denominator is positive. The fit uses population noisy training
+means to isolate systematic transfer error; an independent binomial
+training simulation checks the finite-shot variance approximation. The
+resource time charges the full training campaign to each test circuit.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{implementation_nisq.pdf}
+\caption{Held-out $2\times2$ estimator checks. The left panels show residual
+bias from the ideal circuit, separately from Trotter error. Dashed curves
+increase test-circuit two-qubit noise by 20\% and onsite angles by 1\%,
+without retraining. The right panel adds absolute mitigation and Trotter
+biases to the Gaussian statistical allowance and charges training time.
+Labels give the step count. The channel is simulated exactly; the shot
+plan is a Gaussian/delta-method approximation. No large-lattice or hardware
+accuracy guarantee follows.}\label{fig:implementation-nisq}
+\end{figure}
+
+At $p=10^{-3}$, raw estimation fails the 0.005 bias allowance on all
+24 matched-noise interacting tests. Number selection passes 8, affine
+training passes 10, and their combination passes 12. The latter falls to
+9 under the specified mismatch. At $p=10^{-4}$, both trained estimators
+pass all 24 matched-noise bias tests. These are counts over $r=4,8,16,32$,
+$U=2,4$, and $\tau=0.5,1,2$, not independent hardware trials.
+
+The useful point is the coexistence of success and failure. For $U=4$,
+$\tau=1$, $r=8$, and $p=10^{-3}$, selection plus training leaves a
+mitigation bias of 0.00120, a Trotter bias of 0.00347, and a 0.0025
+statistical allowance. The planned cost is 139,956 test attempts plus
+six million training attempts, or 30.9\,s for one copy under the declared
+clocks. At $r=32$, the same estimator leaves bias 0.01057 and fails the
+bias allocation. Refining the formula therefore does not necessarily
+improve the noisy answer. These measured outcomes constrain an estimator
+on this patch; fitting a size-independent mitigation exponent to them
+would require additional evidence.
+
+\subsection{STAR: accepted channels and growth components}
+We enumerate the projected error-angle mixture for the multirotation
+construction~\cite{toshio}. For odd injection distance $d_i$, let
+$k=(d_i+1)/2$ and $\alpha=\arctan(|\tan\theta|^{1/k})$. With ideal
+syndrome projection, the no-fault acceptance is
+\begin{equation}
+ P_{\mathrm{acc}}^{(0)}=\cos^{2k}\alpha+\sin^{2k}\alpha.
+\end{equation}
+Independent rotation-generator Pauli faults have probability $p/15$ on
+weight-two factors and $p/30$ on the final weight-one factor. Enumerating
+the surviving branches gives weights $w_j$ and angle errors $\delta_j$,
+with coherence multiplier $c=\sum_jw_j e^{-2i\delta_j}$. This is an exact
+calculation for these faults and perfect projection; the other physical
+faults of an injection circuit are not included.
+
+Ideal probabilistic coherent-error cancellation (PCEC) composes this
+channel with the conjugate mixture, giving $|c|^2$ and hence a Pauli
+channel. We also execute one level of noisy PCEC in the model: sampled
+inverse-angle corrections themselves use raw repeat-until-success (RUS)
+channels. Their angle-dependent preparation time, retries, and growth
+noise are charged. The resulting imaginary component is retained,
+rather than discarded by an assumed twirl. For a histogram with rotation
+multiplicities $R_j$, the separate ledger is
+\begin{equation}
+ \chi=-2\sum_jR_j\log(\operatorname{Re}c_j),\qquad
+ B_{\mathrm{coh}}\leq\tfrac12\left[\prod_j\left(1+\frac{|\operatorname{Im}c_j|}{\operatorname{Re}c_j}\right)^{R_j}-1\right].
+\end{equation}
+Here $\chi$ is the dephasing-component inverse-norm estimate, while
+$B_{\mathrm{coh}}$ bounds the coherent residue after that inverse; the product accounts for
+its non-CPTP norm. It is not a
+claim that the complete noisy gadget is Pauli. Workload retry caps reserve
+1\% of $\eps$ for omitted branches; the actual aggregate tail is recorded.
+
+Detector rejection and high-distance growth remain explicit scenarios.
+We use $P_{\mathrm{acc}}=P_{\mathrm{proj}}(1-c_dp)^{d_i^2+6d_i}$, with
+$c_d=1,4$, and independent growth dephasing
+\begin{equation}
+ f(d_i,p)=\min\!\left\{0.25,
+ f_9\left(\frac{p}{10^{-3}}\right)^5\left(\frac{d_i}{9}\right)^2
+ \left(\frac{0.01}{p}\right)^{-(d_i-9)/2}\right\},
+ \quad f_9\in\{0,10^{-5},10^{-4}\}.
+\end{equation}
+There is no growth term when $d_i=d_{\mathrm{data}}=25$. The $f_9$ values are anchored at $p=10^{-3}$; their assumed extension
+scales as $p^{(d_i+1)/2}$ at fixed distance. These coefficients
+are not transplanted calibrations from Chung et al., whose reported noise
+model differs~\cite{chung}. Switching chooses the original-injection error
+reference when it is smaller after growth; its error and high-acceptance
+service remain declared assumptions. The study therefore tests a mechanism
+and its sensitivities, not the feasibility of a complete optimized source.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.94\linewidth]{implementation_star.pdf}
+\caption{STAR mechanism and growth checks. Upper panels use the specified
+rotation-generator fault submodel; $q=(1-\operatorname{Re}c)/2$ alone does
+not describe its coherent component. Lower left: decoded X/Z memory error
+for ideal small-patch preparation followed by noisy growth, stabilization,
+and readout, with fixed-sample 95\% binomial intervals. The dotted floor
+is a capacity-model assumption, not a fitted growth curve. Lower right:
+serial service times multiplied by the dephasing sampling factor for a
+fixed strict-precision $4\times4$ workload, under declared growth scenarios.
+A complete injected-state error model is still required to replace the
+STAR capacity assumptions.}\label{fig:implementation-star}
+\end{figure}
+
+A separate circuit-level experiment tests direct rotated-patch growth
+from $d_i=3,5$ to $d_f=5,7$, with no-growth controls. The starting patch is
+ideal; fresh right and bottom strips are prepared in Z and X respectively,
+then the target patch is stabilized for $d_f$ rounds. Stim supplies a
+nearest-neighbor extraction schedule; transition detectors are constructed
+from exact stabilizer flows and later detectors compare adjacent rounds.
+PyMatching decodes the circuit. Gate, reset, measurement, and idle errors
+are included, with the 240\,ns cycle explicitly charged. Every one of
+20 cases uses 500,000 shots, including both X/Z tests and both physical
+error rates. Noiseless and deliberately inserted logical-flip controls
+check that the detector and logical records are meaningful. These memory
+components include final readout and exclude noisy initial injection;
+they cannot establish the distance-25 arbitrary-angle growth floor.
+
+\subsection{FT: arithmetic savings versus a routed schedule}
+An explicit onsite layer on 16 sites tests the repeated-angle count model.
+Parity CNOTs turn $e^{-i\theta Z_\uparrow Z_\downarrow}$ into equal $R_z$
+rotations. The Hamming-weight compressor uses $b-\operatorname{popcount}(b)$
+clean carries per batch~\cite{campbell}. Each temporary AND uses four T
+states and is exact on a clean target; X measurement and a conditional CZ
+uncompute it without extra T gates. Independent tests check every binary
+input through $b=16$ and arbitrary superpositions in every measurement
+branch through $b=4$. CUDA-Q Logical compiles the complete arithmetic and
+feedforward program. GridSynth counts at precision $10^{-8}$ agree with
+the explicit arithmetic plus the per-angle synthesis inventory.
+
+We route every two-patch operation to adjacent square-grid patches and
+schedule dependencies, source availability, and feedforward. Declared
+macros take three $d$-round clocks per CX/CZ, one per H/S or T consumption,
+two for X measurement/reset, and an additional feedforward clock. A source
+port emits one state per 150 physical rounds. With $d=25$ and 240\,ns
+rounds, the bounded policy holds one state per port and pauses production
+while occupied; continuous production instead reports its storage demand.
+The shared ports constrain availability; magic-state transport paths are not
+geometrically routed. These are logical macros, not a decoded physical
+surgery layout.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{implementation_ft.pdf}
+\caption{One $4\times4$ onsite layer at $\theta=1/36$. Hamming-weight
+batching reduces T count but increases arithmetic and routed CX count.
+One-state buffers and continuous production distinguish timing from storage
+assumptions. The patch count includes packed data/routing and state buffers;
+source and surgery footprints are excluded. This constructive schedule
+neither optimizes routing nor establishes full-campaign physical area.}
+\label{fig:implementation-ft}
+\end{figure}
+
+Batch 16 reduces the stage from 1280 to 460 T states, but raises routed
+CX count from 32 to 1524. With one source port and bounded storage, the
+stage falls from 46.824 to 27.510\,ms. With four ports it instead rises
+from 12.282 to 16.398\,ms. Continuous production reduces waiting but can
+require hundreds of buffer patches. Thus the aggregate Hamming-weight
+resource improvement is supported at the T-count level; its runtime and
+area improvement require a better joint routing, arithmetic, and delivery
+implementation than is assumed by a count-only comparison.
+
+\subsection{Locality: the observable and its Trotter error differ}
+We compare exact doublon values on nested patches with the same N\'eel
+pattern, $U=4$, and observed coordinate $(1,1)$. The smaller patches are
+recomputed; completed $4\times3$ and $4\times4$ exact runs supply finite
+references. At $\tau=1$, $|D_{3\times3}-D_{4\times4}|=0.04015$ and
+$|D_{4\times3}-D_{4\times4}|=0.01488$. Every tested proper subpatch of
+$4\times4$ exceeds the 0.0025 spatial allowance at $\tau=1,2$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.94\linewidth]{implementation_locality.pdf}
+\caption{Direct nested-patch differences with a fixed observed coordinate.
+Each curve compares to the named finite reference. Neither reference
+removes the nearby outer boundary, so the data do not certify an infinite
+lattice or a saturation length. Agreement of Trotter-error coefficients
+must not be used as evidence that these observable differences are small.}
+\label{fig:implementation-locality}
+\end{figure}
+
+The similar plaquette Trotter coefficients near $\tau=1$ describe the
+error of the algorithm relative to each patch's own exact dynamics.
+They do not establish convergence of the dynamics themselves. The new
+measurements reject the tested aggressive truncations, while leaving a
+properly centered larger-patch or independently bounded locality study
+as a distinct requirement. At fixed time, a validated local approximation
+would also change the task metric: once its patch fits, maximum full-lattice
+size no longer measures the cost of that one observable.
 
 \section{Reconciliation of the workshop calculations}\label{sec:reconciliation}
 We evaluate the two supplied workshop implementations at $4\times4$,

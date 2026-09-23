@@ -1,0 +1,920 @@
+{
+  "rows": [
+    {
+      "batch": 1,
+      "ports": 1,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 32,
+      "packed_patches": 36,
+      "clean_ancillas": 0,
+      "T_count": 1280,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 32,
+          "qlx_standard_s": 608,
+          "qlx_standard_h": 1312,
+          "qlx_standard_t": 1280
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 32,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 32,
+        "action_depth_upper_bound": 3296,
+        "synthesis_demand": {
+          "qlx_standard_t": 1280
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:b6bf798da125492cfb19c825a1ce98476dc07bde537d661a88e5dc819b4f16f6"
+      },
+      "uncomputations": 0,
+      "authored_CX": 32,
+      "routed_CX": 32,
+      "logical_clocks": 7804.0,
+      "seconds": 0.046824,
+      "required_buffer_upper_estimate": 1,
+      "source_only_clocks": 7680.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 1,
+      "ports": 1,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 32,
+      "packed_patches": 36,
+      "clean_ancillas": 0,
+      "T_count": 1280,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 32,
+          "qlx_standard_s": 608,
+          "qlx_standard_h": 1312,
+          "qlx_standard_t": 1280
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 32,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 32,
+        "action_depth_upper_bound": 3296,
+        "synthesis_demand": {
+          "qlx_standard_t": 1280
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:b6bf798da125492cfb19c825a1ce98476dc07bde537d661a88e5dc819b4f16f6"
+      },
+      "uncomputations": 0,
+      "authored_CX": 32,
+      "routed_CX": 32,
+      "logical_clocks": 7804.0,
+      "seconds": 0.046824,
+      "required_buffer_upper_estimate": 1,
+      "source_only_clocks": 7680.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 1,
+      "ports": 4,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 32,
+      "packed_patches": 36,
+      "clean_ancillas": 0,
+      "T_count": 1280,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 32,
+          "qlx_standard_s": 608,
+          "qlx_standard_h": 1312,
+          "qlx_standard_t": 1280
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 32,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 32,
+        "action_depth_upper_bound": 3296,
+        "synthesis_demand": {
+          "qlx_standard_t": 1280
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:b6bf798da125492cfb19c825a1ce98476dc07bde537d661a88e5dc819b4f16f6"
+      },
+      "uncomputations": 0,
+      "authored_CX": 32,
+      "routed_CX": 32,
+      "logical_clocks": 2047.0,
+      "seconds": 0.012282,
+      "required_buffer_upper_estimate": 4,
+      "source_only_clocks": 1920.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 1,
+      "ports": 4,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 32,
+      "packed_patches": 36,
+      "clean_ancillas": 0,
+      "T_count": 1280,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 32,
+          "qlx_standard_s": 608,
+          "qlx_standard_h": 1312,
+          "qlx_standard_t": 1280
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 32,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 32,
+        "action_depth_upper_bound": 3296,
+        "synthesis_demand": {
+          "qlx_standard_t": 1280
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:b6bf798da125492cfb19c825a1ce98476dc07bde537d661a88e5dc819b4f16f6"
+      },
+      "uncomputations": 0,
+      "authored_CX": 32,
+      "routed_CX": 32,
+      "logical_clocks": 2047.0,
+      "seconds": 0.012282,
+      "required_buffer_upper_estimate": 4,
+      "source_only_clocks": 1920.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 4,
+      "ports": 1,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 35,
+      "packed_patches": 36,
+      "clean_ancillas": 3,
+      "T_count": 1008,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 136,
+          "qlx_standard_h": 1036,
+          "qlx_standard_t": 1008,
+          "qlx_standard_s": 612
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 44,
+          "qlx_standard_measure_x": 12,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 35,
+        "action_depth_upper_bound": 2880,
+        "synthesis_demand": {
+          "qlx_standard_t": 1008
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:79790fe8a1dd33be290bd17ef4c42bb1e6cca39cbda65ca0171cac8d5bab6445"
+      },
+      "uncomputations": 12,
+      "authored_CX": 124,
+      "routed_CX": 787,
+      "logical_clocks": 7253.0,
+      "seconds": 0.043517999999999994,
+      "required_buffer_upper_estimate": 1,
+      "source_only_clocks": 6048.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 4,
+      "ports": 1,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 35,
+      "packed_patches": 36,
+      "clean_ancillas": 3,
+      "T_count": 1008,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 136,
+          "qlx_standard_h": 1036,
+          "qlx_standard_t": 1008,
+          "qlx_standard_s": 612
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 44,
+          "qlx_standard_measure_x": 12,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 35,
+        "action_depth_upper_bound": 2880,
+        "synthesis_demand": {
+          "qlx_standard_t": 1008
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:79790fe8a1dd33be290bd17ef4c42bb1e6cca39cbda65ca0171cac8d5bab6445"
+      },
+      "uncomputations": 12,
+      "authored_CX": 124,
+      "routed_CX": 787,
+      "logical_clocks": 6398.0,
+      "seconds": 0.038388,
+      "required_buffer_upper_estimate": 44,
+      "source_only_clocks": 6048.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 4,
+      "ports": 4,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 35,
+      "packed_patches": 36,
+      "clean_ancillas": 3,
+      "T_count": 1008,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 136,
+          "qlx_standard_h": 1036,
+          "qlx_standard_t": 1008,
+          "qlx_standard_s": 612
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 44,
+          "qlx_standard_measure_x": 12,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 35,
+        "action_depth_upper_bound": 2880,
+        "synthesis_demand": {
+          "qlx_standard_t": 1008
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:79790fe8a1dd33be290bd17ef4c42bb1e6cca39cbda65ca0171cac8d5bab6445"
+      },
+      "uncomputations": 12,
+      "authored_CX": 124,
+      "routed_CX": 787,
+      "logical_clocks": 2882.0,
+      "seconds": 0.017292,
+      "required_buffer_upper_estimate": 4,
+      "source_only_clocks": 1512.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 4,
+      "ports": 4,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 35,
+      "packed_patches": 36,
+      "clean_ancillas": 3,
+      "T_count": 1008,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 136,
+          "qlx_standard_h": 1036,
+          "qlx_standard_t": 1008,
+          "qlx_standard_s": 612
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 44,
+          "qlx_standard_measure_x": 12,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 35,
+        "action_depth_upper_bound": 2880,
+        "synthesis_demand": {
+          "qlx_standard_t": 1008
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:79790fe8a1dd33be290bd17ef4c42bb1e6cca39cbda65ca0171cac8d5bab6445"
+      },
+      "uncomputations": 12,
+      "authored_CX": 124,
+      "routed_CX": 787,
+      "logical_clocks": 2352.0,
+      "seconds": 0.014112,
+      "required_buffer_upper_estimate": 335,
+      "source_only_clocks": 1512.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 8,
+      "ports": 1,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 39,
+      "packed_patches": 49,
+      "clean_ancillas": 7,
+      "T_count": 692,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 180,
+          "qlx_standard_h": 708,
+          "qlx_standard_t": 692,
+          "qlx_standard_s": 454
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 46,
+          "qlx_standard_measure_x": 14,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 39,
+        "action_depth_upper_bound": 2126,
+        "synthesis_demand": {
+          "qlx_standard_t": 692
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:1b4998ccd66c95c5da0f1d14d138b9bc22d13a6328911961aee1af226837594d"
+      },
+      "uncomputations": 14,
+      "authored_CX": 166,
+      "routed_CX": 1123,
+      "logical_clocks": 5537.0,
+      "seconds": 0.033221999999999995,
+      "required_buffer_upper_estimate": 1,
+      "source_only_clocks": 4152.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 8,
+      "ports": 1,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 39,
+      "packed_patches": 49,
+      "clean_ancillas": 7,
+      "T_count": 692,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 180,
+          "qlx_standard_h": 708,
+          "qlx_standard_t": 692,
+          "qlx_standard_s": 454
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 46,
+          "qlx_standard_measure_x": 14,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 39,
+        "action_depth_upper_bound": 2126,
+        "synthesis_demand": {
+          "qlx_standard_t": 692
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:1b4998ccd66c95c5da0f1d14d138b9bc22d13a6328911961aee1af226837594d"
+      },
+      "uncomputations": 14,
+      "authored_CX": 166,
+      "routed_CX": 1123,
+      "logical_clocks": 4518.0,
+      "seconds": 0.027107999999999997,
+      "required_buffer_upper_estimate": 112,
+      "source_only_clocks": 4152.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 8,
+      "ports": 4,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 39,
+      "packed_patches": 49,
+      "clean_ancillas": 7,
+      "T_count": 692,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 180,
+          "qlx_standard_h": 708,
+          "qlx_standard_t": 692,
+          "qlx_standard_s": 454
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 46,
+          "qlx_standard_measure_x": 14,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 39,
+        "action_depth_upper_bound": 2126,
+        "synthesis_demand": {
+          "qlx_standard_t": 692
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:1b4998ccd66c95c5da0f1d14d138b9bc22d13a6328911961aee1af226837594d"
+      },
+      "uncomputations": 14,
+      "authored_CX": 166,
+      "routed_CX": 1123,
+      "logical_clocks": 2611.0,
+      "seconds": 0.015666,
+      "required_buffer_upper_estimate": 4,
+      "source_only_clocks": 1038.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 8,
+      "ports": 4,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 39,
+      "packed_patches": 49,
+      "clean_ancillas": 7,
+      "T_count": 692,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 180,
+          "qlx_standard_h": 708,
+          "qlx_standard_t": 692,
+          "qlx_standard_s": 454
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 46,
+          "qlx_standard_measure_x": 14,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 39,
+        "action_depth_upper_bound": 2126,
+        "synthesis_demand": {
+          "qlx_standard_t": 692
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:1b4998ccd66c95c5da0f1d14d138b9bc22d13a6328911961aee1af226837594d"
+      },
+      "uncomputations": 14,
+      "authored_CX": 166,
+      "routed_CX": 1123,
+      "logical_clocks": 2232.0,
+      "seconds": 0.013392,
+      "required_buffer_upper_estimate": 346,
+      "source_only_clocks": 1038.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 16,
+      "ports": 1,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 47,
+      "packed_patches": 49,
+      "clean_ancillas": 15,
+      "T_count": 460,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        },
+        "0x1.c71c71c71c71cp-1": {
+          "T": 82,
+          "clifford": 135
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 210,
+          "qlx_standard_h": 471,
+          "qlx_standard_t": 460,
+          "qlx_standard_s": 349
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 47,
+          "qlx_standard_measure_x": 15,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 47,
+        "action_depth_upper_bound": 1584,
+        "synthesis_demand": {
+          "qlx_standard_t": 460
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:0d19756135ce58c7432bee8b28d9a1a347c9d3b7bb0147d3f6dd650726c9fc91"
+      },
+      "uncomputations": 15,
+      "authored_CX": 195,
+      "routed_CX": 1524,
+      "logical_clocks": 4585.0,
+      "seconds": 0.027509999999999996,
+      "required_buffer_upper_estimate": 1,
+      "source_only_clocks": 2760.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 16,
+      "ports": 1,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 47,
+      "packed_patches": 49,
+      "clean_ancillas": 15,
+      "T_count": 460,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        },
+        "0x1.c71c71c71c71cp-1": {
+          "T": 82,
+          "clifford": 135
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 210,
+          "qlx_standard_h": 471,
+          "qlx_standard_t": 460,
+          "qlx_standard_s": 349
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 47,
+          "qlx_standard_measure_x": 15,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 47,
+        "action_depth_upper_bound": 1584,
+        "synthesis_demand": {
+          "qlx_standard_t": 460
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:0d19756135ce58c7432bee8b28d9a1a347c9d3b7bb0147d3f6dd650726c9fc91"
+      },
+      "uncomputations": 15,
+      "authored_CX": 195,
+      "routed_CX": 1524,
+      "logical_clocks": 3783.0,
+      "seconds": 0.022698,
+      "required_buffer_upper_estimate": 132,
+      "source_only_clocks": 2760.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 16,
+      "ports": 4,
+      "buffer_policy": "bounded",
+      "live_logical_qubits": 47,
+      "packed_patches": 49,
+      "clean_ancillas": 15,
+      "T_count": 460,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        },
+        "0x1.c71c71c71c71cp-1": {
+          "T": 82,
+          "clifford": 135
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 210,
+          "qlx_standard_h": 471,
+          "qlx_standard_t": 460,
+          "qlx_standard_s": 349
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 47,
+          "qlx_standard_measure_x": 15,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 47,
+        "action_depth_upper_bound": 1584,
+        "synthesis_demand": {
+          "qlx_standard_t": 460
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:0d19756135ce58c7432bee8b28d9a1a347c9d3b7bb0147d3f6dd650726c9fc91"
+      },
+      "uncomputations": 15,
+      "authored_CX": 195,
+      "routed_CX": 1524,
+      "logical_clocks": 2733.0,
+      "seconds": 0.016398,
+      "required_buffer_upper_estimate": 4,
+      "source_only_clocks": 690.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    },
+    {
+      "batch": 16,
+      "ports": 4,
+      "buffer_policy": "continuous",
+      "live_logical_qubits": 47,
+      "packed_patches": 49,
+      "clean_ancillas": 15,
+      "T_count": 460,
+      "rotation_classes": {
+        "0x1.c71c71c71c71cp-5": {
+          "T": 80,
+          "clifford": 120
+        },
+        "0x1.c71c71c71c71cp-4": {
+          "T": 80,
+          "clifford": 126
+        },
+        "0x1.c71c71c71c71cp-3": {
+          "T": 80,
+          "clifford": 127
+        },
+        "0x1.c71c71c71c71cp-2": {
+          "T": 78,
+          "clifford": 117
+        },
+        "0x1.c71c71c71c71cp-1": {
+          "T": 82,
+          "clifford": 135
+        }
+      },
+      "compiled_counts": {
+        "actions": {
+          "qlx_standard_cx": 210,
+          "qlx_standard_h": 471,
+          "qlx_standard_t": 460,
+          "qlx_standard_s": 349
+        },
+        "instruments": {
+          "qlx_standard_prepare_zero": 47,
+          "qlx_standard_measure_x": 15,
+          "qlx_standard_measure_z": 32
+        },
+        "idle_sites": 0,
+        "discards": 0,
+        "logical_qubits_peak": 47,
+        "action_depth_upper_bound": 1584,
+        "synthesis_demand": {
+          "qlx_standard_t": 460
+        },
+        "resource_requests": {},
+        "resource_consumptions": {},
+        "build_root": "stage",
+        "build_sha256": "sha256:0d19756135ce58c7432bee8b28d9a1a347c9d3b7bb0147d3f6dd650726c9fc91"
+      },
+      "uncomputations": 15,
+      "authored_CX": 195,
+      "routed_CX": 1524,
+      "logical_clocks": 2488.0,
+      "seconds": 0.014927999999999999,
+      "required_buffer_upper_estimate": 419,
+      "source_only_clocks": 690.0,
+      "scope": "Explicit P0 compilation; NN data-patch schedule and shared supply; magic-state transport abstracted, no physical surgery or decoder validation"
+    }
+  ],
+  "configuration": {
+    "L": 4,
+    "batch_sizes": [
+      1,
+      4,
+      8,
+      16
+    ],
+    "theta": 0.027777777777777776,
+    "synthesis_precision": 1e-08,
+    "code_distance": 25,
+    "cycle_ns": 240,
+    "source_interval_cycles": 150,
+    "source_ports": [
+      1,
+      4
+    ]
+  },
+  "cudaq_logical_version": "0.1.1.post1",
+  "source_sha256": {
+    "python/cudaq_hwp_stage.py": "b2f0a7839be9c4f13b7be4d4d4de7880ff251914ca824f144ba601a94ba94d9d",
+    "python/hwp_stage.py": "b9cdec0ed92d4f60a315edf4b7a3b32f2c184332d2a1e5fc1d3c1c640be01171",
+    "configs/implementation_checks.json": "92bd23cc71e5737eff157ac75a36f821ebf6132c2e0f8543cb09f6b6bf4bde5f"
+  }
+}

@@ -1,5 +1,11 @@
 # Hubbard dynamics on a fixed qubit array
 
+The new **[implementation checks](results/implementation_v1/summary.md)** measure
+held-out NISQ mitigation bias, STAR channel and small-patch growth behavior,
+CUDA-Q Hamming-weight arithmetic with nearest-neighbor delivery, and finite-patch
+truncation. See the [methods](docs/IMPLEMENTATION_CHECKS.md). These constrain the
+assumptions behind the capacity comparison without silently replacing it.
+
 For the team discussion, start with the **[physical-error and algorithm comparison](results/physics_sweep_v1/summary.md)**
 and the **[main manuscript](tex/main.pdf)**. The analytical
 [assumptions and formulas](docs/DISCUSSION_MODEL.md) remain the common model.
@@ -13,7 +19,9 @@ gadget calibrations. Both precision targets remain prominent.
 
 The [algorithm comparison](figures/hamming_weight_comparison.pdf) finds that
 Hamming-weight phasing lowers the strict 4 × 4 FT estimate from 1.88 million
-to 278,192 qubits, including workspace and arithmetic. At loose precision,
+to 278,192 qubits, including workspace and arithmetic under its aggregate delivery model. The new
+[explicit stage](figures/implementation_ft.pdf) confirms the T-count saving but
+shows that routing can erase the runtime benefit with a faster source. At loose precision,
 individual synthesis remains cheaper for 4 × 4 and 8 × 8. Compact-encoding
 counts and an independent small-patch ordering diagnostic are retained in the
 [same results directory](results/physics_sweep_v1/summary.md).

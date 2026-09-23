@@ -1,9 +1,18 @@
 # Reproducing the calculations
 
 Run commands from the repository root. Python 3.12 with NumPy, SciPy,
-Matplotlib, pytest, and packaging is sufficient for the models, tests, plots,
+Matplotlib, Numba, pytest, and packaging is sufficient for the models, tests, plots,
 and manuscript helper. The existing `qb_gsee` environment provides these.
 Set `OPENBLAS_NUM_THREADS=1` and `OMP_NUM_THREADS=1` for the bounded examples.
+
+## Estimator and implementation checks
+
+The four new bounded studies and exact rerun commands are described in
+[IMPLEMENTATION_CHECKS.md](IMPLEMENTATION_CHECKS.md). `make implementation` runs
+them; `make implementation-figures` only replays and plots saved data. The
+growth check uses Stim/PyMatching in `QEC_PYTHON`, and the stage compilation uses
+`CUDAQ_PYTHON`. Both can be supplied as Make variables. `make audit` includes
+the growth circuit controls; the ordinary science tests do not need Stim.
 
 ## Current figures and manuscript
 
