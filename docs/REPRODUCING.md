@@ -7,6 +7,29 @@ Set `OPENBLAS_NUM_THREADS=1` and `OMP_NUM_THREADS=1` for the bounded examples.
 
 ## Current figures and manuscript
 
+The physical-error/precision study and bounded algorithm alternatives run with
+`make physics`. This recalculates the small 2 × 2 / 3 × 3 ordering diagnostic,
+864 resource scenarios, and 104 algorithm alternatives. It uses the saved
+larger-patch calibration and does not launch a 4 × 4 simulation or PBS job.
+Edit `configs/physics_sweep.json` for the declared source/floor scenarios.
+`python python/physics_sweep.py --plot` uses saved numbers; `--check` audits
+the frozen baseline replay and error budgets.
+
+The five model/audit files changed since commit `1503a89` are preserved in
+`results/physics_sweep_v1/baseline_sources.zip`. Historical audits check the
+original source hashes there and replay saved costs with the current model.
+They still require unchanged live simulation inputs and data; checking an
+archive does not substitute for replay or rewrite the old validation records.
+
+Run `make reconcile` for the common-point workshop comparison. It reads the
+supplied folders without editing them. If they are absent, it uses the captured
+Python sources in `results/workshop_reconciliation_v1/source_snapshot.zip`,
+restored under `build/workshop_sources/`. The archive excludes repository
+metadata, results, and environments. `--check` validates the saved arithmetic
+and captured source hashes without executing the supplied packages.
+Use `python python/workshop_reconciliation.py --snapshot` to reproduce from
+the archive even when the original folders are present.
+
 For the fast analytical discussion example alone, run `make discussion`.
 Edit `configs/discussion_model.json` for delivery assumptions and
 `configs/budget_optimization.json` for the coefficient policy and search grid.

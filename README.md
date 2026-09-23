@@ -1,10 +1,32 @@
 # Hubbard dynamics on a fixed qubit array
 
-For the team discussion, start with the **[latest capacity and direct-check summary](results/dynamics_followup_v1/summary.md)**
+For the team discussion, start with the **[physical-error and algorithm comparison](results/physics_sweep_v1/summary.md)**
 and the **[main manuscript](tex/main.pdf)**. The analytical
 [assumptions and formulas](docs/DISCUSSION_MODEL.md) remain the common model.
 
-![Capacity sensitivity to the finite-patch accuracy model](figures/patch_capacity.png)
+![Achievable lattice size versus physical qubits, physical error, and precision](figures/physical_error_capacity.png)
+
+The new sweep varies p = 0.001, 0.0003, and 0.0001 at 0.01 and 0.001 absolute
+error. All 144 matching p = 0.001 cases reproduce the frozen baseline.
+Source quality and STAR floors at lower p are explicit scenarios, not new
+gadget calibrations. Both precision targets remain prominent.
+
+The [algorithm comparison](figures/hamming_weight_comparison.pdf) finds that
+Hamming-weight phasing lowers the strict 4 × 4 FT estimate from 1.88 million
+to 278,192 qubits, including workspace and arithmetic. At loose precision,
+individual synthesis remains cheaper for 4 × 4 and 8 × 8. Compact-encoding
+counts and an independent small-patch ordering diagnostic are retained in the
+[same results directory](results/physics_sweep_v1/summary.md).
+
+The **[workshop reconciliation](results/workshop_reconciliation_v1/summary.md)**
+evaluates all three codebases at 4 × 4, tau = 1,2, common steps, 0.01 absolute
+error, and a 240 ns syndrome cycle. Compilation, estimator, and delivery
+differences remain explicit; similar headline capacities do not establish an
+independent validation. A small source archive makes the comparison reproducible
+without modifying the supplied repositories.
+
+The **[direct-check summary](results/dynamics_followup_v1/summary.md)** and
+[patch-capacity figure](figures/patch_capacity.pdf) retain the finite-size study.
 
 The current comparison includes exact 4 × 4 calibration at tau = 1,2,4.
 It shows the effect of adding larger patches while holding reference delivery and source
@@ -78,7 +100,7 @@ vector PDF, and PNG in `figures/`.
 | `tex/main.tex` | One complete current manuscript |
 | `tex/references.bib` | Dedicated bibliography for the main manuscript |
 | `tex/archive/` | Earlier complete notes and their original PDFs/bibliographies |
-| `figures/` | Current capacity plot and architecture cartoons |
+| `figures/` | Current capacity plots, algorithm comparisons, and architecture cartoons |
 | `results/` | Versioned numerical evidence, compiler artifacts, and manifests |
 | `docs/` | Accepted decisions, reproduction guide, older plans and reviews |
 | `refs/` | Reference papers |

@@ -6,11 +6,12 @@ costs use discussion_model, so fixed and optimized estimates share accounting.
 """
 import json
 from functools import lru_cache
-from math import ceil, exp, log, log2, sqrt
+from math import ceil, exp, log, sqrt
 
 from discussion_model import estimate
 from model import workload
 from project_paths import ROOT
+from resource_extensions import analog_exposure, source_error, synthesis_plan
 
 
 def settings():
@@ -55,7 +56,7 @@ def step_candidates(C,tau,epsilon,options):
 
 
 def optimize(L,tau,arm,c,epsilon,options=None,C_override=None,refine=True):
-    options=options or settings();algorithm=algorithm_for(arm)
+    options=options or settings();algorithm=c.get('workload_algorithm',algorithm_for(arm))
     if L==2 and options.get('exact_2x2_coefficients',True):options={**options,'coefficient_patch':'2x2'}
     C=coefficient(tau,algorithm,options) if C_override is None else C_override
     bias=options['residual_bias_fraction'][arm]
@@ -72,15 +73,16 @@ def optimize(L,tau,arm,c,epsilon,options=None,C_override=None,refine=True):
         if arm=='nisq':
             chi=0. # The estimator cost itself is computed by estimate below.
         elif arm=='ft':chi=0.
-        else:chi=4*c['star_alpha']*c['p']*w.theta+4*c['star_floor']*w.rotations
+        else:chi=sum(analog_exposure(w,c))
         synthesis_grid=options['synthesis_fraction_grid'] if arm=='ft' else [0.]
         for synthesis in synthesis_grid:
             nt=w.fixed_T
-            if arm=='ft':nt+=w.rotations*ceil(3.02*log2(2*w.rotations/(epsilon*synthesis))+.77)
+            if arm=='ft':nt=synthesis_plan(w,epsilon,{**c,'synthesis_fraction':synthesis})['T_count']
             for cleanup in options['cleanup_choices'] if arm in ('ft','hybrid') else [0]:
                 magic=0.
                 if arm in ('ft','hybrid'):
-                    q=c['source_error'] if cleanup==0 else 35*c['source_error']**3
+                    q0=source_error(c)
+                    q=q0 if cleanup==0 else 35*q0**3
                     lm=log(nt*q/epsilon)+chi/2
                     if lm>=0:continue
                     magic=max(1e-300,exp(lm))*(1+1e-12)
@@ -96,8 +98,10 @@ def optimize(L,tau,arm,c,epsilon,options=None,C_override=None,refine=True):
                     row['assumed_trotter_error']=C/r**2
                     row['budget_fractions']=dict(stat=stat,trotter=trotter,logical=logical,
                         synthesis=synthesis,magic=magic,residual_bias=bias)
-                    row['chi_angle']=4*c['star_alpha']*c['p']*w.theta if arm in ('star','hybrid') else 0.
-                    row['chi_floor']=4*c['star_floor']*w.rotations if arm in ('star','hybrid') else 0.
+                    exposure=analog_exposure(w,c) if arm in ('star','hybrid') else (0.,0.)
+                    row['chi_angle'],row['chi_floor']=exposure
+                    if c.get('star_law')=='original_count' and arm in ('star','hybrid'):
+                        row['chi_count']=row['chi_angle'];row['chi_angle']=0.
                     # Break integer-replica ties by smaller expected space-time,
                     # then by more statistical allowance, to avoid gratuitous work.
                     key=(row['log10_Q_min'],log(row['qubits_per_copy'])+log(row['seconds_per_attempt'])+row['log10_total_shots']*log(10),-stat)

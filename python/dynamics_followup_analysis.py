@@ -7,6 +7,7 @@ from math import ceil, exp, isclose, log, log10
 from budget_optimization import algorithm_for, coefficient, optimize, settings as budget_settings
 from delivery_sensitivity import choices, key, settings as delivery_settings
 from discussion_model import assumptions, capacity
+from frozen_baseline import verify_sources
 from large_dynamics import ROOT, sha
 from run_dynamics_followup import headline_rows, settings
 from small_dynamics import rectangle
@@ -269,7 +270,7 @@ def plot(rows, coefficients, costs, output_dir=None):
 def source_paths():
     paths = [ROOT/name for name in ['python/dynamics_followup_analysis.py', 'python/run_dynamics_followup.py',
         'python/large_dynamics.py', 'cpp/hubbard_sector.cpp', 'python/budget_optimization.py',
-        'python/discussion_model.py', 'python/delivery_sensitivity.py', 'configs/dynamics_followup.json',
+        'python/discussion_model.py', 'python/delivery_sensitivity.py', 'python/resource_extensions.py', 'configs/dynamics_followup.json',
         'configs/patch_sensitivity.json', 'configs/discussion_model.json', 'configs/assumptions.json',
         'configs/budget_optimization.json', 'configs/delivery_sensitivity.json',
         'pbs/dynamics_followup.pbs', 'results/dynamics_followup_v1/inputs.sha256',
@@ -343,7 +344,7 @@ def run():
 
 def check(require_jobs=True):
     report = read(OUT/'validation.json')
-    for path, value in report['sha256'].items(): assert sha(ROOT/path) == value, path
+    verify_sources(report['sha256'])
     rows = measurements(); completion_checks(rows); checks = saved_allocation_checks(rows)
     assert rows == read(OUT/'measurements.json')
     assert checks == read(OUT/'allocation_checks.json') and len(checks) == 16
@@ -400,7 +401,7 @@ def check(require_jobs=True):
         if name == 'build/hubbard_sector':
             assert digest == read(ROOT/'results/dynamics_4x4/build.json')['sha256'][name]
         else:
-            assert sha(ROOT/name) == digest, name
+            verify_sources({name:digest})
     print(report['status'])
 
 

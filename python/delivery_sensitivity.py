@@ -120,7 +120,7 @@ def plot(chosen,rows):
     plt.close(fig)
 
 
-def validate(rows,chosen):
+def validate(rows,chosen,write=True):
     c=assumptions()
     for v in rows:
         if v['log10_Q_min'] is None:continue
@@ -144,12 +144,29 @@ def validate(rows,chosen):
         assert v['log10_Q_min']<=reference['log10_Q_min']+1e-12
         assert v.get('factories',0)<max(settings()['factory_choices']),'Expand the source menu before claiming an interior optimum'
     inputs=['python/discussion_model.py','python/budget_optimization.py','python/delivery_sensitivity.py',
+            'python/resource_extensions.py',
             'configs/delivery_sensitivity.json','configs/discussion_model.json','configs/assumptions.json',
             'configs/budget_optimization.json','results/discussion_v3/calibration.json','results/discussion_v3/finite_step_guard.json']
     report={'status':'PASS: budgets, logical and magic faults, replicas, no duplicated T rate, delivery lower bounds, menu dominance, and source-menu endpoint',
             'rows':len(rows),'selected':len(chosen),
             'sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in inputs}}
-    (OUT/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
+    if write:
+        (OUT/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
+    else:
+        from frozen_baseline import verify_sources
+        from discussion_model import estimate
+        saved=json.loads((OUT/'validation.json').read_text())
+        verify_sources(saved['sha256'])
+        assert all(report[k]==saved[k] for k in ('status','rows','selected'))
+        base={**assumptions(),'factory_choices':settings()['factory_choices']}
+        for v in rows:
+            if v['log10_Q_min'] is None:continue
+            changes=dict(choices(v['arm'],settings()))[v['layout']]
+            b=v['budget_fractions']
+            c={**base,**changes,**{k+'_fraction':b[k] for k in ('stat','logical','magic','synthesis')},
+               'forced_cleanup':v.get('cleanup_levels',0)}
+            replay=estimate(v['L'],v['tau'],v['arm'],c,v['absolute_error'],steps=v['r'])
+            assert isclose(replay['log10_Q_min'],v['log10_Q_min'],abs_tol=1e-12)
 
 
 if __name__=='__main__':
@@ -157,5 +174,5 @@ if __name__=='__main__':
     parser.add_argument('--check',action='store_true')
     args=parser.parse_args()
     if args.check:
-        validate(json.loads((OUT/'costs.json').read_text()),json.loads((OUT/'selected.json').read_text()))
+        validate(json.loads((OUT/'costs.json').read_text()),json.loads((OUT/'selected.json').read_text()),write=False)
     else:run()

@@ -53,11 +53,15 @@ def check_content():
     assert large['status'].startswith('PASS:')
     followup=json.loads((ROOT/'results/dynamics_followup_v1/validation.json').read_text())
     assert followup['status'].startswith('PASS:')
+    physics=json.loads((ROOT/'results/physics_sweep_v1/validation.json').read_text())
+    assert physics['status'].startswith('PASS:')
+    assert physics['sweep_rows']==len(json.loads((ROOT/'results/physics_sweep_v1/costs.json').read_text()))
     return {'threshold_rows':len(saved),'frontier_points':len(frontier),
             'discussion_scenario_points':discussion['scenario_points'],
             'discussion_calibration_cases':discussion['calibration_cases'],
             'delivery_scenario_points':delivery['rows'],'large_patch_measurements':large['measured_rows'],
             'direct_allocation_checks':followup['allocation_checks'],'patch_sensitivity_rows':followup['cost_rows'],
+            'physical_error_sweep_rows':physics['sweep_rows'],'algorithm_alternative_rows':physics['algorithm_rows'],
             'manuscript_figures':len(figures),'status':'PASS: discrete inversion, manuscript references, and artifact paths'}
 
 
@@ -72,7 +76,7 @@ def inventory():
         'noisy_small.json','accuracy_calibration.pdf','postselection_bias.pdf')]
     inputs.extend(ROOT/f'results/refinement_v3/parallel_L{L}_observable/result.json' for L in (2,4,6,8))
     artifacts=[ROOT/'tex/main.pdf']+sorted((ROOT/'figures').glob('*'))
-    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1']:
+    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1',ROOT/'results/physics_sweep_v1',ROOT/'results/workshop_reconciliation_v1']:
         artifacts.extend(p for p in sorted(folder.rglob('*')) if p.is_file())
     artifacts.extend(p for p in sorted(OUT.iterdir()) if p.is_file() and p.name!='manifest.json')
     return {key:{str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}

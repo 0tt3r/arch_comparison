@@ -3,10 +3,12 @@ import csv
 import argparse
 import hashlib
 import json
+from math import isclose
 
 from budget_optimization import algorithm_for, coefficient, optimize, settings as budget_settings
 from delivery_sensitivity import choices, key, settings as delivery_settings
-from discussion_model import assumptions
+from discussion_model import assumptions, estimate
+from frozen_baseline import verify_sources
 from project_paths import ROOT
 from small_dynamics import rectangle
 
@@ -111,6 +113,7 @@ def run():
     (OUT/'summary.md').write_text('\n'.join(text)+'\n')
     inputs=[ROOT/p for p in ['cpp/hubbard_sector.cpp','python/large_dynamics.py','python/large_patch_analysis.py',
             'python/budget_optimization.py','python/discussion_model.py','python/delivery_sensitivity.py',
+            'python/resource_extensions.py',
             'configs/assumptions.json','configs/discussion_model.json','configs/budget_optimization.json',
             'configs/delivery_sensitivity.json']]
     inputs+=sorted(OUT.glob('*/*x*_tau*_*.json'))
@@ -159,8 +162,16 @@ def plot(rows):
 def check():
     assert measurements()==json.loads((OUT/'measurements.json').read_text())
     report=json.loads((OUT/'validation.json').read_text())
-    for name,value in report['sha256'].items():
-        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==value,name
+    verify_sources(report['sha256'])
+    config=delivery_settings();base={**assumptions(),'factory_choices':config['factory_choices']}
+    for row in json.loads((OUT/'selected.json').read_text())+json.loads((OUT/'interpolated.json').read_text()):
+        menu=dict(choices(row['arm'],config)) if row['arm']!='nisq' else {
+            'effective':{},'pec_two_qubit':{'nisq_model':'pec_two_qubit'},'compiled_pec':{'nisq_model':'compiled_pec'}}
+        b=row['budget_fractions']
+        c={**base,**menu[row['layout']],**{k+'_fraction':b[k] for k in ('stat','logical','magic','synthesis')},
+           'forced_cleanup':row.get('cleanup_levels',0)}
+        replay=estimate(row['L'],row['tau'],row['arm'],c,row['absolute_error'],steps=row['r'])
+        assert isclose(replay['log10_Q_min'],row['log10_Q_min'],abs_tol=1e-12)
     for row in json.loads((OUT/'selected.json').read_text()):
         assert abs(sum(row['budget_fractions'].values())-1)<1e-12
         assert abs(row['absolute_error']*row['budget_fractions']['trotter']-row['measured_trotter_error']-1e-10)<1e-12

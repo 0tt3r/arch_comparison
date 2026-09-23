@@ -13,6 +13,7 @@ from statistics import median
 
 from model import log_gamma2_depolarizing, minimum_distance, workload
 from project_paths import ROOT
+from resource_extensions import analog_exposure, compact_physical_counts, source_error, synthesis_plan
 
 
 def assumptions():
@@ -68,7 +69,7 @@ def data_block_tiles(L,c):
     n includes six algorithm work qubits. Injection/delivery lanes are an
     additional declared charge, not part of Litinski's block formulas.
     """
-    n=2*L*L+6;style=c.get('data_block','reference')
+    n=(3 if c.get('local_encoding',False) else 2)*L*L+6+c.get('extra_work_qubits',0);style=c.get('data_block','reference')
     areas={'reference':1.5*n,'compact':1.5*n+3,
            'intermediate':2*n+4,'fast':2*n+sqrt(8*n)+1}
     if style not in areas:raise ValueError(style)
@@ -90,6 +91,12 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
         q=ceil(sqrt(2*N+2))**2
         seconds=c['reset_seconds']+depth*c['gate_seconds']+c['measurement_seconds']
         model=c.get('nisq_model','effective');rule='gaussian'
+        local={}
+        if c.get('local_encoding',False):
+            if model=='compiled_pec':raise ValueError('No compiled compact-encoding reference')
+            local=compact_physical_counts(L,r,c)
+            G=local['two_qubit_gates'];depth=local['depth'];q=local['qubits_per_copy']
+            seconds=c['reset_seconds']+depth*c['gate_seconds']+c['measurement_seconds']
         if model=='effective':
             chi=log(c['nisq_anchor_sampling_overhead'])*(c['p']/c['nisq_anchor_p'])*G/c['nisq_anchor_gates']
         elif model=='pec_two_qubit':
@@ -105,14 +112,16 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
         else:raise ValueError(model)
         return {**base,**sampling_cost(q,seconds,chi,c,epsilon,rule),
                 'algorithm':'native swap-network proxy' if model!='compiled_pec' else 'compiled plaquette proxy',
-                'nisq_model':model,'two_qubit_gates':G,'depth':depth,'distance':0}
+                'nisq_model':model,'two_qubit_gates':G,'depth':depth,'distance':0,**local,
+                **({'algorithm':'compact-encoding count scenario'} if local else {})}
 
     lanes=c['parallel_lanes']
     data_tiles=data_block_tiles(L,c)
     if arm=='star':
         w=workload(L,tau,r,'termwise',c['u_over_j'])
-        chi=4*c['star_alpha']*c['p']*w.theta+4*c['star_floor']*w.rotations
+        chi=sum(analog_exposure(w,c))
         clocks=2+c['star_clocks_per_rotation']*w.rotations/lanes
+        if c.get('local_encoding',False):clocks+=4*L
         def duration(d):
             return clocks*d*c['cycle_seconds']+w.rotations*c['feedforward_seconds']/lanes+c['reset_seconds']+c['measurement_seconds']
         # Retain the existing sufficient Gamma amplification of logical bias.
@@ -126,17 +135,19 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
                 'analog_seconds':w.rotations*c['star_clocks_per_rotation']*d*c['cycle_seconds']/lanes}
 
     if arm not in ('ft','hybrid'):raise ValueError(arm)
-    if c['p']!=c['nisq_anchor_p']:raise ValueError('Cultivation reference is anchored only at p=0.001')
+    qsource=source_error(c)
     w=workload(L,tau,r,'plaquette',c['u_over_j'])
+    synthesis={}
     if arm=='ft':
-        epsilon_rotation=epsilon*c['synthesis_fraction']/(2*w.rotations)
-        T_per_rotation=ceil(3.02*log2(1/epsilon_rotation)+.77)
-        nt=w.fixed_T+w.rotations*T_per_rotation;analog=0;chi=0.
+        synthesis=synthesis_plan(w,epsilon,c)
+        T_per_rotation=synthesis['T_per_rotation']
+        nt=synthesis['T_count'];analog=0;chi=0.
+        if synthesis.get('hwp_workspace',0):
+            data_tiles=data_block_tiles(L,{**c,'extra_work_qubits':synthesis['hwp_workspace']})
     else:
         T_per_rotation=0;nt=w.fixed_T;analog=w.rotations
-        chi=4*c['star_alpha']*c['p']*w.theta+4*c['star_floor']*analog
+        chi=sum(analog_exposure(w,c))
     log_amp=chi/2
-    qsource=c['source_error']
     cleanup=c.get('forced_cleanup',int(log(nt*qsource)+log_amp>log(epsilon*c['magic_fraction'])))
     if cleanup not in (0,1):raise ValueError('Only zero or one cleanup stage is modeled')
     qout=35*qsource**3 if cleanup else qsource
@@ -151,7 +162,7 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
             source=c['source_cycles_per_T']*c.get('source_cycle_multiplier',1)+2*d
             service=(15*source+11*d)/(1-15*qsource) if cleanup else source
             supply=ceil(nt/factories)*service
-            consume=(c['ft_clocks_per_T']*nt/T_ports+(c['star_clocks_per_rotation']*analog+(2*w.rotations if arm=='ft' else 0))/lanes)*d
+            consume=(c['ft_clocks_per_T']*nt/T_ports+(c['star_clocks_per_rotation']*analog+synthesis.get('clifford_clock_units',0))/lanes)*d
             return supply,consume,service
         def duration(d):
             supply,consume,_=delivery(d)
@@ -170,7 +181,9 @@ def estimate(L,tau,arm,c,epsilon,steps=None):
                            'supply_seconds':supply*c['cycle_seconds'],
                            'consumption_seconds':consume*c['cycle_seconds'],
                            'source_service_cycles':service,
-                           'delivery_bottleneck':'supply' if supply>consume else 'consumption'})
+                           'delivery_bottleneck':'supply' if supply>consume else 'consumption',
+                           **({k:v for k,v in synthesis.items() if k.startswith('hwp_') or k=='synthesized_rotations'}
+                              if c.get('rotation_synthesis')=='hamming_weight' else {})})
     feasible=[v for v in candidates if v['log10_Q_min'] is not None]
     return min(feasible,key=lambda v:v['log10_Q_min']) if feasible else {**base,'log10_Q_min':None}
 

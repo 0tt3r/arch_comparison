@@ -170,3 +170,27 @@ envelope retains the old 3x3 envelope and every measured 4x3/4x4 coefficient
 through each requested time, with 10% margin. This remains a finite-patch
 planning sensitivity, not a bulk bound or a tau=8 extension. Faster encoded
 layouts remain separately identifiable in delivery_v1.
+
+## Frozen-baseline physics sweep and workshop reconciliation
+
+The current workshop presentation leads with 0.01 absolute error and keeps
+0.001 as an equally visible precision comparison. The numerical targets and
+reference signal are unchanged. The p sweep uses 0.001, 0.0003, and 0.0001,
+fixed clocks, the added-patch tau=1 envelope, and the existing allocation search.
+All 144 matching baseline rows replay without changing their selected steps or
+qubit costs. The source footprint/cycles/handoff constraint are held fixed;
+quality and injection-floor improvement at lower p are labeled extrapolations.
+
+Hamming-weight phasing is a separate FT alternative with explicit clean
+workspace, arithmetic, synthesis, source supply, and logical-fault accounting.
+It does not silently replace the frozen FT arm in the p sweep. Compact encoding
+is a count/placement/parallelism scenario, not a compiled device. The small
+ordering diagnostic does not recalibrate the resource curves or establish
+bulk convergence.
+
+The two supplied workshop models are compared at 4x4, tau=1,2, common steps,
+0.01 absolute error, and common elementary clocks/statistical allowance. Their
+native circuit counts, architecture assumptions, and known accounting issues
+remain visible. No ED impossibility line, locality certificate, or nonlocal
+qLDPC architecture is added to the shared nearest-neighbor comparison. A source
+snapshot permits reproduction without modifying the supplied repositories.

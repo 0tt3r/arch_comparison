@@ -35,13 +35,203 @@ checks validate the Trotter allowances at the selected headline step counts;
 time extensions assess ordering-dependent finite-size corrections.
 Layout and source-supply sensitivities
 show why faster consumption need not translate into proportional area savings.
+We now vary physical error and precision with the calibrated workload held
+fixed, and test local encoding and repeated-angle synthesis as separate
+algorithm choices. Hamming-weight phasing reduces the modeled strict-precision
+FT area by factors of approximately six at the three sizes tested, while
+its workspace can outweigh the benefit at loose precision.
 \end{abstract}
+
+\section{Physical error, precision, and algorithm choice}\label{sec:physics-sweep}
+We lead the workshop example with $0.01$ absolute error on the local doublon
+observable and retain $0.001$ as a second principal target. Figure~\ref{fig:p-capacity}
+varies $p$ from $10^{-3}$ to $10^{-4}$ while keeping the clocks, Hamiltonian,
+initial state, observable, and finite-patch Trotter model fixed. The $p=10^{-3}$
+central rows reproduce all 144 corresponding entries of the previous
+added-patch comparison. The new sweep contains 864 scenario points, with
+per-arm error allocation and source counts reoptimized. The model remains a
+finite-lattice workload comparison: at fixed time, an independently justified
+local-patch approximation could change what increasing $L$ means.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{physical_error_capacity.pdf}
+\caption{Achievable lattice side versus available physical qubits at $\tau=1$
+and a one-week cutoff. Columns vary physical error; rows show $0.01$ and
+$0.001$ absolute error. Solid encoded curves retain the source and injection
+floor at their $p=10^{-3}$ reference values. Bands span the explicit
+source/floor scenarios described in the text, not statistical confidence
+intervals. The count-law STAR curve changes the injection exposure while
+retaining the same delivery model. NISQ retains separate assumed-effective,
+two-qubit PEC, and compiled-PEC scenarios. Only the sampled sizes are shown;
+$L=48$ is the sweep ceiling. Larger-lattice accuracy transfer and effective
+mitigation bias remain assumptions.}\label{fig:p-capacity}
+\end{figure}
+
+\paragraph{Source assumptions remain visible.}
+We do not infer a new cultivation protocol from a change in $p$. The held
+scenario keeps $q_T=2\times10^{-9}$, a 1024-qubit source, 100 preparation
+cycles, and the distance-15 handoff constraint. A second scenario assumes
+$q_T(p)=2\times10^{-9}(p/10^{-3})^3$ and an injection floor
+$f(p)=10^{-5}(p/10^{-3})$, with source area and cycles unchanged. A third
+keeps both error floors fixed and multiplies source preparation cycles by
+four. These choices bracket specified sensitivities; they are not calibrated
+lower-$p$ implementations or guaranteed bounds on an optimal source.
+In particular, the inherited handoff convention imposes $d\geq15$ on the
+FT/hybrid data block as well, so its low-$p$ area floor is a model choice.
+The ideal cleanup term $35q_T^3$ accounts for input-state errors. Faults in
+the cleanup block and waiting storage are charged separately through the
+protected tile-time volume and logical-error budget.
+
+At $Q=10^6$ and $\eps=0.01$, lowering $p$ from $10^{-3}$ to $10^{-4}$
+raises the held-scenario STAR capacity from $10\times10$ to $20\times20$,
+and FT/hybrid capacity from $12\times12$ to $24\times24$. The NISQ
+effective and two-qubit PEC capacities increase from sides 6 and 4 to
+12 and 8, respectively. At $\eps=0.001$, the corresponding STAR and FT
+sides are 6 and 2 at $p=10^{-3}$, and 10 and 4 at $p=10^{-4}$.
+The latter comparison is sensitive to the magic-state assumption: for the
+strict $4\times4$ FT task at $p=10^{-4}$, holding $q_T$ fixed costs
+$4.23\times10^5$ qubits, whereas the assumed cubic improvement gives
+$8.47\times10^4$. Lower physical error benefits every arm, but the relative
+window cannot be specified by $p$ without the source assumptions.
+
+\paragraph{Injection law as a controlled switch.}
+For the original injection model~\cite{akahoshi}, we use the exact
+dephasing-inverse exposure
+\begin{equation}\label{eq:count-law-switch}
+ \chi_{\rm count}=-2R\log(1-8p/15),
+ \qquad
+ \chi_{\rm angle}=4\alpha p\Theta+4fR.
+\end{equation}
+Both calculations use the same surface-code law and delivery timing, so
+this switch isolates the exposure law rather than reconstructing two
+complete physical protocols. At $p=10^{-3}$, the optimized strict
+$4\times4$ STAR estimate changes from $7.14\times10^4$ qubits under
+the angle law to $5.87\times10^6$ under the count law. At $p=10^{-4}$,
+both estimates fit in one $13{,}122$-qubit copy. Thus a change in the
+injection law can dominate the strict comparison at the original noise
+point without producing a fixed architecture advantage at all $p$.
+
+\paragraph{Repeated-angle synthesis changes the FT comparison.}
+We implement Campbell's Hamming-weight phasing construction for equal-angle
+rotations within each plaquette stage~\cite{campbell}. A batch of $b$
+rotations uses
+\begin{equation}\label{eq:hwp-resources}
+ a_b=b-\operatorname{popcount}(b),\qquad
+ k_b=\lfloor\log_2 b\rfloor+1
+\end{equation}
+clean ancillas/measurement-assisted Toffolis and synthesized rotations,
+respectively. We charge four $T$ states per Toffoli, synthesize all $k_b$
+weight-register rotations within the common error budget, and reuse the
+$a_b$ ancillas between batches. The peak workspace is charged for the full
+shot; arithmetic adds two logical Clifford clocks per Toffoli to the
+reference timing model. We retain all fixed plaquette $T$ gates and do not
+pool equal angles from different times. Batch size one exactly reproduces
+individual synthesis. The nearest-neighbor surgery layout and effective
+delivery ports remain uncompiled reference assumptions.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{hamming_weight_comparison.pdf}
+\caption{FT capacity with repeated-angle synthesis, for the three tested
+lattice sides 4, 8, and 16. The best-menu curve chooses individual synthesis
+or an allowed Hamming-weight batch, with steps and error budgets reoptimized.
+The circuit, plaquette accuracy envelope, source menu, and delivery convention
+are common. The staircase ends at the largest tested size; it is not an
+FT capacity plateau.}\label{fig:hwp-capacity}
+\end{figure}
+
+At $p=10^{-3}$ and $\eps=0.001$, batch size 16 reduces the
+$4\times4$ estimate from $1.88\times10^6$ to $2.78\times10^5$ qubits.
+The optimized circuits consume 192,332 and 80,123 $T$ states per shot,
+with 33 and 36 steps, respectively; the latter uses 15 extra logical
+ancillas. The area improvements at $L=8$ and 16 are factors 5.78 and
+6.04, using batches of 64 and 63 live ancillas. At $\eps=0.01$,
+individual synthesis remains cheaper at $L=4$ and 8 because one copy
+already completes the campaign and the extra workspace raises its area.
+These results change the strict FT comparison substantially without
+changing the Hamiltonian simulation algorithm. The principal $p$ sweep
+deliberately retains individual synthesis to preserve its frozen baseline.
+
+At strict $4\times4$, neither selected circuit uses a cleanup stage.
+The lower $T$ demand reduces the magic-state error allocation from 38.5\%
+to 16.0\% and increases the statistical allocation from 29.8\% to 58.0\%.
+The reduced shot count explains why the area gain exceeds the reduction in
+$T$ count: repeated-angle synthesis changes the optimal estimator budget as
+well as the cost of a circuit.
+
+\paragraph{Local encoding and local ordering are different changes.}
+The compact encoding maps hopping to Pauli operators of weight at most
+three and uses fewer than 1.5 qubits per fermionic mode on the square
+lattice~\cite{derbyklassen}. We evaluate a $3N$-qubit register scenario,
+with four CNOTs per hopping Pauli and two per onsite Pauli, plus $8N$
+assumed preparation gates. A two-CNOT hopping variant assumes fusion;
+a routing variant doubles movement and placement costs. Preparation,
+embedding of both spin sectors, and gate utilization are explicitly
+uncompiled assumptions. The generic parity gadgets use 6,754 two-qubit
+gates at $L=4,r=8$, compared with approximately 3,455 in the native
+JW proxy. The fused hypothesis uses 3,682. Removing asymptotic routing
+growth therefore does not guarantee savings at the small lattices
+accessible under the present noise assumptions.
+
+For STAR, the compact scenario enlarges the data register and separately
+tests four and sixteen assumed rotation lanes. Four lanes cost more area
+than the JW reference at $L=4$, and sixteen lanes cost still more because
+the selected calculation already fits in one copy. Locality does not
+automatically pay for parallel delivery. These resource scenarios retain
+the existing termwise error envelope; transferring it to larger lattices
+remains an assumption.
+
+A separate exact-sector diagnostic isolates ordering. Keeping the
+Hamiltonian, initial state, JW representation, and original onsite split
+fixed, a four-color bond permutation changes the $\tau=1$ coefficient
+$|D_r-D|r^2$ from approximately 0.0344 to 0.0463 on $2\times2$ and
+from 0.0766 to 0.0913 on $3\times3$. Grouping all onsite terms instead
+gives 0.2231 and 0.2178, matching the plaquette results on these patches.
+These measurements show that a more parallel ordering need not reduce
+the local-observable error. They neither establish bulk convergence nor
+replace the frozen accuracy envelope.
+
+\section{Reconciliation of the workshop calculations}\label{sec:reconciliation}
+We evaluate the two supplied workshop implementations at $4\times4$,
+$\tau=1,2$, and $0.01$ absolute error, with common elementary clocks and
+a common Gaussian doublon shot budget. The statistical allowance is 0.004
+at $D_\star=0.1$, giving 21,609 ideal shots. Taking 25\% of the error
+budget for the larger of our two planning coefficients gives 11 and
+23 steps. This step convention isolates resource differences; it is not
+an accuracy certificate for the different observables and unspecified
+circuits underlying the supplied models. We remove the IQUS physical-cone
+discount and explicitly fix its signal scale. The original implementations
+remain untouched, and their imported Python sources are preserved alongside
+the comparison data.
+
+Matching these settings does not make the resource inventories identical.
+At $\tau=1,r=11$, the two-qubit gate counts are approximately 4,750,
+3,520, and 2,640 for our native proxy, Martin, and IQUS, respectively.
+The corresponding STAR rotation counts are 2,443, 2,288, and 880.
+Their STAR shot times are approximately 50.3, 1.86, and 0.686 ms,
+reflecting different rotation parallelism and retry schedules even after
+the syndrome clock is matched. Native factory and logical-error conventions
+also remain different. These outputs diagnose assumptions rather than
+rank three fully specified machines.
+
+An additional comparison applies every injection law to the identical
+ledger $R=2{,}443$, $\Theta=64$ at $p=10^{-3}$. Martin's native
+attenuation convention gives $\chi=0.9772$, the IQUS count convention
+gives 2.6042, the exact original-injection inverse gives 2.6066, and
+the angle-plus-floor law gives 0.4817. Thus even the phrase ``count law''
+does not identify a common estimator convention. The differences do not
+collapse onto precision, evolution time, syndrome clock, and one injection
+switch alone: compilation, delivery, and the estimator must also be named.
+This shared-ledger calculation is an algebra check, not an empirical
+collapse test or independent evidence for a mitigation law.
 
 \section{Back-of-the-envelope+ discussion example}\label{sec:discussion}
 We use simple analytical laws to expose the architectural tradeoffs, with
 $p=10^{-3}$, $10$ ns gates, $100$ ns measurement/reset, $240$ ns syndrome
-cycles, $U/J=4$, and a one-week budget $B$. The primary target remains
-$\eps=0.001$, with $0.01$ as a sensitivity. We compare NISQ, STAR, FTQC,
+cycles, $U/J=4$, and a one-week budget $B$. The original reference below
+emphasizes $\eps=0.001$; both precisions remain explicit in the current
+comparison of Section~\ref{sec:physics-sweep}. We compare NISQ, STAR, FTQC,
 and the hybrid using a common total-error target. Each arm can choose its
 error allocation, step count, and resource-state supply within the declared
 search. This removes a fixed allocation that previously forced unnecessary
@@ -1211,14 +1401,24 @@ crossover. With local full-lattice compilation, $R=O(Nr)$ and
 $\Theta=O(N\tau)$. Physical PEC and original STAR therefore have reference
 exponents $O(pNr)$, while the small-angle term has exponent $O(pN\tau)$.
 An injection floor and the plaquette fixed-angle basis changes restore
-$O(r)$ growth of the STAR exponent. FT has
+$O(r)$ growth of the STAR exponent. Individual FT synthesis has
 $N_T=O(Nr\log(Nr/\eps))$ and logarithmic distance growth below threshold,
 but starts with a substantial protected footprint and supply overhead.
 These are laws of the specified models, subject to the locality and accuracy
 qualifications above.
 
-Figure~\ref{fig:capacity} expresses their current numerical consequences
-as a device-allocation question. At $Q=10^6$ and strict reference precision,
+The physical-error sweep in Figure~\ref{fig:p-capacity} improves the modeled
+capacity of all three reference architectures as $p$ falls. The relative
+ordering also depends on precision, injection floors, and source quality;
+holding these quantities fixed or assigning improvement laws gives different
+partial-FT windows. Figure~\ref{fig:hwp-capacity} identifies an algorithmic
+change within FT that moves the strict-precision costs by approximately a
+factor of six. The compact-encoding scenarios and ordering diagnostic show
+why locality alone does not determine either the small-system gate count
+or the Trotter coefficient.
+
+The earlier compiled reference in Figure~\ref{fig:capacity} retains a
+separate, conditional circuit comparison. At $Q=10^6$ and strict reference precision,
 the largest tested conditional circuits are $2\times2$ for NISQ,
 $4\times4$ for STAR and FTQC, and $6\times6$ for the hybrid. These numbers
 use different implemented optimizations, conditional encoded supply, and

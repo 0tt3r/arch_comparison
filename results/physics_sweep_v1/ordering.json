@@ -1,0 +1,282 @@
+{
+  "rows": [
+    {
+      "patch": "2x2",
+      "algorithm": "termwise",
+      "tau": 1,
+      "exact_doublon": 0.11797904203369086,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": -0.0005571334566080305,
+          "coefficient": 0.03565654122291395,
+          "norm_error": 5.551115123125783e-15
+        },
+        {
+          "r": 16,
+          "signed_error": -0.00013548540081212423,
+          "coefficient": 0.034684262607903804,
+          "norm_error": 1.0436096431476471e-14
+        },
+        {
+          "r": 32,
+          "signed_error": -3.3628148043238215e-05,
+          "coefficient": 0.03443522359627593,
+          "norm_error": 1.0547118733938987e-14
+        },
+        {
+          "r": 64,
+          "signed_error": -8.391750636729811e-06,
+          "coefficient": 0.034372610608045306,
+          "norm_error": 4.796163466380676e-14
+        }
+      ],
+      "tail_coefficient": 0.034372610608045306,
+      "relative_tail_spread": 0.00181828319062802
+    },
+    {
+      "patch": "2x2",
+      "algorithm": "colored",
+      "tau": 1,
+      "exact_doublon": 0.11797904203369086,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": -0.000736258910030263,
+          "coefficient": 0.04712057024193683,
+          "norm_error": 4.884981308350689e-15
+        },
+        {
+          "r": 16,
+          "signed_error": -0.00018175418661703358,
+          "coefficient": 0.046529071773960595,
+          "norm_error": 9.103828801926284e-15
+        },
+        {
+          "r": 32,
+          "signed_error": -4.529218454028816e-05,
+          "coefficient": 0.046379196969255077,
+          "norm_error": 1.021405182655144e-14
+        },
+        {
+          "r": 64,
+          "signed_error": -1.1313869097751006e-05,
+          "coefficient": 0.04634160782438812,
+          "norm_error": 5.206945985491984e-14
+        }
+      ],
+      "tail_coefficient": 0.04634160782438812,
+      "relative_tail_spread": 0.0008104742497347307
+    },
+    {
+      "patch": "2x2",
+      "algorithm": "onsite_grouped",
+      "tau": 1,
+      "exact_doublon": 0.11797904203369086,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": 0.003472420752189273,
+          "coefficient": 0.22223492814011347,
+          "norm_error": 4.218847493575595e-15
+        },
+        {
+          "r": 16,
+          "signed_error": 0.0008707546715804038,
+          "coefficient": 0.22291319592458336,
+          "norm_error": 6.8833827526759706e-15
+        },
+        {
+          "r": 32,
+          "signed_error": 0.0002178340624847258,
+          "coefficient": 0.22306207998435923,
+          "norm_error": 8.992806499463768e-15
+        },
+        {
+          "r": 64,
+          "signed_error": 5.446728598479389e-05,
+          "coefficient": 0.22309800339371577,
+          "norm_error": 4.3076653355456074e-14
+        }
+      ],
+      "tail_coefficient": 0.22309800339371577,
+      "relative_tail_spread": 0.00016102075684265766
+    },
+    {
+      "patch": "2x2",
+      "algorithm": "plaquette",
+      "tau": 1,
+      "exact_doublon": 0.11797904203369086,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": 0.0034724207521891343,
+          "coefficient": 0.2222349281401046,
+          "norm_error": 2.6645352591003757e-15
+        },
+        {
+          "r": 16,
+          "signed_error": 0.0008707546715768372,
+          "coefficient": 0.22291319592367032,
+          "norm_error": 6.994405055138486e-15
+        },
+        {
+          "r": 32,
+          "signed_error": 0.00021783406248471193,
+          "coefficient": 0.22306207998434502,
+          "norm_error": 4.107825191113079e-15
+        },
+        {
+          "r": 64,
+          "signed_error": 5.44672859874723e-05,
+          "coefficient": 0.22309800340468655,
+          "norm_error": 1.7985612998927536e-14
+        }
+      ],
+      "tail_coefficient": 0.22309800340468655,
+      "relative_tail_spread": 0.00016102080607314833
+    },
+    {
+      "patch": "3x3",
+      "algorithm": "termwise",
+      "tau": 1,
+      "exact_doublon": 0.10508492411700424,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": -0.001234667745606613,
+          "coefficient": 0.07901873571882323,
+          "norm_error": 1.4099832412739488e-14
+        },
+        {
+          "r": 16,
+          "signed_error": -0.00030144505405053923,
+          "coefficient": 0.07716993383693804,
+          "norm_error": 2.1538326677728037e-14
+        },
+        {
+          "r": 32,
+          "signed_error": -7.493499535629611e-05,
+          "coefficient": 0.07673343524484721,
+          "norm_error": 2.8199664825478976e-14
+        },
+        {
+          "r": 64,
+          "signed_error": -1.8707506070969604e-05,
+          "coefficient": 0.0766259448666915,
+          "norm_error": 1.3167245072054357e-13
+        }
+      ],
+      "tail_coefficient": 0.0766259448666915,
+      "relative_tail_spread": 0.001400828436948351
+    },
+    {
+      "patch": "3x3",
+      "algorithm": "colored",
+      "tau": 1,
+      "exact_doublon": 0.10508492411700424,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": -0.0014828781083925935,
+          "coefficient": 0.09490419893712598,
+          "norm_error": 1.4432899320127035e-14
+        },
+        {
+          "r": 16,
+          "signed_error": -0.0003599654697618859,
+          "coefficient": 0.0921511602590428,
+          "norm_error": 2.3092638912203256e-14
+        },
+        {
+          "r": 32,
+          "signed_error": -8.933561729580763e-05,
+          "coefficient": 0.09147967211090702,
+          "norm_error": 3.0309088572266774e-14
+        },
+        {
+          "r": 64,
+          "signed_error": -2.2293183759763968e-05,
+          "coefficient": 0.09131288067999321,
+          "norm_error": 1.4355183708403274e-13
+        }
+      ],
+      "tail_coefficient": 0.09131288067999321,
+      "relative_tail_spread": 0.0018232622293572667
+    },
+    {
+      "patch": "3x3",
+      "algorithm": "onsite_grouped",
+      "tau": 1,
+      "exact_doublon": 0.10508492411700424,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": 0.0034491485555543933,
+          "coefficient": 0.22074550755548117,
+          "norm_error": 1.3988810110276972e-14
+        },
+        {
+          "r": 16,
+          "signed_error": 0.0008535049104363701,
+          "coefficient": 0.21849725707171075,
+          "norm_error": 2.1094237467877974e-14
+        },
+        {
+          "r": 32,
+          "signed_error": 0.0002128325794256425,
+          "coefficient": 0.2179405613318579,
+          "norm_error": 2.6645352591003757e-14
+        },
+        {
+          "r": 64,
+          "signed_error": 5.317423924180997e-05,
+          "coefficient": 0.21780168393445365,
+          "norm_error": 1.376676550535194e-13
+        }
+      ],
+      "tail_coefficient": 0.21780168393445365,
+      "relative_tail_spread": 0.000637226024176332
+    },
+    {
+      "patch": "3x3",
+      "algorithm": "plaquette",
+      "tau": 1,
+      "exact_doublon": 0.10508492411700424,
+      "measurements": [
+        {
+          "r": 8,
+          "signed_error": 0.003449148555557585,
+          "coefficient": 0.22074550755568545,
+          "norm_error": 5.995204332975845e-15
+        },
+        {
+          "r": 16,
+          "signed_error": 0.0008535049104308468,
+          "coefficient": 0.21849725707029677,
+          "norm_error": 7.327471962526033e-15
+        },
+        {
+          "r": 32,
+          "signed_error": 0.0002128325794309438,
+          "coefficient": 0.21794056133728645,
+          "norm_error": 2.220446049250313e-14
+        },
+        {
+          "r": 64,
+          "signed_error": 5.317423926580467e-05,
+          "coefficient": 0.21780168403273592,
+          "norm_error": 2.020605904817785e-14
+        }
+      ],
+      "tail_coefficient": 0.21780168403273592,
+      "relative_tail_spread": 0.0006372255981097781
+    }
+  ],
+  "scope": "Finite patches at tau=1; no resource curve is recalibrated from this diagnostic",
+  "source_sha256": {
+    "python/local_ordering.py": "1b5273d67bdb19f761db146817926e2dbf5b2346a3c4e6d0c6355493610d688e",
+    "python/time_calibration.py": "1a13556a954865ce3755140b21107ef805a8851c8600d26262f49e952eac9a78",
+    "python/small_dynamics.py": "65d994e0c37aca58309a7a1613d33413af1e962cb487eecd69313a8b77d68414"
+  }
+}

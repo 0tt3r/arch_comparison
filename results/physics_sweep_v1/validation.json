@@ -1,0 +1,6 @@
+{
+  "status": "PASS: frozen baseline, error ledgers, source domains, and row census",
+  "sweep_rows": 864,
+  "algorithm_rows": 104,
+  "baseline_replays": 144
+}

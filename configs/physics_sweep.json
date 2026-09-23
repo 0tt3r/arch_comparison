@@ -1,0 +1,16 @@
+{
+  "physical_errors": [0.001, 0.0003, 0.0001],
+  "precisions": [0.01, 0.001],
+  "tau": 1,
+  "sizes": [2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48],
+  "qubit_budgets": [100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000],
+  "factory_choices": [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
+  "source_scenarios": {
+    "held": {"source_p_policy": "held_at_anchor", "floor_policy": "held", "source_cycle_multiplier": 1},
+    "scaled": {"source_p_policy": "power3", "floor_policy": "linear", "source_cycle_multiplier": 1},
+    "slow_supply": {"source_p_policy": "held_at_anchor", "floor_policy": "held", "source_cycle_multiplier": 4}
+  },
+  "algorithm_sizes": [4, 8, 16],
+  "hwp_batches": [1, 4, 8, 16, 32, 64],
+  "scope": "Frozen hardware clock, allocation search, and added-patch coefficient envelope. Source scenarios below p=0.001 are explicit assumptions, not recalibrations. Source footprint, cycle count before rate sensitivity, and minimum handoff distance remain anchored. Local encoding is a gate-count/parallelism scenario, not a compiled grid circuit."
+}

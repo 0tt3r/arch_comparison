@@ -1,0 +1,189 @@
+{
+  "hardware": {
+    "p": 0.001,
+    "gate_seconds": 1e-08,
+    "measurement_seconds": 1e-07,
+    "reset_seconds": 1e-07,
+    "feedforward_seconds": 2e-07,
+    "cycle_seconds": 2.4e-07,
+    "week_seconds": 604800,
+    "u_over_j": 4.0,
+    "relative_error": 0.01,
+    "doublon_reference": 0.1,
+    "delta": 0.05,
+    "stat_fraction": 0.5,
+    "trotter_fraction": 0.25,
+    "logical_fraction": 0.1,
+    "synthesis_fraction": 0.075,
+    "magic_fraction": 0.075,
+    "steps_per_tau": 4,
+    "algorithm": "plaquette",
+    "surface_A": 0.1,
+    "surface_threshold": 0.01,
+    "max_distance": 1001,
+    "star_alpha": 1.5,
+    "star_floor": 1e-05,
+    "star_clocks_per_rotation": 18,
+    "star_injection_tiles": 6,
+    "g2_per_dynamic_rotation": 2.0,
+    "g1_per_dynamic_rotation": 5.0,
+    "g2_per_fixed_T": 1.0,
+    "g1_per_fixed_T": 1.0,
+    "scheduling_overhead": 1.25,
+    "factory_copies": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "device_qubits": 1000000,
+    "description": "Discussion v2: small-patch-informed step scenario, effective/PEC NISQ envelope, STAR, FT and hybrid; no new dynamics jobs",
+    "signal_reference": 0.1,
+    "gaussian_z": 1.96,
+    "step_policy": "small_patch_fit",
+    "trotter_coefficient": 0.22,
+    "trotter_budget_fraction": 0.25,
+    "trotter_time_power": 3,
+    "trotter_fit_source": "Saved square2/square3 plaquette data at tau=1 and r=16,32,64. Rounded coefficient; transfer to other sizes/orderings and tau^3 growth are assumptions.",
+    "time_family_scale": 0.25,
+    "nisq_anchor_gates": 4372,
+    "nisq_anchor_depth": 294,
+    "nisq_anchor_L": 6,
+    "nisq_anchor_steps": 3,
+    "nisq_anchor_p": 0.001,
+    "nisq_anchor_sampling_overhead": 100,
+    "nisq_anchor_source": "Willow arXiv:2510.26845v1 Table I supplies gates/depth. The sampling overhead and its noise normalization are chosen, not fitted.",
+    "parallel_lanes": 4,
+    "extra_tiles_per_lane": 6,
+    "ft_clocks_per_T": 9,
+    "factory_choices": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "source_qubits": 1024,
+    "source_cycles_per_T": 100,
+    "source_error": 2e-09,
+    "source_end_distance": 15,
+    "source_description": "Rounded packed cultivation reference at p=1e-3; include 2d handoff cycles and a 15-to-1 cleanup stage when required.",
+    "max_L": 48,
+    "times": [
+      1,
+      4,
+      8
+    ],
+    "qubit_budgets": [
+      100,
+      1000,
+      10000,
+      100000,
+      1000000,
+      10000000,
+      100000000
+    ],
+    "scenarios": {
+      "favorable": {
+        "nisq_anchor_sampling_overhead": 10,
+        "star_floor": 0,
+        "parallel_lanes": 8,
+        "source_cycle_multiplier": 0.5
+      },
+      "central": {
+        "nisq_anchor_sampling_overhead": 100,
+        "star_floor": 1e-05,
+        "parallel_lanes": 4,
+        "source_cycle_multiplier": 1
+      },
+      "costly": {
+        "nisq_anchor_sampling_overhead": 1000,
+        "star_floor": 0.0001,
+        "parallel_lanes": 1,
+        "source_cycle_multiplier": 4
+      }
+    }
+  },
+  "sweep": {
+    "physical_errors": [
+      0.001,
+      0.0003,
+      0.0001
+    ],
+    "precisions": [
+      0.01,
+      0.001
+    ],
+    "tau": 1,
+    "sizes": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      16,
+      20,
+      24,
+      32,
+      40,
+      48
+    ],
+    "qubit_budgets": [
+      100,
+      1000,
+      10000,
+      100000,
+      1000000,
+      10000000,
+      100000000,
+      1000000000
+    ],
+    "factory_choices": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "source_scenarios": {
+      "held": {
+        "source_p_policy": "held_at_anchor",
+        "floor_policy": "held",
+        "source_cycle_multiplier": 1
+      },
+      "scaled": {
+        "source_p_policy": "power3",
+        "floor_policy": "linear",
+        "source_cycle_multiplier": 1
+      },
+      "slow_supply": {
+        "source_p_policy": "held_at_anchor",
+        "floor_policy": "held",
+        "source_cycle_multiplier": 4
+      }
+    },
+    "algorithm_sizes": [
+      4,
+      8,
+      16
+    ],
+    "hwp_batches": [
+      1,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "scope": "Frozen hardware clock, allocation search, and added-patch coefficient envelope. Source scenarios below p=0.001 are explicit assumptions, not recalibrations. Source footprint, cycle count before rate sensitivity, and minimum handoff distance remain anchored. Local encoding is a gate-count/parallelism scenario, not a compiled grid circuit."
+  },
+  "scope": "Conditional source and injection scenarios; no calibration of physical gadgets at lower p"
+}

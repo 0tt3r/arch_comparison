@@ -5,6 +5,8 @@ model outputs, and source hashes used at that stage:
 
 | Directory | Content |
 |---|---|
+| `physics_sweep_v1` | Frozen-baseline p/precision sweep, source/injection scenarios, Hamming-weight and compact-encoding costs, small-patch ordering experiment |
+| `workshop_reconciliation_v1` | Shared-task adapters, native count/delivery differences, identical STAR ledger, captured workshop Python sources |
 | `analytical_v1` | Initial analytic curves and sensitivities |
 | `cudaq_v1` | Analog programs, native routes, synthesized words, backend diagnostics |
 | `nisq_v2` | Native Rzz compilation, exact cones, parity acceptance, factory sensitivities |
