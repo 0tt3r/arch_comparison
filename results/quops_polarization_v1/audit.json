@@ -1,0 +1,34 @@
+{
+  "status": "complete_for_reported_scope",
+  "original_brief_status": "incomplete_individual_deep_w7_w8",
+  "receipts": 240,
+  "counts": {
+    "exact_ptm": {
+      "2": 20,
+      "3": 20,
+      "4": 20,
+      "5": 20,
+      "6": 20,
+      "7": 0,
+      "8": 0
+    },
+    "exact_angle_mean": {
+      "2": 20,
+      "3": 20,
+      "4": 20,
+      "5": 20,
+      "6": 20,
+      "7": 20,
+      "8": 20
+    }
+  },
+  "ensemble_cells": 42,
+  "all_integer_depths": true,
+  "target": 0.195,
+  "sample_cells": 19196,
+  "input_sources": {
+    "PLAN.md": "3598c6392781e0ee9128694aa912bac126d4f418182953f1f097b99af053e8bc",
+    "refs/2609.12146v1.pdf": "20ffb93966ebe54be2b3af8c76681f994514ea07fbf713539e766adc79d86a1a",
+    "python/quops_study.py": "bc1e22e301b4c575cb83ee64b3032094493e2d181a5f73ceeb3c59399b71d646"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "method": "exact_ptm",
+  "w": 6,
+  "replica": 3,
+  "max_depth": 477,
+  "rows": 684,
+  "seconds": 93.19757056236267,
+  "host": "i127",
+  "source_sha256": "5ff749b6ed16b6cefd1a92f3b40c67ffded967a5cfb70af79e0fc0786494963c",
+  "circuit_sha256": "70d0623ec44e55dfb99a0ca6113444edc80273446c329dc3851b9294ae098959",
+  "raw_sha256": "58fb12b63d640778a76529393a19e15f362998f06b3cee15171b35d018f66834",
+  "seed": [
+    26092303,
+    6,
+    3
+  ]
+}

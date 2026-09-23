@@ -31,7 +31,9 @@ from project_paths import ROOT
 from resource_extensions import plaquette_rotation_stages, source_error, synthesis_plan
 from star_channel_study import preparation, raw_rus_details, rus_channel
 
-OUT = ROOT/'results/optimization_round_v1'
+ROUNDS = {'v1': ('configs/optimization_round.json', 'results/optimization_round_v1'),
+          'v2': ('configs/optimization_round_v2.json', 'results/optimization_round_v2')}
+CONFIG, OUT = (ROOT/x for x in ROUNDS['v1'])
 ENCODED = ('star', 'hybrid', 'ft')
 NISQ = ('nisq_effective', 'nisq_pec')
 MAX_SEARCH_DISTANCE = 301
@@ -43,7 +45,25 @@ def read(path):
 
 @lru_cache(maxsize=1)
 def settings():
-    return read(ROOT/'configs/optimization_round.json')
+    return read(CONFIG)
+
+
+def use_round(name):
+    """Select a result version: v1 (reference surface law) or v2 (calibrated)."""
+    global CONFIG, OUT
+    CONFIG, OUT = (ROOT/x for x in ROUNDS[name])
+    settings.cache_clear()
+    surface_law.cache_clear()
+
+
+@lru_cache(maxsize=None)
+def surface_law(p):
+    """Calibrated per-p law, or None for the reference A=0.1, p_th=0.01."""
+    law = settings().get('surface_law')
+    if not law:
+        return None
+    fit = read(ROOT/law['source'])['fits'][str(p)]
+    return dict(surface_A=fit[law['amplitude']], surface_threshold=fit['effective_p_threshold'])
 
 
 def sha(path):
@@ -173,8 +193,9 @@ def load_channels():
         data = read(old)
         if data['contract'] == channel_contract():
             CHANNELS.update({k+'|noisy_pcec': v for k, v in data['rows'].items()})
-    path = OUT/'channels.json'
-    if path.exists():
+    for path in dict.fromkeys([ROOT/ROUNDS['v1'][1]/'channels.json', OUT/'channels.json']):
+        if not path.exists():
+            continue
         data = read(path)
         if data['contract'] != channel_contract():
             raise ValueError('Channel cache contract changed; use a new result version')
@@ -219,7 +240,7 @@ def component_exposure(w, p, seed, scenario, target, mode):
 # ---------------------------------------------------------------- shared ledgers
 
 def base_config(p, scenario):
-    return {**v1.configuration(p, 'component'), **settings()['scenarios'][scenario]}
+    return {**v1.configuration(p, 'component'), **settings()['scenarios'][scenario], **(surface_law(p) or {})}
 
 
 def sampling_log_q(qubits, log_P, stat, c, epsilon, rule='gaussian'):
@@ -773,7 +794,7 @@ def changes(table):
 
 
 def input_hashes():
-    names = ['python/optimization_round.py', 'configs/optimization_round.json', 'python/integrated_comparison.py',
+    names = ['python/optimization_round.py', str(CONFIG.relative_to(ROOT)), 'python/integrated_comparison.py',
              'configs/integrated_comparison.json', 'python/star_channel_study.py', 'python/physics_sweep.py',
              'python/discussion_model.py', 'python/budget_optimization.py', 'python/resource_extensions.py',
              'python/model.py', 'python/dynamics_followup_analysis.py', 'configs/assumptions.json',
@@ -781,15 +802,26 @@ def input_hashes():
              'results/discussion_v3/calibration.json', 'results/discussion_v3/finite_step_guard.json',
              'results/discussion_v3/rectangle_checks/calibration.json',
              'results/dynamics_followup_v1/measurements.json', 'results/frontier_v1/growth_summary.json']
+    if settings().get('surface_law'):
+        names.append(settings()['surface_law']['source'])
     return {name: sha(ROOT/name) for name in names}
 
 
 def validate(rows):
-    """Replay integrated_v1 and physics_sweep_v1, and audit every ledger."""
+    """Replay integrated_v1 and physics_sweep_v1 (v1) or round-v1 NISQ rows (v2), and audit every ledger."""
     old = read(v1.OUT/'costs.json')
     replays = 0
+    calibrated = bool(settings().get('surface_law'))
+    if calibrated:
+        # The surface-code law cannot affect physical-qubit rows: they must equal round v1.
+        base = {item_key(v): v for v in read(ROOT/ROUNDS['v1'][1]/'costs.json')}
+        for v in rows:
+            if v['arm'] in NISQ:
+                a, b = base[item_key(v)]['log10_Q_min'], v['log10_Q_min']
+                assert (a is None) == (b is None) and (a is None or isclose(a, b, abs_tol=1e-12)), item_key(v)
+                replays += 1
     for v in rows:
-        if v['configuration'] != 'v1_menu' or v['family'] != 'tau_1':
+        if calibrated or v['configuration'] != 'v1_menu' or v['family'] != 'tau_1':
             continue
         if v['arm'] in ENCODED:
             match = [o for o in old if (o['L'], o['tau'], o['absolute_error'], o['p'], o['arm'], o['scenario'])
@@ -799,6 +831,8 @@ def validate(rows):
             model = {'nisq_effective': 'effective', 'nisq_pec': 'pec_two_qubit'}[v['arm']]
             match = [o for o in sweep if (o['L'], o['absolute_error'], o['p'], o['arm'], o['scenario'])
                      == (v['L'], v['absolute_error'], v['p'], 'nisq', model)]
+        if not match:
+            continue  # sizes added after integrated_v1 have nothing to replay
         assert len(match) == 1, (v['arm'], v['L'])
         a, b = match[0]['log10_Q_min'], v['log10_Q_min']
         if a is not None and a > 10 and b is None:
@@ -838,7 +872,9 @@ def validate(rows):
     compared = [x for x in pairs.values() if len(x) == 2]
     # Justifies skipping PCEC once raw RUS already exceeds the exposure prune.
     assert all(x['noisy_pcec'] >= x['raw']*(1-1e-9) for x in compared)
-    return dict(status='PASS: integrated_v1/physics_sweep_v1 replay, budgets, fault ledgers, switch domains, PCEC >= raw',
+    return dict(status=('PASS: round-v1 NISQ replay, calibrated surface law, budgets, fault ledgers, switch domains, PCEC >= raw'
+                        if calibrated else
+                        'PASS: integrated_v1/physics_sweep_v1 replay, budgets, fault ledgers, switch domains, PCEC >= raw'),
                 resource_rows=len(rows), v1_replays=replays, channel_pairs_compared=len(compared),
                 channel_points=len(CHANNELS), scope=settings()['scope'])
 
@@ -869,8 +905,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--workers', type=int, default=1)
+    parser.add_argument('--round', choices=sorted(ROUNDS), default='v1')
     parser.add_argument('--finish', action='store_true', help='Recompute tables from saved rows')
     args = parser.parse_args()
+    use_round(args.round)
     if args.check:
         check()
     elif args.finish:

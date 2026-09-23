@@ -1,0 +1,20 @@
+#!/bin/bash -l
+#PBS -N quops-routing
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128,place=scatter,walltime=00:40:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison
+export PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMBA_NUM_THREADS=1
+python_bin=/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python
+"$python_bin" -B -c 'import sys,socket,cirq; print(sys.executable,socket.gethostname(),cirq.__version__,flush=True)'
+if [[ "${ROUTING_MODE:-smoke}" == smoke ]]; then
+    "$python_bin" -B -u python/quops_routing.py run --widths 16 36 --layers 5 \
+        --samples 2 --workers 4 --max-seconds 180 \
+        --output results/quops_routing_v1/pbs_smoke_final
+else
+    "$python_bin" -B -u python/quops_routing.py run --workers 48 --max-seconds 2100
+fi

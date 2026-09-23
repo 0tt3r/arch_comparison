@@ -106,8 +106,8 @@ def inventory():
         'manifest.json','cultivation.json','star_parallel.json','small_dynamics.json',
         'noisy_small.json','accuracy_calibration.pdf','postselection_bias.pdf')]
     inputs.extend(ROOT/f'results/refinement_v3/parallel_L{L}_observable/result.json' for L in (2,4,6,8))
-    artifacts=[ROOT/'tex/main.pdf']+sorted((ROOT/'figures').glob('*'))
-    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1',ROOT/'results/physics_sweep_v1',ROOT/'results/workshop_reconciliation_v1',ROOT/'results/implementation_v1',ROOT/'results/frontier_v1',ROOT/'results/integrated_v1',ROOT/'results/published_benchmarks_v1',ROOT/'results/willow_v1',ROOT/'results/willow_reference_v1',ROOT/'results/optimization_round_v1']:
+    artifacts=[ROOT/'tex/main.pdf',ROOT/'tex/supplement.pdf']+sorted((ROOT/'figures').glob('*'))
+    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1',ROOT/'results/physics_sweep_v1',ROOT/'results/workshop_reconciliation_v1',ROOT/'results/implementation_v1',ROOT/'results/frontier_v1',ROOT/'results/integrated_v1',ROOT/'results/published_benchmarks_v1',ROOT/'results/willow_v1',ROOT/'results/willow_reference_v1',ROOT/'results/optimization_round_v1',ROOT/'results/optimization_round_v2',ROOT/'results/quops_v1']:
         artifacts.extend(p for p in sorted(folder.rglob('*')) if p.is_file())
     artifacts.extend(p for p in sorted(OUT.iterdir()) if p.is_file() and p.name!='manifest.json')
     return {key:{str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}

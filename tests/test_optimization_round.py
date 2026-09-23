@@ -77,3 +77,17 @@ def test_pcec_never_has_less_dephasing_than_raw_rus(theta):
     pcec = rus_channel(theta, 9, 1e-3, mode='noisy_pcec', cap=48)
     assert pcec['q_dephasing'] >= raw['q_dephasing']
     assert abs(raw['coherent_component']) < 1e-6
+
+
+def test_calibrated_round_reads_the_stim_fit_and_leaves_v1_on_the_reference_law():
+    fit = json.loads((o.ROOT/'results/surface_law_v1/fit.json').read_text())['fits']
+    try:
+        o.use_round('v2')
+        for p in (1e-3, 1e-4):
+            c = o.base_config(p, 'component')
+            assert c['surface_A'] == fit[str(p)]['A_patch_union_bound']
+            assert c['p']/c['surface_threshold'] == pytest.approx(1/fit[str(p)]['Lambda'])
+    finally:
+        o.use_round('v1')
+    c = o.base_config(1e-3, 'component')
+    assert (c['surface_A'], c['surface_threshold']) == (.1, .01)

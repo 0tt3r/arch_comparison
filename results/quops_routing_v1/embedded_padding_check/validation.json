@@ -1,0 +1,10 @@
+{
+  "widths": [
+    5,
+    6,
+    12,
+    20,
+    30
+  ],
+  "embedded_compact_routing": "all symbolic gate/order/permutation checks passed"
+}

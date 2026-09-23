@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "expected_cases": 240,
+  "workers": 8,
+  "replicas": 20,
+  "exact_max_width": 6,
+  "seconds": 289.9709806442261,
+  "source_sha256": "5ff749b6ed16b6cefd1a92f3b40c67ffded967a5cfb70af79e0fc0786494963c",
+  "host": "i127",
+  "pbs_jobid": "7791422.imgt1"
+}

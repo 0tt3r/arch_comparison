@@ -1,0 +1,19 @@
+{
+  "command": [
+    "qsub",
+    "-r",
+    "y",
+    "-q",
+    "backfill",
+    "-o",
+    "/lcrc/project/QC_NA_Sim/architecture_comparison/results/quops_polarization_v1/campaign_pbs.log",
+    "-v",
+    "QUOPS_SOURCE=/lcrc/project/QC_NA_Sim/architecture_comparison/results/quops_polarization_v1/sources/5ff749b6ed16b6cefd1a92f3b40c67ffded967a5cfb70af79e0fc0786494963c.py",
+    "/lcrc/project/QC_NA_Sim/architecture_comparison/results/quops_polarization_v1/campaign.pbs"
+  ],
+  "jobid": "7791422.imgt1",
+  "returncode": 0,
+  "source_sha256": "5ff749b6ed16b6cefd1a92f3b40c67ffded967a5cfb70af79e0fc0786494963c",
+  "smoke_jobid": "7791421.imgt1",
+  "smoke_exit_status": 0
+}

@@ -1,36 +1,178 @@
 {
   "description": "Bounded optimization round agreed after OPUS55_REVIEW.md section 0. Five switches are tested alone and together against a menu that reproduces integrated_v1. The deliverable is which choices change the capacity leader, and why.",
-  "physical_errors": [0.001, 0.0001],
-  "precisions": [0.01, 0.001],
+  "physical_errors": [
+    0.001,
+    0.0001
+  ],
+  "precisions": [
+    0.01,
+    0.001
+  ],
   "families": {
-    "tau_1": {"kind": "fixed", "tau": 1, "sizes": [2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48]},
-    "tau_L_over_4": {"kind": "proportional", "scale": 0.25, "sizes": [4, 8, 12, 16, 20, 24, 28, 32]}
+    "tau_1": {
+      "kind": "fixed",
+      "tau": 1,
+      "sizes": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48
+      ]
+    },
+    "tau_L_over_4": {
+      "kind": "proportional",
+      "scale": 0.25,
+      "sizes": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32
+      ]
+    }
   },
-  "qubit_budgets": [100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000],
+  "qubit_budgets": [
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    10000000,
+    100000000,
+    1000000000
+  ],
   "configurations": {
     "v1_menu": {},
-    "raw_rus": {"rus_modes": ["noisy_pcec", "raw"]},
-    "lanes": {"optimize_lanes": true},
-    "ft_delivery": {"ft_delivery": true},
-    "distances": {"separate_distances": true},
-    "richardson": {"richardson": true},
-    "all": {"rus_modes": ["noisy_pcec", "raw"], "optimize_lanes": true, "ft_delivery": true,
-            "separate_distances": true, "richardson": true}
+    "raw_rus": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ]
+    },
+    "lanes": {
+      "optimize_lanes": true
+    },
+    "ft_delivery": {
+      "ft_delivery": true
+    },
+    "distances": {
+      "separate_distances": true
+    },
+    "richardson": {
+      "richardson": true
+    },
+    "all": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true
+    }
   },
   "scenarios": {
-    "component": {"growth": "upper", "detector_factor": 1, "source_cycle_multiplier": 1},
-    "zero_growth": {"growth": "zero_d9", "detector_factor": 1, "source_cycle_multiplier": 1}
+    "component": {
+      "growth": "upper",
+      "detector_factor": 1,
+      "source_cycle_multiplier": 1
+    },
+    "zero_growth": {
+      "growth": "zero_d9",
+      "detector_factor": 1,
+      "source_cycle_multiplier": 1
+    }
   },
-  "scenario_configurations": {"zero_growth": ["v1_menu", "all"]},
+  "scenario_configurations": {
+    "zero_growth": [
+      "v1_menu",
+      "all"
+    ]
+  },
   "reference_lanes": 4,
-  "lane_choices": [1, 2, 4, 8, 16, 32, 64, 128],
+  "lane_choices": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
   "compact_lane_limit": 4,
-  "concurrency_width": {"termwise": "L", "plaquette": "N"},
-  "port_choices": [1, 2, 4, 8, 16, 32, 64, 128],
+  "concurrency_width": {
+    "termwise": "L",
+    "plaquette": "N"
+  },
+  "port_choices": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
   "extra_tiles_per_port": 2,
-  "reference_hwp_batches": [1, 4, 8, 16],
-  "extended_hwp_batches": [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
-  "richardson": {"coefficients": [-0.3333333333333333, 1.3333333333333333], "step_ratio": 2, "residual_margin": 1.1},
+  "reference_hwp_batches": [
+    1,
+    4,
+    8,
+    16
+  ],
+  "extended_hwp_batches": [
+    1,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "richardson": {
+    "coefficients": [
+      -0.3333333333333333,
+      1.3333333333333333
+    ],
+    "step_ratio": 2,
+    "residual_margin": 1.1
+  },
   "chi_prune": 120,
   "scope": "Analytical capacity model with the integrated_v1 component instruments. Concurrency widths, per-lane and per-port tile charges, and the source-to-data transfer are declared assumptions, not compiled schedules. Richardson residuals are the measured finite-patch envelope of |(4E(2r)-E(r))/3| r^4 at r >= 8 tau. The time-growing family uses the running maximum of all measured patches through each time; no patch larger than 4x4 is measured. Interacting bulk convergence is not established."
 }

@@ -1,0 +1,33 @@
+{
+  "statevector_comparisons": 16,
+  "fusion_group_elements": 6,
+  "all_circuits": "gate identities, causal order, adjacency, final token permutation",
+  "elapsed_seconds_this_run": 0.3177862260490656,
+  "host": "i533",
+  "workers": 2,
+  "expected_pairs": 8,
+  "completed_pairs": 8,
+  "complete": true,
+  "command": [
+    "python/quops_routing.py",
+    "run",
+    "--widths",
+    "4",
+    "6",
+    "--layers",
+    "5",
+    "--samples",
+    "2",
+    "--workers",
+    "2",
+    "--output",
+    "results/quops_routing_v1/local_smoke",
+    "--max-seconds",
+    "30"
+  ],
+  "versions": {
+    "cirq": "1.4.0",
+    "networkx": "3.4.2"
+  },
+  "source_sha256": "2b813069dc21f5d64ea37d9b6351109fda6e7837e0b70eb1350406ab96959363"
+}

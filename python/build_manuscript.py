@@ -34,6 +34,13 @@ def tectonic_environment():
     return str(candidates[-1]),env
 
 
+def check_log(path):
+    log=path.read_text()
+    bad=[line for line in log.splitlines() if any(term in line for term in
+         ('Overfull','undefined references','undefined citations','Citation `','Reference `','multiply defined'))]
+    if bad:raise RuntimeError('TeX needs attention:\n'+'\n'.join(bad))
+
+
 def build(archive=None):
     executable,env=tectonic_environment()
     if archive:
@@ -49,10 +56,14 @@ def build(archive=None):
         directory=ROOT/'tex';name='main';out=ROOT/'build/tex/main';out.mkdir(parents=True,exist_ok=True)
     subprocess.run([executable,'--keep-logs','--keep-intermediates','--outdir',str(out),name+'.tex'],
                    cwd=directory,env=env,check=True)
-    log=(out/(name+'.log')).read_text()
-    bad=[line for line in log.splitlines() if any(term in line for term in
-         ('Overfull','undefined references','undefined citations','Citation `','Reference `'))]
-    if bad:raise RuntimeError('TeX needs attention:\n'+'\n'.join(bad))
+    if not archive:
+        # The supplement resolves main-text references through xr and build/tex/main/main.aux.
+        sup=ROOT/'build/tex/supplement';sup.mkdir(parents=True,exist_ok=True)
+        subprocess.run([executable,'--keep-logs','--keep-intermediates','--outdir',str(sup),'supplement.tex'],
+                       cwd=directory,env=env,check=True)
+        check_log(sup/'supplement.log')
+        shutil.copy2(sup/'supplement.pdf',ROOT/'tex/supplement.pdf')
+    check_log(out/(name+'.log'))
     result=out/(name+'.pdf')
     if not archive:
         shutil.copy2(result,ROOT/'tex/main.pdf');result=ROOT/'tex/main.pdf'

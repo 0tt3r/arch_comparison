@@ -9,7 +9,10 @@ from matplotlib.patches import Patch
 import numpy as np
 
 from discussion_model import capacity
-from optimization_round import ENCODED, OUT, read, settings
+import argparse
+
+import optimization_round as o
+from optimization_round import ENCODED, read
 from plot_capacity import COLORS
 from project_paths import ROOT
 
@@ -20,7 +23,15 @@ CONFIG_LABELS = {'v1_menu': 'v1 menu', 'raw_rus': '+ raw RUS', 'lanes': '+ lanes
                  'distances': '+ separate distances', 'richardson': '+ Richardson', 'all': 'all five'}
 
 
+SUFFIX = ''
+
+
+def settings():
+    return o.settings()
+
+
 def save(fig, name):
+    name += SUFFIX
     for suffix in ('pdf', 'png'):
         fig.savefig(ROOT/f'figures/{name}.{suffix}', dpi=180, bbox_inches='tight',
                     metadata={'CreationDate': None, 'ModDate': None} if suffix == 'pdf' else {})
@@ -72,9 +83,9 @@ def plot_family(rows, family, name, title):
             if i == 1:
                 ax.set_xlabel('Available physical qubits Q')
     fig.supylabel('Largest lattice side L' + ('  (evolution time τ = L/4)' if proportional else ''), x=.035)
-    handles = [Line2D([], [], color=COLORS[a], lw=2.2, label=LABELS[a]+' · all five changes') for a in ENCODED]
+    handles = [Line2D([], [], color=COLORS[a], lw=2.2, label=LABELS[a]+' · optimized') for a in ENCODED]
     handles += [Line2D([], [], color=NISQ_STYLE[a][0], ls=NISQ_STYLE[a][1], lw=1.6, label=LABELS[a]) for a in NISQ_STYLE]
-    handles += [Line2D([], [], color='#666666', lw=1, ls=(0, (4, 2)), label='Same arm · integrated_v1 menu'),
+    handles += [Line2D([], [], color='#666666', lw=1, ls=(0, (4, 2)), label='Same arm · reference menu'),
                 Patch(color='#999999', alpha=.3, label='STAR/hybrid zero-growth sensitivity')]
     fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5, .02), ncol=3, frameon=False, fontsize=9)
     fig.suptitle(title, y=.995)
@@ -119,7 +130,7 @@ def plot_leaders(table):
     handles = [Patch(color=COLORS[a], alpha=.85, label=LABELS[a]) for a in ENCODED]
     handles += [Patch(fc='#d9d9d9', hatch='///', label='Tie'), Patch(fc='#f4f4f4', label='No encoded arm fits')]
     fig.legend(handles=handles, loc='lower center', ncol=5, frameon=False, fontsize=9, bbox_to_anchor=(.5, -.01))
-    fig.suptitle('Which change moves the encoded capacity leader? Cells show the leader and its lattice side L', y=1.0)
+    fig.suptitle('Encoded capacity leader by optimizer option; cells show the leader and its lattice side L', y=1.0)
     fig.tight_layout(rect=(0, .04, 1, .97))
     save(fig, 'optimization_round_leaders')
 
@@ -130,14 +141,21 @@ def fmt(v):
 
 def summary(rows, table, changes, validation):
     cfg = settings()
-    lines = ['# Optimization round: which choices change the winner', '',
-             'This round implements the five changes agreed in [OPUS55_REVIEW.md](../../OPUS55_REVIEW.md) §0,',
-             'each alone and all together, against a `v1_menu` configuration that reproduces',
-             f'`results/integrated_v1` and the NISQ rows of `results/physics_sweep_v1` ({validation["v1_replays"]} replays checked).',
+    calibrated = bool(cfg.get('surface_law'))
+    intro = (['# Optimization round v2: calibrated surface-code law', '',
+              'Identical to [round v1](../optimization_round_v1/summary.md) except that both encoded arms use the',
+              'Stim-calibrated surface-code law of [SURFACE_LAW.md](../../docs/SURFACE_LAW.md) (per-p fit; Λ = 7.41 at p = 10⁻³,',
+              f'89 at p = 10⁻⁴; conservative X+Z amplitude). Physical-qubit rows replay round v1 exactly ({validation["v1_replays"]} checks).']
+             if calibrated else
+             ['# Optimization round: which choices change the winner', '',
+              'This round implements the five changes agreed in [OPUS55_REVIEW.md](../../OPUS55_REVIEW.md) §0,',
+              'each alone and all together, against a `v1_menu` configuration that reproduces',
+              f'`results/integrated_v1` and the NISQ rows of `results/physics_sweep_v1` ({validation["v1_replays"]} replays checked).'])
+    lines = intro + [
              'Improvement factors below are measured outputs of the declared model, not assumptions.', '',
-             '[Headline figure (τ = L/4)](../../figures/optimization_round_capacity.pdf) · '
-             '[Fixed τ = 1 benchmark](../../figures/optimization_round_fixed_tau.pdf) · '
-             '[Leader map](../../figures/optimization_round_leaders.pdf) · [Methods](../../docs/OPTIMIZATION_ROUND.md)', '',
+             f'[Headline figure (τ = L/4)](../../figures/optimization_round_capacity{SUFFIX}.pdf) · '
+             f'[Fixed τ = 1 benchmark](../../figures/optimization_round_fixed_tau{SUFFIX}.pdf) · '
+             f'[Leader map](../../figures/optimization_round_leaders{SUFFIX}.pdf) · [Methods](../../docs/OPTIMIZATION_ROUND.md)', '',
              '## Encoded capacity leader by configuration', '',
              'Entries give the leader and its lattice side at Q = 10⁶ and 10⁸. The time-growing family (τ = L/4) is the headline;',
              'fixed τ = 1 is retained as an implementation benchmark.', '']
@@ -199,21 +217,30 @@ def summary(rows, table, changes, validation):
     lines += ['', '## Scope', '', cfg['scope'], '',
               'Raw-RUS gains rest on first-order coherent cancellation in the restricted instrument; '
               'Toshio et al. App. E finds raw RUS slightly worse than PCEC. See [RAW_RUS_NOTE.md](../../docs/RAW_RUS_NOTE.md).', '',
-              'Both encoded arms use the reference surface-code law (A = 0.1, Λ = 10 at p = 10⁻³). The Stim calibration in '
-              '[SURFACE_LAW.md](../../docs/SURFACE_LAW.md) gives Λ = 7.4, about +4–6 in distance, and is not yet propagated.', '',
+              ('Both encoded arms use the Stim-calibrated surface-code law of [SURFACE_LAW.md](../../docs/SURFACE_LAW.md), '
+               'fitted at d = 3–9 and extrapolated to the distances used here.' if calibrated else
+               'Both encoded arms use the reference surface-code law (A = 0.1, Λ = 10 at p = 10⁻³). The Stim calibration in '
+               '[SURFACE_LAW.md](../../docs/SURFACE_LAW.md) gives Λ = 7.4, about +4–6 in distance; see '
+               '[round v2](../optimization_round_v2/summary.md) for the propagated result.'), '',
               f'Validation: {validation["status"]}. Reproduce with `make optimization-round` (compute node recommended; '
               '`pbs/optimization_round.pbs`), redraw with `make optimization-round-figures`, audit with `make optimization-round-check`.', '']
-    (OUT/'summary.md').write_text('\n'.join(lines))
+    (o.OUT/'summary.md').write_text('\n'.join(lines))
 
 
 def main():
-    rows, table = read(OUT/'costs.json'), read(OUT/'capacity.json')
+    global SUFFIX
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--round', choices=sorted(o.ROUNDS), default='v1')
+    name = parser.parse_args().round
+    o.use_round(name)
+    SUFFIX = '' if name == 'v1' else '_'+name
+    rows, table = read(o.OUT/'costs.json'), read(o.OUT/'capacity.json')
     plot_family(rows, 'tau_L_over_4', 'optimization_round_capacity',
-                'Time-growing workload (τ = L/4): capacity after the optimization round')
+                'Capacity for the time-growing workload (τ = L/4)')
     plot_family(rows, 'tau_1', 'optimization_round_fixed_tau',
-                'Fixed τ = 1 implementation benchmark: capacity after the optimization round')
+                'Fixed-time benchmark (τ = 1)')
     plot_leaders(table)
-    summary(rows, table, read(OUT/'changes.json'), read(OUT/'validation.json'))
+    summary(rows, table, read(o.OUT/'changes.json'), read(o.OUT/'validation.json'))
 
 
 if __name__ == '__main__':

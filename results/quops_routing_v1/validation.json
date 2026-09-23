@@ -1,0 +1,24 @@
+{
+  "statevector_comparisons": 16,
+  "fusion_group_elements": 6,
+  "all_circuits": "gate identities, causal order, adjacency, final token permutation",
+  "elapsed_seconds_this_run": 645.3564130682498,
+  "host": "i073",
+  "workers": 48,
+  "expected_pairs": 1800,
+  "completed_pairs": 1800,
+  "complete": true,
+  "command": [
+    "python/quops_routing.py",
+    "run",
+    "--workers",
+    "48",
+    "--max-seconds",
+    "2100"
+  ],
+  "versions": {
+    "cirq": "1.4.0",
+    "networkx": "3.4.2"
+  },
+  "source_sha256": "a2bf5ae3e81367796f6d5d3bd4d00b90f91970fbe61ee387eabd1483a404a843"
+}

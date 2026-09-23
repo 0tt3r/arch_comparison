@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "seconds": 2.506467580795288,
+  "host": "i533",
+  "python": "/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python",
+  "python_version": "3.12.0",
+  "numpy": "1.26.4",
+  "source_sha256": "25699084c30660b5fa2abaef13a50b2e9d7e06295ba21d2636f7784fd58dd41b",
+  "rows": 14405
+}

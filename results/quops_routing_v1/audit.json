@@ -1,0 +1,14 @@
+{
+  "records": 3600,
+  "cells": 180,
+  "samples_per_cell": 20,
+  "duplicate_keys": false,
+  "area_comparisons_identical": 1800,
+  "raw_and_source_hashes_verified": true,
+  "count_and_depth_nonincrease_after_fusion": true,
+  "constructive_depth_bound_verified": true,
+  "routing_audits": "all cases: nearest-neighbor edges, original gates and per-qubit causal order, final token permutation",
+  "statevector_comparisons": 16,
+  "paper_ensemble_checked": "local PDF p13, section II B; D=d/2, zeta=1",
+  "production_exit_status": 0
+}

@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "method": "exact_angle_mean",
+  "w": 7,
+  "replica": 2,
+  "max_depth": 464,
+  "rows": 1332,
+  "seconds": 1.7391152381896973,
+  "host": "i127",
+  "source_sha256": "5ff749b6ed16b6cefd1a92f3b40c67ffded967a5cfb70af79e0fc0786494963c",
+  "circuit_sha256": "8eb5cb0a39adc7894ae63aeaf277081e14b28bc38f4c4cbc614af38beaae7e6e",
+  "raw_sha256": "3cf4c9add802065eede1613a6075f72aa457a41a78d182b1c9e913fc3d358e8f",
+  "seed": [
+    26092303,
+    7,
+    2
+  ]
+}

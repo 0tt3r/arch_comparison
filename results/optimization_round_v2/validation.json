@@ -1,0 +1,8 @@
+{
+  "status": "PASS: round-v1 NISQ replay, calibrated surface law, budgets, fault ledgers, switch domains, PCEC >= raw",
+  "resource_rows": 6084,
+  "v1_replays": 2184,
+  "channel_pairs_compared": 15287,
+  "channel_points": 37918,
+  "scope": "Analytical capacity model with the integrated_v1 component instruments. Concurrency widths, per-lane and per-port tile charges, and the source-to-data transfer are declared assumptions, not compiled schedules. Richardson residuals are the measured finite-patch envelope of |(4E(2r)-E(r))/3| r^4 at r >= 8 tau. The time-growing family uses the running maximum of all measured patches through each time; no patch larger than 4x4 is measured. Interacting bulk convergence is not established. v2 uses the Stim-calibrated surface-code law for both encoded arms; its fit is memory-only at d=3-9 and is extrapolated to the distances used here."
+}

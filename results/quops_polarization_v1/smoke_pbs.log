@@ -1,0 +1,2 @@
+i127
+{"status": "complete", "method": "exact_ptm", "w": 4, "replica": 999, "max_depth": 5, "rows": 15, "seconds": 3.623953104019165, "host": "i127", "source_sha256": "3e2f2851bfad890a0d4bd81d838b9d54c2ccff6d1062ac95ab42dfc29c4eb388", "circuit_sha256": "fe52c933be9da173a000c0c2e5ba1147ef2621fc36e56feb52f23815a12a7b52", "raw_sha256": "877ceacc436b233f17477dfca3e75dc0372a199bac315633431cfe59f6a1eed3", "seed": [26092303, 4, 999]}

@@ -7,11 +7,12 @@
 #PBS -l walltime=04:00:00
 #PBS -j oe
 #PBS -r y
-# Resumable: completed work items are kept in results/optimization_round_v1/costs.json.
+# Resumable: completed work items are kept in results/optimization_round_<ROUND>/costs.json.
+# Submit with: qsub -v ROUND=v2 pbs/optimization_round.pbs
 set -euo pipefail
 cd /lcrc/project/QC_NA_Sim/architecture_comparison
 export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1 NUMBA_NUM_THREADS=1
 PY=/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python
 "$PY" -V
-"$PY" -u python/optimization_round.py --workers "${WORKERS:-120}"
-"$PY" -u python/optimization_round.py --check
+"$PY" -u python/optimization_round.py --round "${ROUND:-v1}" --workers "${WORKERS:-120}"
+"$PY" -u python/optimization_round.py --round "${ROUND:-v1}" --check

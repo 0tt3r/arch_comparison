@@ -4,14 +4,34 @@
     "family": "tau_1",
     "p": 0.001,
     "epsilon": 0.01,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "tie:hybrid+ft",
+    "leader_changed": true,
+    "capacity_moves": {
+      "hybrid": [
+        12,
+        14
+      ]
+    }
+  },
+  {
+    "configuration": "raw_rus",
+    "family": "tau_1",
+    "p": 0.001,
+    "epsilon": 0.01,
     "Q": 10000000,
     "leader_before": "ft",
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         12,
-        16
+        14
+      ],
+      "hybrid": [
+        14,
+        18
       ]
     }
   },
@@ -25,9 +45,13 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
+      "star": [
+        12,
+        14
+      ],
       "hybrid": [
-        16,
-        20
+        18,
+        22
       ]
     }
   },
@@ -42,7 +66,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        12,
+        14,
         16
       ],
       "hybrid": [
@@ -72,14 +96,50 @@
     "family": "tau_1",
     "p": 0.0001,
     "epsilon": 0.01,
-    "Q": 100000000,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        16,
+        18
+      ]
+    }
+  },
+  {
+    "configuration": "raw_rus",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 10000000,
     "leader_before": "ft",
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
       "star": [
         20,
-        24
+        22
+      ]
+    }
+  },
+  {
+    "configuration": "raw_rus",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 100000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        22,
+        28
+      ],
+      "hybrid": [
+        36,
+        38
       ]
     }
   },
@@ -94,8 +154,32 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        24,
-        32
+        26,
+        34
+      ],
+      "hybrid": [
+        42,
+        44
+      ]
+    }
+  },
+  {
+    "configuration": "raw_rus",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.001,
+    "Q": 100000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        12,
+        14
+      ],
+      "hybrid": [
+        16,
+        18
       ]
     }
   },
@@ -110,7 +194,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        16,
+        18,
         20
       ],
       "hybrid": [
@@ -130,8 +214,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        4,
+        6,
         8
+      ],
+      "hybrid": [
+        8,
+        10
       ]
     }
   },
@@ -145,8 +233,12 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         8,
+        10
+      ],
+      "hybrid": [
+        10,
         12
       ]
     }
@@ -161,8 +253,12 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         8,
+        10
+      ],
+      "hybrid": [
+        10,
         12
       ]
     }
@@ -178,8 +274,24 @@
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
+      ]
+    }
+  },
+  {
+    "configuration": "raw_rus",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 10000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        12,
+        14
       ]
     }
   },
@@ -210,11 +322,11 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        12,
+        14,
         16
       ],
       "hybrid": [
-        16,
+        18,
         20
       ]
     }
@@ -225,12 +337,12 @@
     "p": 0.0001,
     "epsilon": 0.001,
     "Q": 10000000,
-    "leader_before": "tie:hybrid+ft",
-    "leader_after": "tie:star+hybrid+ft",
-    "leader_changed": true,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
     "capacity_moves": {
       "star": [
-        4,
+        6,
         8
       ]
     }
@@ -245,8 +357,12 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         8,
+        10
+      ],
+      "hybrid": [
+        10,
         12
       ]
     }
@@ -262,8 +378,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        8,
+        10,
         12
+      ],
+      "hybrid": [
+        12,
+        14
       ]
     }
   },
@@ -288,13 +408,29 @@
     "family": "tau_1",
     "p": 0.001,
     "epsilon": 0.01,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "tie:hybrid+ft",
+    "leader_changed": true,
+    "capacity_moves": {
+      "hybrid": [
+        12,
+        14
+      ]
+    }
+  },
+  {
+    "configuration": "lanes",
+    "family": "tau_1",
+    "p": 0.001,
+    "epsilon": 0.01,
     "Q": 10000000,
     "leader_before": "ft",
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        12,
+        14,
         16
       ]
     }
@@ -320,14 +456,70 @@
     "family": "tau_1",
     "p": 0.0001,
     "epsilon": 0.01,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        16,
+        18
+      ]
+    }
+  },
+  {
+    "configuration": "lanes",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 10000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        32,
+        34
+      ]
+    }
+  },
+  {
+    "configuration": "lanes",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.01,
     "Q": 100000000,
     "leader_before": "ft",
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        20,
+        22,
         24
+      ],
+      "hybrid": [
+        36,
+        38
+      ]
+    }
+  },
+  {
+    "configuration": "lanes",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 1000000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        26,
+        28
+      ],
+      "hybrid": [
+        42,
+        44
       ]
     }
   },
@@ -352,11 +544,31 @@
     "family": "tau_1",
     "p": 0.0001,
     "epsilon": 0.001,
+    "Q": 10000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        12,
+        14
+      ]
+    }
+  },
+  {
+    "configuration": "lanes",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.001,
     "Q": 100000000,
     "leader_before": "ft",
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
+      "star": [
+        12,
+        14
+      ],
       "hybrid": [
         16,
         20
@@ -375,7 +587,7 @@
     "capacity_moves": {
       "hybrid": [
         20,
-        24
+        26
       ]
     }
   },
@@ -390,7 +602,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        4,
+        6,
         8
       ]
     }
@@ -406,8 +618,24 @@
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        8,
+        10,
         12
+      ]
+    }
+  },
+  {
+    "configuration": "lanes",
+    "family": "tau_L_over_4",
+    "p": 0.001,
+    "epsilon": 0.001,
+    "Q": 1000000,
+    "leader_before": "tie:star+hybrid+ft",
+    "leader_after": "hybrid",
+    "leader_changed": true,
+    "capacity_moves": {
+      "hybrid": [
+        4,
+        6
       ]
     }
   },
@@ -422,8 +650,24 @@
     "leader_changed": true,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
+      ]
+    }
+  },
+  {
+    "configuration": "lanes",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 100000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        12,
+        14
       ]
     }
   },
@@ -437,8 +681,12 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         8,
+        10
+      ],
+      "hybrid": [
+        10,
         12
       ]
     }
@@ -454,8 +702,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        8,
+        10,
         12
+      ],
+      "hybrid": [
+        12,
+        14
       ]
     }
   },
@@ -465,12 +717,12 @@
     "p": 0.001,
     "epsilon": 0.01,
     "Q": 1000000,
-    "leader_before": "tie:hybrid+ft",
+    "leader_before": "ft",
     "leader_after": "ft",
-    "leader_changed": true,
+    "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        12,
+        14,
         16
       ]
     }
@@ -486,12 +738,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        12,
+        14,
         16
       ],
       "ft": [
-        32,
-        40
+        38,
+        46
       ]
     }
   },
@@ -538,7 +790,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        16,
+        18,
         48
       ]
     }
@@ -554,7 +806,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        32,
+        36,
         48
       ]
     }
@@ -572,6 +824,22 @@
       "ft": [
         6,
         8
+      ]
+    }
+  },
+  {
+    "configuration": "ft_delivery",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 100000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        36,
+        38
       ]
     }
   },
@@ -607,7 +875,7 @@
     "capacity_moves": {
       "ft": [
         16,
-        32
+        36
       ]
     }
   },
@@ -622,8 +890,24 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        32,
+        34,
         48
+      ]
+    }
+  },
+  {
+    "configuration": "ft_delivery",
+    "family": "tau_L_over_4",
+    "p": 0.001,
+    "epsilon": 0.01,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "ft": [
+        12,
+        14
       ]
     }
   },
@@ -638,7 +922,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        28,
+        30,
         32
       ]
     }
@@ -654,8 +938,24 @@
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        8,
+        10,
         12
+      ]
+    }
+  },
+  {
+    "configuration": "ft_delivery",
+    "family": "tau_L_over_4",
+    "p": 0.001,
+    "epsilon": 0.001,
+    "Q": 1000000,
+    "leader_before": "tie:star+hybrid+ft",
+    "leader_after": "ft",
+    "leader_changed": true,
+    "capacity_moves": {
+      "ft": [
+        4,
+        6
       ]
     }
   },
@@ -670,7 +970,7 @@
     "leader_changed": true,
     "capacity_moves": {
       "ft": [
-        4,
+        6,
         8
       ]
     }
@@ -718,7 +1018,7 @@
     "leader_changed": true,
     "capacity_moves": {
       "ft": [
-        4,
+        6,
         8
       ]
     }
@@ -734,7 +1034,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        16,
+        18,
         24
       ]
     }
@@ -744,13 +1044,29 @@
     "family": "tau_L_over_4",
     "p": 0.0001,
     "epsilon": 0.001,
-    "Q": 10000000,
-    "leader_before": "tie:hybrid+ft",
-    "leader_after": "ft",
+    "Q": 1000000,
+    "leader_before": "tie:star+hybrid",
+    "leader_after": "tie:star+hybrid+ft",
     "leader_changed": true,
     "capacity_moves": {
       "ft": [
-        8,
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "configuration": "ft_delivery",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.001,
+    "Q": 10000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "ft": [
+        10,
         16
       ]
     }
@@ -766,7 +1082,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        16,
+        18,
         32
       ]
     }
@@ -811,6 +1127,26 @@
     "configuration": "distances",
     "family": "tau_1",
     "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        24,
+        26
+      ],
+      "ft": [
+        26,
+        28
+      ]
+    }
+  },
+  {
+    "configuration": "distances",
+    "family": "tau_1",
+    "p": 0.0001,
     "epsilon": 0.001,
     "Q": 1000000,
     "leader_before": "tie:star+hybrid",
@@ -830,16 +1166,16 @@
     "epsilon": 0.01,
     "Q": 100000,
     "leader_before": "star",
-    "leader_after": "tie:star+hybrid+ft",
+    "leader_after": "ft",
     "leader_changed": true,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
       ],
       "ft": [
-        4,
-        8
+        6,
+        10
       ]
     }
   },
@@ -854,7 +1190,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        16,
+        18,
         20
       ]
     }
@@ -906,8 +1242,8 @@
     "leader_changed": false,
     "capacity_moves": {
       "ft": [
-        16,
-        20
+        18,
+        22
       ],
       "nisq_effective": [
         4,
@@ -929,8 +1265,12 @@
         8,
         10
       ],
+      "hybrid": [
+        12,
+        14
+      ],
       "ft": [
-        32,
+        36,
         40
       ],
       "nisq_effective": [
@@ -1022,12 +1362,16 @@
     "epsilon": 0.001,
     "Q": 10000000,
     "leader_before": "ft",
-    "leader_after": "tie:hybrid+ft",
-    "leader_changed": true,
+    "leader_after": "ft",
+    "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
         12,
         16
+      ],
+      "ft": [
+        16,
+        18
       ],
       "nisq_effective": [
         10,
@@ -1048,6 +1392,10 @@
       "hybrid": [
         16,
         20
+      ],
+      "ft": [
+        34,
+        38
       ],
       "nisq_effective": [
         10,
@@ -1071,7 +1419,7 @@
     "capacity_moves": {
       "hybrid": [
         20,
-        24
+        26
       ],
       "nisq_effective": [
         10,
@@ -1088,14 +1436,46 @@
     "family": "tau_L_over_4",
     "p": 0.001,
     "epsilon": 0.001,
+    "Q": 1000000,
+    "leader_before": "tie:star+hybrid+ft",
+    "leader_after": "hybrid",
+    "leader_changed": true,
+    "capacity_moves": {
+      "hybrid": [
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "configuration": "richardson",
+    "family": "tau_L_over_4",
+    "p": 0.001,
+    "epsilon": 0.001,
     "Q": 100000000,
     "leader_before": "ft",
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
+      ]
+    }
+  },
+  {
+    "configuration": "richardson",
+    "family": "tau_L_over_4",
+    "p": 0.001,
+    "epsilon": 0.001,
+    "Q": 1000000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "ft": [
+        20,
+        22
       ]
     }
   },
@@ -1110,7 +1490,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "nisq_effective": [
-        4,
+        6,
         8
       ]
     }
@@ -1121,13 +1501,21 @@
     "p": 0.0001,
     "epsilon": 0.001,
     "Q": 100000,
-    "leader_before": "tie:star+hybrid+ft",
-    "leader_after": "tie:star+hybrid+ft",
-    "leader_changed": false,
+    "leader_before": "hybrid",
+    "leader_after": "tie:star+hybrid",
+    "leader_changed": true,
     "capacity_moves": {
-      "nisq_effective": [
+      "star": [
         4,
+        6
+      ],
+      "nisq_effective": [
+        6,
         8
+      ],
+      "nisq_pec": [
+        4,
+        6
       ]
     }
   },
@@ -1137,13 +1525,21 @@
     "p": 0.0001,
     "epsilon": 0.001,
     "Q": 1000000,
-    "leader_before": "tie:star+hybrid+ft",
+    "leader_before": "tie:star+hybrid",
     "leader_after": "hybrid",
     "leader_changed": true,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
+      ],
+      "ft": [
+        4,
+        6
+      ],
+      "nisq_pec": [
+        4,
+        6
       ]
     }
   },
@@ -1153,16 +1549,20 @@
     "p": 0.0001,
     "epsilon": 0.001,
     "Q": 10000000,
-    "leader_before": "tie:hybrid+ft",
+    "leader_before": "ft",
     "leader_after": "ft",
-    "leader_changed": true,
+    "leader_changed": false,
     "capacity_moves": {
       "star": [
-        4,
+        6,
         8
       ],
-      "ft": [
+      "hybrid": [
         8,
+        10
+      ],
+      "ft": [
+        10,
         12
       ]
     }
@@ -1178,12 +1578,28 @@
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        8,
+        10,
         12
       ],
       "ft": [
-        16,
+        18,
         20
+      ]
+    }
+  },
+  {
+    "configuration": "richardson",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.001,
+    "Q": 1000000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        12,
+        14
       ]
     }
   },
@@ -1209,16 +1625,20 @@
     "p": 0.001,
     "epsilon": 0.01,
     "Q": 1000000,
-    "leader_before": "tie:hybrid+ft",
+    "leader_before": "ft",
     "leader_after": "ft",
-    "leader_changed": true,
+    "leader_changed": false,
     "capacity_moves": {
       "star": [
         10,
         12
       ],
-      "ft": [
+      "hybrid": [
         12,
+        14
+      ],
+      "ft": [
+        14,
         16
       ]
     }
@@ -1233,13 +1653,17 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         12,
+        14
+      ],
+      "hybrid": [
+        14,
         20
       ],
       "ft": [
-        32,
-        40
+        38,
+        46
       ]
     }
   },
@@ -1258,7 +1682,7 @@
         16
       ],
       "hybrid": [
-        16,
+        18,
         24
       ]
     }
@@ -1274,12 +1698,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        12,
-        16
+        14,
+        18
       ],
       "hybrid": [
         20,
-        24
+        26
       ]
     }
   },
@@ -1327,7 +1751,7 @@
       ],
       "ft": [
         8,
-        16
+        18
       ]
     }
   },
@@ -1347,10 +1771,10 @@
       ],
       "hybrid": [
         10,
-        12
+        14
       ],
       "ft": [
-        16,
+        18,
         48
       ],
       "nisq_effective": [
@@ -1378,7 +1802,7 @@
         16
       ],
       "ft": [
-        32,
+        36,
         48
       ],
       "nisq_effective": [
@@ -1428,6 +1852,30 @@
     "family": "tau_1",
     "p": 0.0001,
     "epsilon": 0.01,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        16,
+        18
+      ],
+      "hybrid": [
+        24,
+        26
+      ],
+      "ft": [
+        26,
+        30
+      ]
+    }
+  },
+  {
+    "configuration": "all",
+    "family": "tau_1",
+    "p": 0.0001,
+    "epsilon": 0.01,
     "Q": 10000000,
     "leader_before": "ft",
     "leader_after": "ft",
@@ -1436,6 +1884,10 @@
       "star": [
         20,
         24
+      ],
+      "hybrid": [
+        32,
+        38
       ]
     }
   },
@@ -1450,12 +1902,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        20,
+        22,
         32
       ],
       "hybrid": [
-        32,
-        40
+        36,
+        46
       ]
     }
   },
@@ -1470,11 +1922,11 @@
     "leader_changed": true,
     "capacity_moves": {
       "star": [
-        24,
-        32
+        26,
+        38
       ],
       "hybrid": [
-        40,
+        42,
         48
       ]
     }
@@ -1550,7 +2002,7 @@
     "epsilon": 0.001,
     "Q": 1000000,
     "leader_before": "tie:star+hybrid",
-    "leader_after": "tie:hybrid+ft",
+    "leader_after": "ft",
     "leader_changed": true,
     "capacity_moves": {
       "hybrid": [
@@ -1559,7 +2011,7 @@
       ],
       "ft": [
         6,
-        16
+        18
       ]
     }
   },
@@ -1583,7 +2035,7 @@
       ],
       "ft": [
         16,
-        40
+        44
       ],
       "nisq_effective": [
         10,
@@ -1603,14 +2055,14 @@
     "capacity_moves": {
       "star": [
         12,
-        16
+        18
       ],
       "hybrid": [
         16,
-        24
+        26
       ],
       "ft": [
-        32,
+        34,
         48
       ],
       "nisq_effective": [
@@ -1634,12 +2086,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        16,
+        18,
         24
       ],
       "hybrid": [
         20,
-        32
+        34
       ],
       "nisq_effective": [
         10,
@@ -1662,8 +2114,16 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        4,
+        6,
         8
+      ],
+      "hybrid": [
+        8,
+        10
+      ],
+      "ft": [
+        12,
+        14
       ]
     }
   },
@@ -1678,11 +2138,11 @@
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        8,
+        10,
         12
       ],
       "ft": [
-        28,
+        30,
         32
       ]
     }
@@ -1697,8 +2157,12 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         8,
+        10
+      ],
+      "hybrid": [
+        10,
         12
       ]
     }
@@ -1713,9 +2177,13 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         8,
-        12
+        10
+      ],
+      "hybrid": [
+        10,
+        14
       ]
     }
   },
@@ -1729,6 +2197,10 @@
     "leader_after": "ft",
     "leader_changed": true,
     "capacity_moves": {
+      "hybrid": [
+        4,
+        6
+      ],
       "ft": [
         4,
         8
@@ -1746,11 +2218,11 @@
     "leader_changed": true,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
       ],
       "ft": [
-        4,
+        6,
         8
       ]
     }
@@ -1766,12 +2238,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
       ],
       "ft": [
         12,
-        20
+        22
       ]
     }
   },
@@ -1786,8 +2258,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        4,
+        6,
         8
+      ],
+      "hybrid": [
+        8,
+        10
       ],
       "ft": [
         20,
@@ -1802,16 +2278,16 @@
     "epsilon": 0.01,
     "Q": 100000,
     "leader_before": "star",
-    "leader_after": "tie:star+hybrid+ft",
+    "leader_after": "ft",
     "leader_changed": true,
     "capacity_moves": {
       "hybrid": [
-        4,
+        6,
         8
       ],
       "ft": [
-        4,
-        8
+        6,
+        10
       ]
     }
   },
@@ -1826,16 +2302,36 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        8,
+        10,
         12
       ],
       "hybrid": [
-        12,
+        14,
         16
       ],
       "ft": [
+        18,
+        26
+      ]
+    }
+  },
+  {
+    "configuration": "all",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 10000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "star": [
+        12,
+        14
+      ],
+      "hybrid": [
         16,
-        24
+        18
       ]
     }
   },
@@ -1854,7 +2350,7 @@
         16
       ],
       "hybrid": [
-        16,
+        18,
         20
       ]
     }
@@ -1870,12 +2366,12 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        12,
-        16
+        14,
+        18
       ],
       "hybrid": [
-        16,
-        20
+        18,
+        22
       ]
     }
   },
@@ -1890,7 +2386,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "nisq_effective": [
-        4,
+        6,
         8
       ]
     }
@@ -1901,13 +2397,25 @@
     "p": 0.0001,
     "epsilon": 0.001,
     "Q": 100000,
-    "leader_before": "tie:star+hybrid+ft",
+    "leader_before": "hybrid",
     "leader_after": "tie:star+hybrid+ft",
-    "leader_changed": false,
+    "leader_changed": true,
     "capacity_moves": {
-      "nisq_effective": [
+      "star": [
         4,
+        6
+      ],
+      "ft": [
+        4,
+        6
+      ],
+      "nisq_effective": [
+        6,
         8
+      ],
+      "nisq_pec": [
+        4,
+        6
       ]
     }
   },
@@ -1917,17 +2425,21 @@
     "p": 0.0001,
     "epsilon": 0.001,
     "Q": 1000000,
-    "leader_before": "tie:star+hybrid+ft",
-    "leader_after": "tie:hybrid+ft",
+    "leader_before": "tie:star+hybrid",
+    "leader_after": "hybrid",
     "leader_changed": true,
     "capacity_moves": {
       "hybrid": [
-        4,
-        8
+        6,
+        10
       ],
       "ft": [
         4,
         8
+      ],
+      "nisq_pec": [
+        4,
+        6
       ]
     }
   },
@@ -1937,16 +2449,20 @@
     "p": 0.0001,
     "epsilon": 0.001,
     "Q": 10000000,
-    "leader_before": "tie:hybrid+ft",
+    "leader_before": "ft",
     "leader_after": "ft",
-    "leader_changed": true,
+    "leader_changed": false,
     "capacity_moves": {
       "star": [
-        4,
+        6,
         8
       ],
-      "ft": [
+      "hybrid": [
         8,
+        10
+      ],
+      "ft": [
+        10,
         16
       ]
     }
@@ -1961,12 +2477,16 @@
     "leader_after": "ft",
     "leader_changed": false,
     "capacity_moves": {
-      "hybrid": [
+      "star": [
         8,
-        12
+        10
+      ],
+      "hybrid": [
+        10,
+        14
       ],
       "ft": [
-        16,
+        18,
         32
       ]
     }
@@ -1982,7 +2502,7 @@
     "leader_changed": false,
     "capacity_moves": {
       "star": [
-        8,
+        10,
         12
       ],
       "hybrid": [

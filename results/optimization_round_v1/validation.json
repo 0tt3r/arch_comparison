@@ -1,8 +1,8 @@
 {
   "status": "PASS: integrated_v1/physics_sweep_v1 replay, budgets, fault ledgers, switch domains, PCEC >= raw",
-  "resource_rows": 3120,
+  "resource_rows": 6084,
   "v1_replays": 335,
-  "channel_pairs_compared": 8439,
-  "channel_points": 21830,
+  "channel_pairs_compared": 15173,
+  "channel_points": 37710,
   "scope": "Analytical capacity model with the integrated_v1 component instruments. Concurrency widths, per-lane and per-port tile charges, and the source-to-data transfer are declared assumptions, not compiled schedules. Richardson residuals are the measured finite-patch envelope of |(4E(2r)-E(r))/3| r^4 at r >= 8 tau. The time-growing family uses the running maximum of all measured patches through each time; no patch larger than 4x4 is measured. Interacting bulk convergence is not established."
 }

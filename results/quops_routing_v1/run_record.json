@@ -1,0 +1,54 @@
+{
+  "production_job": "7791427.imgt1",
+  "smoke_jobs": [
+    "7791423.imgt1",
+    "7791425.imgt1"
+  ],
+  "queue": "backfill",
+  "account": "QC_NA_Sim",
+  "nodes": 1,
+  "ncpus_allocated": 128,
+  "workers": 48,
+  "walltime": "00:40:00",
+  "python": "/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python",
+  "widths": [
+    4,
+    6,
+    9,
+    12,
+    16,
+    20,
+    25,
+    30,
+    36,
+    49,
+    64,
+    81,
+    100,
+    121,
+    144
+  ],
+  "layers": [
+    5,
+    10,
+    20
+  ],
+  "samples_per_width_depth": 20,
+  "area_multipliers": [
+    1,
+    2
+  ],
+  "seed_base": 260912146,
+  "production_source_sha256": "a2bf5ae3e81367796f6d5d3bd4d00b90f91970fbe61ee387eabd1483a404a843",
+  "pilot_note": "Interrupted one slow 144-qubit pilot after about eight CPU minutes; saved prefix is diagnostic only and not pooled into production. Final sweep is fresh with KAK fusion and the embedded compact option.",
+  "completion": {
+    "job_state": "F",
+    "exit_status": 0,
+    "walltime": "00:11:23",
+    "cput": "08:33:30",
+    "peak_memory_kb": 12368324,
+    "hostname": "i073",
+    "routed_cases": 3600,
+    "paired_cases": 1800
+  }
+}

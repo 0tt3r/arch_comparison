@@ -1,13 +1,19 @@
 # Hubbard dynamics on a fixed qubit array
 
-**Latest: [optimization round](results/optimization_round_v1/summary.md)**
+**Manuscript: [tex/main.pdf](tex/main.pdf)**, restructured setup-first: task, algorithm, one
+section per architecture, results, then calibration and history appendices (the earlier
+chronological version is in `tex/archive/`). Its results use
+**[optimization round v2](results/optimization_round_v2/summary.md)**, with the Stim-calibrated
+surface-code law; [round v1](results/optimization_round_v1/summary.md) keeps the reference law.
+
+**Optimization round: [v1 summary](results/optimization_round_v1/summary.md)**
 ([findings and methods](docs/OPTIMIZATION_ROUND.md)). It implements the five changes agreed in
 [OPUS55_REVIEW.md](OPUS55_REVIEW.md) §0 and reports which choices change the capacity leader.
 It leads with the time-growing workload (τ = L/4). Companion notes cover the
 [raw-RUS versus PCEC question](docs/RAW_RUS_NOTE.md) and the
-[Stim calibration of the surface-code law](docs/SURFACE_LAW.md) (Λ = 7.4 rather than 10 at p = 10⁻³; not yet propagated).
+[Stim calibration of the surface-code law](docs/SURFACE_LAW.md) (Λ = 7.4 rather than 10 at p = 10⁻³), propagated in round v2.
 
-![Time-growing capacity after the optimization round](figures/optimization_round_capacity.png)
+![Time-growing capacity, calibrated surface-code law](figures/optimization_round_capacity_v2.png)
 
 Start with the **[integrated comparison and NISQ requirements](results/integrated_v1/summary.md)**.
 This updates the encoded capacity comparison with the existing angle-dependent

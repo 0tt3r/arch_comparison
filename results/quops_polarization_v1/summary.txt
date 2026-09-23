@@ -1,0 +1,5 @@
+Exact ensemble means cover widths 2–8 down to gamma about 0.2; 20 exact individual circuits cover deep widths 2–6, with widths 7–8 individual checks limited to depths 1–2.
+Near gamma=0.2, exact/local-product polarization ratios are 1.071–1.236; circuit-dimension embedding reduces maximum ratio error to 0.215% across the sweep.
+The shared fitted decay constant is c=1.01331 (8.06% maximum held-out ratio error); width-specific constants reduce held-out error to 0.191%.
+Idle noise lowers polarization by 11.0%, 6.1%, and 4.2% at widths 3, 5, and 7 near the target, and has no effect at even widths under this schedule.
+Raw data, fits, figure, audits, and reproducible seeds are saved here; docs/QUOPS_POLARIZATION.md records that deep individual-circuit widths 7–8 remain incomplete.

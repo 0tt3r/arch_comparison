@@ -16,14 +16,14 @@ fixed τ = 1 is retained as an implementation benchmark.
 
 | p | ε | Q | v1 menu | + raw RUS | + lanes | + FT delivery | + separate distances | + Richardson | all five |
 |---:|---:|---:|---|---|---|---|---|---|---|
-| 0.001 | 0.01 | 10^6 | tie:hybrid+ft (10/12/12) | tie:hybrid+ft (10/12/12) | tie:hybrid+ft (10/12/12) | ft (10/12/16) | tie:hybrid+ft (10/12/12) | tie:hybrid+ft (10/12/12) | ft (12/12/16) |
-| 0.001 | 0.01 | 10^8 | ft (12/16/48) | ft (12/20/48) | ft (12/16/48) | ft (12/16/48) | ft (12/16/48) | ft (12/16/48) | ft (16/24/48) |
+| 0.001 | 0.01 | 10^6 | ft (10/12/14) | tie:hybrid+ft (10/14/14) | tie:hybrid+ft (10/14/14) | ft (10/12/16) | ft (10/12/14) | ft (10/12/14) | ft (12/14/16) |
+| 0.001 | 0.01 | 10^8 | ft (12/18/48) | ft (14/22/48) | ft (12/18/48) | ft (12/18/48) | ft (12/18/48) | ft (12/18/48) | ft (16/24/48) |
 | 0.001 | 0.001 | 10^6 | hybrid (4/6/4) | hybrid (4/6/4) | hybrid (4/6/4) | ft (4/6/8) | hybrid (4/6/4) | tie:star+hybrid+ft (6/6/6) | tie:hybrid+ft (6/10/10) |
-| 0.001 | 0.001 | 10^8 | ft (8/10/16) | ft (8/10/16) | ft (8/10/16) | ft (8/10/48) | ft (8/10/16) | ft (8/10/20) | ft (10/12/48) |
-| 0.0001 | 0.01 | 10^6 | tie:hybrid+ft (16/24/24) | tie:hybrid+ft (16/24/24) | tie:hybrid+ft (16/24/24) | tie:hybrid+ft (16/24/24) | tie:hybrid+ft (16/24/24) | tie:hybrid+ft (16/24/24) | tie:hybrid+ft (16/24/24) |
-| 0.0001 | 0.01 | 10^8 | ft (20/32/48) | ft (24/32/48) | ft (24/32/48) | ft (20/32/48) | ft (20/32/48) | ft (20/32/48) | ft (32/40/48) |
-| 0.0001 | 0.001 | 10^6 | tie:star+hybrid (8/8/6) | tie:star+hybrid (8/8/6) | hybrid (8/10/6) | tie:hybrid+ft (8/10/10) | hybrid (8/10/6) | hybrid (8/12/8) | tie:hybrid+ft (8/16/16) |
-| 0.0001 | 0.001 | 10^8 | ft (12/16/32) | ft (12/16/32) | ft (12/20/32) | ft (12/16/48) | ft (12/16/32) | ft (12/20/32) | ft (16/24/48) |
+| 0.001 | 0.001 | 10^8 | ft (8/10/18) | ft (8/10/18) | ft (8/10/18) | ft (8/10/48) | ft (8/10/18) | ft (8/10/22) | ft (10/14/48) |
+| 0.0001 | 0.01 | 10^6 | ft (16/24/26) | ft (18/24/26) | ft (18/24/26) | ft (16/24/26) | ft (16/26/28) | ft (16/24/26) | ft (18/26/30) |
+| 0.0001 | 0.01 | 10^8 | ft (22/36/48) | ft (28/38/48) | ft (24/38/48) | ft (22/38/48) | ft (22/36/48) | ft (22/36/48) | ft (32/46/48) |
+| 0.0001 | 0.001 | 10^6 | tie:star+hybrid (8/8/6) | tie:star+hybrid (8/8/6) | hybrid (8/10/6) | tie:hybrid+ft (8/10/10) | hybrid (8/10/6) | hybrid (8/12/8) | ft (8/16/18) |
+| 0.0001 | 0.001 | 10^8 | ft (12/16/34) | ft (14/18/34) | ft (14/20/34) | ft (12/16/48) | ft (12/16/34) | ft (12/20/38) | ft (18/26/48) |
 
 Cells: leader (STAR/hybrid/FT sides).
 
@@ -31,14 +31,14 @@ Cells: leader (STAR/hybrid/FT sides).
 
 | p | ε | Q | v1 menu | + raw RUS | + lanes | + FT delivery | + separate distances | + Richardson | all five |
 |---:|---:|---:|---|---|---|---|---|---|---|
-| 0.001 | 0.01 | 10^6 | ft (4/8/12) | ft (8/8/12) | ft (8/8/12) | ft (4/8/12) | ft (4/8/12) | ft (4/8/12) | ft (8/8/12) |
-| 0.001 | 0.01 | 10^8 | ft (8/8/32) | ft (8/12/32) | ft (8/8/32) | ft (8/8/32) | ft (8/8/32) | ft (8/8/32) | ft (8/12/32) |
-| 0.001 | 0.001 | 10^6 | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | ft (4/4/8) |
-| 0.001 | 0.001 | 10^8 | ft (4/4/12) | ft (4/8/12) | ft (4/4/12) | ft (4/4/20) | ft (4/4/12) | ft (4/8/12) | ft (4/8/20) |
-| 0.0001 | 0.01 | 10^6 | ft (8/12/16) | ft (8/12/16) | ft (8/12/16) | ft (8/12/24) | ft (8/12/20) | ft (8/12/16) | ft (12/16/24) |
-| 0.0001 | 0.01 | 10^8 | ft (12/16/32) | ft (16/16/32) | ft (12/16/32) | ft (12/16/32) | ft (12/16/32) | ft (12/16/32) | ft (16/20/32) |
-| 0.0001 | 0.001 | 10^6 | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | hybrid (4/8/4) | tie:hybrid+ft (4/8/8) |
-| 0.0001 | 0.001 | 10^8 | ft (8/8/16) | ft (8/12/16) | ft (8/12/16) | ft (8/8/32) | ft (8/8/16) | ft (8/12/20) | ft (8/12/32) |
+| 0.001 | 0.01 | 10^6 | ft (6/8/12) | ft (8/10/12) | ft (8/8/12) | ft (6/8/14) | ft (6/8/12) | ft (6/8/12) | ft (8/10/14) |
+| 0.001 | 0.01 | 10^8 | ft (8/10/32) | ft (10/12/32) | ft (8/10/32) | ft (8/10/32) | ft (8/10/32) | ft (8/10/32) | ft (10/12/32) |
+| 0.001 | 0.001 | 10^6 | tie:star+hybrid+ft (4/4/4) | tie:star+hybrid+ft (4/4/4) | hybrid (4/6/4) | ft (4/4/6) | tie:star+hybrid+ft (4/4/4) | hybrid (4/6/4) | ft (4/6/8) |
+| 0.001 | 0.001 | 10^8 | ft (6/6/12) | ft (6/8/12) | ft (6/6/12) | ft (6/6/20) | ft (6/6/12) | ft (6/8/12) | ft (6/8/22) |
+| 0.0001 | 0.01 | 10^6 | ft (10/14/18) | ft (10/14/18) | ft (10/14/18) | ft (10/14/24) | ft (10/14/20) | ft (10/14/18) | ft (12/16/26) |
+| 0.0001 | 0.01 | 10^8 | ft (12/18/32) | ft (16/18/32) | ft (14/18/32) | ft (12/18/32) | ft (12/18/32) | ft (12/18/32) | ft (16/20/32) |
+| 0.0001 | 0.001 | 10^6 | tie:star+hybrid (6/6/4) | tie:star+hybrid (6/6/4) | tie:star+hybrid (6/6/4) | tie:star+hybrid+ft (6/6/6) | tie:star+hybrid (6/6/4) | hybrid (6/8/6) | hybrid (6/10/8) |
+| 0.0001 | 0.001 | 10^8 | ft (8/10/18) | ft (10/12/18) | ft (10/12/18) | ft (8/10/32) | ft (8/10/18) | ft (8/12/20) | ft (10/14/32) |
 
 Cells: leader (STAR/hybrid/FT sides).
 
@@ -49,11 +49,11 @@ Out of 64 (family, p, ε, Q) cells, relative to the v1 menu:
 | Configuration | Cells with a different encoded leader |
 |---|---:|
 | + raw RUS | 1 |
-| + lanes | 4 |
+| + lanes | 6 |
 | + FT delivery | 8 |
 | + separate distances | 4 |
 | + Richardson | 6 |
-| all five | 15 |
+| all five | 14 |
 
 ## What each change buys at representative points
 
@@ -175,6 +175,6 @@ Analytical capacity model with the integrated_v1 component instruments. Concurre
 
 Raw-RUS gains rest on first-order coherent cancellation in the restricted instrument; Toshio et al. App. E finds raw RUS slightly worse than PCEC. See [RAW_RUS_NOTE.md](../../docs/RAW_RUS_NOTE.md).
 
-Both encoded arms use the reference surface-code law (A = 0.1, Λ = 10 at p = 10⁻³). The Stim calibration in [SURFACE_LAW.md](../../docs/SURFACE_LAW.md) gives Λ = 7.4, about +4–6 in distance, and is not yet propagated.
+Both encoded arms use the reference surface-code law (A = 0.1, Λ = 10 at p = 10⁻³). The Stim calibration in [SURFACE_LAW.md](../../docs/SURFACE_LAW.md) gives Λ = 7.4, about +4–6 in distance; see [round v2](../optimization_round_v2/summary.md) for the propagated result.
 
 Validation: PASS: integrated_v1/physics_sweep_v1 replay, budgets, fault ledgers, switch domains, PCEC >= raw. Reproduce with `make optimization-round` (compute node recommended; `pbs/optimization_round.pbs`), redraw with `make optimization-round-figures`, audit with `make optimization-round-check`.

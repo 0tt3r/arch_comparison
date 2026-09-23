@@ -1,0 +1,26 @@
+{
+  "model": "gamma=exp(-c*exposure); exposure=p*(n2+(n1+n_idle_10ns)/10)",
+  "training_p": [
+    0.001,
+    0.01
+  ],
+  "heldout_p": 0.003,
+  "fit_idle": true,
+  "weighting": "equal total weight per width/p cell; zero intercept; squared log residuals",
+  "global_c": 1.013309957374656,
+  "c_by_width": {
+    "2": 1.0693620365803203,
+    "3": 1.017527274499494,
+    "4": 1.0057414195586072,
+    "5": 1.0024850881378016,
+    "6": 1.002038442611122,
+    "7": 1.0016942899903367,
+    "8": 1.0018578964435254
+  },
+  "heldout_max_relative_error_global": 0.08062284266445174,
+  "heldout_max_relative_error_width": 0.0019044387089555137,
+  "local_product_max_relative_ratio": 1.2355938052634556,
+  "embedded_product_max_relative_error": 0.0021437142583033975,
+  "sample_mean_max_relative_deviation": 7.330195865451472e-05,
+  "scope": "Exact all-ensemble means w=2..8; 20 individual circuits w=2..6 at all depths; w=7,8 individual checks only D=1,2. Full-depth individual w=7,8 requirement not completed."
+}

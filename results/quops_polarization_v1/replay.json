@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "all_140_circuit_files_seed_reproduced": true,
+  "checks": [
+    {
+      "w": 2,
+      "p": 0.01,
+      "replica": 0,
+      "max_abs": 0.0,
+      "bitwise_equal": true
+    },
+    {
+      "w": 3,
+      "p": 0.01,
+      "replica": 0,
+      "max_abs": 0.0,
+      "bitwise_equal": true
+    },
+    {
+      "w": 6,
+      "p": 0.01,
+      "replica": 0,
+      "max_abs": 0.0,
+      "bitwise_equal": true
+    }
+  ],
+  "source_sha256": "25699084c30660b5fa2abaef13a50b2e9d7e06295ba21d2636f7784fd58dd41b"
+}

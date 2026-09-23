@@ -4,7 +4,17 @@ This round implements the five changes agreed in [OPUS55_REVIEW.md](../OPUS55_RE
 Its deliverable is **which choices change the capacity leader, and why**; improvement factors
 are read off afterwards rather than assumed. Results: [summary](../results/optimization_round_v1/summary.md).
 
-## Findings
+## Round v2: calibrated surface-code law
+
+`--round v2` (`configs/optimization_round_v2.json`, `results/optimization_round_v2/`) repeats
+the round with the per-p Stim fit of [SURFACE_LAW.md](SURFACE_LAW.md) for every encoded arm
+(A = A_X + A_Z, p_th = pΛ; Λ = 7.41 at p = 10⁻³, 89 at 10⁻⁴). Physical-qubit rows must equal
+round v1 exactly (1120 checks). Distances rise by 2 at small lattices and up to 6 at the largest;
+transitions move about 1.3–1.4× later at p = 10⁻³ and barely at 10⁻⁴. No ordering changes. The
+manuscript uses v2. `qsub -v ROUND=v2 pbs/optimization_round.pbs` reproduces it;
+`make optimization-round-v2-check` audits it.
+
+## Findings (round v1, reference law)
 
 Headline: time-growing workload τ = L/4, all five changes, one week. Exact tables are in the [summary](../results/optimization_round_v1/summary.md).
 
@@ -28,7 +38,7 @@ Headline: time-growing workload τ = L/4, all five changes, one week. Exact tabl
    instrument, which the paper's Appendix E does not reproduce ([RAW_RUS_NOTE.md](RAW_RUS_NOTE.md)).
    Delivery tile charges and concurrency caps are declared, not compiled. The Trotter envelope beyond τ = 4 and all lattices beyond 4×4 are transfers. The surface-code law is the reference A = 0.1, Λ = 10. The Stim calibration
    ([SURFACE_LAW.md](SURFACE_LAW.md)) gives Λ = 7.4 at p = 10⁻³, which means +4–6 in distance
-   (about 1.4× area) for both encoded arms; this is not yet propagated. The NISQ effective overhead is assumed, and interacting bulk convergence is open.
+   (about 1.4× area) for both encoded arms; round v2 propagates it. The NISQ effective overhead is assumed, and interacting bulk convergence is open.
 
 ## Design
 
