@@ -1,6 +1,12 @@
 # What the NISQ qubit estimate measures
 
-The current curve is a sufficient sampling budget for gatewise probabilistic
+This is the historical four-step compiled ledger. The current comparison is
+in [INTEGRATED_COMPARISON.md](INTEGRATED_COMPARISON.md), and the direct
+experimental data checks are in [PUBLISHED_BENCHMARKS.md](PUBLISHED_BENCHMARKS.md).
+Later dynamics calculations qualify the required step count; the numbers
+below retain their original fixed-step scope.
+
+The curve discussed here is a sufficient sampling budget for gatewise probabilistic
 error cancellation (PEC), using the compiled observable dependency cone. It
 does not establish the resource frontier of physical quantum computation.
 The Phasecraft experiments expose an important missing comparison: efficient

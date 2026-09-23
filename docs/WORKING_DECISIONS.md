@@ -247,3 +247,22 @@ cost sensitivity. A large held-out mitigation study is deferred until these
 requirements show that it could change an architecture conclusion. All three
 arms retain the same standard for identifying assumptions versus measurements.
 No unconditional NISQ boundary beyond a particular lattice size is established.
+
+## Published operating points and the remaining uncertainty
+
+The published-benchmark pass checks original tasks before changing their
+hardware assumptions. TopQAD's Table IV supplies injection distances, retry
+clocks and FT T counts. The replay independently sums the QCELS time grid and
+reconstructs STAR area and FT time-optimal consumption. A growth contribution
+fitted at one point is transferred to other workloads, clearly separated from
+an independent noisy-gadget prediction. Two inconsistent desired-hardware rows
+remain visible; a good total-runtime match does not erase a component mismatch.
+
+The pinned Quantinuum archive is reduced at all saved times and all doublon
+sites. Spatially averaged and local observables remain distinct. U=0 measures
+training consistency; U=4 comparisons with finite-bond MPS are not residual-bias
+measurements. Published processed estimates are used without refitting TFLO or
+smoothing. This supplies an experimental operating point without making a large
+mitigation-transfer study a prerequisite for discussion. Willow shot data are
+public; their metadata and README have been checked, but their archive has not
+yet been reduced. See `docs/PUBLISHED_BENCHMARKS.md` and its confidence table.

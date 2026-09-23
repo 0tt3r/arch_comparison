@@ -16,6 +16,22 @@ Channel results and completed resource cases resume under pinned inputs.
 their contracts and accounting. See [INTEGRATED_COMPARISON.md](INTEGRATED_COMPARISON.md)
 for the physical and statistical assumptions.
 
+## Published resource estimates and experimental data
+
+`make published-benchmarks` replays the transcribed TopQAD inputs and saved
+experimental reduction, then regenerates the report and two figures.
+`make published-check` verifies the numerical replay and hashes offline.
+`make published-figures` only redraws the saved results. The
+[methods](PUBLISHED_BENCHMARKS.md) distinguish supplied clocks, inferred growth,
+and experimental reference agreement from independent validation.
+
+To repeat the raw-data reduction, run `python python/phasecraft_data.py` first.
+It needs h5py in addition to NumPy, downloads the pinned 111.9 MB archive,
+checks its checksum and uses approximately 1.1 GB under ignored `build/`.
+No mitigation pipeline is refitted. The 8.8 GB Willow archive is documented
+as available but is not downloaded by these commands. The original archives
+are not required to regenerate the committed report and figures.
+
 ## Same-task algorithms and larger components
 
 See [FRONTIER_WORK.md](FRONTIER_WORK.md). `make frontier` regenerates the

@@ -64,7 +64,12 @@ def check_content():
     integrated=json.loads((ROOT/'results/integrated_v1/validation.json').read_text())
     assert integrated['status'].startswith('PASS:')
     assert integrated['resource_rows']==len(json.loads((ROOT/'results/integrated_v1/costs.json').read_text()))
-    return {'integrated_resource_rows':integrated['resource_rows'],
+    published=json.loads((ROOT/'results/published_benchmarks_v1/validation.json').read_text())
+    assert published['status'].startswith('PASS:')
+    assert (published['star_rows'],published['ft_rows'],published['experimental_shot_batches'])==(16,32,40)
+    return {'published_star_rows':published['star_rows'],'published_ft_rows':published['ft_rows'],
+            'experimental_shot_batches':published['experimental_shot_batches'],
+            'integrated_resource_rows':integrated['resource_rows'],
             'nisq_requirement_rows':integrated['threshold_rows'],
             'frontier_algorithm_costs':frontier_check['algorithm_costs'],
             'frontier_growth_shots':frontier_check['growth_shots'],'threshold_rows':len(saved),'frontier_points':len(frontier),
@@ -89,7 +94,7 @@ def inventory():
         'noisy_small.json','accuracy_calibration.pdf','postselection_bias.pdf')]
     inputs.extend(ROOT/f'results/refinement_v3/parallel_L{L}_observable/result.json' for L in (2,4,6,8))
     artifacts=[ROOT/'tex/main.pdf']+sorted((ROOT/'figures').glob('*'))
-    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1',ROOT/'results/physics_sweep_v1',ROOT/'results/workshop_reconciliation_v1',ROOT/'results/implementation_v1',ROOT/'results/frontier_v1',ROOT/'results/integrated_v1']:
+    for folder in sorted((ROOT/'results').glob('discussion_v*'))+[ROOT/'results/delivery_v1',ROOT/'results/dynamics_4x4',ROOT/'results/dynamics_followup_v1',ROOT/'results/physics_sweep_v1',ROOT/'results/workshop_reconciliation_v1',ROOT/'results/implementation_v1',ROOT/'results/frontier_v1',ROOT/'results/integrated_v1',ROOT/'results/published_benchmarks_v1']:
         artifacts.extend(p for p in sorted(folder.rglob('*')) if p.is_file())
     artifacts.extend(p for p in sorted(OUT.iterdir()) if p.is_file() and p.name!='manifest.json')
     return {key:{str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}

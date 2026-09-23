@@ -1,0 +1,25 @@
+{
+  "status": "PASS: published-input ledger replay and reduced experimental data checks",
+  "star_rows": 16,
+  "ft_rows": 32,
+  "experimental_shot_batches": 40,
+  "observable_rows": 15526,
+  "comparison_rows": 32,
+  "flagged_star_rows": [
+    {
+      "U": 8,
+      "L": 6,
+      "hardware": "desired",
+      "flags": "PEC-free replay differs by more than 5 percent; Published PEC multiplier is below the stated small-angle contribution"
+    },
+    {
+      "U": 8,
+      "L": 8,
+      "hardware": "desired",
+      "flags": "Published clock and single-shot columns disagree; PEC-free replay differs by more than 5 percent"
+    }
+  ],
+  "max_star_area_relative_difference": 0.04689999999999994,
+  "max_ft_time_optimal_relative_difference": 0.02777777777777779,
+  "scope": "Table inputs are not an independently reproduced injection schedule. Implied growth is diagnostic. Experimental processing is supplied, not refitted; U=4 references are not exact truth."
+}

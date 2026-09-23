@@ -1,0 +1,10 @@
+{
+  "python/published_benchmarks.py": "419aa3f55a6492272de9c577ac47d8ba76410754e2cc6671010ecba4ce30aba4",
+  "python/phasecraft_data.py": "86c2c283419d1ce630c5dcbfebd895ccdd89ce2a374b2a6031e07ce9f5ead321",
+  "configs/published_benchmarks.json": "27affe161db2b1e7eebe726c07a3e93fceac4f1dff53736255177e6b45399ad0",
+  "refs/2603.13093v1.pdf": "9136610da053166674aa74fb72855939f6238c4221924f6acbac515f60af295d",
+  "refs/2510.26300v2.pdf": "35bd634e47bd17b0b9a2ccedde619e3538e45d02cfe98f7e3ee62912d85848ac",
+  "results/published_benchmarks_v1/phasecraft_reduced.json": "200c94a3ccb878b4f148bfb8c402561a0eef9a86d66b3e5453b67e857fdb2c88",
+  "results/published_benchmarks_v1/data_availability.json": "919c1281a69448ed78994b42578c88d497806dfed142592e1acca9a03765de60",
+  "results/frontier_v1/growth_summary.json": "ba96516267ae3edf5aaf270734ba2695c12736eba52e6eb3c0c290352f770cf7"
+}

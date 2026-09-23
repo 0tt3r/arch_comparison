@@ -18,6 +18,18 @@ validation is claimed. See the [methods](docs/INTEGRATED_COMPARISON.md),
 `make integrated` resumes the new calculation; `make integrated-figures` redraws
 saved results. Earlier result versions below remain available for comparison.
 
+The **[published-benchmark checks](results/published_benchmarks_v1/summary.md)**
+reconstruct TopQAD's STAR/FT resource ledger on its original energy-estimation
+task and reduce the Phasecraft/Quantinuum experimental shots and processed
+observables. The STAR footprints and most runtimes agree with the publication;
+two inconsistent table entries remain flagged. The experiment demonstrates
+low-shot observable estimates using spatial averaging, training and smoothing,
+with a different accuracy contract from our local-observable comparison.
+These are accounting and data checks, not a validation of complete injection
+gadgets or an experimental mitigation model. See the
+[methods and confidence table](docs/PUBLISHED_BENCHMARKS.md);
+`make published-benchmarks` reproduces the report and figures offline.
+
 The **[same-task algorithm and component study](results/frontier_v1/summary.md)**
 adds open-boundary qubitization, 24 million decoded growth shots toward distances
 13 and 25, explicit magic-state transport, measured exposure diagnostics, and a
