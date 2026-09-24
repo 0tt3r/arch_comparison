@@ -19,9 +19,9 @@ TARGETS = [('RSA-2048', 2.5e8), ('FeMoco', 3.4e8)]
 
 
 def published_factories(p):
-    """FT with the Litinski (2019) factories alongside cultivation (results/quops_sensitivity_v1)."""
+    """FT with Litinski-type factories re-optimized under the calibrated law, alongside cultivation."""
     rows = read(ROOT/'results/quops_sensitivity_v1/capability.json')
-    return {v['Q']: v['score'] for v in rows if v['variant'] == 'litinski_sources' and v['arm'] == 'ft' and v['p'] == p}
+    return {v['Q']: v['score'] for v in rows if v['variant'] == 'calibrated_factories' and v['arm'] == 'ft' and v['p'] == p}
 
 
 def main():
@@ -56,7 +56,7 @@ def main():
     handles += [Line2D([], [], color='#555555', ls='-', label='standard threshold'),
                 Line2D([], [], color='#555555', ls='--', label='1/γ² throughput scenario')]
     from matplotlib.patches import Patch
-    handles.append(Patch(color=COLORS['ft'], alpha=.2, label='FTQC with published distillation factories'))
+    handles.append(Patch(color=COLORS['ft'], alpha=.2, label='FTQC with distillation factories'))
     fig.legend(handles=handles, loc='lower center', ncol=3, frameon=False, fontsize=9, bbox_to_anchor=(.5, -.02))
     fig.suptitle('QUOPS capability on a nearest-neighbor array, one week')
     fig.text(.5, -.08, 'Standard: mean polarization ≥ 1/√e. Dashed: declared scenario in which a 1/γ² throughput penalty must fit in one week.\n'

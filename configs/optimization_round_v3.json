@@ -1,5 +1,5 @@
 {
-  "description": "Round v3: delivery sensitivity around the fully optimized v2 menu ('all'), time-growing Hubbard family only. Each configuration changes one declared delivery assumption; 'all' must reproduce round v2. 'star_plaquette' injects the plaquette circuit's fixed pi/8 rotations through the STAR instrument (hybrid arm with no factories). 'litinski_sources' offers the published distillation factories of Litinski, Quantum 3, 205 (2019), Tables 1 and 2, at the matching p alongside cultivation.",
+  "description": "Round v3: delivery sensitivity around the fully optimized v2 menu ('all'), time-growing Hubbard family only. Each configuration changes one declared delivery assumption; 'all' must reproduce round v2. 'star_plaquette' injects the plaquette circuit's fixed pi/8 rotations through the STAR instrument (hybrid arm with no factories). 'litinski_sources' offers the published distillation factories of Litinski, Quantum 3, 205 (2019), Tables 1 and 2, at the matching p alongside cultivation. 'calibrated_factories' offers the same protocol families with distances re-optimized under the Stim-calibrated surface law (python/factory_calibration.py).",
   "physical_errors": [
     0.001,
     0.0001
@@ -140,6 +140,17 @@
       "separate_distances": true,
       "richardson": true,
       "source_menu": "litinski"
+    },
+    "calibrated_factories": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "source_menu": "calibrated"
     }
   },
   "scenarios": {
@@ -307,5 +318,6 @@
         1
       ]
     ]
-  }
+  },
+  "calibrated_factories": "results/factory_calibration_v1/menu.json"
 }

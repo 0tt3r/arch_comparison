@@ -830,5 +830,117 @@
         18
       ]
     }
+  },
+  {
+    "configuration": "calibrated_factories",
+    "family": "tau_L_over_4",
+    "p": 0.001,
+    "epsilon": 0.001,
+    "Q": 10000000,
+    "leader_before": "tie:hybrid+ft",
+    "leader_after": "ft",
+    "leader_changed": true,
+    "capacity_moves": {
+      "ft": [
+        8,
+        18
+      ]
+    }
+  },
+  {
+    "configuration": "calibrated_factories",
+    "family": "tau_L_over_4",
+    "p": 0.001,
+    "epsilon": 0.001,
+    "Q": 100000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        8,
+        10
+      ],
+      "ft": [
+        20,
+        32
+      ]
+    }
+  },
+  {
+    "configuration": "calibrated_factories",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.01,
+    "Q": 1000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        16,
+        18
+      ],
+      "ft": [
+        24,
+        28
+      ]
+    }
+  },
+  {
+    "configuration": "calibrated_factories",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.001,
+    "Q": 1000000,
+    "leader_before": "hybrid",
+    "leader_after": "ft",
+    "leader_changed": true,
+    "capacity_moves": {
+      "hybrid": [
+        10,
+        12
+      ],
+      "ft": [
+        8,
+        20
+      ]
+    }
+  },
+  {
+    "configuration": "calibrated_factories",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.001,
+    "Q": 10000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        10,
+        14
+      ],
+      "ft": [
+        16,
+        32
+      ]
+    }
+  },
+  {
+    "configuration": "calibrated_factories",
+    "family": "tau_L_over_4",
+    "p": 0.0001,
+    "epsilon": 0.001,
+    "Q": 1000000000,
+    "leader_before": "ft",
+    "leader_after": "ft",
+    "leader_changed": false,
+    "capacity_moves": {
+      "hybrid": [
+        16,
+        18
+      ]
+    }
   }
 ]

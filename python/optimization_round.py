@@ -248,7 +248,8 @@ def apply_delivery(c, sw):
 
 
 def source_menu(c, sw, cleanup_choices):
-    """T sources: cultivation with optional 15-to-1 cleanup, plus Litinski (2019) factories at matching p.
+    """T sources: cultivation with optional 15-to-1 cleanup, plus Litinski (2019) factories at matching p
+    (published, or re-optimized under the calibrated surface law by factory_calibration.py).
 
     tiles: protected tiles charged per factory (delivery, plus cleanup tiles);
     qubits: physical qubits per factory outside the protected block.
@@ -256,8 +257,10 @@ def source_menu(c, sw, cleanup_choices):
     q0 = source_error(c)
     menu = [dict(name='cultivation', cleanup=k, error=35*q0**3 if k else q0, tiles=1+12*k,
                  qubits=c['source_qubits']) for k in cleanup_choices]
-    if sw.get('source_menu') == 'litinski':
-        for name, error, qubits, cycles, outputs in settings()['litinski_factories'].get(repr(c['p']), []):
+    if sw.get('source_menu') in ('litinski', 'calibrated'):
+        table = (settings()['litinski_factories'] if sw['source_menu'] == 'litinski'
+                 else read(ROOT/settings()['calibrated_factories'])['litinski_factories'])
+        for name, error, qubits, cycles, outputs in table.get(repr(c['p']), []):
             menu.append(dict(name=name, cleanup=0, error=error, tiles=1, qubits=qubits,
                              cycles_per_T=cycles/outputs))
     return menu
@@ -848,6 +851,8 @@ def input_hashes():
              'results/dynamics_followup_v1/measurements.json', 'results/frontier_v1/growth_summary.json']
     if settings().get('surface_law'):
         names.append(settings()['surface_law']['source'])
+    if settings().get('calibrated_factories'):
+        names.append(settings()['calibrated_factories'])
     return {name: sha(ROOT/name) for name in names}
 
 

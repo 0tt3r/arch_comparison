@@ -42,6 +42,12 @@
    "ft": {
     "source_menu": "litinski"
    }
+  },
+  "calibrated_factories": {
+   "ft": {
+    "source_menu": "litinski",
+    "litinski_factories": "results/factory_calibration_v1/menu.json"
+   }
   }
  },
  "base": {

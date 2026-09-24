@@ -1,0 +1,60 @@
+{
+  "contract": {
+    "nx": 6,
+    "ny": 3,
+    "tau": 1.0,
+    "algorithm": "plaquette",
+    "r": 8,
+    "threads": 128,
+    "tolerance": 1e-12,
+    "source_sha256": "1d5ce65e53eca80bc4f408a2ff348da2230b1128a511d52d4cb597b0fc5e8328",
+    "binary_sha256": "996def2e5647c4d54e18a8ccebc4737fd7082602be29f31bd81e316537072e70",
+    "driver_sha256": "d343b69f5aad88e9ffb9157610d83bb379b354f05eec7975d85bc9cbf84417d8"
+  },
+  "result": {
+    "dimension": 2363904400,
+    "threads": 128,
+    "seconds": 317.654142827,
+    "spectral_bound": 72,
+    "norm_squared": 0.9999999999999278,
+    "doublons": [
+      0.14880339341540358,
+      0.15617569887985638,
+      0.1613022234617621,
+      0.16130222346176104,
+      0.15617569887985439,
+      0.1488033934154031,
+      0.15071999540722034,
+      0.13427798660153487,
+      0.15803624968680663,
+      0.1580362496868067,
+      0.1342779866015344,
+      0.1507199954072164,
+      0.1488660995449439,
+      0.15623462874163743,
+      0.16135114171266432,
+      0.1613511417126655,
+      0.15623462874163613,
+      0.14886609954494223
+    ]
+  },
+  "chebyshev_degree": 128,
+  "chebyshev_state_tail_bound": null,
+  "coefficient_sha256": "3cb3b209f7c7fa857503da5cf4ea3e28c51a863b12712a957223f4ec431aab2f",
+  "host": "i049",
+  "pbs_jobid": "7791910.imgt1",
+  "elapsed_seconds": 318.38451170921326,
+  "command": [
+    "/lcrc/project/QC_NA_Sim/architecture_comparison/build/hubbard_strip",
+    "6",
+    "3",
+    "1.0",
+    "plaquette",
+    "8",
+    "/lcrc/project/QC_NA_Sim/architecture_comparison/results/strip_dynamics_v1/6x3_tau1_plaquette_r8_t128.coefficients.txt"
+  ],
+  "status": "complete",
+  "child_cpu_seconds": 31826.574533999992,
+  "children_peak_rss_kib": 147769392,
+  "scope": "Finite OBC patch, Neel state, U/J=4; site order is row snake; no bulk error bound"
+}

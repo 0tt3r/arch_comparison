@@ -51,7 +51,8 @@ def grid(group):
     return np.unique(np.r_[np.geomspace(1e2, 1e9, 350), thresholds])
 
 
-def plot_family(rows, family, name, title):
+def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=None,
+                dashed_label='Same arm · reference menu', band_label='STAR/hybrid zero-growth sensitivity'):
     cfg = settings()
     sizes = cfg['families'][family]['sizes']
     proportional = cfg['families'][family]['kind'] == 'proportional'
@@ -62,16 +63,17 @@ def plot_family(rows, family, name, title):
             group = select(rows, family=family, p=p, absolute_error=eps)
             Q = grid(group)
             for arm in ENCODED:
-                new = staircase(select(group, configuration='all', arm=arm, scenario='component'), Q)
-                old = staircase(select(group, configuration='v1_menu', arm=arm, scenario='component'), Q)
+                new = staircase(select(group, configuration=solid, arm=arm, scenario='component'), Q)
+                old = staircase(select(group, configuration=dashed, arm=arm, scenario='component'), Q)
                 if arm != 'ft':
-                    zero = staircase(select(group, configuration='all', arm=arm, scenario='zero_growth'), Q)
+                    source = select(bands or rows, family=family, p=p, absolute_error=eps)
+                    zero = staircase(select(source, configuration='all', arm=arm, scenario='zero_growth'), Q)
                     ax.fill_between(Q, np.minimum(new, zero), np.maximum(new, zero), step='post',
                                     color=COLORS[arm], alpha=.14, lw=0)
                 ax.step(Q, old, where='post', color=COLORS[arm], lw=1, alpha=.55, ls=(0, (4, 2)))
                 ax.step(Q, new, where='post', color=COLORS[arm], lw=2.2)
             for arm, (color, style) in NISQ_STYLE.items():
-                ax.step(Q, staircase(select(group, configuration='all', arm=arm), Q), where='post',
+                ax.step(Q, staircase(select(group, configuration=solid, arm=arm), Q), where='post',
                         color=color, ls=style, lw=1.6)
             top = max(sizes)
             ticks = [s for s in sizes if s % 8 == 0 or s == sizes[0]]
@@ -85,12 +87,12 @@ def plot_family(rows, family, name, title):
     fig.supylabel('Largest lattice side L' + ('  (evolution time τ = L/4)' if proportional else ''), x=.035)
     handles = [Line2D([], [], color=COLORS[a], lw=2.2, label=LABELS[a]+' · optimized') for a in ENCODED]
     handles += [Line2D([], [], color=NISQ_STYLE[a][0], ls=NISQ_STYLE[a][1], lw=1.6, label=LABELS[a]) for a in NISQ_STYLE]
-    handles += [Line2D([], [], color='#666666', lw=1, ls=(0, (4, 2)), label='Same arm · reference menu'),
-                Patch(color='#999999', alpha=.3, label='STAR/hybrid zero-growth sensitivity')]
+    handles += [Line2D([], [], color='#666666', lw=1, ls=(0, (4, 2)), label=dashed_label),
+                Patch(color='#999999', alpha=.3, label=band_label)]
     fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5, .02), ncol=3, frameon=False, fontsize=9)
     fig.suptitle(title, y=.995)
     fig.text(.5, -.03, 'One week · capacity is the largest tested even L within Q · bands are scenarios, not confidence intervals.\n'
-             'Lanes, ports and transfers are declared delivery models; NISQ effective bias is assumed. Interacting bulk convergence is not established.',
+             'Lanes, ports and transfers are declared delivery models; NISQ effective bias is assumed. Interacting Trotter coefficients are converged only near τ = 1.',
              ha='center', fontsize=8.5, color='#555555')
     fig.subplots_adjust(bottom=.2, hspace=.25, wspace=.08)
     save(fig, name)
@@ -235,6 +237,15 @@ def main():
     o.use_round(name)
     SUFFIX = '' if name == 'v1' else '_'+name
     rows, table = read(o.OUT/'costs.json'), read(o.OUT/'capacity.json')
+    if name == 'v3':
+        # Headline: full T-source menu (cultivation + calibrated factories); cultivation alone dashed.
+        # Round v3 has no zero-growth rows, so the bands come from round v2 (cultivation source).
+        bands = read(o.ROOT/'results/optimization_round_v2/costs.json')
+        plot_family(rows, 'tau_L_over_4', 'optimization_round_capacity',
+                    'Capacity for the time-growing workload (τ = L/4)', solid='calibrated_factories', dashed='all',
+                    bands=bands, dashed_label='Same arm · cultivation only',
+                    band_label='STAR/hybrid zero-growth sensitivity (cultivation source)')
+        return
     plot_family(rows, 'tau_L_over_4', 'optimization_round_capacity',
                 'Capacity for the time-growing workload (τ = L/4)')
     plot_family(rows, 'tau_1', 'optimization_round_fixed_tau',

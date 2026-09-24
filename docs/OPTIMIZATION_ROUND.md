@@ -46,6 +46,11 @@ Two further configurations attribute the hybrid's advantage and replace the decl
   of 10⁸·⁵. The chosen factories are (15-to-1)⁶×(15-to-1) two-level protocols at p = 10⁻³ and
   single-level (15-to-1)₁₁,₅,₅ at p = 10⁻⁴. The hybrid gains too (for example L = 12 at p = 10⁻³,
   ε = 10⁻³: 10¹⁰·³ → 10⁹·⁵), but less, because its exposure, not its magic budget, sets its size.
+- **Calibrated factories** (`calibrated_factories`; the manuscript's headline menu, drawn by
+  `make optimization-round-v3-figures`). The same protocol families with all distances
+  re-optimized under the Stim-calibrated surface-code law ([FACTORY_CALIBRATION.md](FACTORY_CALIBRATION.md)).
+  Every crossover matches `litinski_sources` to within 3%; the largest cost change is 12% (FT at
+  L = 16, p = 10⁻³, ε = 10⁻³).
 
 ## Findings (round v1, reference law)
 

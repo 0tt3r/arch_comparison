@@ -5,7 +5,8 @@ Angle sweep: STAR's injected angles are drawn uniformly on [-a, a] for a from
 the angles, so this isolates STAR's per-radian exposure under one criterion.
 Delivery: the lattice-surgery CNOT-layer time, a congestion penalty growing as
 sqrt(w), and the lane and port tile charges, one at a time. Source: the
-published Litinski (2019) factories offered alongside cultivation.
+published Litinski (2019) factories offered alongside cultivation, as published
+and re-optimized under the calibrated surface law (factory_calibration.py).
 """
 import copy
 import json
@@ -29,7 +30,9 @@ DELIVERY = {
     'port_tiles_8': {'ft': {'tiles_per_port': 8}},
 }
 # T source: the published distillation factories of Litinski (2019) alongside cultivation.
-SOURCES = {'baseline': {}, 'litinski_sources': {'ft': {'source_menu': 'litinski'}}}
+SOURCES = {'baseline': {}, 'litinski_sources': {'ft': {'source_menu': 'litinski'}},
+           'calibrated_factories': {'ft': {'source_menu': 'litinski',
+                                           'litinski_factories': 'results/factory_calibration_v1/menu.json'}}}
 
 
 def merged(changes):
@@ -51,7 +54,8 @@ def task(args):
 def tasks():
     out = [(f'angle_{a:.4g}', {'star': {'angle_max': a}}, 'star', p) for a in ANGLES for p in (1e-3, 1e-4)]
     out += [(name, ch, arm, 1e-3) for name, ch in DELIVERY.items() for arm in ('star', 'ft')]
-    out += [(name, ch, 'ft', 1e-4) for name, ch in SOURCES.items()] + [('litinski_sources', SOURCES['litinski_sources'], 'ft', 1e-3)]
+    out += [(name, ch, 'ft', 1e-4) for name, ch in SOURCES.items()]
+    out += [(name, ch, 'ft', 1e-3) for name, ch in SOURCES.items() if name != 'baseline']
     return out
 
 

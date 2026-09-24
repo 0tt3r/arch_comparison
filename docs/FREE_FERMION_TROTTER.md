@@ -41,5 +41,6 @@ This checks hopping-only Trotter error and Jordan–Wigner ordering. The interac
 dominate at U/J = 4 are absent, so the U = 0 values are 10–100× smaller than the calibrated ones and
 do not replace them. What carries over is the structure: in the free limit the coefficient is set
 by the light cone, not by L, and finite patches err on the high side. The 3×3 → 4×4 growth of the
-termwise coefficient at U/J = 4 (the opposite direction to U = 0) is therefore unlikely to be a hopping or ordering artifact, and a converged
-interacting value at τ ≥ 2 still needs a larger patch or a tensor-network calculation.
+termwise coefficient at U/J = 4 (the opposite direction to U = 0) is therefore unlikely to be a hopping or ordering artifact, and exact interacting
+strips confirm it: at τ = 1 the termwise coefficient converges to 0.19 by length 5
+([STRIP_DYNAMICS.md](STRIP_DYNAMICS.md)).

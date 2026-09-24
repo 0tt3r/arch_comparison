@@ -1,0 +1,57 @@
+{
+  "contract": {
+    "nx": 5,
+    "ny": 3,
+    "tau": 1.0,
+    "algorithm": "exact",
+    "r": 0,
+    "threads": 128,
+    "tolerance": 1e-12,
+    "source_sha256": "1d5ce65e53eca80bc4f408a2ff348da2230b1128a511d52d4cb597b0fc5e8328",
+    "binary_sha256": "996def2e5647c4d54e18a8ccebc4737fd7082602be29f31bd81e316537072e70",
+    "driver_sha256": "d343b69f5aad88e9ffb9157610d83bb379b354f05eec7975d85bc9cbf84417d8"
+  },
+  "result": {
+    "dimension": 41409225,
+    "threads": 128,
+    "seconds": 11.524898446,
+    "spectral_bound": 59,
+    "norm_squared": 1.0000000000000069,
+    "doublons": [
+      0.1451751850566021,
+      0.15228214072535964,
+      0.1555621790055841,
+      0.15228214072535975,
+      0.14517518505660215,
+      0.14716755983913357,
+      0.13033822017939387,
+      0.1533968913367462,
+      0.13033822017939392,
+      0.14716755983913363,
+      0.14517518505660199,
+      0.15228214072535945,
+      0.15556217900558403,
+      0.1522821407253599,
+      0.14517518505660176
+    ]
+  },
+  "chebyshev_degree": 108,
+  "chebyshev_state_tail_bound": 8.386160190985603e-13,
+  "coefficient_sha256": "a86c859330329d69d90cd50c9795dc0656726824d1b8e199d0c6276b6c2fbb21",
+  "host": "i049",
+  "pbs_jobid": "7791910.imgt1",
+  "elapsed_seconds": 11.567437887191772,
+  "command": [
+    "/lcrc/project/QC_NA_Sim/architecture_comparison/build/hubbard_strip",
+    "5",
+    "3",
+    "1.0",
+    "exact",
+    "0",
+    "/lcrc/project/QC_NA_Sim/architecture_comparison/results/strip_dynamics_v1/5x3_tau1_exact_r0_t128.coefficients.txt"
+  ],
+  "status": "complete",
+  "child_cpu_seconds": 1232.9607269999997,
+  "children_peak_rss_kib": 2597592,
+  "scope": "Finite OBC patch, Neel state, U/J=4; site order is row snake; no bulk error bound"
+}

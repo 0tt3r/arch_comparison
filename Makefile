@@ -4,7 +4,7 @@ QEC_PYTHON ?= /home/ac.otten/soft/mambaforge/envs/stim/bin/python
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: free-fermion-trotter quops-sensitivity optimization-round-v3-check quops quops-figures optimization-round-v2-figures optimization-round-v2-check surface-law-audit raw-rus-check optimization-round optimization-round-figures optimization-round-check discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
+.PHONY: optimization-round-v3-figures factory-calibration strip-dynamics rus-reconciliation free-fermion-trotter quops-sensitivity optimization-round-v3-check quops quops-figures optimization-round-v2-figures optimization-round-v2-check surface-law-audit raw-rus-check optimization-round optimization-round-figures optimization-round-check discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
 
 surface-law-audit:
 	$(QEC_PYTHON) python/surface_law_calibration.py audit > /dev/null
@@ -22,6 +22,15 @@ optimization-round-figures:
 optimization-round-check:
 	$(PYTHON) python/optimization_round.py --check
 
+factory-calibration:
+	cd python && $(PYTHON) factory_calibration.py validate && $(PYTHON) factory_calibration.py run && $(PYTHON) factory_calibration.py menu
+
+strip-dynamics:
+	cd python && $(PYTHON) strip_dynamics.py --analyze && $(PYTHON) plot_strip_dynamics.py
+
+rus-reconciliation:
+	$(PYTHON) python/rus_reconciliation.py --write
+
 free-fermion-trotter:
 	$(PYTHON) python/free_fermion_trotter.py --max-size 24
 	$(PYTHON) python/plot_free_fermion_trotter.py
@@ -29,6 +38,9 @@ free-fermion-trotter:
 quops-sensitivity:
 	$(PYTHON) python/quops_sensitivity.py
 	$(PYTHON) python/plot_quops_sensitivity.py
+
+optimization-round-v3-figures:
+	cd python && $(PYTHON) plot_optimization_round.py --round v3
 
 optimization-round-v3-check:
 	$(PYTHON) python/optimization_round.py --round v3 --check
