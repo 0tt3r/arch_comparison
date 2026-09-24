@@ -1,5 +1,5 @@
 {
-  "description": "Round v3: delivery sensitivity around the fully optimized v2 menu ('all'), time-growing Hubbard family only. Each configuration changes one declared delivery assumption; 'all' must reproduce round v2. 'star_plaquette' injects the plaquette circuit's fixed pi/8 rotations through the STAR instrument (hybrid arm with no factories). 'litinski_sources' offers the published distillation factories of Litinski, Quantum 3, 205 (2019), Tables 1 and 2, at the matching p alongside cultivation. 'calibrated_factories' offers the same protocol families with distances re-optimized under the Stim-calibrated surface law (python/factory_calibration.py).",
+  "description": "Round v3: delivery sensitivity around the fully optimized v2 menu ('all'), time-growing Hubbard family only. Each configuration changes one declared delivery assumption; 'all' must reproduce round v2. 'star_plaquette' injects the plaquette circuit's fixed pi/8 rotations through the STAR instrument (hybrid arm with no factories). 'litinski_sources' offers the published distillation factories of Litinski, Quantum 3, 205 (2019), Tables 1 and 2, at the matching p alongside cultivation. 'calibrated_factories' offers the same protocol families with distances re-optimized under the Stim-calibrated surface law (python/factory_calibration.py). 'cultivation_exact' raises the cultivated-state error from 2e-9 to 4e-9 (exact pre-escape 3.3e-9 at p=1e-3, Wan and Zapirain, arXiv:2609.18922, plus an escape margin). 'pcec_only' removes raw RUS, bracketing STAR and the hybrid if the raw-RUS coherent cancellation fails.",
   "physical_errors": [
     0.001,
     0.0001
@@ -145,6 +145,28 @@
       "rus_modes": [
         "noisy_pcec",
         "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "source_menu": "calibrated"
+    },
+    "cultivation_exact": {
+      "rus_modes": [
+        "noisy_pcec",
+        "raw"
+      ],
+      "optimize_lanes": true,
+      "ft_delivery": true,
+      "separate_distances": true,
+      "richardson": true,
+      "source_menu": "calibrated",
+      "source_error": 4e-09
+    },
+    "pcec_only": {
+      "rus_modes": [
+        "noisy_pcec"
       ],
       "optimize_lanes": true,
       "ft_delivery": true,

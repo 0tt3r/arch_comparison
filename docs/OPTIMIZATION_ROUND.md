@@ -51,6 +51,14 @@ Two further configurations attribute the hybrid's advantage and replace the decl
   re-optimized under the Stim-calibrated surface-code law ([FACTORY_CALIBRATION.md](FACTORY_CALIBRATION.md)).
   Every crossover matches `litinski_sources` to within 3%; the largest cost change is 12% (FT at
   L = 16, p = 10⁻³, ε = 10⁻³).
+- **Exact cultivation error** (`cultivation_exact`). The headline menu with the cultivated-state error
+  raised from 2×10⁻⁹ to 4×10⁻⁹ (exact pre-escape 3.3×10⁻⁹ at p = 10⁻³, Wan and Zapirain,
+  arXiv:2609.18922, plus an escape margin). FT at L = 6–8 switches to factories at 1.3–1.5× the area;
+  the strict-precision crossover at p = 10⁻³ moves from 4×10⁵ to 6×10⁵ (strictly ahead 8.4×10⁵ →
+  1.1×10⁶). Nothing else changes.
+- **PCEC only** (`pcec_only`). The headline menu without raw RUS, bounding a failure of the raw-RUS
+  coherent cancellation. STAR loses 2–4 sites of reach and the hybrid 0–2; FT is strictly ahead from
+  5×10⁵ instead of 7.9×10⁵ at p = 10⁻³, ε = 0.01; every never-behind point is unchanged.
 
 ## Findings (round v1, reference law)
 

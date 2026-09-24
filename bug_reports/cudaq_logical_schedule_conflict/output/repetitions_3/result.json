@@ -1,0 +1,8 @@
+{
+  "repetitions": 3,
+  "T_count": 12,
+  "status": "FAILED at schedule",
+  "exception": "ScheduleConflict",
+  "message": "native greedy-ASAP scheduling failed for phys.graph @prog_placed_qec_physical: Pass pipeline failed: phys-schedule{graph=prog_placed_qec_physical result=prog_placed_qec_physical_schedule}",
+  "diagnostic": "loc(unknown): 'phys.schedule' op nested schedule entry must lie within its parent interval"
+}

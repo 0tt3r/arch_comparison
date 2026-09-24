@@ -281,7 +281,9 @@ def t_sources(c, q0):
 def ft_cost(w, s, p, mode, Q, source=None):
     c, cfg = hardware(p), settings()['ft']
     x = shape(w, s)
-    q0 = c['source_error'] if source is None else source
+    if source is None:
+        source = cfg.get('cultivation_error', c['source_error'])
+    q0 = source
     best = None
     caps = [0.5] if mode == 'standard' else cfg['mitigated_loss_caps']
     for share, allowed in [(f, a) for f in cfg['synthesis_shares'] for a in caps]:

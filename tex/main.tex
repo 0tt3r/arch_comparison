@@ -5,6 +5,7 @@
 \newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\eps}{\epsilon}
 \graphicspath{{../figures/}{../}}
+\setlength{\emergencystretch}{2em}
 \title{Mitigation, partial protection, and full fault tolerance\\for Hubbard dynamics on a fixed qubit array}
 \author{Working research manuscript}
 \date{23 September 2026}
@@ -104,8 +105,10 @@ within one week as a function of available physical qubits. Solid curves use
 the fully optimized model of Secs.~\ref{sec:task}--\ref{sec:architectures} with
 the circuit-level surface-code law of Sec.~\ref{sec:encoded}, with T states
 from cultivation or distillation factories; thin dashed curves of the same
-color restrict the T source to cultivation. Bands give the STAR and hybrid
-zero-growth sensitivity, computed with cultivation. NISQ curves assume an effective mitigation overhead or apply
+color restrict the T source to cultivation, and dotted STAR and hybrid curves
+remove raw repeat-until-success, bounding the case in which its coherent
+cancellation fails. Bands give the STAR and hybrid zero-growth sensitivity,
+computed with cultivation. NISQ curves assume an effective mitigation overhead or apply
 two-qubit probabilistic error cancellation. $L=32$ is the sampled ceiling.
 Delivery models are declared, not compiled, and interacting Trotter
 coefficients are converged only near $\tau=1$.}\label{fig:headline}
@@ -476,9 +479,12 @@ a stage, Hamming-weight phasing can replace a batch of $b$ equal rotations by
 $\lfloor\log_2b\rfloor+1$ rotations and $b-\mathrm{popcount}(b)$ Toffolis,
 with that workspace charged~\cite{campbell}. Magic states come from
 cultivation~\cite{gidney2024cultivation}: 1024 qubits and about 100 cycles per
-state at error $2\times10^{-9}$, with an optional 15-to-1 cleanup stage of
+state at error $2\times10^{-9}$, the published estimate at $p=10^{-3}$, with an optional 15-to-1 cleanup stage of
 twelve tiles and output error $35q^3$. Each factory costs $1024+2d^2$ qubits,
-or $1024+13\cdot2d^2$ with cleanup. The optimizer may instead use the
+or $1024+13\cdot2d^2$ with cleanup. An exact calculation of the same circuit
+gives $3.3\times10^{-9}$ before its final growth stage~\cite{wan2026exact}, so
+the published value is optimistic; Sec.~\ref{sec:delivery-sensitivity} repeats
+the optimization at $4\times10^{-9}$. The optimizer may instead use the
 distillation factories of Ref.~\cite{litinski2019magic}: one- and two-level
 15-to-1 and 20-to-4 protocols whose distances we re-optimized with the paper's
 own factory model after replacing its logical-error law, $0.1(100p)^{(d+1)/2}$,
@@ -539,11 +545,14 @@ routing, measured on 900 circuits rather than modeled, and from the embedded
 polarization product. Willow measured 216 at its own, somewhat higher error
 rates. STAR overtakes the physical arm at $10^4$ qubits and leads alone between
 $10^4$ and $2.5\times10^4$, where full fault tolerance is still limited by its
-fixed area, but saturates at $7\times10^3$, because each random rotation injects
+fixed area, but saturates at $7\times10^3$ ($3.9\times10^3$ without raw
+repeat-until-success), because each random rotation injects
 an angle of average magnitude $\pi/16$, roughly seven times the Trotter angles
 of the Hubbard task. Full fault tolerance leads for good
 from $3\times10^4$ qubits, reaches $10^4$ QUOPS with $5\times10^4$ qubits, and
-scores $5.5\times10^6$ at $10^6$ qubits, about 800 times STAR. On the Hubbard
+scores $5.5\times10^6$ at $10^6$ qubits, about 800 times STAR; with the exact
+cultivation error of $4\times10^{-9}$ it scores $4.8\times10^6$ there, and no other
+capability changes. On the Hubbard
 task, by contrast, the analog arms stayed within a few lattice sites of full
 fault tolerance up to a few times $10^5$ qubits. The difference is the one the
 exposure picture predicts: STAR pays per radian, and here the radians are
@@ -621,7 +630,9 @@ arms from $3\times10^5$ qubits, strictly ahead from $8\times10^5$, and reaches t
 $\tau=8$ ceiling at $8\times10^6$, while STAR saturates at $L=10$ ($\tau=2.5$) and
 the hybrid at $L=14$ ($\tau=3.5$). At $\eps=0.001$ full fault tolerance is never
 behind from $4\times10^5$ qubits, strictly ahead from $8.4\times10^5$, and reaches
-the ceiling with $5\times10^7$. At $p=10^{-4}$ every arm reaches further: the
+the ceiling with $5\times10^7$; with the exact cultivation error these two points
+move to $6\times10^5$ and $1.1\times10^6$, the only entries of
+Table~\ref{tab:crossovers} that change. At $p=10^{-4}$ every arm reaches further: the
 analog arms saturate at $\tau=4.5$--5.5 for $\eps=0.01$, and full fault
 tolerance reaches the ceiling at $1.3\times10^6$ qubits. Only strict precision
 depends on the T source; with cultivation alone the $\tau=8$ ceiling at
@@ -820,6 +831,19 @@ hybrid, and the hybrid's reach falls by four to six sites at every budget
 above $10^6$ qubits. The plaquette circuit helps only once its large fixed
 angles leave the analog channel, exactly as the per-radian law predicts.
 
+Two further runs bound the least certain inputs. Raising the cultivated-state
+error from $2\times10^{-9}$ to $4\times10^{-9}$, the exact pre-growth value plus a
+margin for the growth stage~\cite{wan2026exact}, makes full fault tolerance at
+$L=6$ and 8 switch from cultivation to factories at 1.3--1.5 times the area. It
+moves the strict-precision crossover at $p=10^{-3}$ from $4\times10^5$ to
+$6\times10^5$ qubits and changes nothing else. Removing raw repeat-until-success
+bounds the case in which its coherent cancellation fails, for example through
+hook errors that turn into coherent errors~\cite{chan2026hook}. STAR then loses two
+to four lattice sites of reach and the hybrid up to two, full fault tolerance is
+strictly ahead from $5\times10^5$ rather than $7.9\times10^5$ qubits at
+$p=10^{-3}$ and $\eps=0.01$, and every point from which it is never behind is
+unchanged (dotted curves in Fig.~\ref{fig:headline}).
+
 On random circuits, doubling the lattice-surgery time of a CNOT layer, or adding
 a congestion penalty growing as $\sqrt{w/16}$, changes no capability at two
 significant figures, because rotation layers take about $25d$ cycles against
@@ -857,7 +881,7 @@ inside a published model rather than simulate factories. The effective NISQ
 overhead is assumed, and physical estimators with controlled bias at our
 absolute accuracy have not been demonstrated at these sizes. The raw-RUS
 cancellation assumes unbiased, independent retries and has not been checked in
-a circuit-level simulation of injection.
+a circuit-level simulation of injection; the PCEC-only curves bound its failure.
 
 The most useful next calculations are a circuit-level simulation of analog
 injection, which would test the raw-RUS cancellation that supplies most of
@@ -891,7 +915,7 @@ STAR comes from distilling its fixed $\pi/8$ rotations.
 \appendix
 
 \section{Trotter step law and finite-patch checks}\label{app:trotter}
-This appendix gives the exact dynamics behind Eq.~\eqref{eq:trotter}: direct step checks on $4\times3$ and $4\times4$ patches with their time dependence, and the matrix-free reference that computes them. Earlier small-patch calibrations and a conservative truncation bound are in the Supplementary Material.
+This appendix gives the exact dynamics behind Eq.~\eqref{eq:trotter}: direct step checks on $4\times3$ and $4\times4$ patches with their time dependence, the matrix-free reference that computes them, exact strips up to $8\times2$ and $6\times3$, and the free-fermion limit to $24\times24$. Earlier small-patch calibrations and a conservative truncation bound are in the Supplementary Material.
 
 \subsection{Direct step checks and finite-patch time dependence}\label{sec:large-patch}
 We compute the exact reference evolution in the
@@ -1259,7 +1283,12 @@ weight-two factors and $p/30$ on the final weight-one factor. Enumerating
 the surviving branches gives weights $w_j$ and angle errors $\delta_j$,
 with coherence multiplier $c=\sum_jw_j e^{-2i\delta_j}$. This is an exact
 calculation for these faults and perfect projection; the other physical
-faults of an injection circuit are not included.
+faults of an injection circuit are not included. Among them are hook errors,
+which in T-state cultivation propagate to coherent errors after the final
+check and lower the fault distance~\cite{chan2026hook}. A coherent error of
+this kind need not be conjugated on a failed teleportation, so it would
+weaken the raw-RUS cancellation of Appendix~\ref{app:raw-rus}; the PCEC-only
+curves of Fig.~\ref{fig:headline} bound that case.
 
 Ideal probabilistic coherent-error cancellation (PCEC) composes this
 channel with the conjugate mixture, giving $|c|^2$ and hence a Pauli
@@ -1390,7 +1419,7 @@ $P_L$ and $\Delta$ match their PCEC prefactor at $k=3$ but not uniformly in $k$,
 because they evaluate exact expressions; the comparison of signs is internal to
 one model. Raw RUS is accordingly an option of the optimizer, charged
 with its coherent residue and retry tail, rather than a conclusion that PCEC
-is unnecessary. It changes the capacity leader in one of 64 cells, so the
+is unnecessary. It changes the capacity leader in two of 64 cells, so the
 conclusions about full fault tolerance do not depend on it; the STAR and
 hybrid capacities do.
 
@@ -1520,14 +1549,16 @@ $L=16$ and the hybrid $L=24$, compared with 12 and 16 under the reference menu.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{optimization_round_fixed_tau_v2.pdf}
-\caption{Fixed-time benchmark at $\tau=1$, drawn as in Fig.~\ref{fig:headline}.
-Beyond $L\approx8$ these curves compare the cost of evolving full lattices, not
-the accuracy of a local answer.}\label{fig:optimization-fixed-tau}
+\caption{Fixed-time benchmark at $\tau=1$ with cultivated T states. Solid
+curves use every optimizer option and thin dashed curves the reference menu;
+bands give the STAR and hybrid zero-growth sensitivity. Beyond $L\approx8$
+these curves compare the cost of evolving full lattices, not the accuracy of a
+local answer.}\label{fig:optimization-fixed-tau}
 \end{figure}
 
 
 \section{Reproducibility}\label{app:reproducibility}
-Every number in the main text is regenerated from saved results by the repository's \texttt{Makefile}: \texttt{make optimization-round-v2-figures} and \texttt{make quops-figures} redraw the capability figures, and \texttt{make audit} replays every saved calculation against its declared inputs, including the surface-code calibration, the raw-RUS checks, and the two optimization rounds. The sweeps themselves run on a compute node with \texttt{pbs/optimization\_round.pbs} and \texttt{python/quops\_study.py}. The Supplementary Material preserves the development history, earlier reference models, and compilation checks.
+Every number in the main text is regenerated from saved results by the repository's \texttt{Makefile}: \texttt{make optimization-round-v3-figures} and \texttt{make quops-figures} redraw the capability figures, and \texttt{make audit} replays every saved calculation against its declared inputs, including the surface-code calibration, the raw-RUS checks, and the three optimization rounds. The sweeps run on a compute node with \texttt{pbs/optimization\_round.pbs}, \texttt{pbs/factory\_calibration.pbs}, and \texttt{pbs/strip\_dynamics.pbs}, and locally with \texttt{python/quops\_study.py} and \texttt{python/quops\_sensitivity.py}. The Supplementary Material preserves the development history, earlier reference models, and compilation checks.
 
 \bibliographystyle{unsrt}
 \bibliography{references}

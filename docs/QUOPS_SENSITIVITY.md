@@ -70,3 +70,10 @@ With the factories re-optimized under the calibrated surface-code law
 at 10⁸ qubits and 7.4×10⁸ at 10⁹ (p = 10⁻³), and the RSA-2048 target needs 4×10⁸ qubits instead of
 2.5×10⁸. At p = 10⁻⁴ the calibrated and published menus agree to 10⁷ qubits and reach the target
 with 10⁷. The shaded band of the capability figure uses the calibrated menu.
+
+## Exact cultivation error and the raw-RUS bracket
+
+With the cultivated-state error at 4×10⁻⁹ instead of 2×10⁻⁹ (with the calibrated factory menu), FT scores
+4.8×10⁶ instead of 5.5×10⁶ at 10⁶ qubits (p = 10⁻³) and no other capability changes. Without raw RUS
+(noisy PCEC only), STAR saturates at 3.9×10³ instead of 7.1×10³ at p = 10⁻³, and 2.1×10⁴ instead of
+3.3×10⁴ at p = 10⁻⁴.

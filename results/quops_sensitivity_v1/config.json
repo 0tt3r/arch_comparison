@@ -48,6 +48,13 @@
     "source_menu": "litinski",
     "litinski_factories": "results/factory_calibration_v1/menu.json"
    }
+  },
+  "cultivation_exact": {
+   "ft": {
+    "source_menu": "litinski",
+    "cultivation_error": 4e-09,
+    "litinski_factories": "results/factory_calibration_v1/menu.json"
+   }
   }
  },
  "base": {

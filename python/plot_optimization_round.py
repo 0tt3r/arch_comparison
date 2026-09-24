@@ -52,7 +52,8 @@ def grid(group):
 
 
 def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=None,
-                dashed_label='Same arm · reference menu', band_label='STAR/hybrid zero-growth sensitivity'):
+                dashed_label='Same arm · reference menu', band_label='STAR/hybrid zero-growth sensitivity',
+                bracket=None):
     cfg = settings()
     sizes = cfg['families'][family]['sizes']
     proportional = cfg['families'][family]['kind'] == 'proportional'
@@ -72,6 +73,9 @@ def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=
                                     color=COLORS[arm], alpha=.14, lw=0)
                 ax.step(Q, old, where='post', color=COLORS[arm], lw=1, alpha=.55, ls=(0, (4, 2)))
                 ax.step(Q, new, where='post', color=COLORS[arm], lw=2.2)
+                if bracket and arm != 'ft':
+                    low = staircase(select(group, configuration=bracket, arm=arm, scenario='component'), Q)
+                    ax.step(Q, low, where='post', color=COLORS[arm], lw=1.3, ls=':')
             for arm, (color, style) in NISQ_STYLE.items():
                 ax.step(Q, staircase(select(group, configuration=solid, arm=arm), Q), where='post',
                         color=color, ls=style, lw=1.6)
@@ -89,6 +93,8 @@ def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=
     handles += [Line2D([], [], color=NISQ_STYLE[a][0], ls=NISQ_STYLE[a][1], lw=1.6, label=LABELS[a]) for a in NISQ_STYLE]
     handles += [Line2D([], [], color='#666666', lw=1, ls=(0, (4, 2)), label=dashed_label),
                 Patch(color='#999999', alpha=.3, label=band_label)]
+    if bracket:
+        handles.append(Line2D([], [], color='#666666', lw=1.3, ls=':', label='STAR/hybrid without raw RUS (PCEC only)'))
     fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5, .02), ncol=3, frameon=False, fontsize=9)
     fig.suptitle(title, y=.995)
     fig.text(.5, -.03, 'One week · capacity is the largest tested even L within Q · bands are scenarios, not confidence intervals.\n'
@@ -243,7 +249,7 @@ def main():
         bands = read(o.ROOT/'results/optimization_round_v2/costs.json')
         plot_family(rows, 'tau_L_over_4', 'optimization_round_capacity',
                     'Capacity for the time-growing workload (τ = L/4)', solid='calibrated_factories', dashed='all',
-                    bands=bands, dashed_label='Same arm · cultivation only',
+                    bands=bands, dashed_label='Same arm · cultivation only', bracket='pcec_only',
                     band_label='STAR/hybrid zero-growth sensitivity (cultivation source)')
         return
     plot_family(rows, 'tau_L_over_4', 'optimization_round_capacity',
