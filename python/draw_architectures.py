@@ -72,8 +72,8 @@ def star_shared_ancillas(ax):
 
 def overview():
     fig,axes=plt.subplots(1,3,figsize=(15.8,6.9))
-    titles=['NISQ','STAR','FTQC']
-    subtitles=['Physical circuits + repeated sampling','Protected Clifford gates + analog rotations','Protected gates + high-fidelity magic states']
+    titles=['Physical','STAR','FTQC']
+    subtitles=['Unprotected circuits + repeated sampling','Protected Clifford gates + analog rotations','Protected gates + high-fidelity magic states']
     for ax,title,subtitle,arm in zip(axes,titles,subtitles,('nisq','star','ft')):
         hardware(ax)
         ax.text(0,36,title,fontsize=19,fontweight='bold',color=COLORS[arm],ha='left')

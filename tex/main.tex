@@ -71,7 +71,7 @@ N\'eel state, with evolution time $\tau=L/4$ growing with the lattice, whose
 product-formula rotations are small. For each workload we ask how large a
 computation each architecture completes given $Q$ physical qubits, a physical
 error rate $p$, and one week, and which modeling choices decide the answer. We
-consider four arms: physical qubits with error mitigation (NISQ); STAR; full
+consider four arms: physical qubits with error mitigation (the physical arm); STAR; full
 fault tolerance (FT); and a hybrid, which injects variable rotations in analog
 but draws fixed-angle rotations from the same T-state supply as FT.
 Figure~\ref{fig:architectures} shows the resource roles.
@@ -108,7 +108,7 @@ from cultivation or distillation factories; thin dashed curves of the same
 color restrict the T source to cultivation, and dotted STAR and hybrid curves
 remove raw repeat-until-success, bounding the case in which its coherent
 cancellation fails. Bands give the STAR and hybrid zero-growth sensitivity,
-computed with cultivation. NISQ curves assume an effective mitigation overhead or apply
+computed with cultivation. Physical-qubit curves assume an effective mitigation overhead or apply
 two-qubit probabilistic error cancellation. $L=32$ is the sampled ceiling.
 Delivery models are declared, not compiled, and interacting Trotter
 coefficients are converged only near $\tau=1$.}\label{fig:headline}
@@ -142,7 +142,7 @@ calculations could change the conclusions.
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{architecture_overview.pdf}
-\caption{Three allocations of a common array of physical qubits. NISQ uses
+\caption{Three allocations of a common array of physical qubits. Physical-qubit computation uses
 many unprotected circuit replicas. STAR and FT share protected data patches
 and lattice surgery. Dashed orange patches show temporary angle-state
 preparation in STAR surgery ancillas~\cite{toshio}; FT supplies high-fidelity
@@ -226,7 +226,7 @@ among independent contributions,
 \end{equation}
 where $\eps_{\rm stat}$ is the statistical half-width, $\eps_{\rm Trot}$ the
 product-formula error, $\eps_{\rm bias}$ a reserve for residual mitigation
-bias ($0.1\eps$ for NISQ, STAR, and hybrid), $\eps_{\rm inst}$ the coherent
+bias ($0.1\eps$ for the physical, STAR, and hybrid arms), $\eps_{\rm inst}$ the coherent
 residue and retry tail of analog injection, $\eps_{\rm logical}$ the
 logical-fault bias, and $\eps_{\rm synth}$ and $\eps_{\rm magic}$ the rotation
 synthesis and magic-state errors. Biases are added linearly, which is
@@ -644,7 +644,7 @@ $p=10^{-3}$ and $\eps=0.001$ costs $3.5\times10^8$ qubits
 \small
 \begin{tabular}{@{}rrrrrr@{}}
 \toprule
-$p$ & $\eps$ & Encoded $>$ NISQ (PEC / eff.) & FT never behind & STAR / hybrid & FT at $\tau=8$\\
+$p$ & $\eps$ & Encoded $>$ physical (PEC / eff.) & FT never behind & STAR / hybrid & FT at $\tau=8$\\
 \midrule
 $10^{-3}$ & $0.01$ & $1.4\times10^5$ / $2.7\times10^5$ & $3.0\times10^5$ & $\tau=2.5$ / 3.5 & $7.8\times10^6$\\
 $10^{-3}$ & $0.001$ & $0.9\times10^5$ / $3.0\times10^5$ & $4.0\times10^5$ & $\tau=2$ / 2.5 & $5.1\times10^7$\\
@@ -655,7 +655,7 @@ $10^{-4}$ & $0.001$ & $1.1\times10^5$ / $2.0\times10^5$ & $1.2\times10^5$ & $\ta
 \caption{Physical qubits at which each transition occurs for the time-growing
 workload, with all optimizer options, the calibrated surface-code law, and T
 states from cultivation or distillation factories.
-``Encoded $>$ NISQ'' compares with two-qubit PEC, which has a bound behind it,
+``Encoded $>$ physical'' compares with two-qubit PEC, which has a bound behind it,
 and with the assumed effective mitigation line. ``FT never behind'' is the
 point beyond which no analog arm exceeds FT at any larger budget; ties are
 allowed. ``STAR / hybrid'' gives the evolution time at which each saturates. Lattices are
@@ -784,7 +784,7 @@ leaves the hybrid at $L=8$. On the time-growing workload no leader changes.
 \small
 \begin{tabular}{@{}rrrr@{}}
 \toprule
-$p$ & $\eps$ & Encoded beats NISQ & FT at $\tau=8$\\
+$p$ & $\eps$ & Encoded beats physical & FT at $\tau=8$\\
 \midrule
 $10^{-3}$ & $0.01$ & $1.9\to2.7\times10^5$ & $7.0\to8.7\times10^6$\\
 $10^{-3}$ & $0.001$ & $2.2\to3.0\times10^5$ & $2.4\to3.5\times10^8$\\
@@ -877,7 +877,7 @@ $\tau=1$ on patches up to $8\times2$, $6\times3$, and $4\times4$; beyond that it
 transfer bounded by every measured patch, and it is extrapolated beyond
 $\tau=4$. The surface-code law is calibrated for memory at $d\leq9$ and
 extrapolated to the distances used, and the factory costs replace the error law
-inside a published model rather than simulate factories. The effective NISQ
+inside a published model rather than simulate factories. The effective physical-qubit mitigation
 overhead is assumed, and physical estimators with controlled bias at our
 absolute accuracy have not been demonstrated at these sizes. The raw-RUS
 cancellation assumes unbiased, independent retries and has not been checked in
@@ -941,7 +941,7 @@ specific uncertainty; it does not establish an infinite-lattice coefficient.
 The initial $4\times4$ resource sensitivity interpolated between measured
 steps using $C/r^2$, with a $10\%$ margin. We now directly evaluate every
 selected step count for the headline reference designs: effective and two
-PEC NISQ models, reference STAR and hybrid, and reference, single-fast-block,
+PEC physical-qubit models, reference STAR and hybrid, and reference, single-fast-block,
 and four-fast-port FT. The two precision targets give $16$ allocations
 sharing nine circuits. All satisfy
 \begin{equation}
@@ -968,7 +968,7 @@ same headline areas, sometimes at a different $r$.
 \toprule
 Design & Saved $r$ & Saved $Q$ & Measured-error budget $Q$ \\
 \midrule
-NISQ effective & 21 & 72 & 72 \\
+Physical, effective & 21 & 72 & 72 \\
 STAR reference & 33 & 71,442 & 71,442 \\
 Hybrid reference & 41 & 73,348 & 73,348 \\
 FT reference & 33 & 1,875,882 & 1,655,190 \\
@@ -979,12 +979,12 @@ FT four fast ports & 33 & 385,052 & 385,052 \\
 \caption{Direct $4\times4$ checks at $\tau=1$, $\eps=0.001$. Both
 columns use the same step count, hardware, and source menu. The last
 column reallocates the smaller measured Trotter error before minimizing
-resources. Effective NISQ retains its assumed mitigation bias and variance;
+resources. The effective physical model retains its assumed mitigation bias and variance;
 four fast ports retain the uncompiled throughput assumption.}
 \label{tab:direct-budgets}
 \end{table}
 
-Checking the selected NISQ count $r=21$ removes the earlier artificial
+Checking the selected physical-qubit step count $r=21$ removes the earlier artificial
 restriction to $r=8,16,32$, which had inflated its measured-menu cost to
 $2196$ qubits. This validates the Trotter component only: plaquette accuracy
 is still transferred to the experimental gate-count proxy, and mitigation
@@ -992,7 +992,7 @@ bias remains unmeasured. At loose precision the two-qubit PEC scenario also
 fits one $36$-qubit copy at $r=8$, whereas its strict estimate exceeds
 $10^{12}$ qubits. The full-noise PEC proxy is much more costly. These
 differences remain visible in the saved tables and should not be read as
-an architecture-independent NISQ limit.
+an architecture-independent physical-qubit limit.
 
 \begin{figure}[t]
 \centering
@@ -1496,7 +1496,7 @@ We apply the same distinction between measured components and assumed
 composition to all three architectures. A capacity leader is called robust
 only when its worst capacity across this scenario menu exceeds the best
 capacity of both other encoded arms. Overlaps remain unresolved, and this
-criterion establishes no unconditional NISQ size boundary.
+criterion establishes no unconditional physical-qubit size boundary.
 
 
 \section{QUOPS model details}\label{app:quops}
