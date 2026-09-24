@@ -17,7 +17,7 @@ from model import accuracy, finish, workload
 from project_paths import ROOT, project_file
 
 COLORS={'nisq':'#168C9E','star':'#D9872C','ft':'#6750A4','hybrid':'#56815B'}
-LABELS={'nisq':'NISQ · gatewise PEC bound','star':'STAR · parallel retries',
+LABELS={'nisq':'Physical · gatewise PEC bound','star':'STAR · parallel retries',
         'ft':'FTQC · cultivated T states','hybrid':'Hybrid · fixed T + analog'}
 
 
@@ -130,7 +130,7 @@ def main():
     fig.legend(handles,labels,loc='lower center',bbox_to_anchor=(.5,.072),ncol=2,frameon=False,fontsize=9.5)
     fig.suptitle('Hubbard capacity of the reference implementations',fontsize=17,x=.085,ha='left',y=.985)
     fig.text(.085,.91,'Conditional circuit costs: τ = 1, r = 4, U/J = 4, p = 10⁻³',fontsize=10,color='#555555')
-    fig.text(.5,.024,'NISQ uses a sufficient gatewise PEC budget, not an optimized hardware limit. Steps show tested sizes only.\n'
+    fig.text(.5,.024,'The physical arm uses a sufficient gatewise PEC budget, not an optimized hardware limit. Steps show tested sizes only.\n'
              'Four-step accuracy is unvalidated at L ≥ 4 and fails the smaller-patch checks.',
              ha='center',fontsize=8)
     fig.subplots_adjust(left=.085,right=.985,bottom=.27,top=.79,wspace=.10)

@@ -50,13 +50,13 @@ def plot_capacity(rows):
         if j==0: ax.set_ylabel('Largest modeled lattice side L')
         if i==1: ax.set_xlabel('Available physical qubits Q')
     handles = [Line2D([],[],color=COLORS[a],lw=2,label=LABELS[a]) for a in ARMS]
-    handles += [Line2D([],[],color=COLORS['nisq'],ls='--',label='NISQ: assumed effective mitigation'),
-                Line2D([],[],color='#8c622c',ls=':',label='NISQ: two-qubit PEC reference'),
+    handles += [Line2D([],[],color=COLORS['nisq'],ls='--',label='Physical: assumed effective mitigation'),
+                Line2D([],[],color='#8c622c',ls=':',label='Physical: two-qubit PEC reference'),
                 Line2D([],[],color='#777777',ls=(0,(1,3)),label='Previous STAR assumptions')]
     fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.5,.065),ncol=3,frameon=False,fontsize=9)
     fig.suptitle('Updated component scenarios: the encoded ordering remains conditional',y=.99)
     fig.text(.5,.015,'τ = 1 · one week · shared finite-patch accuracy model\n'
-             'Bands span declared component/supply scenarios, not confidence intervals. NISQ effective bias remains assumed.',
+             'Bands span declared component/supply scenarios, not confidence intervals. Physical-qubit effective bias remains assumed.',
              ha='center',fontsize=9)
     fig.tight_layout(rect=(0,.17,1,.96))
     save(fig,'integrated_capacity')
@@ -82,7 +82,7 @@ def plot_requirements(rows):
         ax.grid(alpha=.2)
     axes[0].set_ylabel('Allowed remaining offset / total error target')
     axes[0].legend(frameon=False,loc='lower left')
-    fig.suptitle('What must NISQ mitigation achieve to beat the selected encoded implementations?',y=.99,fontsize=12)
+    fig.suptitle('What must physical-qubit mitigation achieve to beat the selected encoded implementations?',y=.99,fontsize=12)
     fig.text(.5,.04,'Q = 10⁶ · p = 10⁻³ · τ = 1 · Gaussian planning at D* = 0.1 · no training charge in this panel\n'
              'Solid: match runtime. Dashed: 10× faster. Both also meet one week. Affordable region lies left of each curve.\n'
              'Steps are reselected along each curve; F must be achievable at that step count. Training sensitivity is in the tables.',

@@ -3,15 +3,26 @@
   "fixed_shot_cells": 28,
   "shots": 78000000,
   "failures": 162736,
-  "snapshot_files_unchanged": 216,
+  "snapshot_files_unchanged": 205,
   "concurrent_changes_observed": [
     "Makefile",
+    "python/build_manuscript.py",
+    "python/plot_integrated.py",
     "python/optimization_round.py",
+    "python/draw_architectures.py",
     "python/plot_optimization_round.py",
+    "python/plot_capacity.py",
     "python/raw_rus_check.py",
     "python/presentation_manifest.py",
+    "python/__pycache__/physics_sweep.cpython-312.pyc",
+    "python/__pycache__/plot_capacity.cpython-312.pyc",
     "python/__pycache__/optimization_round.cpython-312.pyc",
-    "docs/OPTIMIZATION_ROUND.md"
+    "python/__pycache__/discussion_model.cpython-312.pyc",
+    "python/__pycache__/dynamics_followup_analysis.cpython-312.pyc",
+    "configs/optimization_round.json",
+    "docs/OPTIMIZATION_ROUND.md",
+    "tests/test_optimization_round.py",
+    "tests/__pycache__/test_optimization_round.cpython-312-pytest-8.3.4.pyc"
   ],
   "critical_calibration_inputs_unchanged": [
     "PLAN.md",

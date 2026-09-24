@@ -17,7 +17,7 @@ from plot_capacity import COLORS
 from project_paths import ROOT
 
 LABELS = {'star': 'STAR', 'hybrid': 'Hybrid', 'ft': 'FTQC',
-          'nisq_effective': 'NISQ: assumed effective mitigation', 'nisq_pec': 'NISQ: two-qubit PEC reference'}
+          'nisq_effective': 'Physical: assumed effective mitigation', 'nisq_pec': 'Physical: two-qubit PEC reference'}
 NISQ_STYLE = {'nisq_effective': (COLORS['nisq'], '--'), 'nisq_pec': ('#8c622c', ':')}
 CONFIG_LABELS = {'v1_menu': 'v1 menu', 'raw_rus': '+ raw RUS', 'lanes': '+ lanes', 'ft_delivery': '+ FT delivery',
                  'distances': '+ separate distances', 'richardson': '+ Richardson', 'all': 'all five'}
@@ -98,7 +98,7 @@ def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=
     fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5, .02), ncol=3, frameon=False, fontsize=9)
     fig.suptitle(title, y=.995)
     fig.text(.5, -.03, 'One week · capacity is the largest tested even L within Q · bands are scenarios, not confidence intervals.\n'
-             'Lanes, ports and transfers are declared delivery models; NISQ effective bias is assumed. Interacting Trotter coefficients are converged only near τ = 1.',
+             'Lanes, ports and transfers are declared delivery models; physical-qubit effective bias is assumed. Interacting Trotter coefficients are converged only near τ = 1.',
              ha='center', fontsize=8.5, color='#555555')
     fig.subplots_adjust(bottom=.2, hspace=.25, wspace=.08)
     save(fig, name)

@@ -52,7 +52,7 @@ individual or Hamming-weight synthesis and compact or fast one-port blocks.
 Solid encoded curves use growth-campaign upper limits as an independent
 component in the analog instrument. Bands include a zero-growth sensitivity
 for seed 9 and a slower rejection/supply scenario; they are not confidence
-intervals. The previous STAR line is shown for comparison. The NISQ effective
+intervals. The previous STAR line is shown for comparison. The physical-qubit effective
 line still assumes that its residual-error reserve is achievable, while the
 two-qubit PEC line describes the specified inverse-channel reference.
 Larger-lattice Trotter transfer and aggregate delivery remain assumptions;
@@ -460,7 +460,7 @@ $0.001$ absolute error. Solid encoded curves retain the source and injection
 floor at their $p=10^{-3}$ reference values. Bands span the explicit
 source/floor scenarios described in the text, not statistical confidence
 intervals. The count-law STAR curve changes the injection exposure while
-retaining the same delivery model. NISQ retains separate assumed-effective,
+retaining the same delivery model. The physical arm retains separate assumed-effective,
 two-qubit PEC, and compiled-PEC scenarios. Only the sampled sizes are shown;
 $L=48$ is the sweep ceiling. Larger-lattice accuracy transfer and effective
 mitigation bias remain assumptions.}\label{fig:p-capacity}
@@ -483,7 +483,7 @@ protected tile-time volume and logical-error budget.
 
 At $Q=10^6$ and $\eps=0.01$, lowering $p$ from $10^{-3}$ to $10^{-4}$
 raises the held-scenario STAR capacity from $10\times10$ to $20\times20$,
-and FT/hybrid capacity from $12\times12$ to $24\times24$. The NISQ
+and FT/hybrid capacity from $12\times12$ to $24\times24$. The physical-qubit
 effective and two-qubit PEC capacities increase from sides 6 and 4 to
 12 and 8, respectively. At $\eps=0.001$, the corresponding STAR and FT
 sides are 6 and 2 at $p=10^{-3}$, and 10 and 4 at $p=10^{-4}$.
@@ -659,7 +659,7 @@ chosen observable. We test each claim with a bounded calculation. These
 checks add evidence at their stated scale; they do not silently replace
 the full-campaign assumptions in Fig.~\ref{fig:p-capacity}.
 
-\subsubsection{NISQ: an estimator with measured residual bias}
+\subsubsection{Physical qubits: an estimator with measured residual bias}
 We simulate the full eight-qubit density matrix of a $2\times2$ plaquette
 circuit, including the native nearest-neighbor route, gate depolarization,
 idle noise, preparation, and readout. The noise convention is $p_2=p$,
@@ -860,7 +860,7 @@ and agreement with one finite reference cannot bound its outer boundary.}
 The exposure laws organize the accounting, but a collapse requires an
 independently obtained ordinate. We use exact noisy eight-qubit expectations,
 held-out affine fits, and enumerated STAR channels rather than plotting an
-assumed variance law against its own exponent. For each NISQ circuit,
+assumed variance law against its own exponent. For each physical circuit,
 $\chi_{\rm PEC}$ sums the gate, idle, and SPAM inverse-norm contributions.
 The measured variance multiplier divides the estimator variance per attempt
 by $D_{\rm ideal}(1-D_{\rm ideal})$; acceptance and fitted slope are included.
@@ -926,7 +926,7 @@ We use simple analytical laws to expose the architectural tradeoffs, with
 $p=10^{-3}$, $10$ ns gates, $100$ ns measurement/reset, $240$ ns syndrome
 cycles, $U/J=4$, and a one-week budget $B$. The original reference below
 emphasizes $\eps=0.001$; both precisions remain explicit in the current
-comparison of Section~\ref{sec:physics-sweep}. We compare NISQ, STAR, FTQC,
+comparison of Section~\ref{sec:physics-sweep}. We compare physical qubits, STAR, FTQC,
 and the hybrid using a common total-error target. Each arm can choose its
 error allocation, step count, and resource-state supply within the declared
 search. This removes a fixed allocation that previously forced unnecessary
@@ -1027,7 +1027,7 @@ faults. The central delivery model has four effective parallel lanes;
 these are a throughput assumption, not a compiled dependency schedule.
 
 \paragraph{The per-arm laws.}
-NISQ uses the Willow circuit-count anchor~\cite{phasecraftwillow2025},
+The physical arm uses the Willow circuit-count anchor~\cite{phasecraftwillow2025},
 \begin{equation}
  G_2=4372\frac r3\left(\frac L6\right)^3,\qquad
  D_{\mathrm{circ}}=294\frac r3\frac L6,\qquad
@@ -1038,7 +1038,7 @@ sampling overhead, not a fit to experimental accuracy. Its bias reserve
 also remains uncalibrated. Two explicit PEC comparisons use two-qubit
 inverse-channel exposure, $\log F\simeq4pG_2$, or the saved compiled
 full-noise exposure with bulk terms proportional to $r$ and separate SPAM.
-The NISQ proxy transfers the plaquette error coefficient without asserting
+The physical-qubit proxy transfers the plaquette error coefficient without asserting
 a match to the experimental ordering.
 
 Termwise STAR uses
@@ -1070,9 +1070,9 @@ so a hybrid advantage is algorithm-dependent.
 \caption{Budget-optimized discussion comparison at $\eps=0.001$.
 Each arm selects its error allocation and step count using the measured
 finite-patch planning envelope. Lines are central assumptions; bands span
-delivery and mitigation scenarios, including NISQ PEC references. They do
+delivery and mitigation scenarios, including physical-qubit PEC references. They do
 not represent uncertainty in bulk Trotter error. The fourth panel follows
-$\tau=L/4$. Full lattices and even $L$ are modeled. Effective NISQ mitigation
+$\tau=L/4$. Full lattices and even $L$ are modeled. Effective physical-qubit mitigation
 is an assumed estimator scenario, not a demonstrated accuracy result.}
 \label{fig:discussion}
 \end{figure}
@@ -1082,7 +1082,7 @@ Using the $3\times3$ planning reference at $\tau=1$, the central areas are
 \small
 \begin{tabular}{rrrrrr}
 \toprule
-Lattice & $\eps$ & NISQ effective & STAR & Hybrid & FTQC\\
+Lattice & $\eps$ & Physical, effective & STAR & Hybrid & FTQC\\
 \midrule
 $4\times4$ & $.001$ & $36$ & $71442$ & $73348$ & $1.43\times10^6$\\
 $4\times4$ & $.01$ & $36$ & $46818$ & $48420$ & $61974$\\
@@ -1097,7 +1097,7 @@ error, $2\%$ to logical faults, and $3\%$ to synthesis. Cleanup is no longer
 needed, reducing the previous $5.66$ million-qubit estimate by about a
 factor of four. The strict $6\times6$ FT candidate still chooses cleanup.
 The hybrid improves on termwise STAR at strict $6\times6$, but not at
-$4\times4$. NISQ's effective estimate remains conditional on the specified
+$4\times4$. The physical arm's effective estimate remains conditional on the specified
 sampling multiplier and affordable residual bias; its PEC alternatives are
 shown alongside it.
 
@@ -1229,7 +1229,7 @@ $Q_{\min}=12168$; retaining only two-qubit noise gives $Q_{\min}=180$.
 These are noise ablations, not demonstrated improvements or alternative
 predictions for the declared device.
 
-Experiments require an additional calibration of the NISQ model.
+Experiments require an additional calibration of the physical-qubit model.
 Phasecraft and Quantinuum simulated a $7\times4$ lattice with $56$ qubits,
 using training with fermionic linear optics (TFLO) and time-series
 smoothing~\cite{alam2025}. The Willow study reached $6\times6$ with $72$
@@ -1533,7 +1533,7 @@ provides a concrete algorithmic baseline~\cite{campbell}; recent partial-FT
 resource studies~\cite{chung} and a performed fermionic-dynamics experiment~\cite{alam2025} provide comparison points with distinct hardware assumptions.
 
 We treat these as specified implementations and estimators. A poor physical
-PEC curve is not an impossibility theorem for NISQ, and an encoded curve based
+PEC curve is not an impossibility theorem for physical-qubit computation, and an encoded curve based
 on reference patch timing is not a validated physical floorplan. The purpose
 of the analytical laws is to expose the quantities whose measurement or
 optimization can change the architecture ranking. CUDA-Q Logical supplies
@@ -1665,13 +1665,13 @@ it has not yet been accuracy-qualified.
 \includegraphics[width=\linewidth]{capacity_vs_qubits.pdf}
 \caption{Largest tested Hubbard lattice within one week versus available
 physical qubits. Left: the accepted relative-precision reference. Right: the
-loose absolute-precision sensitivity. NISQ uses a sufficient gatewise-PEC
+loose absolute-precision sensitivity. The physical arm uses a sufficient gatewise-PEC
 sampling bound on the compiled observable cone at nominal idle noise; it
-does not represent optimized NISQ capacity. STAR chooses among one, two, four, and eight
+does not represent optimized physical-qubit capacity. STAR chooses among one, two, four, and eight
 reference injection lanes; FTQC and hybrid use the packed cultivation supply
 scenario with zero additional handoff error. These are conditional $r=4$
 costs, not accuracy-qualified dynamics capacities. That step count fails the
-small square-patch checks, and $L\geq4$ accuracy is uncalibrated. The NISQ
+small square-patch checks, and $L\geq4$ accuracy is uncalibrated. The physical-qubit
 compiler includes exact observable reductions that the encoded workloads have
 not yet received. Only $L=2,4,6,8$ is tested; the upper band marks that limit.}
 \label{fig:capacity}
@@ -1683,7 +1683,7 @@ For a fixed circuit and estimator, Eq.~\eqref{eq:time} gives the exposure limit
 \end{equation}
 Increasing hardware or runtime therefore buys logarithmic exposure, even
 though it can move a discrete lattice-size threshold appreciably. This is
-the mitigation wall of the specified strategy, not a universal NISQ law.
+the mitigation wall of the specified strategy, not a universal physical-qubit law.
 
 \subsection{The common algorithm and its angle inventory}
 \subsubsection{Termwise second order}
@@ -1817,7 +1817,7 @@ or the Trotter coefficient.
 
 The earlier compiled reference in Figure~\ref{fig:capacity} retains a
 separate, conditional circuit comparison. At $Q=10^6$ and strict reference precision,
-the largest tested conditional circuits are $2\times2$ for NISQ,
+the largest tested conditional circuits are $2\times2$ for physical qubits,
 $4\times4$ for STAR and FTQC, and $6\times6$ for the hybrid. These numbers
 use different implemented optimizations, conditional encoded supply, and
 the same unqualified $r=4$ product formula. They are not final architecture
@@ -1831,7 +1831,7 @@ physical truncation could reduce all three arms if its bias is controlled.
 Direct $4\times4$ checks now settle the Trotter component for the selected
 headline workloads. The remaining scientific dependencies are transfer of
 accuracy to larger lattices, a controlled spatial truncation estimate,
-empirical NISQ mitigation bias, and physical injection/growth and
+empirical physical-qubit mitigation bias, and physical injection/growth and
 handoff schedules with residual-channel validation. The same-Hamiltonian
 qubitization comparison in Section~\ref{sec:qsvt-comparison} does not
 reverse the tested ordering; its routed implementation and tighter
@@ -1855,10 +1855,10 @@ step counts have not all been checked directly. No $4\times4$ coefficient
 is inferred at $\tau=8$.
 The additional patches move several discrete thresholds while retaining
 the strong precision dependence in this reference model. For example,
-at $\tau=2$, $Q=10^6$, and strict precision, effective NISQ falls from
+at $\tau=2$, $Q=10^6$, and strict precision, effective physical-qubit mitigation falls from
 $L=4$ to $L=2$, whereas reference STAR and hybrid remain at $L=4$.
 This is a sensitivity to the assumed mitigation and finite-patch models;
-it is not a general NISQ limit.
+it is not a general physical-qubit limit.
 
 \begin{figure}[t]
 \centering
@@ -1868,7 +1868,7 @@ only the finite-patch accuracy model. Dotted curves use the original
 $3\times3$ envelope; solid curves also include the $4\times3$ and
 $4\times4$ measurements. Delivery and source menus are identical, with
 error allocations reoptimized. Both policies retain direct $L=2$
-calibration. NISQ effective mitigation remains an assumed envelope;
+calibration. Physical-qubit effective mitigation remains an assumed envelope;
 two-qubit-only PEC and the full compiled-noise PEC proxy are shown
 alongside it. All curves use a one-week cutoff, $p=10^{-3}$, and
 the same sparse size grid through $L=48$. A missing curve means that no
