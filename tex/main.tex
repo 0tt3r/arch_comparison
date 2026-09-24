@@ -22,23 +22,26 @@ random circuits of the QUOPS benchmark, whose rotation angles are of order one,
 and the central doublon density of an $L\times L$ Fermi--Hubbard lattice evolved
 for a time $\tau=L/4$, whose Trotter angles are small. A common accounting model
 optimizes each architecture's error allocation, code distance, and non-Clifford
-delivery, using measured routing, a validated polarization model, a measured
-finite-patch step-count law, and a circuit-level calibration of the
-surface-code law ($\Lambda=7.41$ at $p=10^{-3}$). At a physical error of
-$10^{-3}$, physical qubits score about 310 QUOPS and STAR saturates near
-$7\times10^3$, while full fault tolerance leads from $3\times10^4$ qubits and
-scores $5.5\times10^6$ with $10^6$. On the Hubbard task, whose small angles
-favor analog injection, physical-qubit computation saturates at
-$\tau\approx1.5$ and STAR and the hybrid at $\tau\approx2.5$--3.5, while full
-fault tolerance is never behind from about $3\times10^5$ qubits and reaches
-$\tau=8$ with $9\times10^6$. Joint optimization of T delivery moves the leader
-most often. A controlled sweep of the injected angles gives STAR a saturation
-size $s\approx0.41/(p\langle|\theta|\rangle)$, and lifting its delivery limits
-changes no crossover, because STAR is limited by exposure rather than delivery. These results are conditional on declared delivery models, finite-patch
-Trotter transfer, and an assumed mitigation overhead for physical qubits. They
-are consistent with a simple exposure picture: physical qubits pay per gate,
-STAR per radian, and full fault tolerance per synthesized rotation with only a
-logarithmic precision overhead.
+delivery, using measured routing, a validated polarization model, exact
+finite-lattice Trotter errors, and a circuit-level calibration of the
+surface-code law ($\Lambda=7.41$ at $p=10^{-3}$) that also prices lattice surgery
+and distillation factories. At a physical error of $10^{-3}$, physical qubits
+score about 310 QUOPS and STAR saturates near $7\times10^3$, while full fault
+tolerance leads from $3\times10^4$ qubits and scores $5.5\times10^6$ with $10^6$. On
+the Hubbard task, whose small angles favor analog injection, physical-qubit
+computation saturates at $\tau\approx1.5$ and STAR and the hybrid at
+$\tau\approx2.5$--3.5, while full fault tolerance is never behind from about
+$3\times10^5$ qubits and reaches $\tau=8$ with $8\times10^6$. The T source is the
+largest delivery lever: at strict precision, distillation factories move the
+crossovers by more than an order of magnitude, whereas lifting STAR's delivery
+limits moves none, because STAR is limited by exposure. A controlled sweep of the
+injected angles gives STAR a saturation size
+$s\approx0.41/(p\langle|\theta|\rangle)$. These results are conditional on
+declared delivery models, Trotter coefficients converged only near $\tau=1$, and
+an assumed mitigation overhead for physical qubits. They are consistent with a
+simple exposure picture: physical qubits pay per gate, STAR per radian, and full
+fault tolerance per synthesized rotation with only a logarithmic precision
+overhead.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -69,7 +72,7 @@ computation each architecture completes given $Q$ physical qubits, a physical
 error rate $p$, and one week, and which modeling choices decide the answer. We
 consider four arms: physical qubits with error mitigation (NISQ); STAR; full
 fault tolerance (FT); and a hybrid, which injects variable rotations in analog
-but draws fixed-angle rotations from the same cultivated T states as FT.
+but draws fixed-angle rotations from the same T-state supply as FT.
 Figure~\ref{fig:architectures} shows the resource roles.
 
 \begin{figure}[!htbp]
@@ -78,8 +81,9 @@ Figure~\ref{fig:architectures} shows the resource roles.
 \caption{QUOPS score reachable within one week versus available physical
 qubits. Solid lines use the standard threshold $\bar\gamma\geq e^{-1/2}$;
 dashed lines show a declared scenario in which a $1/\bar\gamma^{\,2}$ throughput
-penalty must fit in the week. The shaded band adds the published distillation
-factories of Ref.~\cite{litinski2019magic} to full fault tolerance's source menu. Horizontal lines give the measured Willow and Helios-1 scores, each at its
+penalty must fit in the week. The shaded band adds the distillation factories
+of Ref.~\cite{litinski2019magic}, re-optimized under the calibrated surface-code
+law, to full fault tolerance's source menu. Horizontal lines give the measured Willow and Helios-1 scores, each at its
 own error rates and connectivity, and the paper's RSA-2048 and FeMoco targets.
 Routing is measured; lattice-surgery timing is calibrated for isolated
 gadgets and declared for congestion.}\label{fig:quops}
@@ -94,17 +98,17 @@ STAR.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=\linewidth]{optimization_round_capacity_v2.pdf}
+\includegraphics[width=\linewidth]{optimization_round_capacity_v3.pdf}
 \caption{Largest lattice side $L$, and evolution time $\tau=L/4$, reachable
 within one week as a function of available physical qubits. Solid curves use
 the fully optimized model of Secs.~\ref{sec:task}--\ref{sec:architectures} with
-the circuit-level surface-code law of Sec.~\ref{sec:encoded}; thin dashed
-curves of the same color use the reference menu before optimization
-(Sec.~\ref{sec:leader}). Bands give the STAR and hybrid zero-growth
-sensitivity. NISQ curves assume an effective mitigation overhead or apply
+the circuit-level surface-code law of Sec.~\ref{sec:encoded}, with T states
+from cultivation or distillation factories; thin dashed curves of the same
+color restrict the T source to cultivation. Bands give the STAR and hybrid
+zero-growth sensitivity, computed with cultivation. NISQ curves assume an effective mitigation overhead or apply
 two-qubit probabilistic error cancellation. $L=32$ is the sampled ceiling.
-Delivery models are declared, not compiled, and interacting bulk convergence
-is not established.}\label{fig:headline}
+Delivery models are declared, not compiled, and interacting Trotter
+coefficients are converged only near $\tau=1$.}\label{fig:headline}
 \end{figure}
 
 Figure~\ref{fig:headline} gives the second. The Hubbard task is the one on which
@@ -295,15 +299,16 @@ they grow to 5.8 and 3.4. The measured errors are cleanly quadratic: on the
 $4\times4$ plaquette patch at $\tau=1$ they are $4.14\times10^{-3}$,
 $1.03\times10^{-3}$, and $2.56\times10^{-4}$ at $r=8$, 16, and 32. The plaquette
 coefficient is nearly converged across patches, 0.22--0.26 at $\tau=1$ from
-$2\times2$ to $4\times4$. The termwise coefficient is not: it grows as 0.034,
-0.077, 0.14, and 0.19 across the same patches. For STAR, which uses the termwise
-formula, the $4\times4$ value is therefore a transferred assumption rather than
-a converged one, and a larger termwise coefficient would lower its capacity.
-At $U=0$, where both circuits are Gaussian and can be simulated exactly up to
-$24\times24$, the coefficient at fixed $\tau$ stops changing once $L\gtrsim4\tau+2$,
-and smaller patches mostly overestimate it (Appendix~\ref{sec:free-fermion}).
-The interacting growth from $3\times3$ to $4\times4$ is therefore unlikely to be a
-hopping or ordering artifact, and a converged interacting value remains open.
+$2\times2$ to $4\times4$. The termwise coefficient grows from 0.077 on $3\times3$ to
+0.19 on $4\times4$, but exact dynamics on strips up to $8\times2$ and $6\times3$ show
+that this growth stops: at $\tau=1$ it reaches 0.18--0.19 by length 5 and stays
+there, and widths 2, 3, and 4 agree within 5\% (Appendix~\ref{sec:strips}). At
+$\tau=2$ it converges in length but still rises slowly with width, from 0.68 to
+0.78, below the planning value of 0.86. At $U=0$, where both circuits are Gaussian
+and can be simulated exactly up to $24\times24$, the coefficient likewise stops
+changing once $L\gtrsim4\tau+2$ (Appendix~\ref{sec:free-fermion}). Beyond
+$\tau\approx1$ the two-dimensional value therefore remains a transferred
+assumption, now bounded by every measured patch.
 Appendix~\ref{app:trotter} describes the matrix-free calculations, the
 nested-patch checks, and the transfer to larger lattices, which remains an
 assumption.
@@ -447,8 +452,9 @@ Two refinements of the protocol are options of the optimizer. Probabilistic
 coherent error cancellation (PCEC) removes the coherent part of each trial and
 roughly doubles its dephasing~\cite{toshio}. Without it, averaging over RUS
 branches already cancels the coherent term at first order in our instrument,
-halving the exposure; Toshio \textit{et al.} report the opposite ordering for
-the branch-averaged channel, and we have not reconciled the two
+halving the exposure. Toshio \textit{et al.} report the opposite ordering for
+the branch-averaged channel; within their own model the difference is the sign
+of a failed trial's coherent error, and the physical sign gives our result
 (Appendix~\ref{app:raw-rus}). Rotations can also be injected in parallel
 lanes. Each lane occupies six tiles; disjoint Jordan--Wigner supports limit
 concurrent termwise rotations to at most $L$; and more than four lanes use the
@@ -472,10 +478,15 @@ with that workspace charged~\cite{campbell}. Magic states come from
 cultivation~\cite{gidney2024cultivation}: 1024 qubits and about 100 cycles per
 state at error $2\times10^{-9}$, with an optional 15-to-1 cleanup stage of
 twelve tiles and output error $35q^3$. Each factory costs $1024+2d^2$ qubits,
-or $1024+13\cdot2d^2$ with cleanup. As a sensitivity we also offer the
-published distillation factories of Ref.~\cite{litinski2019magic} at the
-matching $p$, with their stated qubits, cycles, and output errors plus one
-delivery tile (Sec.~\ref{sec:delivery-sensitivity}).
+or $1024+13\cdot2d^2$ with cleanup. The optimizer may instead use the
+distillation factories of Ref.~\cite{litinski2019magic}: one- and two-level
+15-to-1 and 20-to-4 protocols whose distances we re-optimized with the paper's
+own factory model after replacing its logical-error law, $0.1(100p)^{(d+1)/2}$,
+by our calibrated one. At the same output error these need 17--45\% more
+qubits at $p=10^{-3}$ than the published designs, whose output errors under our
+law are 5 to 400 times larger. Each factory adds one delivery tile, and the
+menu keeps 26 designs at $p=10^{-3}$ and 34 at $10^{-4}$
+(Appendix~\ref{app:surface}).
 
 Supply and consumption run concurrently. A synthesized rotation is a serial T
 sequence, whereas the rotations of one plaquette stage are independent, so
@@ -503,7 +514,7 @@ angles admit no Hamming-weight batching.
 
 \subsection{The hybrid}\label{sec:hybrid}
 The hybrid runs the plaquette circuit, injects its variable rotations as in
-STAR, and draws its fixed $\pi/8$ rotations from the FT cultivation supply.
+STAR, and draws its fixed $\pi/8$ rotations from the FT magic-state supply.
 It therefore pays STAR's exposure only on $\Theta_{\rm dyn}$ of
 Eq.~\eqref{eq:plaqangle}, without synthesizing any rotation, at the cost of
 factory area and a magic-state error amplified by $e^{\chi/2}$. The distilled
@@ -546,11 +557,12 @@ cleanup stage that is roughly seven times larger and fifteen times slower. At
 $10^9$ qubits the score reaches $7.5\times10^7$, short of the paper's RSA-2048
 and FeMoco targets of $2.5$--$3.4\times10^8$; at $p=10^{-4}$ it reaches them with
 about $8\times10^8$ qubits. The plateau is a feature of source quality, not of
-full fault tolerance. When the published distillation factories of
-Ref.~\cite{litinski2019magic} join cultivation in the source menu, the plateau
-disappears: the score reaches the RSA-2048 target with $2.5\times10^8$ qubits at
-$p=10^{-3}$ and $10^9$ at $10^9$ qubits, and at $p=10^{-4}$ it reaches the target
-with $10^7$ qubits instead of $8\times10^8$.
+full fault tolerance. When the distillation factories of
+Ref.~\cite{litinski2019magic}, re-optimized under the calibrated surface-code
+law, join cultivation in the source menu, the plateau disappears: the score
+reaches the RSA-2048 target with $4\times10^8$ qubits at $p=10^{-3}$ and $7\times10^8$
+at $10^9$ qubits, and at $p=10^{-4}$ it reaches the target with $10^7$ qubits
+instead of $8\times10^8$. The published factories give $2.5\times10^8$ and $10^7$.
 Under the $1/\bar\gamma^{\,2}$ throughput scenario the physical arm reaches about
 $4\times10^3$ and STAR about $10^5$ at $10^9$ qubits, without changing the
 ordering. The mirror test's shot count matters only where logical shots are
@@ -606,12 +618,15 @@ physical-qubit computation reaches $L=6$ ($\tau=1.5$) with about
 $3\times10^3$ qubits and stops there. Encoded computation overtakes it at about
 $2.7\times10^5$ physical qubits. Full fault tolerance is never behind the analog
 arms from $3\times10^5$ qubits, strictly ahead from $8\times10^5$, and reaches the
-$\tau=8$ ceiling at $9\times10^6$, while STAR saturates at $L=10$ ($\tau=2.5$) and
+$\tau=8$ ceiling at $8\times10^6$, while STAR saturates at $L=10$ ($\tau=2.5$) and
 the hybrid at $L=14$ ($\tau=3.5$). At $\eps=0.001$ full fault tolerance is never
-behind from $4\times10^5$ qubits, but the hybrid ties it until $1.3\times10^7$,
-and reaching the ceiling takes $3.5\times10^8$ qubits. At $p=10^{-4}$ every arm reaches further: the
+behind from $4\times10^5$ qubits, strictly ahead from $8.4\times10^5$, and reaches
+the ceiling with $5\times10^7$. At $p=10^{-4}$ every arm reaches further: the
 analog arms saturate at $\tau=4.5$--5.5 for $\eps=0.01$, and full fault
-tolerance reaches the ceiling at $1.9\times10^6$ qubits.
+tolerance reaches the ceiling at $1.3\times10^6$ qubits. Only strict precision
+depends on the T source; with cultivation alone the $\tau=8$ ceiling at
+$p=10^{-3}$ and $\eps=0.001$ costs $3.5\times10^8$ qubits
+(Sec.~\ref{sec:delivery-sensitivity}).
 
 \begin{table}[!htbp]
 \centering
@@ -620,14 +635,15 @@ tolerance reaches the ceiling at $1.9\times10^6$ qubits.
 \toprule
 $p$ & $\eps$ & Encoded $>$ NISQ (PEC / eff.) & FT never behind & STAR / hybrid & FT at $\tau=8$\\
 \midrule
-$10^{-3}$ & $0.01$ & $1.4\times10^5$ / $2.7\times10^5$ & $3.0\times10^5$ & $\tau=2.5$ / 3.5 & $8.7\times10^6$\\
-$10^{-3}$ & $0.001$ & $0.9\times10^5$ / $3.0\times10^5$ & $4.0\times10^5$ & $\tau=2$ / 2.5 & $3.5\times10^8$\\
-$10^{-4}$ & $0.01$ & $0.5\times10^5$ / $1.5\times10^5$ & $1.6\times10^5$ & $\tau=4.5$ / 5.5 & $1.9\times10^6$\\
-$10^{-4}$ & $0.001$ & $1.3\times10^5$ / $3.8\times10^5$ & $2.7\times10^6$ & $\tau=3$ / 4 & $5.0\times10^7$\\
+$10^{-3}$ & $0.01$ & $1.4\times10^5$ / $2.7\times10^5$ & $3.0\times10^5$ & $\tau=2.5$ / 3.5 & $7.8\times10^6$\\
+$10^{-3}$ & $0.001$ & $0.9\times10^5$ / $3.0\times10^5$ & $4.0\times10^5$ & $\tau=2$ / 2.5 & $5.1\times10^7$\\
+$10^{-4}$ & $0.01$ & $0.5\times10^5$ / $1.5\times10^5$ & every $Q$ & $\tau=4.5$ / 5.5 & $1.3\times10^6$\\
+$10^{-4}$ & $0.001$ & $1.1\times10^5$ / $2.0\times10^5$ & $1.2\times10^5$ & $\tau=3$ / 4.5 & $4.3\times10^6$\\
 \bottomrule
 \end{tabular}
 \caption{Physical qubits at which each transition occurs for the time-growing
-workload, with all optimizer options and the calibrated surface-code law.
+workload, with all optimizer options, the calibrated surface-code law, and T
+states from cultivation or distillation factories.
 ``Encoded $>$ NISQ'' compares with two-qubit PEC, which has a bound behind it,
 and with the assumed effective mitigation line. ``FT never behind'' is the
 point beyond which no analog arm exceeds FT at any larger budget; ties are
@@ -635,16 +651,19 @@ allowed. ``STAR / hybrid'' gives the evolution time at which each saturates. Lat
 every even $L$ from 4 to 32, and budgets are sampled on a logarithmic grid.}\label{tab:crossovers}
 \end{table}
 
-For the time-growing workload, full fault tolerance leads alone in every cell
-with at least $10^8$ qubits. Below that, the hybrid holds a narrow window: it
-ties full fault tolerance at $p=10^{-3}$, $\eps=0.001$, and $10^7$ qubits, and
-leads alone at $p=10^{-4}$, $\eps=0.001$, and $10^6$ qubits. STAR leads alone only
-in slivers of qubit budget, for example between $5.9$ and $6.0\times10^4$ qubits
-at $p=10^{-3}$ and $\eps=0.01$, and with every option enabled the hybrid never
-falls below it.
+For the time-growing workload, full fault tolerance leads alone in every
+sampled cell with at least $10^6$ qubits. Below that, the analog arms tie it at
+$10^5$ qubits, or lead together where it does not yet fit ($p=10^{-3}$,
+$\eps=0.001$). STAR leads alone only in slivers of qubit budget, for example
+between $5.9$ and $6.0\times10^4$ qubits at $p=10^{-3}$ and $\eps=0.01$, and with
+every option enabled the hybrid never falls below it. With cultivation alone the
+hybrid also ties full fault tolerance at $p=10^{-3}$, $\eps=0.001$, and $10^7$
+qubits and leads alone at $p=10^{-4}$, $\eps=0.001$, and $10^6$ qubits; both
+windows close when factories are available.
 
 \subsection{External checks}\label{sec:external}
-Two published operating points check the accounting from outside. For the
+Two published operating points and one compilation check the accounting from
+outside. For the
 encoded arms, we replayed the TopQAD resource ledger for Hubbard ground-state
 energy estimation~\cite{chung}. All 16 STAR footprints reproduce the published
 values, 14 of 16 runtimes without PEC agree within 2.3\%, and all 16
@@ -662,6 +681,15 @@ algorithmic accuracy with circuit exposure, and at three steps the total also
 benefits from partial cancellation between the two, which a controlled error
 budget cannot credit.
 
+A third check tests our gate counts against compilation. CUDA-Q
+Logical~\cite{cudaqlogical} compiled the plaquette and termwise circuits at
+$\tau=1$, $r=4$, and $L=2$--8 into Clifford+T words with GridSynth synthesis. The
+compiled T counts lie 0--9\% below Eq.~\eqref{eq:synthesis}, and the resulting
+full-fault-tolerance areas agree with the formula ledger to within 0.03 in
+$\log_{10}Q$. The backend's physical encoded timing could not be validated,
+so compilation checks the counts, not the delivery model (Supplementary
+Material).
+
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{willow_matched_reference.pdf}
@@ -677,7 +705,8 @@ The model contains choices that a simpler comparison would fix in advance:
 four analog lanes, one T-consumption port with Hamming-weight batches of at
 most 16, a data distance no smaller than the cultivation output distance,
 noisy PCEC for every analog rotation, and a single Trotter branch. We tested
-each alternative alone and all together against this reference menu, which
+each alternative alone and all together against this reference menu, with
+cultivated T states throughout, which
 reproduces our earlier integrated model in 335 of 336 replayed cases to
 $10^{-9}$ in $\log_{10}Q$; the remaining case, a STAR design at $10^{78.7}$
 qubits, lies beyond an exposure cutoff that cannot affect capacity below
@@ -689,8 +718,9 @@ attribute the changes.
 \includegraphics[width=\linewidth]{optimization_round_leaders_v2.pdf}
 \caption{Encoded capacity leader for each configuration (rows), qubit budget
 (columns), time family, physical error, and precision, with the calibrated
-surface-code law. Numbers give the leader's lattice side; hatched cells are
-ties. The reference menu is the top row of each panel.}\label{fig:leaders}
+surface-code law and cultivated T states. Numbers give the leader's lattice
+side; hatched cells are ties. The reference menu is the top row of each
+panel.}\label{fig:leaders}
 \end{figure}
 
 \begin{table}[!htbp]
@@ -721,9 +751,10 @@ optimized lanes, remove the only cell in which STAR led alone ($p=10^{-4}$,
 $\eps=0.01$, $Q=10^5$). Raw RUS rarely moves the leader but supplies most of
 the analog gain; $16\times16$ STAR at $\tau=1$ and $\eps=0.01$ falls from
 $10^{10.3}$ to $10^{8.2}$ qubits with it alone. That gain rests on a coherent
-cancellation which the branch-averaged analysis of Ref.~\cite{toshio} does not
-reproduce (Appendix~\ref{app:raw-rus}); the conclusions about full fault
-tolerance do not depend on it.
+cancellation that holds when a failed trial conjugates the resource error, as
+teleportation does, and fails for biased branches or correlated faults
+(Appendix~\ref{app:raw-rus}); the conclusions about full fault tolerance do not
+depend on it.
 
 \subsection{Sensitivity to the surface-code law}\label{sec:law-sensitivity}
 Replacing the reference law ($A=0.1$, $\Lambda=10$) by the calibrated one
@@ -751,7 +782,8 @@ $10^{-4}$ & $0.001$ & $3.8\to3.8\times10^5$ & $5.0\to5.0\times10^7$\\
 \bottomrule
 \end{tabular}
 \caption{Physical qubits at two transitions under the reference and the
-calibrated surface-code law, with all optimizer options.}\label{tab:law-sensitivity}
+calibrated surface-code law, with all optimizer options and cultivated T
+states.}\label{tab:law-sensitivity}
 \end{table}
 
 \subsection{Sensitivity to delivery}\label{sec:delivery-sensitivity}
@@ -764,19 +796,21 @@ the six tiles per lane moves the edges of the analog window by 5--10\%, and even
 the most favorable combination for STAR, $N$ lanes of three tiles, leaves every
 crossover in place. Quadrupling the tiles per extra T port delays full fault
 tolerance at strict precision from $4.0$ to $4.4\times10^5$ qubits. The largest
-lever is the T source. Offering the published distillation factories of
-Ref.~\cite{litinski2019magic} alongside cultivation changes nothing at $p=10^{-3}$
-and $\eps=0.01$, where cultivation remains optimal. At strict precision these
-factories do what a declared source one hundred times better does: at
-$p=10^{-4}$ and $\eps=0.001$ full fault tolerance is never behind from
-$1.2\times10^5$ qubits instead of $2.7\times10^6$, and at $10^6$ qubits its reach
-grows from $L=8$ to 20 and it takes the lead from the hybrid. At $p=10^{-3}$ and
-$\eps=0.001$ it is strictly ahead from $8.4\times10^5$ qubits instead of
-$1.3\times10^7$, and the $\tau=8$ ceiling costs $5\times10^7$ qubits instead of
-$3.5\times10^8$. The factories chosen are two-level 15-to-1 protocols at
-$p=10^{-3}$ and single-level ones at $p=10^{-4}$. The hybrid gains less, because
-its exposure rather than its magic budget sets its size. Apart from the source,
-only the doubled lane charge changes any leader, in two cells.
+lever is the T source. Restricting full fault tolerance to cultivated states
+changes nothing at $\eps=0.01$ and $p=10^{-3}$, where cultivation is optimal,
+but strict precision needs distillation. With cultivation alone, full fault
+tolerance at $p=10^{-4}$ and $\eps=0.001$ is never behind only from
+$2.7\times10^6$ qubits instead of $1.2\times10^5$, its reach at $10^6$ qubits falls
+from $L=20$ to 8, and the hybrid takes the lead there. At $p=10^{-3}$ and
+$\eps=0.001$ it is strictly ahead only from $1.3\times10^7$ qubits instead of
+$8.4\times10^5$, and the $\tau=8$ ceiling costs $3.5\times10^8$ qubits instead of
+$5\times10^7$. The factories chosen are two-level 15-to-1 protocols at
+$p=10^{-3}$ and single-level ones at $p=10^{-4}$. The hybrid gains less from
+factories, because its exposure rather than its magic budget sets its size.
+The published factory designs, used as they stand, give every crossover to
+within 3\%, and a declared cultivated source one hundred times better gives the
+same crossovers as the factories. Apart from the source, only the doubled lane
+charge changes any leader, in two cells.
 
 The same runs attribute the hybrid's advantage. When the plaquette circuit's
 fixed $\pi/8$ rotations are injected by the STAR instrument rather than
@@ -813,23 +847,25 @@ Sec.~\ref{sec:angle-sweep} removes the other differences between the workloads
 and recovers Eq.~\eqref{eq:angle-law} directly.
 
 Several limitations remain. Lane, port, and transfer charges are declared
-rather than compiled. The Trotter law is measured only through $4\times4$
-patches and is transferred beyond $\tau=4$, and interacting bulk convergence is
-not established. The surface-code law is calibrated only for memory at
-$d\leq9$. The effective NISQ overhead is assumed, and physical estimators with
-controlled bias at our absolute accuracy have not been demonstrated at these
-sizes. The raw-RUS cancellation in our restricted instrument disagrees with
-the branch-averaged analysis of Ref.~\cite{toshio}.
+rather than compiled, and lattice surgery is calibrated only for isolated
+adjacent gadgets. The interacting Trotter coefficient is converged near
+$\tau=1$ on patches up to $8\times2$, $6\times3$, and $4\times4$; beyond that it is a
+transfer bounded by every measured patch, and it is extrapolated beyond
+$\tau=4$. The surface-code law is calibrated for memory at $d\leq9$ and
+extrapolated to the distances used, and the factory costs replace the error law
+inside a published model rather than simulate factories. The effective NISQ
+overhead is assumed, and physical estimators with controlled bias at our
+absolute accuracy have not been demonstrated at these sizes. The raw-RUS
+cancellation assumes unbiased, independent retries and has not been checked in
+a circuit-level simulation of injection.
 
-The most useful next calculations are interacting convergence checks on larger
-patches, which would settle the termwise Trotter coefficient that sets STAR's
-step count (the free-fermion limit shows that the size dependence ends at the
-light cone, but not where the interacting value settles), lattice surgery under
-the calibrated noise model, and factories calibrated under the same noise
-model. The T source is the delivery lever that moves the crossovers most, and
-our published-factory sensitivity takes its costs from a different noise model. A
-compiled schedule for parallel analog injection remains worthwhile, but the
-delivery sensitivity shows that it can only make STAR's costs higher.
+The most useful next calculations are a circuit-level simulation of analog
+injection, which would test the raw-RUS cancellation that supplies most of
+STAR's gain; interacting Trotter coefficients at $\tau\geq2$ on wider
+lattices; and simultaneous lattice surgery for many long-range CNOTs. The first
+two could move STAR's plateau. None is likely to move the crossovers of full
+fault tolerance, which rest on its T source, and a compiled schedule for
+parallel analog injection can only make STAR's costs higher.
 
 \section{Conclusions}\label{sec:conclusions}
 We compared error mitigation, STAR partial protection, a hybrid, and full
@@ -843,10 +879,13 @@ near $7\times10^3$, and full fault tolerance scores $5.5\times10^6$ with $10^6$
 qubits. On the Hubbard task, physical-qubit computation saturates at $\tau\approx1.5$, STAR and
 the hybrid at $\tau\approx2.5$--3.5, and full fault tolerance is never behind from
 about $3\times10^5$ physical qubits at $\eps=0.01$ and $4\times10^5$ at
-$\eps=0.001$, reaching the largest simulated evolution with $9\times10^6$ qubits at
-$\eps=0.01$. A controlled angle sweep confirms that STAR's reach scales as the
-inverse of its mean injected angle, and the delivery sensitivity shows that
-STAR is limited by that exposure rather than by how fast it injects.
+$\eps=0.001$, reaching the largest simulated evolution with $8\times10^6$ qubits at
+$\eps=0.01$. At strict precision these crossovers rest on distillation
+factories, which we priced with the same calibrated surface-code law. A
+controlled angle sweep confirms that STAR's reach scales as the inverse of its
+mean injected angle, and the delivery sensitivity shows that STAR is limited by
+that exposure rather than by how fast it injects. The hybrid's advantage over
+STAR comes from distilling its fixed $\pi/8$ rotations.
 
 \clearpage
 \appendix
@@ -1005,6 +1044,33 @@ all-site doublons, norms, input and executable hashes, and atomic case
 records. The step convergence criterion is a $5\%$ agreement between the
 two finest observable-error coefficients, not a proof of bulk convergence.
 
+\subsection{Exact strips beyond $4\times4$}\label{sec:strips}
+A fermionic matrix-product state that applies the same termwise gates reproduces
+the sector solver exactly on small patches but cannot reach larger ones: the
+quench from the N\'eel state builds near-volume-law entanglement by $\tau=1$, and
+on $4\times3$ a bond dimension of 256 already discards 43\% of the weight. We
+therefore raised the sector solver's limit to 18 sites and computed every strip
+of width 2 up to $8\times2$ and of width 3 up to $6\times3$ ($2.4\times10^9$
+amplitudes), with exact references at $\tau=1$ and 2
+(Fig.~\ref{fig:strips}).
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{strip_dynamics.pdf}
+\caption{Exact central-doublon Trotter coefficients at $U/J=4$ versus patch
+length, for widths 2 (circles), 3 (squares), and 4 (diamond), termwise (solid)
+and plaquette (dashed); $r=16$ at $\tau=1$ and 32 at $\tau=2$.}\label{fig:strips}
+\end{figure}
+
+At $\tau=1$ the termwise coefficient rises to 0.19 at length 5 and stays within
+0.18--0.19 to length 8, and widths 2, 3, and 4 give 0.186, 0.191, and 0.188; the
+growth from $3\times3$ to $4\times4$ was a short-patch effect. The plaquette
+coefficient is flat at 0.25--0.27. At $\tau=2$ both converge in length by length
+5--7, but the termwise value rises slowly with width, 0.68, 0.76, and 0.78 for
+widths 2, 3, and 4. Every measured value lies below the planning coefficients of
+Eq.~\eqref{eq:trotter}, 0.21 and 0.29 at $\tau=1$ and 0.86 and 1.25 at $\tau=2$, so no
+optimized step count changes.
+
 \subsection{Free-fermion size dependence}\label{sec:free-fermion}
 At $U=0$ every gate of both circuits, including the fermionic Hadamards and the
 Jordan--Wigner parity strings, is a rotation generated by a Majorana bilinear.
@@ -1099,6 +1165,23 @@ immaterial. Shorter merges add a time-like failure term that has no universal
 slope and exceeds the memory law by up to 57 times, so merges are kept at $d$
 rounds. Simultaneous routing of many long-range CNOTs, and therefore
 congestion, is not covered. Evidence is in \texttt{results/surgery\_v1}.
+
+\paragraph{Distillation factories.} The factory model of
+Ref.~\cite{litinski2019magic} prices every patch, merge, and storage step with
+one per-patch, per-cycle logical error, $0.1(100p)^{(d+1)/2}$, which is the reference
+law above. We ran the paper's public code with Eq.~\eqref{eq:logical} in its place,
+keeping its injection model and protocol structure, and first confirmed that with
+the reference law it reproduces all eleven published designs we use. We then
+re-optimized the distances of one-level 15-to-1, two-level (15-to-1)$\times$(15-to-1),
+and (15-to-1)$\times$(20-to-4) factories over 9255 designs at 40-digit precision, and
+kept, per decade of output error, the designs with the smallest footprint and the
+smallest space-time volume per output. At $p=10^{-3}$ the published designs'
+output errors grow 5 to 400 times under the calibrated law, for example from
+$3.3\times10^{-14}$ to $3.1\times10^{-12}$; re-optimized designs reach a given
+output error with 17--45\% more qubits. At $p=10^{-4}$ the changes are 1.6--11
+times in error and smaller in area. This replaces the error law inside the
+published model; it is not a circuit-level simulation of a factory. Evidence is in
+\texttt{results/factory\_calibration\_v1}.
 
 
 \section{STAR channels, growth, and retries}\label{app:star}
@@ -1288,9 +1371,24 @@ quantifies each case.
 
 Toshio \textit{et al.}~\cite{toshio} average the same branches in their
 Appendix~E, yet report a raw-RUS prefactor slightly larger than with PCEC and
-a logarithmic dependence on the target angle. Their averaged coherent term
-therefore stays first order, unlike this instrument. We have not reconciled
-the conventions. Raw RUS is accordingly an option of the optimizer, charged
+a logarithmic dependence on the target angle. Their model fixes everything
+except one sign. A resource prepared for angle $a>0$ is wrong with probability
+$P_L(a)=a^{2/k}P_{\rm ud}$ and then over-rotates by $\Delta(a)=-a^{1-2/k}$, and
+completion at trial $K$ composes $\mathcal{E}_{2^{K-1}\theta}\circ
+\mathcal{E}_{-2^{K-2}\theta}\circ\cdots\circ\mathcal{E}_{-\theta}$; the over-rotation is
+stated only for positive angles. A failed teleportation implements minus the
+resource's actual angle, so its error is $-\Delta$. With this sign, their averaged
+coherent term vanishes to first order ($|\tilde y|/\tilde x\approx10^{-17}$ for
+$\theta=10^{-4}$--$\pi/8$ and $k=2$--6), and raw RUS carries exactly half of the
+PCEC dephasing, as in our instrument. Evaluating $\Delta$ at the absolute angle
+instead makes the coherent terms add over the $\log_2(1/\theta)$ retries and
+reproduces both features of their Appendix~E: raw RUS above PCEC at small angles,
+growing logarithmically (for $k=4$, from $0.17k$ to $0.70k$ in units of $\theta p$
+as $\theta$ falls from 0.05 to $3.5\times10^{-4}$). The script
+\texttt{python/rus\_reconciliation.py} computes both. Our asymptotic forms of
+$P_L$ and $\Delta$ match their PCEC prefactor at $k=3$ but not uniformly in $k$,
+because they evaluate exact expressions; the comparison of signs is internal to
+one model. Raw RUS is accordingly an option of the optimizer, charged
 with its coherent residue and retry tail, rather than a conclusion that PCEC
 is unnecessary. It changes the capacity leader in one of 64 cells, so the
 conclusions about full fault tolerance do not depend on it; the STAR and

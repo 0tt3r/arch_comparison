@@ -63,5 +63,6 @@ distillation factories of Litinski (2019) added to the source menu
 (2.5×10⁸) is reached with 2.5×10⁸ qubits at p = 10⁻³ and 10⁷ at p = 10⁻⁴; with cultivation alone
 it is reached only at p = 10⁻⁴ with about 8×10⁸. (A declared 100× better cultivated source,
 `ft_better_source`, reaches it with 4×10⁷ at p = 10⁻³.) The dashed curves are a declared
-1/γ² throughput scenario, not the cost of certifying polarization. The shaded band in the figure is the published-factory menu. Figure:
+1/γ² throughput scenario, not the cost of certifying polarization. The shaded band in the figure uses the factories re-optimized under the calibrated law
+([FACTORY_CALIBRATION.md](FACTORY_CALIBRATION.md)), which reach the RSA-2048 target with 4×10⁸ qubits at p = 10⁻³. Figure:
 [figures/quops_capability.pdf](../figures/quops_capability.pdf).

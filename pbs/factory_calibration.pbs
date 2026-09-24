@@ -1,0 +1,17 @@
+#!/bin/bash -l
+#PBS -N factories
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128
+#PBS -l place=scatter
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -r y
+# Resumable: finished designs are appended to results/factory_calibration_v1/*.jsonl.
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison/python
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1
+PY=/home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python
+"$PY" -u factory_calibration.py validate --workers 24
+"$PY" -u factory_calibration.py run --workers 124
+"$PY" -u factory_calibration.py menu

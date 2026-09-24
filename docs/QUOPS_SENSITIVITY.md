@@ -64,3 +64,9 @@ cultivation with optional cleanup.
 Below 3×10⁶ qubits at p = 10⁻³ cultivation remains optimal and nothing changes. Above it the
 factories remove the cultivation plateau, and the RSA-2048 target is reached with 2.5×10⁸ qubits
 (p = 10⁻³) and 10⁷ (p = 10⁻⁴). At p = 10⁻⁴ the small single-level factories help at every size.
+
+With the factories re-optimized under the calibrated surface-code law
+([FACTORY_CALIBRATION.md](FACTORY_CALIBRATION.md)), the plateau still disappears: FT scores 9.9×10⁷
+at 10⁸ qubits and 7.4×10⁸ at 10⁹ (p = 10⁻³), and the RSA-2048 target needs 4×10⁸ qubits instead of
+2.5×10⁸. At p = 10⁻⁴ the calibrated and published menus agree to 10⁷ qubits and reach the target
+with 10⁷. The shaded band of the capability figure uses the calibrated menu.

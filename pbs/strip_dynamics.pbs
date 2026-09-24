@@ -1,0 +1,14 @@
+#!/bin/bash -l
+#PBS -N strips
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128
+#PBS -l place=scatter
+#PBS -l walltime=10:00:00
+#PBS -j oe
+#PBS -r y
+# Resumable: each case writes results/strip_dynamics_v1/<case>.json atomically.
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison/python
+export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 STRIP_THREADS=128
+numactl --interleave=all /home/ac.otten/soft/mambaforge/envs/qb_gsee/bin/python -u strip_dynamics.py

@@ -96,6 +96,29 @@ stays first order, unlike this instrument, where raw RUS carries about half of P
 approximations therefore need reconciliation with the authors. **Use raw RUS
 as a budgeted model option; do not infer that physical PCEC is unnecessary.**
 
+**Reconciliation (2026-09-23).** [`python/rus_reconciliation.py`](../python/rus_reconciliation.py)
+implements the paper's own Section IV model: a resource prepared at angle a > 0 is wrong with
+probability P_L = a^{2/k}P_ud (P_ud = kp/15) and then over-rotates by Δ(a) = −a^{1−2/k} (their
+Eqs. 11–16, stated for positive angles); completion at trial K composes
+E_{2^{K−1}θ}∘E_{−2^{K−2}θ}∘⋯∘E_{−θ} (Eq. 19), with π/4 wrapping; the averaged channel is
+Σ_K 2^{−K}E^K. The only input the paper leaves open is Δ at the negative angle of a failed trial.
+
+- **Conjugate** (physical: a failed teleportation implements minus the resource's *actual* angle,
+  so its error is −Δ): the averaged coherent term vanishes to first order (|ỹ|/x̃ ≈ 10⁻¹⁷ over
+  θ = 10⁻⁴–π/8 and k = 2–6), and raw RUS carries exactly half of the PCEC dephasing. This is our
+  instrument's result.
+- **Same-sign** (Δ evaluated at |angle|): the coherent terms add over the ~log₂(1/θ) retries,
+  and raw RUS exceeds PCEC at small angles with a logarithmic dependence on θ (for k = 4, α′/k
+  rises from 0.17 at θ = 0.05 to 0.70 at 3.5×10⁻⁴). These are the two features reported in
+  Appendix E and Fig. 20.
+
+The disagreement is therefore a sign convention for the failure branch, and the physical sign
+gives first-order cancellation. With our asymptotic P_L and Δ the model reproduces the paper's
+α_RUS ≈ 0.4k (Fig. 11) at k = 3 but not uniformly in k, because the paper evaluates exact
+expressions; the comparison between conventions is internal to one model and does not depend on
+this. The hardware caveats above (biased branches, correlated or same-sign systematics, omitted
+preparation faults) are not addressed by this reconciliation and still bound the raw-RUS gain.
+
 **Consequence for the optimization round.** The `raw_rus` switch in
 [OPTIMIZATION_ROUND.md](OPTIMIZATION_ROUND.md) changes the capacity leader in only one of 64 cells,
 but it supplies most of the STAR/hybrid capacity gain, for example 16×16 STAR at τ = 1,
