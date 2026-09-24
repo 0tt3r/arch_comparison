@@ -32,7 +32,9 @@ DELIVERY = {
 # T source: the published distillation factories of Litinski (2019) alongside cultivation.
 SOURCES = {'baseline': {}, 'litinski_sources': {'ft': {'source_menu': 'litinski'}},
            'calibrated_factories': {'ft': {'source_menu': 'litinski',
-                                           'litinski_factories': 'results/factory_calibration_v1/menu.json'}}}
+                                           'litinski_factories': 'results/factory_calibration_v1/menu.json'}},
+           'cultivation_exact': {'ft': {'source_menu': 'litinski', 'cultivation_error': 4e-9,
+                                        'litinski_factories': 'results/factory_calibration_v1/menu.json'}}}
 
 
 def merged(changes):
@@ -54,6 +56,7 @@ def task(args):
 def tasks():
     out = [(f'angle_{a:.4g}', {'star': {'angle_max': a}}, 'star', p) for a in ANGLES for p in (1e-3, 1e-4)]
     out += [(name, ch, arm, 1e-3) for name, ch in DELIVERY.items() for arm in ('star', 'ft')]
+    out += [('pcec_only', {'star': {'rus_modes': ['noisy_pcec']}}, 'star', p) for p in (1e-3, 1e-4)]
     out += [(name, ch, 'ft', 1e-4) for name, ch in SOURCES.items()]
     out += [(name, ch, 'ft', 1e-3) for name, ch in SOURCES.items() if name != 'baseline']
     return out

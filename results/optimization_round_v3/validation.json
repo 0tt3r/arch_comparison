@@ -1,6 +1,6 @@
 {
   "status": "PASS: round-v1 NISQ replay, calibrated surface law, budgets, fault ledgers, switch domains, PCEC >= raw",
-  "resource_rows": 3000,
+  "resource_rows": 3600,
   "v1_replays": 420,
   "channel_pairs_compared": 15319,
   "channel_points": 37959,
