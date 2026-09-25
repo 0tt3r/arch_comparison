@@ -4,7 +4,7 @@ QEC_PYTHON ?= /home/ac.otten/soft/mambaforge/envs/stim/bin/python
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: optimization-round-sd6-check sd6-calibration optimization-round-sd6-figures quops-sd6 optimization-round-v3-figures factory-calibration strip-dynamics rus-reconciliation free-fermion-trotter quops-sensitivity optimization-round-v3-check quops quops-figures optimization-round-v2-figures optimization-round-v2-check surface-law-audit raw-rus-check optimization-round optimization-round-figures optimization-round-check discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
+.PHONY: hardware-matrix hardware-matrix-check optimization-round-sd6-check sd6-calibration optimization-round-sd6-figures quops-sd6 optimization-round-v3-figures factory-calibration strip-dynamics rus-reconciliation free-fermion-trotter quops-sensitivity optimization-round-v3-check quops quops-figures optimization-round-v2-figures optimization-round-v2-check surface-law-audit raw-rus-check optimization-round optimization-round-figures optimization-round-check discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
 
 surface-law-audit:
 	$(QEC_PYTHON) python/surface_law_calibration.py audit > /dev/null
@@ -56,6 +56,15 @@ optimization-round-v3-figures:
 
 optimization-round-v3-check:
 	$(PYTHON) python/optimization_round.py --round v3 --check
+
+hardware-matrix:
+	cd python && QUOPS_CONFIG=configs/quops_a2a_sd6.json $(PYTHON) quops_study.py && QUOPS_CONFIG=configs/quops_a2a_sd6.json $(PYTHON) quops_sensitivity.py
+	cd python && QUOPS_CONFIG=configs/quops_a2a.json $(PYTHON) quops_study.py && QUOPS_CONFIG=configs/quops_a2a.json $(PYTHON) quops_sensitivity.py
+	cd python && $(PYTHON) plot_hardware_matrix.py
+
+hardware-matrix-check:
+	$(PYTHON) python/optimization_round.py --round v6 --check
+	$(PYTHON) python/optimization_round.py --round v7 --check
 
 optimization-round-sd6-check:
 	$(PYTHON) python/optimization_round.py --round v4 --check
@@ -194,6 +203,8 @@ audit:
 	$(PYTHON) python/optimization_round.py --round v3 --check
 	$(PYTHON) python/optimization_round.py --round v4 --check
 	$(PYTHON) python/optimization_round.py --round v5 --check
+	$(PYTHON) python/optimization_round.py --round v6 --check
+	$(PYTHON) python/optimization_round.py --round v7 --check
 	$(PYTHON) -B python/raw_rus_check.py > /dev/null
 	$(QEC_PYTHON) python/surface_law_calibration.py audit > /dev/null
 	$(PYTHON) python/presentation_manifest.py

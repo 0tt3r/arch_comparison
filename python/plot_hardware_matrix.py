@@ -64,16 +64,19 @@ def quops():
     fig, axes = plt.subplots(2, 2, figsize=(11, 8), sharex=True, sharey=True)
     arms = ('nisq', 'star', 'ft', 'pinnacle')
     for ax, (title, _, main, sens) in zip(axes.flat, PANELS):
-        table = [v for v in read(f'results/{main}/capability.json') if v['p'] == P and v['mode'] == 'standard']
-        factory = {v['Q']: v['score'] for v in read(f'results/{sens}/capability.json')
-                   if v['variant'] == 'calibrated_factories' and v['arm'] == 'ft' and v['p'] == P}
+        # Capability from the saved per-shape minima, so every panel shares one qubit grid.
+        costs = [v for v in read(f'results/{main}/costs.json') if v['p'] == P and v['mode'] == 'standard']
+        factory = sorted((v['Q'], v['score']) for v in read(f'results/{sens}/capability.json')
+                         if v['variant'] == 'calibrated_factories' and v['arm'] == 'ft' and v['p'] == P)
         for arm in arms:
-            if arm not in table[0]:
+            rows = [v for v in costs if v['arm'] == arm]
+            if not rows:
                 continue
-            x = np.array([v['Q'] for v in table])
-            y = np.array([max(v[arm], factory.get(v['Q'], 0)) if arm == 'ft' else v[arm] for v in table], float)
+            y = np.array([max([v['s'] for v in rows if v['qubits'] <= q], default=0) for q in Q], float)
+            if arm == 'ft':
+                y = np.maximum(y, [max([sc for qf, sc in factory if qf <= q*(1+1e-9)], default=0) for q in Q])
             y[y == 0] = np.nan
-            ax.step(x, y, where='post', color=COLORS[arm], lw=2)
+            ax.step(Q, y, where='post', color=COLORS[arm], lw=2)
         ax.set(xscale='log', yscale='log', xlim=(10, 1e9), ylim=(10, 1e10), title=title)
         ax.grid(alpha=.2)
     for ax in axes[1]:

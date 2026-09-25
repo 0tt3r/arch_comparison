@@ -1,0 +1,184 @@
+{
+ "angles": [
+  0.003,
+  0.01,
+  0.03,
+  0.1,
+  0.39269908169872414
+ ],
+ "delivery": {
+  "baseline": {},
+  "surgery_x2": {
+   "surgery": {
+    "clocks_per_cnot_layer": 4
+   }
+  },
+  "surgery_congestion": {
+   "surgery": {
+    "clocks_per_cnot_layer": 2,
+    "congestion_width": 16,
+    "congestion_exponent": 0.5
+   }
+  },
+  "lane_tiles_3": {
+   "star": {
+    "tiles_per_lane": 3
+   }
+  },
+  "lane_tiles_12": {
+   "star": {
+    "tiles_per_lane": 12
+   }
+  },
+  "port_tiles_8": {
+   "ft": {
+    "tiles_per_port": 8
+   }
+  }
+ },
+ "sources": {
+  "baseline": {},
+  "litinski_sources": {
+   "ft": {
+    "source_menu": "litinski"
+   }
+  },
+  "calibrated_factories": {
+   "ft": {
+    "source_menu": "litinski",
+    "litinski_factories": "results/factory_calibration_v1/menu.json"
+   }
+  },
+  "cultivation_exact": {
+   "ft": {
+    "source_menu": "litinski",
+    "cultivation_error": 4e-09,
+    "litinski_factories": "results/factory_calibration_v1/menu.json"
+   }
+  }
+ },
+ "base": {
+  "description": "QUOPS capability (arXiv:2609.12146) for physical qubits, STAR, and full FT on the study's nearest-neighbor array.",
+  "physical_errors": [
+   0.001,
+   0.0001
+  ],
+  "surface_law": {
+   "source": "results/surface_law_v1/fit.json",
+   "amplitude": "A_patch_union_bound"
+  },
+  "test": {
+   "circuits": 100,
+   "shots_per_circuit": 100,
+   "mirror_factor": 2,
+   "note": "Declared: 100 mirror circuits x 100 shots, each about twice the forward size (10^4 executions). The paper prescribes no count; Willow used 2x10^5, H2 and Helios 2-4x10^3 (docs/QUOPS_SPEC.md). With Willow's count, FT capability above s~10^7 falls by roughly an order of magnitude because slow logical shots then need many replicas."
+  },
+  "routing": {
+   "source": "results/quops_routing_v1",
+   "note": "Measured nearest-neighbor routing of QUOPS layers (docs/QUOPS_ROUTING.md): fused two-qubit gates and depth per layer for Cirq RouteCQC and a constructive sorting network; the lower-loss router is used at each width."
+  },
+  "surgery": {
+   "clocks_per_cnot_layer": 1,
+   "note": "A layer of disjoint long-range CNOTs by lattice surgery in the fast block, assumed congestion-free: two code clocks."
+  },
+  "star": {
+   "seed_targets": [
+    [
+     9,
+     13
+    ],
+    [
+     9,
+     25
+    ],
+    [
+     25,
+     25
+    ]
+   ],
+   "rus_modes": [
+    "raw",
+    "noisy_pcec"
+   ],
+   "lanes": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+   ],
+   "tiles_per_lane": 2,
+   "angle_samples": 16
+  },
+  "ft": {
+   "synthesis_shares": [
+    0.1,
+    0.2,
+    0.33,
+    0.5,
+    0.7
+   ],
+   "ports": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+   ],
+   "factories": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048,
+    4096
+   ],
+   "tiles_per_port": 0,
+   "mitigated_loss_caps": [
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "better_source_error": 2e-11,
+   "better_source_note": "Declared sensitivity: cultivated states at 2e-11 instead of 2e-9, with the same footprint and timing, to show which FT features are set by source quality.",
+   "litinski_factories": "configs/optimization_round_v3.json",
+   "source_menu_note": "Set ft.source_menu = 'litinski' to add the published factories of Litinski (2019) at matching p, read from the table in litinski_factories (used by python/quops_sensitivity.py)."
+  },
+  "grid": {
+   "integer_widths_to": 64,
+   "max_width": 200000,
+   "large_width_points": 60,
+   "sizes_per_width": 40
+  },
+  "scope": "Analytical model. NISQ routing uses the measured laws of docs/QUOPS_ROUTING.md; lattice-surgery timing is a declared model. Polarization uses the embedded process-infidelity product validated in docs/QUOPS_POLARIZATION.md; synthesis error is charged quadratically as in the paper; mirror-test shots follow Willow's protocol. The STAR channel is the Hubbard study's restricted generator-fault instrument at the circuit's uniformly random angles.",
+  "polarization": "Embedded process-infidelity product (docs/QUOPS_POLARIZATION.md): exact to 0.2% on w=2-8.",
+  "noise": "Stim convention shared with the surface-code calibration: DEPOLARIZE2(p), DEPOLARIZE1(p/10), DEPOLARIZE1(p) per idle 10 ns slot (PLAN.md C6 default); process infidelity equals the total Pauli error probability.",
+  "connectivity": "all_to_all",
+  "output": "results/quops_a2a_v1",
+  "sensitivity_output": "results/quops_sensitivity_a2a_v1",
+  "figure_suffix": "_a2a",
+  "q_min": 10.0,
+  "calibrated_factories": "results/factory_calibration_v1/menu.json",
+  "connectivity_note": "All-to-all hardware (connectivity isolated; same 240 ns clock): transversal CNOTs (half the Clifford clocks), one tile per logical qubit (no routing space), 2 tiles per injection lane, no charge per T port, T-state transfer by transversal teleportation (d rounds); Pinnacle arm from python/pinnacle.py."
+ }
+}

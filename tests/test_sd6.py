@@ -22,3 +22,12 @@ def test_rounds_select_growth_source_and_restore_it():
     finally:
         o.use_round('v1')
     assert o.v1.growth_pairs is o._GROWTH_PAIRS
+
+
+def test_pinnacle_ledger_replays_table_iv():
+    import pinnacle as pn
+    published = {8: (19e3, 5.6e3), 16: (58e3, 20e3), 24: (123e3, 44e3), 32: (213e3, 78e3)}
+    rows = {r['L']: r for r in pn.table_iv()}
+    for L, (a, b) in published.items():
+        assert rows[L]['qubits_p1e3'] == pytest.approx(a, rel=.02)
+        assert rows[L]['qubits_p1e4'] == pytest.approx(b, rel=.02)

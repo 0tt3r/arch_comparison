@@ -75,7 +75,11 @@ error rate $p$, and one week, and which modeling choices decide the answer. We
 consider four arms: physical qubits with error mitigation (the physical arm); STAR; full
 fault tolerance (FT); and a hybrid, which injects variable rotations in analog
 but draws fixed-angle rotations from the same T-state supply as FT.
-Figure~\ref{fig:architectures} shows the resource roles.
+Figure~\ref{fig:architectures} shows the resource roles. We also cost
+Pinnacle, a qLDPC architecture whose codes need non-local
+connectivity~\cite{webster2026pinnacle}, from its published ledger, and repeat
+the comparison on four hardware types that vary connectivity (a 2D grid or
+all-to-all) and noise (uniform, or one-qubit gates ten times better).
 
 \begin{figure}[!htbp]
 \centering
@@ -135,7 +139,8 @@ Section~\ref{sec:task} defines both tasks and the accounting shared by all arms.
 Section~\ref{sec:algorithm} describes the Trotter algorithms and the measured
 step-count law for the Hubbard task. Section~\ref{sec:architectures} gives each
 architecture's cost model, with calibrations collected in the appendices.
-Section~\ref{sec:results} reports capabilities and crossovers for both workloads
+Section~\ref{sec:hardware} defines the four hardware types and compares the
+architectures on each. Section~\ref{sec:results} reports capabilities and crossovers for both workloads
 and identifies which modeling choices move the leader. Section~\ref{sec:outlook}
 states what controls the scaling, what remains conditional, and which
 calculations could change the conclusions.
@@ -479,7 +484,7 @@ uniform on $[-\pi/8,\pi/8]$; we average the instrument over that distribution.
 Its mean magnitude, $\pi/16$, is roughly seven times the Trotter angles of the
 Hubbard task.
 
-\subsection{Full fault tolerance}\label{sec:ft}
+\subsection{Surface-code fault tolerance}\label{sec:ft}
 FT synthesizes each variable rotation to operator error $\zeta$ with
 \begin{equation}\label{eq:synthesis}
  n_T=\left\lceil3.02\log_2(1/\zeta)+0.77\right\rceil,\qquad
@@ -545,6 +550,140 @@ extra protection step pays at fixed shot budget when
 \end{equation}
 where $m$ is the number of replicas; the hybrid is the simplest instance of
 this operation-dependent protection.
+
+\subsection{Pinnacle}\label{sec:pinnacle}
+Pinnacle replaces surface-code patches by generalized-bicycle qLDPC codes and
+the T factory by a magic engine~\cite{webster2026pinnacle}. We cost it from the
+paper's ledger rather than from our own calibration. A processing block of code
+$[[n,k,d]]$ stores $k$ logical qubits in 140 to 1620 physical qubits, from
+$[[30,8,4]]$ to $[[510,16,24]]$, including its measurement gadgets and bridges.
+One sampler is a processing unit of $\lceil N_{\rm log}/k\rceil$ blocks and one
+magic engine. The unit performs one logical Pauli measurement per logical cycle
+of $d+2$ rounds; Clifford operations are absorbed by Pauli-based computation,
+and each T gate is one such measurement, so T gates are sequential within a
+sampler. The logical error per logical qubit per logical cycle is the paper's
+fit,
+\begin{equation}\label{eq:pinnacle}
+ p_L=\frac{A}{k}\Big(\frac{p}{B}\Big)^{d/2+C},\qquad A=6.2,\ B=0.0158,\ C=0.47,
+\end{equation}
+obtained with most-likely-error decoding under uniform circuit noise. The
+engines are the four operating points vendored in CUDA-Q Logical: at
+$p=10^{-3}$, 4410 qubits with output error $6.2\times10^{-10}$ or 5430 qubits
+with $1.2\times10^{-11}$; at $p=10^{-4}$, 592 or 1807 qubits with
+$9.6\times10^{-10}$ or $8.4\times10^{-12}$. A T gate takes one logical cycle
+or one engine attempt divided by its acceptance, whichever is longer. Rotations
+are synthesized as in FT, with the same Hamming-weight batching and
+Richardson options, and the search chooses the code, the engine, and the error
+split. As a check, the ledger reproduces the paper's Fermi--Hubbard ground-state
+estimates (their Table~IV) to within 1\%, using the $p_{\rm out}=10^{-9}$
+engine that the table, but not their Eq.~(20), assumes at $p=10^{-4}$.
+
+Four features of this ledger favor Pinnacle, and one disfavors it. The decoder
+is optimal rather than practical; Eq.~\eqref{eq:pinnacle} is fitted at
+$d\leq16$ and extrapolated to the $d=24$ code; the same law is used for
+non-uniform noise, where it is conservative; and the codes need bounded-range
+non-local connectivity, so Pinnacle appears only on the all-to-all hardware
+types of Sec.~\ref{sec:hardware}. Against it, a sampler has one processing unit
+and hence serial T gates, whereas the surface-code arms may add ports and
+factories.
+
+\section{Hardware types}\label{sec:hardware}
+The architectures of Sec.~\ref{sec:architectures} run on four hardware types,
+which vary connectivity and noise and keep everything else fixed, including the
+240~ns clock. The hardware types are not intended to describe specific machines. A
+slower syndrome cycle, as in neutral-atom or ion arrays, mainly rescales the
+one-week budget: a 1~ms cycle is the same as a week about 4000 times shorter,
+which removes about $\ln4000\approx8$ units of affordable sampling exponent from
+the analog arms and multiplies the T-limited arms' copies. The results of
+Sec.~\ref{sec:results} are for the first hardware type; Figs.~\ref{fig:hw-hubbard}
+and~\ref{fig:hw-quops} compare all four at $p=10^{-3}$, with the same design
+search on each.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{hardware_matrix_hubbard.pdf}
+\caption{Largest lattice side $L$ reachable in one week for the time-growing
+Hubbard workload ($\tau=L/4$) at $p=10^{-3}$ and $\eps=0.01$, on the four
+hardware types, with all optimizer options and T states from cultivation or
+distillation factories. The dashed physical curve assumes effective mitigation.
+Pinnacle requires non-local connectivity and appears only on the all-to-all
+types.}\label{fig:hw-hubbard}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{hardware_matrix_quops.pdf}
+\caption{QUOPS score reachable in one week at $p=10^{-3}$ under the standard
+threshold on the four hardware types. Surface-code FT uses the better of
+cultivation and the re-optimized distillation factories.}\label{fig:hw-quops}
+\end{figure}
+
+\subsection{2D grid, uniform noise}\label{sec:hw-grid-uniform}
+This is the baseline of Sec.~\ref{sec:results}: nearest-neighbor connectivity
+and the uniform noise model of Sec.~\ref{sec:encoded}, with $p$ after every one-
+and two-qubit gate, on every idle qubit in every layer, and on every reset and
+measurement. The surface-code law is $\Lambda=6.30$, $A=0.103$ at $p=10^{-3}$.
+Logical CNOTs use lattice surgery through routing corridors, and physical
+circuits route by swaps. At $p=10^{-3}$ and $\eps=0.01$, full fault tolerance
+reaches $L=16$ with $1.9\times10^6$ qubits and $\tau=8$ with $9.6\times10^6$;
+on random circuits it scores $4.8\times10^6$ with $10^6$ qubits.
+
+\subsection{2D grid, non-uniform noise}\label{sec:hw-grid-nonuniform}
+One-qubit gates err with $p/10$, and the surface-code circuit uses CZ gates; this
+was our first noise model, with $\Lambda=7.41$, $A=0.077$ at $p=10^{-3}$
+(Appendix~\ref{app:surface}). Cheaper one-qubit gates lower every
+surface-code distance, so they help STAR's Clifford frame and FT alike;
+STAR's injection error comes from two-qubit faults and does not change. Full
+fault tolerance reaches $\tau=8$ with $7.8\times10^6$ qubits, 20\% fewer; the
+hybrid gains one lattice step, to $L=14$, and STAR stays at $L=10$. Random-circuit
+scores rise by at most a factor of 1.6 below $10^6$ qubits. A setting
+chosen to favor STAR would instead lower the error of small-angle two-qubit
+rotations, which this model does not do.
+
+\subsection{All-to-all, uniform noise}\label{sec:hw-a2a-uniform}
+Any pair of qubits can interact at the same clock and error. Physical random
+circuits then need no routing, and their score rises from 240 to 660. The
+physical Hubbard circuit does not change, because the Jordan--Wigner strings
+still require $O(NL)$ two-qubit gates per step without a local fermion
+encoding. For the surface-code arms, logical CNOTs become transversal, one code
+clock rather than two; data blocks need no routing corridors, so lanes and
+ports cost no extra tiles; and a factory's T state reaches the data by
+transversal teleportation in $d$ rounds rather than $2\max(d,15)$. The
+surface-code memory law is unchanged. Full fault tolerance reaches $L=16$ with
+$8.9\times10^5$ qubits and $\tau=8$ with $4.7\times10^6$, about half the grid
+cost, and scores $9.4\times10^6$ on random circuits with $10^6$ qubits. STAR and
+the hybrid start with about half the qubits but saturate where they did on
+the grid, because their limit is exposure, not delivery.
+
+Pinnacle leads on this hardware type. On the Hubbard task it reaches $L=16$ with
+$5.8\times10^4$ qubits, one processing unit of $[[510,16,24]]$ blocks and an
+engine, and $\tau=8$ with $2.2\times10^5$, twenty times fewer than surface-code
+FT. On random circuits it scores $2.9\times10^5$ with $10^4$ qubits and
+$1.2\times10^9$ with $10^9$, about twice surface-code FT; between $5\times10^5$
+and $2\times10^6$ qubits the two are within a factor of two. The early jump in
+Fig.~\ref{fig:hw-quops} is a single sampler of six $[[254,14,16]]$ blocks and
+one engine, 9570 qubits, which the ledger allows because
+Eq.~\eqref{eq:pinnacle} gives $3\times10^{-11}$ per logical cycle at that
+distance. The lead narrows at strict precision. At $\eps=0.001$ and
+$p=10^{-3}$, $\tau=8$ costs Pinnacle $2.9\times10^7$ qubits and surface-code
+FT $4.6\times10^7$; at $p=10^{-4}$ surface-code FT is cheaper,
+$4.7\times10^6$ against $9.7\times10^6$. Pinnacle's logical error is then
+negligible, and its cost is the $10^7$ serial T gates of one sampler, which it
+buys back with copies.
+
+\subsection{All-to-all, non-uniform noise}\label{sec:hw-a2a-nonuniform}
+All-to-all connectivity with one-qubit error $p/10$ combines the two changes.
+The physical random-circuit score rises to $1.7\times10^3$, because without
+routing the one-qubit gates carry a larger share of the circuit's error;
+physical Hubbard dynamics still reach $L=6$. Full fault tolerance reaches
+$\tau=8$ with $3.8\times10^6$ qubits. Pinnacle's numbers are those of the
+uniform case, since we have no fit of Eq.~\eqref{eq:pinnacle} for this noise
+model; they are an upper bound on its cost.
+
+Across the four hardware types the ordering among architectures does not change
+except where Pinnacle enters. Connectivity changes costs more than one-qubit
+noise, by a factor of about two for surface-code FT, and neither moves STAR's
+or the hybrid's saturation, which are set by their exposures.
 
 \section{Results}\label{sec:results}
 \subsection{Random circuits}\label{sec:quops-results}
@@ -905,6 +1044,12 @@ two could move STAR's plateau. None is likely to move the crossovers of full
 fault tolerance, which rest on its T source, and a compiled schedule for
 parallel analog injection can only make STAR's costs higher.
 
+Pinnacle's lead on all-to-all hardware rests on a ledger we did not calibrate:
+an optimal decoder, a fit extrapolated beyond its largest simulated distance,
+and engines at four operating points. A circuit-level calibration of the
+generalized-bicycle codes under our noise models, with a practical decoder,
+would put it on the same footing as the surface-code arms.
+
 \section{Conclusions}\label{sec:conclusions}
 We compared error mitigation, STAR partial protection, a hybrid, and full
 surface-code fault tolerance on one nearest-neighbor array, for random QUOPS
@@ -923,7 +1068,11 @@ factories, which we priced with the same calibrated surface-code law. A
 controlled angle sweep confirms that STAR's reach scales as the inverse of its
 mean injected angle, and the delivery sensitivity shows that STAR is limited by
 that exposure rather than by how fast it injects. The hybrid's advantage over
-STAR comes from distilling its fixed $\pi/8$ rotations.
+STAR comes from distilling its fixed $\pi/8$ rotations. With all-to-all
+connectivity, surface-code FT needs about half the qubits, the analog arms
+saturate where they did on the grid, and Pinnacle, under its published ledger,
+reaches $\tau=8$ at $\eps=0.01$ with $2.2\times10^5$ qubits, twenty times
+fewer than surface-code FT.
 
 \clearpage
 \appendix
@@ -1678,8 +1827,9 @@ CNOT layer; the transfer of a cultivated state into the data distance in
 $2\max(d,15)$ cycles; the sampling convention $D_*=0.1$ and $z=1.96$; and the
 effective physical mitigation overhead $\kappa$. Each declared input that could
 move a conclusion has its own sensitivity run (Sec.~\ref{sec:delivery-sensitivity}).
-On all-to-all hardware the delivery charges change as described in the
-hardware sections, and nothing else.
+On all-to-all hardware (Sec.~\ref{sec:hw-a2a-uniform}) the delivery charges
+change and nothing else: no tiles per lane or port beyond the lane's own two,
+one code clock per transversal CNOT layer, and $d$ cycles per T-state transfer.
 
 \paragraph{Calibrated constants.} The formulas that cost a design contain
 constants measured in separate calculations, never fitted to the capacities:
