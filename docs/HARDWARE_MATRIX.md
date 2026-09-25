@@ -25,8 +25,8 @@ need angle-dependent two-qubit error; possible later variant.
 |---|---|---|---|---|---|
 | 2D grid, uniform | done (v4/v5, quops_sd6) | done | done | done | not applicable (needs bounded-range non-local connectivity) |
 | 2D grid, non-uniform | done (v1–v3, quops_v1) | done | done | done | not applicable |
-| All-to-all, uniform | new | new | new | new | new (ledger) |
-| All-to-all, non-uniform | new | new | new | new | new (ledger, uniform-noise law: conservative) |
+| All-to-all, uniform | done (v6, quops_a2a_sd6) | done | done | done | done (ledger) |
+| All-to-all, non-uniform | done (v7, quops_a2a) | done | done | done | done (ledger, uniform-noise law: conservative) |
 
 ## All-to-all model changes (declared)
 
@@ -49,11 +49,39 @@ need angle-dependent two-qubit error; possible later variant.
   - rotations synthesized as for FT (gridsynth/HWP T counts), each T one logical cycle, plus the repeat-until-success measurements where used;
   - cross-check: replay their Fermi–Hubbard ground-state Table IV (e.g. 58k qubits at L = 16, p = 10⁻³).
 
+## Results (p = 10⁻³; figures/hardware_matrix_hubbard.pdf, figures/hardware_matrix_quops.pdf)
+
+Hubbard, τ = L/4, ε = 0.01, full source menu (calibrated_factories):
+
+| Hardware | Physical (eff.) | STAR | Hybrid | FT: L=16 / τ=8 | Pinnacle: L=16 / τ=8 |
+|---|---|---|---|---|---|
+| Grid, uniform (v5) | L=6 | L=10 | L=12 | 1.9e6 / 9.6e6 | n/a |
+| Grid, non-uniform (v3) | L=6 | L=10 | L=14 | 1.5e6 / 7.8e6 | n/a |
+| All-to-all, uniform (v6) | L=6 | L=10 | L=12 | 8.9e5 / 4.7e6 | 5.8e4 / 2.2e5 |
+| All-to-all, non-uniform (v7) | L=6 | L=10 | L=14 | 7.2e5 / 3.8e6 | 5.8e4 / 2.2e5 |
+
+At ε = 0.001 Pinnacle's lead narrows (p = 10⁻³: τ=8 at 2.9e7 vs FT 4.6e7 on all-to-all uniform) and reverses
+at p = 10⁻⁴ (9.7e6 vs 4.7e6): one sampler has serial T gates (1.1e7 at L=32), so its cost is copies.
+
+QUOPS, standard threshold (score at 10⁴ / 10⁶ / 10⁹ qubits; FT includes factories):
+
+| Hardware | Physical | STAR (plateau) | FT | Pinnacle |
+|---|---|---|---|---|
+| Grid, uniform | 240 | 6.2e3 | 1.4e2 / 4.8e6 / 5.0e8 | n/a |
+| Grid, non-uniform | 310 | 7.1e3 | 2.3e2 / 5.5e6 / 7.4e8 | n/a |
+| All-to-all, uniform | 660 | 6.2e3 | 2.7e3 / 9.4e6 / 5.5e8 | 2.9e5 / 8.2e6 / 1.2e9 |
+| All-to-all, non-uniform | 1.7e3 | 7.1e3 | 3.4e3 / 9.7e6 / 8.1e8 | 2.9e5 / 8.2e6 / 1.2e9 |
+
+Pinnacle's jump near 10⁴ qubits is one sampler of six [[254,14,16]] blocks plus the 4410-qubit engine
+(9570 qubits), allowed because the fit gives 3e-11 per logical cycle at d = 16; not a bug, but a ledger
+consequence. The grid QUOPS panels are computed from costs.json on the 10–10⁹ grid (quops_v1's
+capability.json starts at 10²).
+
 ## Work plan
 
-1. Pinnacle arm (Hubbard in `optimization_round.py`, QUOPS in `quops_study.py`), with the Table IV replay.
-2. All-to-all switches for the existing arms (Hubbard and QUOPS).
-3. Runs: all-to-all × {uniform, non-uniform} for both workloads.
-4. Manuscript restructure: architecture sections, then hardware sections; small-multiple capability figures.
+1. (done) Pinnacle arm (Hubbard in `optimization_round.py`, QUOPS in `quops_study.py`), with the Table IV replay.
+2. (done) All-to-all switches for the existing arms (Hubbard and QUOPS).
+3. (done) Runs: all-to-all × {uniform, non-uniform} for both workloads.
+4. (done) Manuscript restructure: architecture sections, then hardware sections; small-multiple capability figures.
 5. Optional: p/100 calibration; STAR-favourable angle-dependent noise; Pinnacle recalibration under our
    noise models (GB-code syndrome circuits + BP-OSD in Stim; an ASTRA brief).
