@@ -23,18 +23,25 @@ from math import ceil, exp, expm1, isclose, log, log10, log1p, pi, sqrt
 import numpy as np
 
 import integrated_comparison as v1
+import budget_optimization
 from budget_optimization import coefficient, optimize, settings as budget_settings, step_candidates
 from discussion_model import capacity, data_block_tiles, estimate, ideal_shots, sampling_cost
 from dynamics_followup_analysis import extended_coefficient
-from model import log_gamma2_dephasing, workload
+from model import log_gamma2_dephasing, log_gamma2_depolarizing, workload
 from physics_sweep import configuration as sweep_configuration, planning_coefficient
 from project_paths import ROOT
 from resource_extensions import plaquette_rotation_stages, source_error, synthesis_plan
 from star_channel_study import preparation, raw_rus_details, rus_channel
 
+_GROWTH_PAIRS = v1.growth_pairs
+_ESTIMATE = estimate
+
 ROUNDS = {'v1': ('configs/optimization_round.json', 'results/optimization_round_v1'),
           'v2': ('configs/optimization_round_v2.json', 'results/optimization_round_v2'),
-          'v3': ('configs/optimization_round_v3.json', 'results/optimization_round_v3')}
+          'v3': ('configs/optimization_round_v3.json', 'results/optimization_round_v3'),
+          # v4 and v5 repeat v2 and v3 under standard uniform circuit noise (SD6).
+          'v4': ('configs/optimization_round_v4.json', 'results/optimization_round_v4'),
+          'v5': ('configs/optimization_round_v5.json', 'results/optimization_round_v5')}
 CONFIG, OUT = (ROOT/x for x in ROUNDS['v1'])
 ENCODED = ('star', 'hybrid', 'ft')
 NISQ = ('nisq_effective', 'nisq_pec')
@@ -51,11 +58,32 @@ def settings():
 
 
 def use_round(name):
-    """Select a result version: v1 (reference surface law) or v2 (calibrated)."""
+    """Select a result version: v1 (reference surface law), v2/v3 (calibrated), v4/v5 (SD6 noise)."""
     global CONFIG, OUT
     CONFIG, OUT = (ROOT/x for x in ROUNDS[name])
     settings.cache_clear()
     surface_law.cache_clear()
+    # A round may name its own STAR growth bounds; integrated_v1's reader is otherwise used as is.
+    growth = settings().get('growth_summary')
+    v1.growth_pairs = lru_cache(maxsize=1)(lambda: read(ROOT/growth)['pairs']) if growth else _GROWTH_PAIRS
+
+
+def estimate_uniform(L, tau, arm, c, epsilon, steps=None):
+    """discussion_model.estimate, plus the 'pec_uniform' physical reference.
+
+    Two-qubit PEC as in 'pec_two_qubit', and one-qubit gates at the same error p, counted
+    as nisq_one_qubit_ratio per two-qubit gate (the compiled fSWAP network); idle is not charged.
+    """
+    if arm != 'nisq' or c.get('nisq_model') != 'pec_uniform':
+        return _ESTIMATE(L, tau, arm, c, epsilon, steps=steps)
+    row = _ESTIMATE(L, tau, arm, {**c, 'nisq_model': 'pec_two_qubit'}, epsilon, steps=steps)
+    one = c['nisq_one_qubit_ratio']*row['two_qubit_gates']
+    chi = row['chi'] + one*log_gamma2_depolarizing(c['p'], 1)
+    return {**row, **sampling_cost(row['qubits_per_copy'], row['seconds_per_attempt'], chi, c, epsilon, 'hoeffding'),
+            'nisq_model': 'pec_uniform', 'one_qubit_gates': one}
+
+
+estimate = budget_optimization.estimate = estimate_uniform
 
 
 @lru_cache(maxsize=None)
@@ -673,7 +701,9 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
 # ---------------------------------------------------------------- NISQ
 
 def optimize_nisq(L, tau, epsilon, p, model, sw):
-    c = {**sweep_configuration(p), 'nisq_model': {'nisq_effective': 'effective', 'nisq_pec': 'pec_two_qubit'}[model]}
+    pec = settings().get('nisq_pec_model', 'pec_two_qubit')
+    c = {**sweep_configuration(p), 'nisq_model': {'nisq_effective': 'effective', 'nisq_pec': pec}[model],
+         'nisq_one_qubit_ratio': settings().get('nisq_one_qubit_ratio', 0.)}
     options = budget_settings()
     C = trotter_coefficient(L, tau, 'plaquette')
     single = optimize(L, tau, 'nisq', c, epsilon, options, C_override=C)
@@ -853,6 +883,8 @@ def input_hashes():
         names.append(settings()['surface_law']['source'])
     if settings().get('calibrated_factories'):
         names.append(settings()['calibrated_factories'])
+    if settings().get('growth_summary'):
+        names.append(settings()['growth_summary'])
     return {name: sha(ROOT/name) for name in names}
 
 
@@ -865,7 +897,8 @@ def validate(rows):
         # The surface-code law cannot affect physical-qubit rows: they must equal round v1.
         base = {item_key(v): v for v in read(ROOT/ROUNDS['v1'][1]/'costs.json')}
         for v in rows:
-            if v['arm'] in NISQ and item_key(v) in base:
+            if v['arm'] in NISQ and item_key(v) in base and not (
+                    v['arm'] == 'nisq_pec' and settings().get('nisq_pec_model', 'pec_two_qubit') != 'pec_two_qubit'):
                 a, b = base[item_key(v)]['log10_Q_min'], v['log10_Q_min']
                 assert (a is None) == (b is None) and (a is None or isclose(a, b, abs_tol=1e-12)), item_key(v)
                 replays += 1

@@ -18,7 +18,8 @@ import numpy as np
 import quops_study as q
 from project_paths import ROOT
 
-OUT = ROOT/'results/quops_sensitivity_v1'
+import quops_study as _q
+OUT = ROOT/_q.settings().get('sensitivity_output', 'results/quops_sensitivity_v1')
 BASE = copy.deepcopy(q.settings())
 ANGLES = [0.003, 0.01, 0.03, 0.1, pi/8]
 DELIVERY = {
@@ -29,12 +30,13 @@ DELIVERY = {
     'lane_tiles_12': {'star': {'tiles_per_lane': 12}},
     'port_tiles_8': {'ft': {'tiles_per_port': 8}},
 }
+MENU = _q.settings().get('calibrated_factories', 'results/factory_calibration_v1/menu.json')
 # T source: the published distillation factories of Litinski (2019) alongside cultivation.
 SOURCES = {'baseline': {}, 'litinski_sources': {'ft': {'source_menu': 'litinski'}},
            'calibrated_factories': {'ft': {'source_menu': 'litinski',
-                                           'litinski_factories': 'results/factory_calibration_v1/menu.json'}},
+                                           'litinski_factories': MENU}},
            'cultivation_exact': {'ft': {'source_menu': 'litinski', 'cultivation_error': 4e-9,
-                                        'litinski_factories': 'results/factory_calibration_v1/menu.json'}}}
+                                        'litinski_factories': MENU}}}
 
 
 def merged(changes):
@@ -66,7 +68,7 @@ def main():
     todo = tasks()
     with mp.get_context('fork').Pool(len(todo)) as pool:
         results = pool.map(task, todo)
-    Q = np.geomspace(1e2, 1e9, 71)
+    Q = np.geomspace(q.settings().get('q_min', 1e2), 1e9, int(round(10*np.log10(1e9/q.settings().get('q_min', 1e2))))+1)
     table = []
     for name, arm, p, rows in results:
         for Qb in Q:

@@ -9,12 +9,13 @@ import numpy as np
 from plot_capacity import COLORS
 from project_paths import ROOT
 
-OUT = ROOT/'results/quops_sensitivity_v1'
+import quops_study as _q
+OUT = ROOT/_q.settings().get('sensitivity_output', 'results/quops_sensitivity_v1')
 
 
 def main():
     t = json.loads((OUT/'capability.json').read_text())
-    base = json.loads((ROOT/'results/quops_v1/capability.json').read_text())
+    base = json.loads((_q.OUT/'capability.json').read_text())
     variants = sorted({x['variant'] for x in t if x['variant'].startswith('angle_')}, key=lambda v: float(v.split('_')[1]))
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(12, 4.6))
     markers = {1e-3: 'o', 1e-4: 's'}
@@ -49,12 +50,12 @@ def main():
     for arm, label in (('ft', 'FTQC'), ('nisq', 'Physical qubits')):
         y = np.array([x[arm] for x in b], float); y[y == 0] = np.nan
         a2.step(Q, y, where='post', color=COLORS[arm], lw=2.2, label=label)
-    a2.set(xscale='log', yscale='log', xlim=(1e3, 1e9), ylim=(1e2, 1e8), xlabel='Available physical qubits Q',
+    a2.set(xscale='log', yscale='log', xlim=(min(1e3, _q.settings().get('q_min', 1e2)), 1e9), ylim=(1e2, 1e8), xlabel='Available physical qubits Q',
            ylabel='Largest passing size s', title=r'Random circuits, $p=10^{-3}$, standard threshold')
     a2.legend(frameon=False, fontsize=7.5, loc='upper left'); a2.grid(alpha=.2)
     fig.tight_layout()
     for ext in ('pdf', 'png'):
-        fig.savefig(ROOT/f'figures/quops_angle_sweep.{ext}', dpi=180, bbox_inches='tight')
+        fig.savefig(ROOT/f"figures/quops_angle_sweep{_q.settings().get('figure_suffix', '')}.{ext}", dpi=180, bbox_inches='tight')
     (OUT/'angle_law.json').write_text(json.dumps({str(k): v for k, v in fits.items()}, indent=1)+'\n')
     print(fits)
 

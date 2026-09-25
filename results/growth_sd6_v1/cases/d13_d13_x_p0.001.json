@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "contract": {
+    "key": "d13_d13_x_p0.001",
+    "di": 13,
+    "df": 13,
+    "p": 0.001,
+    "basis": "x",
+    "shots": 1000000,
+    "seed": 617274055
+  },
+  "shots": 1000000,
+  "failures": 1,
+  "rate": 1e-06,
+  "simultaneous_upper95": 8.416188610635011e-06,
+  "circuit_sha256": "43fbc1fa44b408b478d7384024d48edfee318343c0d36acb642a3e0b91b42d0b",
+  "detectors": 2268,
+  "elapsed_seconds": 23.88070891238749,
+  "peak_rss_kib": 152308,
+  "host": "i337",
+  "pbs_job": "7792741.imgt1",
+  "stim": "1.16.dev0",
+  "pymatching": "2.3.1",
+  "noise": "SD6 uniform circuit noise",
+  "scope": "Ideal encoded input; decoded growth + target memory + readout. Not a full injected-state channel."
+}

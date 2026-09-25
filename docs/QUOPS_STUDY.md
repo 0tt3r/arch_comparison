@@ -51,7 +51,16 @@ is not covered. The one-sided 95% confidence rule and SPAM references are not mo
 the statistical margin is small. The STAR channel is the restricted instrument of the Hubbard
 study, with the raw-RUS caveat of [RAW_RUS_NOTE.md](RAW_RUS_NOTE.md).
 
-## Results (p = 10⁻³, standard test)
+## Results under uniform noise (SD6; `QUOPS_CONFIG=configs/quops_sd6.json`, `results/quops_sd6_v1`)
+
+With one-qubit error p (instead of p/10) and the SD6 surface-code law: physical qubits score about 240 (310
+before), STAR saturates at 6.2×10³ (3.6×10³ without raw RUS), leads alone between 1 and 2×10⁴ qubits, FT is
+ahead to stay from 2.5×10⁴ qubits and scores 4.8×10⁶ at 10⁶ qubits, plateaus near 1.1×10⁷ from 3×10⁶ to 10⁸
+with cultivation, and with calibrated factories reaches the RSA-2048 target with 5×10⁸ qubits (p = 10⁻³) and
+5×10⁷ (p = 10⁻⁴). The angle law s ≈ 0.41/(p⟨|θ|⟩) is unchanged. Figures: `figures/quops_capability_sd6.pdf`,
+`figures/quops_angle_sweep_sd6.pdf`. The earlier model's results follow.
+
+## Results (earlier model: one-qubit error p/10; p = 10⁻³, standard test)
 
 Physical qubits score about 310 at any size (another workshop implementation gets about 150; Willow
 measured 216 at its own error rates). STAR overtakes them at 10⁴ qubits, leads alone between 10⁴ and

@@ -24,6 +24,7 @@ CONFIG_LABELS = {'v1_menu': 'v1 menu', 'raw_rus': '+ raw RUS', 'lanes': '+ lanes
 
 
 SUFFIX = ''
+Q_MIN = 1e2          # lower qubit axis; 10 for the SD6 rounds (v4, v5)
 
 
 def settings():
@@ -47,8 +48,8 @@ def staircase(group, Q):
 
 
 def grid(group):
-    thresholds = [10**v['log10_Q_min'] for v in group if v['log10_Q_min'] is not None and 2 <= v['log10_Q_min'] <= 9]
-    return np.unique(np.r_[np.geomspace(1e2, 1e9, 350), thresholds])
+    thresholds = [10**v['log10_Q_min'] for v in group if v['log10_Q_min'] is not None and np.log10(Q_MIN) <= v['log10_Q_min'] <= 9]
+    return np.unique(np.r_[np.geomspace(Q_MIN, 1e9, 350), thresholds])
 
 
 def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=None,
@@ -81,7 +82,7 @@ def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=
                         color=color, ls=style, lw=1.6)
             top = max(sizes)
             ticks = [s for s in sizes if s % 8 == 0 or s == sizes[0]]
-            ax.set(xscale='log', xlim=(1e2, 1e9), ylim=(0, top+1), yticks=ticks,
+            ax.set(xscale='log', xlim=(Q_MIN, 1e9), ylim=(0, top+1), yticks=ticks,
                    title=rf'$p={p:g},\ \ \epsilon={eps:g}$')
             if proportional:
                 ax.set_yticklabels([f'{s} (τ={s*cfg["families"][family]["scale"]:g})' for s in ticks])
@@ -236,17 +237,21 @@ def summary(rows, table, changes, validation):
 
 
 def main():
-    global SUFFIX
+    global SUFFIX, Q_MIN
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--round', choices=sorted(o.ROUNDS), default='v1')
     name = parser.parse_args().round
     o.use_round(name)
     SUFFIX = '' if name == 'v1' else '_'+name
+    Q_MIN = 10. if name in ('v4', 'v5') else 1e2
+    if name in ('v4', 'v5'):   # SD6 rounds charge one-qubit gates in the PEC reference
+        LABELS['nisq_pec'] = 'Physical: gate PEC reference (one- and two-qubit)'
     rows, table = read(o.OUT/'costs.json'), read(o.OUT/'capacity.json')
-    if name == 'v3':
+    if name in ('v3', 'v5'):
         # Headline: full T-source menu (cultivation + calibrated factories); cultivation alone dashed.
-        # Round v3 has no zero-growth rows, so the bands come from round v2 (cultivation source).
-        bands = read(o.ROOT/'results/optimization_round_v2/costs.json')
+        # These rounds have no zero-growth rows, so the bands come from the round they extend
+        # (v2 for v3, v4 for v5; cultivation source).
+        bands = read(o.ROOT/f"results/optimization_round_{'v2' if name == 'v3' else 'v4'}/costs.json")
         plot_family(rows, 'tau_L_over_4', 'optimization_round_capacity',
                     'Capacity for the time-growing workload (τ = L/4)', solid='calibrated_factories', dashed='all',
                     bands=bands, dashed_label='Same arm · cultivation only', bracket='pcec_only',

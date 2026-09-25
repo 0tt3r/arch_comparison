@@ -4,7 +4,7 @@ QEC_PYTHON ?= /home/ac.otten/soft/mambaforge/envs/stim/bin/python
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 .DEFAULT_GOAL := paper
-.PHONY: optimization-round-v3-figures factory-calibration strip-dynamics rus-reconciliation free-fermion-trotter quops-sensitivity optimization-round-v3-check quops quops-figures optimization-round-v2-figures optimization-round-v2-check surface-law-audit raw-rus-check optimization-round optimization-round-figures optimization-round-check discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
+.PHONY: optimization-round-sd6-check sd6-calibration optimization-round-sd6-figures quops-sd6 optimization-round-v3-figures factory-calibration strip-dynamics rus-reconciliation free-fermion-trotter quops-sensitivity optimization-round-v3-check quops quops-figures optimization-round-v2-figures optimization-round-v2-check surface-law-audit raw-rus-check optimization-round optimization-round-figures optimization-round-check discussion delivery patch-study physics reconcile figures paper test audit implementation implementation-figures implementation-check frontier frontier-figures frontier-check integrated integrated-figures integrated-check published-benchmarks published-figures published-check willow-benchmark willow-figures willow-check willow-reference willow-reference-figures willow-reference-check
 
 surface-law-audit:
 	$(QEC_PYTHON) python/surface_law_calibration.py audit > /dev/null
@@ -39,11 +39,27 @@ quops-sensitivity:
 	$(PYTHON) python/quops_sensitivity.py
 	$(PYTHON) python/plot_quops_sensitivity.py
 
+sd6-calibration:
+	cd python && $(QEC_PYTHON) surface_law_sd6.py validate && $(QEC_PYTHON) surface_law_sd6.py run && $(QEC_PYTHON) surface_law_sd6.py fit
+	cd python && $(QEC_PYTHON) growth_sd6.py
+	cd python && $(PYTHON) factory_calibration.py run --fit results/surface_law_sd6_v1/fit.json --out results/factory_calibration_sd6_v1 && $(PYTHON) factory_calibration.py menu --fit results/surface_law_sd6_v1/fit.json --out results/factory_calibration_sd6_v1
+
+optimization-round-sd6-figures:
+	cd python && $(PYTHON) plot_optimization_round.py --round v4 && $(PYTHON) plot_optimization_round.py --round v5
+
+quops-sd6:
+	cd python && QUOPS_CONFIG=configs/quops_sd6.json $(PYTHON) quops_study.py && QUOPS_CONFIG=configs/quops_sd6.json $(PYTHON) quops_sensitivity.py
+	cd python && QUOPS_CONFIG=configs/quops_sd6.json $(PYTHON) plot_quops.py && QUOPS_CONFIG=configs/quops_sd6.json $(PYTHON) plot_quops_sensitivity.py
+
 optimization-round-v3-figures:
 	cd python && $(PYTHON) plot_optimization_round.py --round v3
 
 optimization-round-v3-check:
 	$(PYTHON) python/optimization_round.py --round v3 --check
+
+optimization-round-sd6-check:
+	$(PYTHON) python/optimization_round.py --round v4 --check
+	$(PYTHON) python/optimization_round.py --round v5 --check
 
 quops:
 	$(PYTHON) python/quops_study.py
@@ -148,6 +164,7 @@ figures: quops-figures optimization-round-figures optimization-round-v2-figures 
 	$(PYTHON) python/physics_sweep.py --plot
 	$(PYTHON) python/plot_capacity.py
 	$(PYTHON) python/draw_architectures.py
+	cd python && $(PYTHON) draw_fswap.py
 
 paper: figures
 	$(PYTHON) python/build_manuscript.py
@@ -175,6 +192,8 @@ audit:
 	$(PYTHON) python/optimization_round.py --check
 	$(PYTHON) python/optimization_round.py --round v2 --check
 	$(PYTHON) python/optimization_round.py --round v3 --check
+	$(PYTHON) python/optimization_round.py --round v4 --check
+	$(PYTHON) python/optimization_round.py --round v5 --check
 	$(PYTHON) -B python/raw_rus_check.py > /dev/null
 	$(QEC_PYTHON) python/surface_law_calibration.py audit > /dev/null
 	$(PYTHON) python/presentation_manifest.py

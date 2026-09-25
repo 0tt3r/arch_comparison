@@ -1,0 +1,16 @@
+#!/bin/bash -l
+#PBS -N surf-sd6
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128
+#PBS -l place=scatter
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -r y
+# Resumable: each cell writes results/surface_law_sd6_v1/<group>/<key>.json atomically.
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison/python
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+PY=/home/ac.otten/soft/mambaforge/envs/stim/bin/python
+"$PY" -u surface_law_sd6.py run --workers 40
+"$PY" -u surface_law_sd6.py fit
