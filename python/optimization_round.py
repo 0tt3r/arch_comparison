@@ -41,7 +41,10 @@ ROUNDS = {'v1': ('configs/optimization_round.json', 'results/optimization_round_
           'v3': ('configs/optimization_round_v3.json', 'results/optimization_round_v3'),
           # v4 and v5 repeat v2 and v3 under standard uniform circuit noise (SD6).
           'v4': ('configs/optimization_round_v4.json', 'results/optimization_round_v4'),
-          'v5': ('configs/optimization_round_v5.json', 'results/optimization_round_v5')}
+          'v5': ('configs/optimization_round_v5.json', 'results/optimization_round_v5'),
+          # v6 and v7: all-to-all hardware under uniform (SD6) and non-uniform noise, with Pinnacle.
+          'v6': ('configs/optimization_round_v6.json', 'results/optimization_round_v6'),
+          'v7': ('configs/optimization_round_v7.json', 'results/optimization_round_v7')}
 CONFIG, OUT = (ROOT/x for x in ROUNDS['v1'])
 ENCODED = ('star', 'hybrid', 'ft')
 NISQ = ('nisq_effective', 'nisq_pec')
@@ -269,9 +272,37 @@ def component_exposure(w, p, seed, scenario, target, mode):
 
 # ---------------------------------------------------------------- shared ledgers
 
+def a2a():
+    """All-to-all hardware parameters of the round, or None on the 2D grid."""
+    cfg = settings()
+    return cfg.get('a2a') if cfg.get('connectivity') == 'all_to_all' else None
+
+
+def encoded_arms():
+    """Encoded arms of the round; Pinnacle only where the round enables it (bounded-range connectivity)."""
+    return ENCODED + (('pinnacle',) if settings().get('pinnacle') else ())
+
+
+def block_tiles(L, c):
+    """Protected data tiles: Litinski's block on the grid; one tile per logical qubit with all-to-all links."""
+    if a2a():
+        n = 2*L*L + 6 + c.get('extra_work_qubits', 0)
+        return n + c['extra_tiles_per_lane']*c['parallel_lanes']
+    return data_block_tiles(L, c)
+
+
+def transfer_rounds(d, c, sw):
+    """Rounds to move a T state from its source into the data distance."""
+    if a2a():
+        return d                       # transversal teleportation
+    return np.maximum(d, c['source_end_distance']) if sw['separate_distances'] else d
+
+
 def apply_delivery(c, sw):
     """Declared delivery sensitivities (round v3); absent keys keep the reference values."""
     changes = {k: sw[v] for k, v in (('extra_tiles_per_lane', 'tiles_per_lane'), ('source_error', 'source_error')) if v in sw}
+    if a2a() and 'tiles_per_lane' not in sw:
+        changes['extra_tiles_per_lane'] = a2a()['lane_tiles']
     return {**c, **changes}
 
 
@@ -308,6 +339,8 @@ def analog_fixed_T(w):
 
 
 def port_tile_charge(sw):
+    if a2a() and 'tiles_per_port' not in sw:
+        return a2a()['port_tiles']
     return sw.get('tiles_per_port', settings()['extra_tiles_per_port'])
 
 
@@ -421,9 +454,9 @@ def encoded_candidate(L, arm, c, epsilon, branches, fractions, src, layout, lane
     minimum = max(target, local['source_end_distance'] if nt_any and not sw['separate_distances'] else 3)
     d = odd_distances(minimum)[None, None, :]
     shape = np.broadcast(ports, factories, d).shape
-    tiles = np.broadcast_to(data_block_tiles(L, local) + port_tiles + factories*src['tiles'], shape)
+    tiles = np.broadcast_to(block_tiles(L, local) + port_tiles + factories*src['tiles'], shape)
     cycle = local['cycle_seconds']
-    transfer = np.maximum(d, local['source_end_distance']) if sw['separate_distances'] else d
+    transfer = transfer_rounds(d, local, sw)
     budget = log(epsilon*fractions['logical']/norm)
     seconds, feasible = [], np.ones(shape, bool)
     for (weight, w, part), nt in zip(branches, nts):
@@ -465,7 +498,7 @@ def encoded_candidate(L, arm, c, epsilon, branches, fractions, src, layout, lane
     row.update(distance=int(d_sel[k]), injection_distance=first['seed'], growth_target=target,
                factories=int(factories[0, fi[k], 0]), cleanup_levels=src['cleanup'], T_count=nts[0],
                T_source=src['name'] if nt_any else None,
-               data_tiles=int(data_block_tiles(L, local) + port_tiles[pi[k], 0, 0]),
+               data_tiles=int(block_tiles(L, local) + port_tiles[pi[k], 0, 0]),
                protected_tiles=float(tiles[pi[k], fi[k], di[k]]), layout=layout,
                lanes=lanes, T_consumption_ports=int(ports[pi[k], 0, 0]), rus_mode=first['rus_mode'],
                branch_seconds=seconds_best, branch_chi=chis,
@@ -595,7 +628,7 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
                              'synthesis_fraction': synthesis, 'parallel_lanes': lanes_tiles}
                     plans = [synthesis_plan(w, epsilon/norm, local) for _, w in works]
                     workspace = max(x.get('hwp_workspace', 0) for x in plans)
-                    data_tiles = data_block_tiles(L, {**local, 'extra_work_qubits': workspace}) + port_tiles
+                    data_tiles = block_tiles(L, {**local, 'extra_work_qubits': workspace}) + port_tiles
                     for src in source_menu(c, sw, options['cleanup_choices']):
                         qout, cleanup = src['error'], src['cleanup']
                         lm = float(np.logaddexp.reduce([log(abs(weight)*x['T_count']*qout/epsilon)
@@ -604,7 +637,7 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
                             continue
                         magic = exp(lm)*(1+1e-12)
                         tiles = data_tiles + factories*src['tiles']
-                        transfer = np.maximum(d, c['source_end_distance']) if sw['separate_distances'] else d
+                        transfer = transfer_rounds(d, c, sw)
                         service = source_service(src, c, d, transfer)
                         clifford_ports = ports if sw['ft_delivery'] else cfg['reference_lanes']
                         durations, serial = [], []
@@ -615,7 +648,8 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
                             t_serial = (serial_T_layers(w, x, ports)*x['T_per_rotation']
                                         + (nt - rotations*x['T_per_rotation'])/ports)
                             supply = np.ceil(nt/factories)*service
-                            consume = (block['ft_clocks_per_T']*t_serial + x['clifford_clock_units']/clifford_ports)*d
+                            consume = (block['ft_clocks_per_T']*t_serial
+                                       + x['clifford_clock_units']*(a2a() or {}).get('clifford_factor', 1.)/clifford_ports)*d
                             durations.append((2*d+np.maximum(supply, consume))*cycle + t_serial*c['feedforward_seconds']
                                              + c['reset_seconds'] + c['measurement_seconds'])
                             serial.append(t_serial)
@@ -657,7 +691,8 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
                             nt0 = plans[0]['T_count']
                             supply0 = float(np.ceil(nt0/factories[0, fi[k], 0])*service[0, 0, di[k]]*cycle)
                             consume0 = float((block['ft_clocks_per_T']*np.broadcast_to(serial[0], ports.shape)[pi[k], 0, 0]
-                                              + plans[0]['clifford_clock_units']/(ports[pi[k], 0, 0] if sw['ft_delivery'] else cfg['reference_lanes']))
+                                              + plans[0]['clifford_clock_units']*(a2a() or {}).get('clifford_factor', 1.)
+                                              / (ports[pi[k], 0, 0] if sw['ft_delivery'] else cfg['reference_lanes']))
                                              * chosen[k]*cycle)
                             row.update(L=L, tau=tau, arm='ft', absolute_error=epsilon, p=p, scenario=scenario,
                                        algorithm='plaquette', r=r, branches=[[s, w] for s, w in plan],
@@ -696,6 +731,92 @@ def optimize_ft(L, tau, epsilon, p, scenario, sw):
         return dict(L=L, tau=tau, arm='ft', absolute_error=epsilon, p=p, scenario=scenario,
                     log10_Q_min=None, status='No feasible candidate in the declared menu')
     return dict(best, candidate_count=count, status='Synthesis counts checked; declared delivery model')
+
+
+# ---------------------------------------------------------------- Pinnacle
+
+def optimize_pinnacle(L, tau, epsilon, p, scenario, sw):
+    """Pinnacle qLDPC architecture (python/pinnacle.py ledger) on the plaquette circuit.
+
+    One sampler is one processing unit, ceil(N_logical/k) generalized-bicycle blocks plus one magic engine.
+    Every T gate is one logical measurement, i.e. one logical cycle of d + 2 rounds, unless the magic
+    engine is slower (its attempt cadence over its acceptance). Logical faults are budgeted per logical
+    qubit per elapsed logical cycle with the paper's fitted law; synthesis and Richardson as for FT.
+    """
+    import pinnacle as pn
+    c = base_config(p, scenario)
+    options = budget_settings()
+    cfg = settings()
+    batches = [b for b in cfg['extended_hwp_batches'] if b <= L*L]
+    engines = [e for e in pn.ENGINES if isclose(e.p, p)]
+    cycle = c['cycle_seconds']
+    best, visited, groups = None, set(), {}
+
+    def at_step(r, richardson):
+        nonlocal best
+        if (r, richardson) in visited:
+            return
+        visited.add((r, richardson))
+        plan = branch_plan(r, richardson)
+        norm = sum(abs(w) for _, w in plan)
+        trotter = trotter_fraction(L, tau, 'plaquette', r, richardson, epsilon)
+        if trotter >= 1:
+            return
+        works = [(weight, workload(L, tau, steps, 'plaquette', c['u_over_j'])) for steps, weight in plan]
+        weights = [w for _, w in plan]
+        for batch in batches:
+            style = 'individual' if batch == 1 else 'hamming_weight'
+            for synthesis in options['synthesis_fraction_grid']:
+                local = {**c, 'rotation_synthesis': style, 'hwp_batch_size': batch, 'synthesis_fraction': synthesis}
+                plans = [synthesis_plan(w, epsilon/norm, local) for _, w in works]
+                n_logical = 2*L*L + max(x.get('hwp_workspace', 0) for x in plans)
+                for engine in engines:
+                    lm = float(np.logaddexp.reduce([log(abs(weight)*x['T_count']*engine.output_error/epsilon)
+                                                    for (weight, _), x in zip(works, plans)]))
+                    if lm >= 0:
+                        continue
+                    magic = exp(lm)*(1+1e-12)
+                    for code in pn.CODES:
+                        rounds_per_T = max(code.cycle_rounds, engine.cycles_per_attempt/engine.acceptance)
+                        seconds = [x['T_count']*rounds_per_T*cycle + c['reset_seconds'] + c['measurement_seconds']
+                                   for x in plans]
+                        if max(seconds) > c['week_seconds']:
+                            continue
+                        cycles = [x['T_count']*rounds_per_T/code.cycle_rounds for x in plans]
+                        fault = max(n_logical*k*pn.logical_error(code, p) for k in cycles)
+                        q = pn.unit_qubits(code, n_logical, engine)
+                        for logical in options['logical_fraction_grid']:
+                            stat = 1-trotter-options['residual_bias_fraction']['ft']-synthesis-magic-logical
+                            if stat <= 0 or fault > epsilon*logical/norm:
+                                continue
+                            row = final_sampling(float(q), seconds, [0.]*len(plan), weights, stat, c, epsilon)
+                            if row['log10_Q_min'] is None:
+                                continue
+                            row.update(L=L, tau=tau, arm='pinnacle', absolute_error=epsilon, p=p, scenario=scenario,
+                                       algorithm='plaquette', r=r, branches=[[s_, w] for s_, w in plan],
+                                       extrapolation='richardson' if richardson else 'single', extrapolation_norm=norm,
+                                       synthesis=style, hwp_batch_size=batch, T_count=plans[0]['T_count'],
+                                       code=code.name, distance=code.d, engine=engine.name, logical_qubits=n_logical,
+                                       qubits_per_copy=q, branch_seconds=seconds,
+                                       budget_fractions=dict(stat=stat, trotter=trotter, logical=logical, synthesis=synthesis,
+                                                             magic=magic, residual_bias=options['residual_bias_fraction']['ft']))
+                            if best is None or cost_key(row) < cost_key(best):
+                                best = row
+                            if richardson not in groups or cost_key(row) < cost_key(groups[richardson]):
+                                groups[richardson] = row
+    for richardson in ([False, True] if sw['richardson'] else [False]):
+        C = richardson_coefficient(L, tau, 'plaquette') if richardson else trotter_coefficient(L, tau, 'plaquette')
+        menu = richardson_steps(C, tau, epsilon, options) if richardson else step_candidates(C, tau, epsilon, options)
+        for r in menu:
+            at_step(r, richardson)
+        if richardson in groups:
+            center = groups[richardson]['r']
+            for r in range(max(ceil(options['minimum_steps_per_tau']*tau), center-2), center+3):
+                at_step(r, richardson)
+    if best is None:
+        return dict(L=L, tau=tau, arm='pinnacle', absolute_error=epsilon, p=p, scenario=scenario,
+                    log10_Q_min=None, status='No feasible candidate in the Pinnacle ledger')
+    return dict(best, status='Pinnacle ledger (arXiv:2602.11457v2); uniform-noise fit, most-likely-error decoding')
 
 
 # ---------------------------------------------------------------- NISQ
@@ -762,7 +883,7 @@ def work_items():
                 for eps in cfg['precisions']:
                     for L in f['sizes']:
                         for scenario in scenarios:
-                            arms = ENCODED + NISQ if scenario == 'component' else ('star', 'hybrid')
+                            arms = encoded_arms() + NISQ if scenario == 'component' else ('star', 'hybrid')
                             for arm in arms:
                                 items.append((config, family, L, p, eps, scenario, arm))
     return items
@@ -779,6 +900,8 @@ def evaluate(item):
     NEW_CHANNELS.clear()
     if arm == 'ft':
         row = optimize_ft(L, tau, eps, p, scenario, sw)
+    elif arm == 'pinnacle':
+        row = optimize_pinnacle(L, tau, eps, p, scenario, sw)
     elif arm in NISQ:
         row = optimize_nisq(L, tau, eps, p, arm, sw)
     else:
@@ -840,14 +963,14 @@ def capacities(rows):
                         group = [v for v in rows if (v['configuration'], v['family'], v['p'], v['absolute_error']) == (config, family, p, eps)]
                         for Q in cfg['qubit_budgets']:
                             row = dict(configuration=config, scenario=scenario, family=family, p=p, epsilon=eps, Q=Q)
-                            for arm in ENCODED + NISQ:
+                            for arm in encoded_arms() + NISQ:
                                 arm_scenario = scenario if arm in ('star', 'hybrid') else 'component'
                                 row[arm] = capacity([v for v in group if v['arm'] == arm and v['scenario'] == arm_scenario], Q)
-                            best = max(row[a] for a in ENCODED)
-                            leaders = [a for a in ENCODED if row[a] == best]
+                            best = max(row[a] for a in encoded_arms())
+                            leaders = [a for a in encoded_arms() if row[a] == best]
                             row['encoded_leader'] = 'none' if best == 0 else ('tie:'+'+'.join(leaders) if len(leaders) > 1 else leaders[0])
                             row['nisq_effective_at_or_above_encoded'] = row['nisq_effective'] >= best and row['nisq_effective'] > 0
-                            row['at_size_ceiling'] = max(row[a] for a in ENCODED + NISQ) == max(cfg['families'][family]['sizes'])
+                            row['at_size_ceiling'] = max(row[a] for a in encoded_arms() + NISQ) == max(cfg['families'][family]['sizes'])
                             table.append(row)
     return table
 
@@ -862,7 +985,7 @@ def changes(table):
         if v['configuration'] == reference or v['scenario'] != 'component':
             continue
         b = base[(v['family'], v['p'], v['epsilon'], v['Q'])]
-        moved = {a: [b[a], v[a]] for a in ENCODED + NISQ if b[a] != v[a]}
+        moved = {a: [b[a], v[a]] for a in encoded_arms() + NISQ if b[a] != v[a]}
         if moved or b['encoded_leader'] != v['encoded_leader']:
             out.append(dict(configuration=v['configuration'], family=v['family'], p=v['p'], epsilon=v['epsilon'],
                             Q=v['Q'], leader_before=b['encoded_leader'], leader_after=v['encoded_leader'],
