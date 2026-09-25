@@ -120,7 +120,7 @@ def routed_layer(w, router):
     Measured means are log-interpolated for 4 <= w <= 144; the fitted laws
     apply beyond; two and three qubits need no routing.
     """
-    if w <= 3:
+    if w <= 3 or settings().get('connectivity') == 'all_to_all':
         return float(w//2), 1.
     means, fits = routing_data()
     widths = sorted(v for r, v in means if r == router)
@@ -181,7 +181,9 @@ def surgery_clocks(w):
 
 
 def tiles_block(n):
-    """Fast Litinski block: every logical tile has an exposed boundary."""
+    """Fast Litinski block: every logical tile has an exposed boundary; one tile each with all-to-all links."""
+    if settings().get('connectivity') == 'all_to_all':
+        return n
     return ceil(2*n + sqrt(8*n) + 1)
 
 
@@ -324,7 +326,53 @@ def ft_better_source(w, s, p, mode, Q):
     return ft_cost(w, s, p, mode, Q, source=settings()['ft']['better_source_error'])
 
 
-COST = dict(nisq=nisq_cost, star=star_cost, ft=ft_cost, ft_better_source=ft_better_source)
+def pinnacle_cost(w, s, p, mode, Q):
+    """Pinnacle qLDPC architecture (python/pinnacle.py): one processing unit of ceil(w/k) blocks plus a
+    magic engine per sampler; Cliffords are absorbed by Pauli-based computation, so the circuit takes
+    one logical cycle (or one magic-engine attempt, if slower) per T state. Bounded-range connectivity only."""
+    if settings().get('connectivity') != 'all_to_all':
+        return None
+    import pinnacle as pn
+    c, cfg = hardware(p), settings()['ft']
+    x = shape(w, s)
+    shots = test_shots()
+    best = None
+    caps = [0.5] if mode == 'standard' else cfg['mitigated_loss_caps']
+    for share, allowed in [(f, a) for f in cfg['synthesis_shares'] for a in caps]:
+        zeta = share*allowed/x['rotations']
+        n_T = ceil(3.02*log2(1/sqrt(zeta)) + .77)
+        N_T = x['rotations']*n_T
+        for engine in [e for e in pn.ENGINES if abs(e.p-p) < 1e-15]:
+            magic = N_T*engine.output_error
+            if magic + share*allowed > allowed:
+                continue
+            for code in pn.CODES:
+                rounds = max(code.cycle_rounds, engine.cycles_per_attempt/engine.acceptance)
+                seconds = N_T*rounds*c['cycle_seconds'] + c['measurement_seconds'] + c['reset_seconds']
+                loss = share*allowed + magic + w*(N_T*rounds/code.cycle_rounds)*pn.logical_error(code, p)
+                q = pn.unit_qubits(code, w, engine)
+                if mode == 'standard':
+                    if loss > 0.5:
+                        continue
+                    copies = max(1, ceil(shots*seconds/c['week_seconds']))
+                else:
+                    need = shots*exp(min(2*loss, 600.))*seconds/c['week_seconds']
+                    if need > 1e30:
+                        continue
+                    copies = max(1, ceil(need))
+                row = dict(qubits=q*copies, loss=loss, seconds=seconds, copies=copies, code=code.name,
+                           engine=engine.name, T_per_rotation=n_T, T_count=N_T, synthesis_share=share)
+                if best is None or row['qubits'] < best['qubits']:
+                    best = row
+    return best
+
+
+COST = dict(nisq=nisq_cost, star=star_cost, ft=ft_cost, ft_better_source=ft_better_source, pinnacle=pinnacle_cost)
+
+
+def arms():
+    """Arms of the configured study; Pinnacle needs bounded-range (here all-to-all) connectivity."""
+    return ARMS + (('pinnacle',) if settings().get('connectivity') == 'all_to_all' else ())
 
 
 # ---------------------------------------------------------------- sweep
@@ -367,7 +415,7 @@ def capability(rows, Q):
 
 def run():
     cfg = settings()
-    tasks = [(arm, p, mode) for p in cfg['physical_errors'] for mode in MODES for arm in ARMS]
+    tasks = [(arm, p, mode) for p in cfg['physical_errors'] for mode in MODES for arm in arms()]
     with mp.get_context('fork').Pool(len(tasks)) as pool:
         parts = pool.starmap(sweep_arm, tasks)
     rows = [row for part in parts for row in part]
@@ -384,7 +432,7 @@ def finish(rows):
         for mode in MODES:
             for Q in np.geomspace(settings().get('q_min', 1e2), 1e9, int(round(10*np.log10(1e9/settings().get('q_min', 1e2))))+1):
                 row = dict(p=p, mode=mode, Q=float(Q))
-                for arm in ARMS:
+                for arm in arms():
                     # Mitigation is optional: the mitigated capability includes every standard design.
                     modes = ('standard',) if mode == 'standard' else MODES
                     row[arm] = capability([v for v in rows if v['arm'] == arm and v['p'] == p and v['mode'] in modes], Q)

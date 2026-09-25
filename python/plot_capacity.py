@@ -16,7 +16,7 @@ import numpy as np
 from model import accuracy, finish, workload
 from project_paths import ROOT, project_file
 
-COLORS={'nisq':'#168C9E','star':'#D9872C','ft':'#6750A4','hybrid':'#56815B'}
+COLORS={'nisq':'#168C9E','star':'#D9872C','ft':'#6750A4','hybrid':'#56815B','pinnacle':'#C2477F'}
 LABELS={'nisq':'Physical · gatewise PEC bound','star':'STAR · parallel retries',
         'ft':'FTQC · cultivated T states','hybrid':'Hybrid · fixed T + analog'}
 

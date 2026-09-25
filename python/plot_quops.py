@@ -9,9 +9,9 @@ from plot_capacity import COLORS
 from project_paths import ROOT
 from quops_study import MODES, OUT, read, settings
 
-ARMS = ('nisq', 'star', 'ft')
+ARMS = ('nisq', 'star', 'ft', 'pinnacle')
 
-LABELS = {'nisq': 'Physical qubits', 'star': 'STAR', 'ft': 'FTQC'}
+LABELS = {'nisq': 'Physical qubits', 'star': 'STAR', 'ft': 'FTQC', 'pinnacle': 'Pinnacle (qLDPC)'}
 STYLE = {'standard': '-', 'mitigated': '--'}
 # Measured physical-qubit scores and challenge targets, Proctor et al. (arXiv:2609.12146).
 MEASURED = [('Willow', 216), ('Helios-1', 1504)]
@@ -29,7 +29,7 @@ def main():
     cfg = settings()
     fig, axes = plt.subplots(1, len(cfg['physical_errors']), figsize=(12, 4.8), sharey=True)
     for ax, p in zip(np.atleast_1d(axes), cfg['physical_errors']):
-        for arm in ARMS:
+        for arm in [a for a in ARMS if a in table[0]]:
             for mode in MODES:
                 rows = [v for v in table if v['p'] == p and v['mode'] == mode]
                 Q = np.array([v['Q'] for v in rows])
@@ -52,7 +52,7 @@ def main():
                title=rf'$p={p:g}$', xlabel='Available physical qubits Q')
         ax.grid(alpha=.2)
     np.atleast_1d(axes)[0].set_ylabel('QUOPS score (largest passing size s)')
-    handles = [Line2D([], [], color=COLORS[a], lw=2, label=LABELS[a]) for a in ARMS]
+    handles = [Line2D([], [], color=COLORS[a], lw=2, label=LABELS[a]) for a in ARMS if a in table[0]]
     handles += [Line2D([], [], color='#555555', ls='-', label='standard threshold'),
                 Line2D([], [], color='#555555', ls='--', label='1/γ² throughput scenario')]
     from matplotlib.patches import Patch

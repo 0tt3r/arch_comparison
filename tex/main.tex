@@ -334,6 +334,9 @@ freed Trotter allowance buys more than this cost, which happens at
 $\eps=0.001$.
 
 \section{Architectures}\label{sec:architectures}
+Each architecture below is costed by the same design search, which chooses its
+step count, error allocation, code distance, and delivery; Appendix~\ref{app:search}
+lists the full menu, the declared inputs, and the calibrated constants.
 \subsection{Physical qubits with error mitigation}\label{sec:nisq}
 The physical circuit is a fermionic-swap network on the nearest-neighbor
 array~\cite{kivlichan2018}: the Jordan--Wigner encoding, with fermionic swaps
@@ -1613,6 +1616,113 @@ these curves compare the cost of evolving full lattices, not the accuracy of a
 local answer.}\label{fig:optimization-fixed-tau}
 \end{figure}
 
+
+\section{The design search}\label{app:search}
+Every capacity in this paper is the answer to one optimization problem. For a
+workload instance (a lattice $L$ with $\tau=L/4$, or a random-circuit shape $(w,s)$),
+a physical error rate $p$, a precision $\eps$, and an architecture, we find the
+fewest physical qubits $Q_{\min}$ that complete the task within the week while
+meeting the accuracy contract of Eq.~\eqref{eq:budget}. The capacity at a budget
+$Q$ is then the largest instance with $Q_{\min}\leq Q$. This appendix describes what
+the search ranges over, why each option is in the menu, which inputs are
+declared rather than chosen, and where the calibrated constants come from.
+
+\paragraph{Objective and constraints.} A candidate design fixes a sampler, one
+complete copy of the computation with area $q_a$ and attempt time $t_a$, and an
+allocation of the error budget. It is admissible when every bias fits its share
+of $\eps$, when one attempt fits in the week, and when the statistical share
+leaves a finite shot count $N_0e^{\chi}$. Its cost is
+$Q=q_a\lceil N_0e^{\chi}t_a/B\rceil$ [Eq.~\eqref{eq:sampling}], or the
+Richardson-weighted form of Eq.~\eqref{eq:richardson}. Every architecture pays
+this same accounting, so the search compares designs on one currency: physical
+qubits for one week.
+
+\paragraph{Decision variables.} Table~\ref{tab:search-menu} lists the menu. Each
+entry is a choice a quantum architect would make, and each trades area against
+time or error. The menus start at the reference design of our earlier
+integrated model and extend well past it in the direction that the trade
+favors, so that the reference design is always one point in the search.
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{@{}p{0.2\linewidth}p{0.27\linewidth}p{0.11\linewidth}p{0.34\linewidth}@{}}
+\toprule
+Variable & Menu & Arms & What it trades\\
+\midrule
+Trotter steps $r$ & $\lceil\sqrt{C/(f\eps)}\rceil$ for 21 Trotter shares $f=0.03$--0.97, at least $8\tau$; then $\pm2$ around the best & all & Trotter error against exposure (analog, physical) or T count (FT)\\
+Extrapolation & single branch, or Richardson with $(r,2r)$ and weights $(-\tfrac13,\tfrac43)$ & all & a $K_4/r^4$ residual against $\approx4.9$ times the sampling time\\
+Error split & synthesis $0.01$--$0.15\,\eps$; logical $0.005$--$0.2\,\eps$; magic by source; residual bias $0.1\eps$ (analog, physical) or 0 (FT); statistics the rest & encoded & where the error budget is best spent\\
+Code distance $d$ & every odd $d$ from 3, smallest admissible & encoded & area against logical-fault bias\\
+Data layout & compact (one port, 9 clocks per T) or fast (1 clock per T) & STAR, hybrid, FT & area against T-consumption speed\\
+T-consumption ports & 1--128 (fast layout) & FT, hybrid & parallel T consumption against 2 tiles per extra port\\
+Factories & 1--1024 & FT, hybrid & supply rate against source area\\
+T source & cultivation, with or without a 15-to-1 cleanup; distillation factories (24--34 designs per $p$) & FT, hybrid & output error against area and service time\\
+Equal-angle batching & batches of 1--1024 by Hamming-weight phasing & FT, Pinnacle & fewer synthesized rotations against Toffolis and workspace\\
+Analog lanes & 1--128, at most $L$ (termwise) or $N$ (plaquette) & STAR, hybrid & parallel injection against 6 tiles per lane\\
+Injection seed / receiver & $d_i\in\{5,9,25\}$, receiver $13$ or $25$ & STAR, hybrid & preparation acceptance and error against growth error\\
+Retry scheme & raw repeat-until-success, or noisy PCEC & STAR, hybrid & half the dephasing against a cancelled coherent term\\
+Pinnacle code / engine & five GB codes ($d=4$--24); two magic engines per $p$ & Pinnacle & block area and cycle length against logical error; engine area against output error\\
+\bottomrule
+\end{tabular}
+\caption{The menu of the design search for the Hubbard workload. The random-circuit
+search uses the same variables with lanes, ports, and factories up to 1024--4096,
+four synthesis shares, and, in the mitigated mode, a menu of allowed losses.}\label{tab:search-menu}
+\end{table}
+
+\paragraph{Declared inputs.} Some inputs are hardware or engineering assumptions
+rather than choices, and the search holds them fixed: the 240~ns syndrome cycle,
+10~ns gates, 100~ns measurement and reset, and 200~ns feedforward; the tile
+charges per lane (6) and per extra port (2); two code clocks per lattice-surgery
+CNOT layer; the transfer of a cultivated state into the data distance in
+$2\max(d,15)$ cycles; the sampling convention $D_*=0.1$ and $z=1.96$; and the
+effective physical mitigation overhead $\kappa$. Each declared input that could
+move a conclusion has its own sensitivity run (Sec.~\ref{sec:delivery-sensitivity}).
+On all-to-all hardware the delivery charges change as described in the
+hardware sections, and nothing else.
+
+\paragraph{Calibrated constants.} The formulas that cost a design contain
+constants measured in separate calculations, never fitted to the capacities:
+\begin{itemize}
+\item the surface-code law $A$, $\Lambda$ from $9.6\times10^7$ Stim memory shots per noise
+model (Appendix~\ref{app:surface});
+\item the Trotter coefficients $C(\tau)$ and $K_4$ from exact dynamics on patches up to
+$4\times4$ and strips up to $6\times3$ (Appendix~\ref{app:trotter});
+\item STAR's accepted channel at every workload angle from exact enumeration of
+generator faults, and its growth error from $2.4\times10^7$ decoded growth shots
+(Appendix~\ref{app:star});
+\item synthesis T counts from the gridsynth law $3.02\log_2(1/\zeta)+0.77$, checked
+against compiled CUDA-Q words (Sec.~\ref{sec:external});
+\item cultivated-state error and service time from Ref.~\cite{gidney2024cultivation},
+and factory designs re-priced with our surface-code law (Appendix~\ref{app:surface});
+\item Pinnacle's codes, logical-error law, and magic engines from
+Ref.~\cite{webster2026pinnacle};
+\item for random circuits, routing laws measured on 900 routed circuits and the
+embedded polarization product validated against exact simulation
+(Appendix~\ref{app:quops}).
+\end{itemize}
+
+\paragraph{How the search runs.} The search is exhaustive over the product of the
+menus. For each combination of discrete choices, the code distance is scanned
+upward and the first distance that meets the logical budget is taken, since the
+area only grows beyond it. The remaining choices are evaluated together as
+arrays, so that a single full-fault-tolerance instance at $L=16$ evaluates about
+$10^7$ candidate designs. Two rules prune without changing the answer: analog
+designs with exposure $\chi>120$ are dropped, because they would need more than
+$10^{24}$ qubits under any attempt time; and noisy PCEC is evaluated only where
+raw repeat-until-success stays below that cutoff, since PCEC never has less
+dephasing. Among admissible designs the search keeps the one with the fewest
+qubits, breaking ties by the shorter attempt. The search is deterministic and
+reproducible from the saved inputs.
+
+\paragraph{What the answer means.} The result is the optimum over the menu, not
+over every conceivable design. Three checks bound the difference. The reference
+menu alone reproduces our earlier integrated model in 335 of 336 replayed cases.
+Each option added one at a time changes the leader in only a few of 64 cells
+(Table~\ref{tab:leader-changes}), and together in 15. The sensitivity rounds move
+each declared charge by factors of two to four and change few crossovers. None of
+this replaces a compiled schedule: the costs are those of the declared delivery
+models evaluated at their best settings.
 
 \section{Reproducibility}\label{app:reproducibility}
 {\sloppy Every number in the main text is regenerated from saved results by the repository's \texttt{Makefile}. The uniform-noise results are rounds v4 and v5 of \texttt{python/optimization\_round.py} (\texttt{pbs/optimization\_round.pbs} with \texttt{ROUND=v4} or \texttt{v5}), the QUOPS study run with \texttt{QUOPS\_CONFIG=configs/quops\_sd6.json}, the surface-code and growth calibrations of \texttt{python/surface\_law\_sd6.py} and \texttt{python/growth\_sd6.py}, and the factory menu of \texttt{python/factory\_calibration.py} with the uniform-noise fit. \texttt{make audit} replays every saved calculation against its declared inputs. The earlier noise model's results (rounds v1--v3, \texttt{results/quops\_v1}, and \texttt{results/surface\_law\_v1}) are retained. The Supplementary Material preserves the development history, earlier reference models, and compilation checks.\par}

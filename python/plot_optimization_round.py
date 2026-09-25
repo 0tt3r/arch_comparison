@@ -16,7 +16,7 @@ from optimization_round import ENCODED, read
 from plot_capacity import COLORS
 from project_paths import ROOT
 
-LABELS = {'star': 'STAR', 'hybrid': 'Hybrid', 'ft': 'FTQC',
+LABELS = {'star': 'STAR', 'hybrid': 'Hybrid', 'ft': 'FTQC', 'pinnacle': 'Pinnacle (qLDPC)',
           'nisq_effective': 'Physical: assumed effective mitigation', 'nisq_pec': 'Physical: two-qubit PEC reference'}
 NISQ_STYLE = {'nisq_effective': (COLORS['nisq'], '--'), 'nisq_pec': ('#8c622c', ':')}
 CONFIG_LABELS = {'v1_menu': 'v1 menu', 'raw_rus': '+ raw RUS', 'lanes': '+ lanes', 'ft_delivery': '+ FT delivery',
@@ -64,17 +64,17 @@ def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=
             ax = axes[i, j]
             group = select(rows, family=family, p=p, absolute_error=eps)
             Q = grid(group)
-            for arm in ENCODED:
+            for arm in o.encoded_arms():
                 new = staircase(select(group, configuration=solid, arm=arm, scenario='component'), Q)
                 old = staircase(select(group, configuration=dashed, arm=arm, scenario='component'), Q)
-                if arm != 'ft':
+                if arm not in ('ft', 'pinnacle'):
                     source = select(bands or rows, family=family, p=p, absolute_error=eps)
                     zero = staircase(select(source, configuration='all', arm=arm, scenario='zero_growth'), Q)
                     ax.fill_between(Q, np.minimum(new, zero), np.maximum(new, zero), step='post',
                                     color=COLORS[arm], alpha=.14, lw=0)
                 ax.step(Q, old, where='post', color=COLORS[arm], lw=1, alpha=.55, ls=(0, (4, 2)))
                 ax.step(Q, new, where='post', color=COLORS[arm], lw=2.2)
-                if bracket and arm != 'ft':
+                if bracket and arm not in ('ft', 'pinnacle'):
                     low = staircase(select(group, configuration=bracket, arm=arm, scenario='component'), Q)
                     ax.step(Q, low, where='post', color=COLORS[arm], lw=1.3, ls=':')
             for arm, (color, style) in NISQ_STYLE.items():
@@ -90,7 +90,7 @@ def plot_family(rows, family, name, title, solid='all', dashed='v1_menu', bands=
             if i == 1:
                 ax.set_xlabel('Available physical qubits Q')
     fig.supylabel('Largest lattice side L' + ('  (evolution time τ = L/4)' if proportional else ''), x=.035)
-    handles = [Line2D([], [], color=COLORS[a], lw=2.2, label=LABELS[a]+' · optimized') for a in ENCODED]
+    handles = [Line2D([], [], color=COLORS[a], lw=2.2, label=LABELS[a]+' · optimized') for a in o.encoded_arms()]
     handles += [Line2D([], [], color=NISQ_STYLE[a][0], ls=NISQ_STYLE[a][1], lw=1.6, label=LABELS[a]) for a in NISQ_STYLE]
     handles += [Line2D([], [], color='#666666', lw=1, ls=(0, (4, 2)), label=dashed_label),
                 Patch(color='#999999', alpha=.3, label=band_label)]
