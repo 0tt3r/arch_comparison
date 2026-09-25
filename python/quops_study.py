@@ -28,7 +28,9 @@ from discussion_model import assumptions
 from project_paths import ROOT
 from star_channel_study import growth_error, preparation, raw_rus_details, rus_channel, wrap
 
-OUT = ROOT/'results/quops_v1'
+import os
+CONFIG = ROOT/os.environ.get('QUOPS_CONFIG', 'configs/quops_study.json')
+OUT = ROOT/json.loads(CONFIG.read_text()).get('output', 'results/quops_v1')
 ARMS = ('nisq', 'star', 'ft', 'ft_better_source')
 MODES = ('standard', 'mitigated')
 
@@ -39,7 +41,7 @@ def read(path):
 
 @lru_cache(maxsize=1)
 def settings():
-    return read(ROOT/'configs/quops_study.json')
+    return read(CONFIG)
 
 
 def sha(path):
@@ -147,7 +149,7 @@ def nisq_cost(w, s, p, mode, Q):
         # two-qubit gate, DEPOLARIZE1(p/10) per one-qubit gate, DEPOLARIZE1(p) per idle 10 ns slot.
         # A Pauli channel with total error probability q has process infidelity q.
         idle = max(0., slots)
-        loss = embed(w)*(two_q*p + x['rotations']*p/10 + idle*p)
+        loss = embed(w)*(two_q*p + x['rotations']*p*settings().get('one_qubit_error_ratio', .1) + idle*p)
         if best is None or loss < best[0]:
             best = (loss, two_q, depth, router)
     loss, two_q, depth, router = best
@@ -209,7 +211,7 @@ def star_channel(p, seed, target, mode, g, angle_max=pi/8):
 def growth_upper(seed, target, p):
     if seed == target:
         return 0.
-    pairs = read(ROOT/'results/frontier_v1/growth_summary.json')['pairs']
+    pairs = read(ROOT/settings().get('growth_summary', 'results/frontier_v1/growth_summary.json'))['pairs']
     return next(v['pauli_total_upper'] for v in pairs if (v['di'], v['df'], v['p']) == (seed, target, p))
 
 
@@ -380,7 +382,7 @@ def finish(rows):
     table = []
     for p in cfg['physical_errors']:
         for mode in MODES:
-            for Q in np.geomspace(1e2, 1e9, 71):
+            for Q in np.geomspace(settings().get('q_min', 1e2), 1e9, int(round(10*np.log10(1e9/settings().get('q_min', 1e2))))+1):
                 row = dict(p=p, mode=mode, Q=float(Q))
                 for arm in ARMS:
                     # Mitigation is optional: the mitigated capability includes every standard design.

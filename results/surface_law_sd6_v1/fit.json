@@ -1,0 +1,2720 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "model": "q_b=A_b Lambda^(-(d+1)/2); P_fail(R)=[1-(1-2q_b)^(R+delta_db)]/2",
+  "fit_scope": "Common distance suppression for X/Z, separate basis amplitudes; independent endpoint correction per distance and basis.",
+  "patch_convention": "A_patch_union_bound=A_x+A_z=2*A_component_mean; X/Z memory tests do not resolve Y, so this is a conservative sum, not a measured any-Pauli probability.",
+  "interval_convention": "Cell rates: exact equal-tail 95% Clopper-Pearson. Fits: asymptotic profile-likelihood intervals; model/schedule/extrapolation uncertainty excluded.",
+  "extrapolation_warning": "Distances outside 3..9, surgery, and arbitrarily long memory are not simulated. Effective p_threshold is a low-p fit parameter, not a measured threshold crossing.",
+  "schedule": {
+    "cz_layers": 4,
+    "measurement_ns": 100,
+    "reset_ns": 100,
+    "interaction_slot_ns": 10,
+    "nominal_round_ns": 240,
+    "idle": "DEPOLARIZE1(p) once per unused CZ slot and once per data-qubit measurement/reset slot",
+    "basis_changes": "Explicit H gates, DEPOLARIZE1(p/10) each, fused into CZ slots; extra physical duration is unmodeled",
+    "init_readout": "basis-appropriate independent flip p",
+    "two_qubit": "DEPOLARIZE2(p)"
+  },
+  "reference_reuse": "No existing growth data pooled: old controls use p/10 idle and 80 ns allowance, differing from C6/C7.",
+  "sources": {
+    "PLAN.md": "3598c6392781e0ee9128694aa912bac126d4f418182953f1f097b99af053e8bc",
+    "configs/assumptions.json": "02589376ef4bd0216d12b6a744d070c6d31b1a1d92c6403698981a929bfda653",
+    "python/star_growth_probe.py": "ba8753fb2bc8a9bf3d378c44cae1c98160979bc2062e9a59913f001150eb485b",
+    "python/surface_law_calibration.py": "b90b154b66e66826c0a7b6109d7ac730371ac0b4325a2dd465f27768f8140e48"
+  },
+  "worker_sha256": "b90b154b66e66826c0a7b6109d7ac730371ac0b4325a2dd465f27768f8140e48",
+  "manifest_sha256": "f2459cab81d219ab630b27f4b75ec2e2c4c81496f42b6bebc792b8252ff437c7",
+  "total_shots": 78000000,
+  "total_failures": 349118,
+  "cells": [
+    {
+      "p": 0.001,
+      "distance": 3,
+      "basis": "x",
+      "rounds": 30,
+      "seed": 202609260000,
+      "shots": 1000000,
+      "failures": 47626,
+      "finite_window_per_round": 0.0016655336070494832,
+      "finite_window_interval95": [
+        0.001650242517124966,
+        0.0016809347100391796
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 3,
+      "basis": "z",
+      "rounds": 30,
+      "seed": 202609260001,
+      "shots": 1000000,
+      "failures": 27179,
+      "finite_window_per_round": 0.0009306530931310127,
+      "finite_window_interval95": [
+        0.0009194742727017428,
+        0.0009419357403394706
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 3,
+      "basis": "x",
+      "rounds": 60,
+      "seed": 202609260002,
+      "shots": 1000000,
+      "failures": 90953,
+      "finite_window_per_round": 0.0016703539760511837,
+      "finite_window_interval95": [
+        0.0016589325589022,
+        0.0016818390578225751
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 3,
+      "basis": "z",
+      "rounds": 60,
+      "seed": 202609260003,
+      "shots": 1000000,
+      "failures": 52648,
+      "finite_window_per_round": 0.0009263270374778274,
+      "finite_window_interval95": [
+        0.000918206969535706,
+        0.0009345031761825659
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 5,
+      "basis": "x",
+      "rounds": 50,
+      "seed": 202609260004,
+      "shots": 1000000,
+      "failures": 11311,
+      "finite_window_per_round": 0.0002287656812542063,
+      "finite_window_interval95": [
+        0.0002245459670830129,
+        0.00023304521068650253
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 5,
+      "basis": "z",
+      "rounds": 50,
+      "seed": 202609260005,
+      "shots": 1000000,
+      "failures": 11731,
+      "finite_window_per_round": 0.0002373597918127683,
+      "finite_window_interval95": [
+        0.0002330593903077472,
+        0.00024172007221597193
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 5,
+      "basis": "x",
+      "rounds": 100,
+      "seed": 202609260006,
+      "shots": 1000000,
+      "failures": 22081,
+      "finite_window_per_round": 0.00022578318838490944,
+      "finite_window_interval95": [
+        0.00022278151744629238,
+        0.00022881565906064612
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 5,
+      "basis": "z",
+      "rounds": 100,
+      "seed": 202609260007,
+      "shots": 1000000,
+      "failures": 23013,
+      "finite_window_per_round": 0.00023553881190880457,
+      "finite_window_interval95": [
+        0.00023246978686550948,
+        0.00023863871628553626
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 7,
+      "basis": "x",
+      "rounds": 70,
+      "seed": 202609260008,
+      "shots": 1000000,
+      "failures": 2228,
+      "finite_window_per_round": 3.189867928527243e-05,
+      "finite_window_interval95": [
+        3.058637535248863e-05,
+        3.325286913377922e-05
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 7,
+      "basis": "z",
+      "rounds": 70,
+      "seed": 202609260009,
+      "shots": 1000000,
+      "failures": 2446,
+      "finite_window_per_round": 3.5027380170409776e-05,
+      "finite_window_interval95": [
+        3.365127768713591e-05,
+        3.644537892414717e-05
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 7,
+      "basis": "x",
+      "rounds": 140,
+      "seed": 202609260010,
+      "shots": 1000000,
+      "failures": 4327,
+      "finite_window_per_round": 3.1040691105641676e-05,
+      "finite_window_interval95": [
+        3.012069081781134e-05,
+        3.1981710852712256e-05
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 7,
+      "basis": "z",
+      "rounds": 140,
+      "seed": 202609260011,
+      "shots": 1000000,
+      "failures": 4784,
+      "finite_window_per_round": 3.433477605511743e-05,
+      "finite_window_interval95": [
+        3.336639733778273e-05,
+        3.5324194607714854e-05
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 9,
+      "basis": "x",
+      "rounds": 90,
+      "seed": 202609260012,
+      "shots": 500000,
+      "failures": 179,
+      "finite_window_per_round": 3.979186668320785e-06,
+      "finite_window_interval95": [
+        3.417501693628805e-06,
+        4.606861611375568e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 9,
+      "basis": "z",
+      "rounds": 90,
+      "seed": 202609260013,
+      "shots": 500000,
+      "failures": 327,
+      "finite_window_per_round": 7.27137034148982e-06,
+      "finite_window_interval95": [
+        6.504295771208076e-06,
+        8.104070589713807e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 9,
+      "basis": "x",
+      "rounds": 180,
+      "seed": 202609260014,
+      "shots": 500000,
+      "failures": 378,
+      "finite_window_per_round": 4.203160737576285e-06,
+      "finite_window_interval95": [
+        3.789926385458298e-06,
+        4.649175869906624e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.001,
+      "distance": 9,
+      "basis": "z",
+      "rounds": 180,
+      "seed": 202609260015,
+      "shots": 500000,
+      "failures": 587,
+      "finite_window_per_round": 6.529848678859467e-06,
+      "finite_window_interval95": [
+        6.011938154176587e-06,
+        7.080466905299702e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 3,
+      "basis": "x",
+      "rounds": 30,
+      "seed": 202609260016,
+      "shots": 5000000,
+      "failures": 13006,
+      "finite_window_per_round": 8.692543644318429e-05,
+      "finite_window_interval95": [
+        8.543607818073305e-05,
+        8.843427437016912e-05
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 3,
+      "basis": "z",
+      "rounds": 30,
+      "seed": 202609260017,
+      "shots": 5000000,
+      "failures": 1491,
+      "finite_window_per_round": 9.942866425153371e-06,
+      "finite_window_interval95": [
+        9.44445957495818e-06,
+        1.0460751830268018e-05
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 3,
+      "basis": "x",
+      "rounds": 60,
+      "seed": 202609260018,
+      "shots": 5000000,
+      "failures": 26432,
+      "finite_window_per_round": 8.856789777999196e-05,
+      "finite_window_interval95": [
+        8.750062387296966e-05,
+        8.964497346106033e-05
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 3,
+      "basis": "z",
+      "rounds": 60,
+      "seed": 202609260019,
+      "shots": 5000000,
+      "failures": 2833,
+      "finite_window_per_round": 9.44859869449097e-06,
+      "finite_window_interval95": [
+        9.103746073350807e-06,
+        9.803174476109825e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 7,
+      "basis": "x",
+      "rounds": 70,
+      "seed": 202609260020,
+      "shots": 1000000,
+      "failures": 0,
+      "finite_window_per_round": 0.0,
+      "finite_window_interval95": [
+        0.0,
+        5.2698372337950614e-08
+      ],
+      "fewer_than_30_failures": true
+    },
+    {
+      "p": 0.0001,
+      "distance": 7,
+      "basis": "z",
+      "rounds": 70,
+      "seed": 202609260021,
+      "shots": 1000000,
+      "failures": 1,
+      "finite_window_per_round": 1.4285728367365578e-08,
+      "finite_window_interval95": [
+        3.6168297565183663e-10,
+        7.959516078554846e-08
+      ],
+      "fewer_than_30_failures": true
+    },
+    {
+      "p": 0.0001,
+      "distance": 7,
+      "basis": "x",
+      "rounds": 140,
+      "seed": 202609260022,
+      "shots": 1000000,
+      "failures": 3,
+      "finite_window_per_round": 2.1428635255356438e-08,
+      "finite_window_interval95": [
+        4.419092358662195e-09,
+        6.262374360398061e-08
+      ],
+      "fewer_than_30_failures": true
+    },
+    {
+      "p": 0.0001,
+      "distance": 7,
+      "basis": "z",
+      "rounds": 140,
+      "seed": 202609260023,
+      "shots": 1000000,
+      "failures": 1,
+      "finite_window_per_round": 7.142864234703298e-09,
+      "finite_window_interval95": [
+        1.8084148785862196e-10,
+        3.9797581976621754e-08
+      ],
+      "fewer_than_30_failures": true
+    },
+    {
+      "p": 0.0001,
+      "distance": 5,
+      "basis": "x",
+      "rounds": 50,
+      "seed": 202609260024,
+      "shots": 10000000,
+      "failures": 602,
+      "finite_window_per_round": 1.2040710368289283e-06,
+      "finite_window_interval95": [
+        1.1097928694802813e-06,
+        1.3042181385725474e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 5,
+      "basis": "z",
+      "rounds": 50,
+      "seed": 202609260025,
+      "shots": 10000000,
+      "failures": 593,
+      "finite_window_per_round": 1.1860689285995095e-06,
+      "finite_window_interval95": [
+        1.0925126945369878e-06,
+        1.2854946800994378e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 5,
+      "basis": "x",
+      "rounds": 100,
+      "seed": 202609260026,
+      "shots": 10000000,
+      "failures": 1135,
+      "finite_window_per_round": 1.135127553481945e-06,
+      "finite_window_interval95": [
+        1.070038251314956e-06,
+        1.2031409977741573e-06
+      ],
+      "fewer_than_30_failures": false
+    },
+    {
+      "p": 0.0001,
+      "distance": 5,
+      "basis": "z",
+      "rounds": 100,
+      "seed": 202609260027,
+      "shots": 10000000,
+      "failures": 1223,
+      "finite_window_per_round": 1.2231481012011122e-06,
+      "finite_window_interval95": [
+        1.155545326374001e-06,
+        1.2936740282038167e-06
+      ],
+      "fewer_than_30_failures": false
+    }
+  ],
+  "endpoint_slope_estimates": [
+    {
+      "p": 0.0001,
+      "distance": 3,
+      "components": {
+        "x": {
+          "rate": 9.0210353720503e-05,
+          "unconstrained_slope": 9.0210353720503e-05,
+          "interval95_simultaneous_bases": [
+            8.556920853334319e-05,
+            9.485166318677744e-05
+          ],
+          "fewer_than_30_failures": false
+        },
+        "z": {
+          "rate": 8.954330475217671e-06,
+          "unconstrained_slope": 8.954330475217671e-06,
+          "interval95_simultaneous_bases": [
+            7.417200546824517e-06,
+            1.049141975347764e-05
+          ],
+          "fewer_than_30_failures": false
+        }
+      },
+      "patch_component_sum": 9.916468419572067e-05,
+      "patch_component_sum_interval95": [
+        9.298640908016771e-05,
+        0.00010534308294025508
+      ],
+      "interpretation": "Finite-length parity slope with common endpoint correction; no exponential distance law imposed. Intervals are simultaneous for the two bases at this p,d, not over the entire grid."
+    },
+    {
+      "p": 0.0001,
+      "distance": 5,
+      "components": {
+        "x": {
+          "rate": 1.0661840606285313e-06,
+          "unconstrained_slope": 1.0661840606285313e-06,
+          "interval95_simultaneous_bases": [
+            7.731910205697462e-07,
+            1.3591511894776841e-06
+          ],
+          "fewer_than_30_failures": false
+        },
+        "z": {
+          "rate": 1.260227271052978e-06,
+          "unconstrained_slope": 1.260227271052978e-06,
+          "interval95_simultaneous_bases": [
+            9.617477332632473e-07,
+            1.558677713998042e-06
+          ],
+          "fewer_than_30_failures": false
+        }
+      },
+      "patch_component_sum": 2.326411331681509e-06,
+      "patch_component_sum_interval95": [
+        1.7349387538329936e-06,
+        2.917828903475726e-06
+      ],
+      "interpretation": "Finite-length parity slope with common endpoint correction; no exponential distance law imposed. Intervals are simultaneous for the two bases at this p,d, not over the entire grid."
+    },
+    {
+      "p": 0.0001,
+      "distance": 7,
+      "components": {
+        "x": {
+          "rate": 4.2857269592340054e-08,
+          "unconstrained_slope": 4.2857269592340054e-08,
+          "interval95_simultaneous_bases": [
+            0.0,
+            1.5257298241461406e-07
+          ],
+          "fewer_than_30_failures": true
+        },
+        "z": {
+          "rate": 0.0,
+          "unconstrained_slope": -0.0,
+          "interval95_simultaneous_bases": [
+            0.0,
+            1.0243126219693831e-07
+          ],
+          "fewer_than_30_failures": true
+        }
+      },
+      "patch_component_sum": 4.2857269592340054e-08,
+      "patch_component_sum_interval95": [
+        0.0,
+        2.5500424461155237e-07
+      ],
+      "interpretation": "Finite-length parity slope with common endpoint correction; no exponential distance law imposed. Intervals are simultaneous for the two bases at this p,d, not over the entire grid."
+    },
+    {
+      "p": 0.001,
+      "distance": 3,
+      "components": {
+        "x": {
+          "rate": 0.001675174298425651,
+          "unconstrained_slope": 0.001675174298425651,
+          "interval95_simultaneous_bases": [
+            0.001626449496520052,
+            0.0017239225505959752
+          ],
+          "fewer_than_30_failures": false
+        },
+        "z": {
+          "rate": 0.0009220009443253294,
+          "unconstrained_slope": 0.0009220009443253294,
+          "interval95_simultaneous_bases": [
+            0.0008869365712167848,
+            0.0009570763912900733
+          ],
+          "fewer_than_30_failures": false
+        }
+      },
+      "patch_component_sum": 0.00259717524275098,
+      "patch_component_sum_interval95": [
+        0.002513386067736837,
+        0.0026809989418860487
+      ],
+      "interpretation": "Finite-length parity slope with common endpoint correction; no exponential distance law imposed. Intervals are simultaneous for the two bases at this p,d, not over the entire grid."
+    },
+    {
+      "p": 0.001,
+      "distance": 5,
+      "components": {
+        "x": {
+          "rate": 0.0002228006777169417,
+          "unconstrained_slope": 0.0002228006777169417,
+          "interval95_simultaneous_bases": [
+            0.0002097022139139846,
+            0.0002359017125428772
+          ],
+          "fewer_than_30_failures": false
+        },
+        "z": {
+          "rate": 0.00023371782536975538,
+          "unconstrained_slope": 0.00023371782536975538,
+          "interval95_simultaneous_bases": [
+            0.0002203448482596484,
+            0.0002470935144981972
+          ],
+          "fewer_than_30_failures": false
+        }
+      },
+      "patch_component_sum": 0.0004565185030866971,
+      "patch_component_sum_interval95": [
+        0.000430047062173633,
+        0.00048299522704107437
+      ],
+      "interpretation": "Finite-length parity slope with common endpoint correction; no exponential distance law imposed. Intervals are simultaneous for the two bases at this p,d, not over the entire grid."
+    },
+    {
+      "p": 0.001,
+      "distance": 7,
+      "components": {
+        "x": {
+          "rate": 3.0182701453629553e-05,
+          "unconstrained_slope": 3.0182701453629553e-05,
+          "interval95_simultaneous_bases": [
+            2.6116013190169553e-05,
+            3.4249634136384676e-05
+          ],
+          "fewer_than_30_failures": false
+        },
+        "z": {
+          "rate": 3.364217098035695e-05,
+          "unconstrained_slope": 3.364217098035695e-05,
+          "interval95_simultaneous_bases": [
+            2.93708747576884e-05,
+            3.791375648371705e-05
+          ],
+          "fewer_than_30_failures": false
+        }
+      },
+      "patch_component_sum": 6.38248724339865e-05,
+      "patch_component_sum_interval95": [
+        5.548688794785795e-05,
+        7.216339062010173e-05
+      ],
+      "interpretation": "Finite-length parity slope with common endpoint correction; no exponential distance law imposed. Intervals are simultaneous for the two bases at this p,d, not over the entire grid."
+    },
+    {
+      "p": 0.001,
+      "distance": 9,
+      "components": {
+        "x": {
+          "rate": 4.427134706502218e-06,
+          "unconstrained_slope": 4.427134706502218e-06,
+          "interval95_simultaneous_bases": [
+            2.5796776293144353e-06,
+            6.2740753839268175e-06
+          ],
+          "fewer_than_30_failures": false
+        },
+        "z": {
+          "rate": 5.788325916504368e-06,
+          "unconstrained_slope": 5.788325916504368e-06,
+          "interval95_simultaneous_bases": [
+            3.412905870296365e-06,
+            8.163503308209869e-06
+          ],
+          "fewer_than_30_failures": false
+        }
+      },
+      "patch_component_sum": 1.0215460623006586e-05,
+      "patch_component_sum_interval95": [
+        5.9925834996108e-06,
+        1.4437578692136686e-05
+      ],
+      "interpretation": "Finite-length parity slope with common endpoint correction; no exponential distance law imposed. Intervals are simultaneous for the two bases at this p,d, not over the entire grid."
+    }
+  ],
+  "fits": {
+    "0.001": {
+      "A_component_mean": 0.05156790803781434,
+      "A_patch_union_bound": 0.10313581607562868,
+      "Lambda": 6.301640436033272,
+      "reference_p": 0.001,
+      "effective_p_threshold": 0.006301640436033272,
+      "basis_amplitude_ratio_x_over_z": 1.5465702886619215,
+      "A_x": 0.06263592626900538,
+      "A_z": 0.040499889806623286,
+      "endpoint_corrections_rounds": {
+        "p0.001_d3_z": -3.5096427762370395,
+        "p0.001_d3_x": 2.275089244142823,
+        "p0.001_d5_z": 31.73548421318732,
+        "p0.001_d5_x": -6.025927232995118,
+        "p0.001_d7_z": 33.55690721909048,
+        "p0.001_d7_x": -18.76047189236445,
+        "p0.001_d9_z": 85.62076983943939,
+        "p0.001_d9_x": -40.21240481170286
+      },
+      "endpoint_bounds_hit": false,
+      "negative_log_likelihood": 1272055.2567655772,
+      "deviance": 680.0306866949646,
+      "degrees_of_freedom": 5,
+      "goodness_of_fit_p_asymptotic": 1.0203254059296743e-144,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+      "cells": 16,
+      "shots": 14000000,
+      "failures": 301798,
+      "A_component_mean_profile95": [
+        0.04926275438253078,
+        0.05400426179420291
+      ],
+      "A_component_mean_profile95_finite": [
+        true,
+        true
+      ],
+      "A_component_mean_profile97_5": [
+        0.04894191845598449,
+        0.05436546206382601
+      ],
+      "A_component_mean_profile97_5_finite": [
+        true,
+        true
+      ],
+      "Lambda_profile95": [
+        6.182795264528899,
+        6.425004903832908
+      ],
+      "Lambda_profile95_finite": [
+        true,
+        true
+      ],
+      "Lambda_profile97_5": [
+        6.166082664371681,
+        6.443105244745472
+      ],
+      "Lambda_profile97_5_finite": [
+        true,
+        true
+      ],
+      "A_patch_union_bound_profile95": [
+        0.09852550876506155,
+        0.10800852358840582
+      ],
+      "effective_p_threshold_profile95": [
+        0.006182795264528899,
+        0.006425004903832908
+      ],
+      "length_sensitivity_fits": {
+        "10d": {
+          "A_component_mean": 0.0459298909790166,
+          "A_patch_union_bound": 0.0918597819580332,
+          "Lambda": 5.926649838337279,
+          "reference_p": 0.001,
+          "effective_p_threshold": 0.005926649838337279,
+          "basis_amplitude_ratio_x_over_z": 1.48909870965798,
+          "A_x": 0.05495494503790343,
+          "A_z": 0.036904836920129774,
+          "endpoint_corrections_rounds": {},
+          "endpoint_bounds_hit": false,
+          "negative_log_likelihood": 480413.27166390803,
+          "deviance": 2183.985514273734,
+          "degrees_of_freedom": 5,
+          "goodness_of_fit_p_asymptotic": 0.0,
+          "optimizer_success": true,
+          "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+          "cells": 8,
+          "shots": 7000000,
+          "failures": 103027
+        },
+        "20d": {
+          "A_component_mean": 0.046878679846863454,
+          "A_patch_union_bound": 0.09375735969372691,
+          "Lambda": 5.990357261839433,
+          "reference_p": 0.001,
+          "effective_p_threshold": 0.005990357261839433,
+          "basis_amplitude_ratio_x_over_z": 1.486895862577412,
+          "A_x": 0.05605680250330357,
+          "A_z": 0.037700557190423346,
+          "endpoint_corrections_rounds": {},
+          "endpoint_bounds_hit": false,
+          "negative_log_likelihood": 794534.8390858715,
+          "deviance": 4281.753140825706,
+          "degrees_of_freedom": 5,
+          "goodness_of_fit_p_asymptotic": 0.0,
+          "optimizer_success": true,
+          "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+          "cells": 8,
+          "shots": 7000000,
+          "failures": 198771
+        }
+      },
+      "zero_endpoint_fit": {
+        "A_component_mean": 0.04655750616952961,
+        "A_patch_union_bound": 0.09311501233905922,
+        "Lambda": 5.968802202708355,
+        "reference_p": 0.001,
+        "effective_p_threshold": 0.005968802202708355,
+        "basis_amplitude_ratio_x_over_z": 1.4876782568020244,
+        "A_x": 0.055684523856693736,
+        "A_z": 0.037430488482365486,
+        "endpoint_corrections_rounds": {},
+        "endpoint_bounds_hit": false,
+        "negative_log_likelihood": 1274950.1605285928,
+        "deviance": 6469.838212726361,
+        "degrees_of_freedom": 13,
+        "goodness_of_fit_p_asymptotic": 0.0,
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+        "cells": 16,
+        "shots": 14000000,
+        "failures": 301798,
+        "A_component_mean_profile95": [
+          0.045881000894675714,
+          0.0472447299938748
+        ],
+        "A_component_mean_profile95_finite": [
+          true,
+          true
+        ],
+        "A_component_mean_profile97_5": [
+          0.045784734705841615,
+          0.04734429406921465
+        ],
+        "A_component_mean_profile97_5_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile95": [
+          5.932866828267288,
+          6.005031114589231
+        ],
+        "Lambda_profile95_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile97_5": [
+          5.9277315162328295,
+          6.010256932570859
+        ],
+        "Lambda_profile97_5_finite": [
+          true,
+          true
+        ],
+        "A_patch_union_bound_profile95": [
+          0.09176200178935143,
+          0.0944894599877496
+        ],
+        "effective_p_threshold_profile95": [
+          0.005932866828267288,
+          0.006005031114589231
+        ]
+      },
+      "distance_5_and_above_fit": {
+        "A_component_mean": 0.07955974982393903,
+        "A_patch_union_bound": 0.15911949964787805,
+        "Lambda": 7.041147852541746,
+        "reference_p": 0.001,
+        "effective_p_threshold": 0.007041147852541747,
+        "basis_amplitude_ratio_x_over_z": 0.9410938068984663,
+        "A_x": 0.07714535750060923,
+        "A_z": 0.08197414214726882,
+        "endpoint_corrections_rounds": {
+          "p0.001_d5_z": 0.4619229606059926,
+          "p0.001_d5_x": 1.8948378539480546,
+          "p0.001_d7_z": 3.7264414518702123,
+          "p0.001_d7_x": 0.2503258017161989,
+          "p0.001_d9_z": 55.79834317436667,
+          "p0.001_d9_x": -9.85241757462488
+        },
+        "endpoint_bounds_hit": false,
+        "negative_log_likelihood": 444480.5883896288,
+        "deviance": 3.9078377387230976,
+        "degrees_of_freedom": 3,
+        "goodness_of_fit_p_asymptotic": 0.2715895027257097,
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+        "cells": 12,
+        "shots": 10000000,
+        "failures": 83392,
+        "A_component_mean_profile95": [
+          0.06810241862587928,
+          0.09340499311214452
+        ],
+        "A_component_mean_profile95_finite": [
+          true,
+          true
+        ],
+        "A_component_mean_profile97_5": [
+          0.06662346235456927,
+          0.09562536750984156
+        ],
+        "A_component_mean_profile97_5_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile95": [
+          6.710947563682437,
+          7.402092158721135
+        ],
+        "Lambda_profile95_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile97_5": [
+          6.665819376524055,
+          7.456743345854725
+        ],
+        "Lambda_profile97_5_finite": [
+          true,
+          true
+        ],
+        "A_patch_union_bound_profile95": [
+          0.13620483725175855,
+          0.18680998622428904
+        ],
+        "effective_p_threshold_profile95": [
+          0.006710947563682437,
+          0.007402092158721135
+        ]
+      }
+    },
+    "0.0001": {
+      "A_component_mean": 0.09306058220027723,
+      "A_patch_union_bound": 0.18612116440055446,
+      "Lambda": 43.546490812879384,
+      "reference_p": 0.0001,
+      "effective_p_threshold": 0.0043546490812879386,
+      "basis_amplitude_ratio_x_over_z": 6.796232923525758,
+      "A_x": 0.16224794688303787,
+      "A_z": 0.02387321751751656,
+      "endpoint_corrections_rounds": {
+        "p0.0001_d3_z": -8.83993868837797,
+        "p0.0001_d3_x": 1.0263110536565971,
+        "p0.0001_d5_z": 200.0,
+        "p0.0001_d5_x": -25.067665048762784,
+        "p0.0001_d7_z": 53.36174203267826,
+        "p0.0001_d7_x": -66.5
+      },
+      "endpoint_bounds_hit": true,
+      "negative_log_likelihood": 329682.4168889857,
+      "deviance": 341.06176476234225,
+      "degrees_of_freedom": 3,
+      "goodness_of_fit_p_asymptotic": 1.2852960517577773e-73,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+      "cells": 12,
+      "shots": 64000000,
+      "failures": 47320,
+      "A_component_mean_profile95": [
+        0.0817746046524501,
+        0.10588099755365249
+      ],
+      "A_component_mean_profile95_finite": [
+        true,
+        true
+      ],
+      "A_component_mean_profile97_5": [
+        0.08026801088849177,
+        0.1078603404184711
+      ],
+      "A_component_mean_profile97_5_finite": [
+        true,
+        true
+      ],
+      "Lambda_profile95": [
+        41.121002690068,
+        46.128167473746416
+      ],
+      "Lambda_profile95_finite": [
+        true,
+        true
+      ],
+      "Lambda_profile97_5": [
+        40.78484642231594,
+        46.51243394564277
+      ],
+      "Lambda_profile97_5_finite": [
+        true,
+        true
+      ],
+      "A_patch_union_bound_profile95": [
+        0.1635492093049002,
+        0.21176199510730498
+      ],
+      "effective_p_threshold_profile95": [
+        0.004112100269006801,
+        0.004612816747374642
+      ],
+      "length_sensitivity_fits": {
+        "10d": {
+          "A_component_mean": 0.08039912780045835,
+          "A_patch_union_bound": 0.1607982556009167,
+          "Lambda": 40.74094576408916,
+          "reference_p": 0.0001,
+          "effective_p_threshold": 0.004074094576408917,
+          "basis_amplitude_ratio_x_over_z": 6.53914952016857,
+          "A_x": 0.1394698212502313,
+          "A_z": 0.021328434350685405,
+          "endpoint_corrections_rounds": {},
+          "endpoint_bounds_hit": false,
+          "negative_log_likelihood": 117343.70132279003,
+          "deviance": 1039.7673113609615,
+          "degrees_of_freedom": 3,
+          "goodness_of_fit_p_asymptotic": 4.248369977126442e-225,
+          "optimizer_success": true,
+          "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+          "cells": 6,
+          "shots": 32000000,
+          "failures": 15693
+        },
+        "20d": {
+          "A_component_mean": 0.08517331636656339,
+          "A_patch_union_bound": 0.17034663273312678,
+          "Lambda": 41.69166845257316,
+          "reference_p": 0.0001,
+          "effective_p_threshold": 0.004169166845257317,
+          "basis_amplitude_ratio_x_over_z": 6.822880880397843,
+          "A_x": 0.14857119791090262,
+          "A_z": 0.02177543482222416,
+          "endpoint_corrections_rounds": {},
+          "endpoint_bounds_hit": false,
+          "negative_log_likelihood": 213868.042389484,
+          "deviance": 2359.9480999779885,
+          "degrees_of_freedom": 3,
+          "goodness_of_fit_p_asymptotic": 0.0,
+          "optimizer_success": true,
+          "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+          "cells": 6,
+          "shots": 32000000,
+          "failures": 31627
+        }
+      },
+      "zero_endpoint_fit": {
+        "A_component_mean": 0.08354824071904239,
+        "A_patch_union_bound": 0.16709648143808478,
+        "Lambda": 41.37161616859479,
+        "reference_p": 0.0001,
+        "effective_p_threshold": 0.00413716161685948,
+        "basis_amplitude_ratio_x_over_z": 6.72643808892803,
+        "A_x": 0.1454698949677248,
+        "A_z": 0.021626586470359956,
+        "endpoint_corrections_rounds": {},
+        "endpoint_bounds_hit": false,
+        "negative_log_likelihood": 331213.51503384055,
+        "deviance": 3403.258054472015,
+        "degrees_of_freedom": 9,
+        "goodness_of_fit_p_asymptotic": 0.0,
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+        "cells": 12,
+        "shots": 64000000,
+        "failures": 47320,
+        "A_component_mean_profile95": [
+          0.0778293153744352,
+          0.08974117996094681
+        ],
+        "A_component_mean_profile95_finite": [
+          true,
+          true
+        ],
+        "A_component_mean_profile97_5": [
+          0.07704463764222193,
+          0.09067189878486374
+        ],
+        "A_component_mean_profile97_5_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile95": [
+          39.994071847825516,
+          42.81086304215782
+        ],
+        "Lambda_profile95_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile97_5": [
+          39.801128383892454,
+          43.0227996714352
+        ],
+        "Lambda_profile97_5_finite": [
+          true,
+          true
+        ],
+        "A_patch_union_bound_profile95": [
+          0.1556586307488704,
+          0.17948235992189362
+        ],
+        "effective_p_threshold_profile95": [
+          0.003999407184782552,
+          0.004281086304215782
+        ]
+      }
+    }
+  },
+  "joint_p_fit": {
+    "A_component_mean": 0.07653276431175661,
+    "A_patch_union_bound": 0.15306552862351322,
+    "Lambda": 6.961959560490142,
+    "reference_p": 0.001,
+    "effective_p_threshold": 0.0069619595604901415,
+    "basis_amplitude_ratio_x_over_z": 1.8731170611788717,
+    "A_x": 0.09979045302993168,
+    "A_z": 0.05327507559358154,
+    "endpoint_corrections_rounds": {
+      "p0.0001_d3_z": -4.609269248114019,
+      "p0.0001_d3_x": 120.0,
+      "p0.0001_d5_z": 200.0,
+      "p0.0001_d5_x": 200.0,
+      "p0.0001_d7_z": 280.0,
+      "p0.0001_d7_x": 213.13519989216692,
+      "p0.001_d3_z": -6.0282469804870775,
+      "p0.001_d3_x": -7.2905724781299375,
+      "p0.001_d5_z": 34.32934010585147,
+      "p0.001_d5_x": -14.860776897496901,
+      "p0.001_d7_z": 51.221002551077454,
+      "p0.001_d7_x": -23.20941203592871,
+      "p0.001_d9_z": 140.11512253533903,
+      "p0.001_d9_x": -37.91718110943819
+    },
+    "endpoint_bounds_hit": true,
+    "negative_log_likelihood": 1604460.278342046,
+    "deviance": 6466.301826423538,
+    "degrees_of_freedom": 11,
+    "goodness_of_fit_p_asymptotic": 0.0,
+    "optimizer_success": true,
+    "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+    "cells": 28,
+    "shots": 78000000,
+    "failures": 349118,
+    "A_component_mean_profile95": [
+      0.07398600603819812,
+      0.07919812067448324
+    ],
+    "A_component_mean_profile95_finite": [
+      true,
+      true
+    ],
+    "A_component_mean_profile97_5": [
+      0.07362923268511798,
+      0.0795906271667129
+    ],
+    "A_component_mean_profile97_5_finite": [
+      true,
+      true
+    ],
+    "Lambda_profile95": [
+      6.85676923075879,
+      7.070436614418126
+    ],
+    "Lambda_profile95_finite": [
+      true,
+      true
+    ],
+    "Lambda_profile97_5": [
+      6.841909942683239,
+      7.086275484717748
+    ],
+    "Lambda_profile97_5_finite": [
+      true,
+      true
+    ],
+    "A_patch_union_bound_profile95": [
+      0.14797201207639624,
+      0.1583962413489665
+    ],
+    "effective_p_threshold_profile95": [
+      0.00685676923075879,
+      0.007070436614418126
+    ],
+    "likelihood_ratio_vs_separate_p_fits": 5445.2093749661,
+    "likelihood_ratio_degrees_of_freedom": 3,
+    "likelihood_ratio_p_asymptotic": 0.0
+  },
+  "holdout": {
+    "status": "complete",
+    "role": "Independent 100d check; not pooled into training intervals.",
+    "total_shots": 18000000,
+    "total_failures": 461809,
+    "fits": {
+      "0.001": {
+        "A_component_mean": 0.04556516284520213,
+        "A_patch_union_bound": 0.09113032569040426,
+        "Lambda": 5.929843372150554,
+        "reference_p": 0.001,
+        "effective_p_threshold": 0.005929843372150554,
+        "basis_amplitude_ratio_x_over_z": 1.3540848620938999,
+        "A_x": 0.052418753666043975,
+        "A_z": 0.03871157202436029,
+        "endpoint_corrections_rounds": {},
+        "endpoint_bounds_hit": false,
+        "negative_log_likelihood": 1050832.8111531236,
+        "deviance": 8219.61569535926,
+        "degrees_of_freedom": 5,
+        "goodness_of_fit_p_asymptotic": 0.0,
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+        "cells": 8,
+        "shots": 4000000,
+        "failures": 397852,
+        "A_component_mean_profile95": [
+          0.04495806451934792,
+          0.046181200792686644
+        ],
+        "A_component_mean_profile95_finite": [
+          true,
+          true
+        ],
+        "A_component_mean_profile97_5": [
+          0.04487160599102193,
+          0.04627041194025045
+        ],
+        "A_component_mean_profile97_5_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile95": [
+          5.899986591043595,
+          5.9599058641310565
+        ],
+        "Lambda_profile95_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile97_5": [
+          5.895717507385524,
+          5.9642409665479805
+        ],
+        "Lambda_profile97_5_finite": [
+          true,
+          true
+        ],
+        "A_patch_union_bound_profile95": [
+          0.08991612903869584,
+          0.09236240158537329
+        ],
+        "effective_p_threshold_profile95": [
+          0.005899986591043595,
+          0.005959905864131056
+        ],
+        "distance_5_and_above_fit": {
+          "A_component_mean": 0.07279645785389258,
+          "A_patch_union_bound": 0.14559291570778515,
+          "Lambda": 6.779956212483924,
+          "reference_p": 0.001,
+          "effective_p_threshold": 0.006779956212483924,
+          "basis_amplitude_ratio_x_over_z": 0.9349776407116653,
+          "A_x": 0.07035022936116797,
+          "A_z": 0.07524268634661718,
+          "endpoint_corrections_rounds": {},
+          "endpoint_bounds_hit": false,
+          "negative_log_likelihood": 474715.9838195985,
+          "deviance": 349.52392210357357,
+          "degrees_of_freedom": 3,
+          "goodness_of_fit_p_asymptotic": 1.8913000117373545e-75,
+          "optimizer_success": true,
+          "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+          "cells": 6,
+          "shots": 3000000,
+          "failures": 132259,
+          "A_component_mean_profile95": [
+            0.07022575494640317,
+            0.07546800445935327
+          ],
+          "A_component_mean_profile95_finite": [
+            true,
+            true
+          ],
+          "A_component_mean_profile97_5": [
+            0.06986467331423744,
+            0.07586014950802794
+          ],
+          "A_component_mean_profile97_5_finite": [
+            true,
+            true
+          ],
+          "Lambda_profile95": [
+            6.706753157137776,
+            6.854212198341909
+          ],
+          "Lambda_profile95_finite": [
+            true,
+            true
+          ],
+          "Lambda_profile97_5": [
+            6.696326312472406,
+            6.864963063959559
+          ],
+          "Lambda_profile97_5_finite": [
+            true,
+            true
+          ],
+          "A_patch_union_bound_profile95": [
+            0.14045150989280633,
+            0.15093600891870654
+          ],
+          "effective_p_threshold_profile95": [
+            0.006706753157137776,
+            0.006854212198341909
+          ]
+        }
+      },
+      "0.0001": {
+        "A_component_mean": 0.084079987141829,
+        "A_patch_union_bound": 0.168159974283658,
+        "Lambda": 41.2547657400473,
+        "reference_p": 0.0001,
+        "effective_p_threshold": 0.0041254765740047295,
+        "basis_amplitude_ratio_x_over_z": 6.147116636514159,
+        "A_x": 0.14463160853340012,
+        "A_z": 0.023528365750257876,
+        "endpoint_corrections_rounds": {},
+        "endpoint_bounds_hit": false,
+        "negative_log_likelihood": 335007.29570052,
+        "deviance": 5107.922448106289,
+        "degrees_of_freedom": 1,
+        "goodness_of_fit_p_asymptotic": 0.0,
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "interval_warning": "Profile likelihood uses asymptotic chi-square calibration; zero-event endpoint nuisance parameters can hit bounds, especially at p=1e-4.",
+        "cells": 4,
+        "shots": 14000000,
+        "failures": 63957,
+        "A_component_mean_profile95": [
+          0.079482150500952,
+          0.08897344974088205
+        ],
+        "A_component_mean_profile95_finite": [
+          true,
+          true
+        ],
+        "A_component_mean_profile97_5": [
+          0.07884500451285793,
+          0.08970163506053673
+        ],
+        "A_component_mean_profile97_5_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile95": [
+          40.173426879539356,
+          42.37332041209687
+        ],
+        "Lambda_profile95_finite": [
+          true,
+          true
+        ],
+        "Lambda_profile97_5": [
+          40.021120194851854,
+          42.537084801076084
+        ],
+        "Lambda_profile97_5_finite": [
+          true,
+          true
+        ],
+        "A_patch_union_bound_profile95": [
+          0.158964301001904,
+          0.1779468994817641
+        ],
+        "effective_p_threshold_profile95": [
+          0.004017342687953936,
+          0.004237332041209687
+        ]
+      }
+    },
+    "cells": [
+      {
+        "p": 0.001,
+        "distance": 3,
+        "basis": "x",
+        "rounds": 300,
+        "seed": 202609260500,
+        "shots": 500000,
+        "failures": 158192,
+        "finite_window_per_round": 0.0016668179912229233,
+        "finite_window_interval95": [
+          0.0016551974308057031,
+          0.0016785395298819364
+        ],
+        "training_predicted_failures": 153803.5569168801,
+        "plug_in_residual_sigma": 13.447791959674552
+      },
+      {
+        "p": 0.001,
+        "distance": 3,
+        "basis": "z",
+        "rounds": 300,
+        "seed": 202609260501,
+        "shots": 500000,
+        "failures": 107401,
+        "finite_window_per_round": 0.000934832368514233,
+        "finite_window_interval95": [
+          0.0009282094478782625,
+          0.0009415010318940761
+        ],
+        "training_predicted_failures": 113533.71818928851,
+        "plug_in_residual_sigma": -20.702356150958636
+      },
+      {
+        "p": 0.001,
+        "distance": 5,
+        "basis": "x",
+        "rounds": 500,
+        "seed": 202609260502,
+        "shots": 500000,
+        "failures": 51523,
+        "finite_window_per_round": 0.00023073443870052292,
+        "finite_window_interval95": [
+          0.00022861806266630665,
+          0.00023286691105830562
+        ],
+        "training_predicted_failures": 54782.45391613677,
+        "plug_in_residual_sigma": -14.757845876116951
+      },
+      {
+        "p": 0.001,
+        "distance": 5,
+        "basis": "z",
+        "rounds": 500,
+        "seed": 202609260503,
+        "shots": 500000,
+        "failures": 53012,
+        "finite_window_per_round": 0.00023826131818866118,
+        "finite_window_interval95": [
+          0.0002361019389166826,
+          0.00024043697813081242
+        ],
+        "training_predicted_failures": 39535.26794448472,
+        "plug_in_residual_sigma": 70.62835098724362
+      },
+      {
+        "p": 0.001,
+        "distance": 7,
+        "basis": "x",
+        "rounds": 700,
+        "seed": 202609260504,
+        "shots": 500000,
+        "failures": 10771,
+        "finite_window_per_round": 3.1455914538397726e-05,
+        "finite_window_interval95": [
+          3.085808451841588e-05,
+          3.2062547781515595e-05
+        ],
+        "training_predicted_failures": 13170.34520518101,
+        "plug_in_residual_sigma": -21.188033307340792
+      },
+      {
+        "p": 0.001,
+        "distance": 7,
+        "basis": "z",
+        "rounds": 700,
+        "seed": 202609260505,
+        "shots": 500000,
+        "failures": 12029,
+        "finite_window_per_round": 3.522168819900913e-05,
+        "finite_window_interval95": [
+          3.458723903978413e-05,
+          3.5865002689695766e-05
+        ],
+        "training_predicted_failures": 9244.807087019892,
+        "plug_in_residual_sigma": 29.228259020118426
+      },
+      {
+        "p": 0.001,
+        "distance": 9,
+        "basis": "x",
+        "rounds": 900,
+        "seed": 202609260506,
+        "shots": 500000,
+        "failures": 1826,
+        "finite_window_per_round": 4.0726527519131085e-06,
+        "finite_window_interval95": [
+          3.887647385057353e-06,
+          4.264204480063671e-06
+        ],
+        "training_predicted_failures": 2695.0563201180657,
+        "plug_in_residual_sigma": -16.78562874911715
+      },
+      {
+        "p": 0.001,
+        "distance": 9,
+        "basis": "z",
+        "rounds": 900,
+        "seed": 202609260507,
+        "shots": 500000,
+        "failures": 3098,
+        "finite_window_per_round": 6.927408176348558e-06,
+        "finite_window_interval95": [
+          6.684858306304427e-06,
+          7.176537562699769e-06
+        ],
+        "training_predicted_failures": 2000.4329135834591,
+        "plug_in_residual_sigma": 24.588928202416938
+      },
+      {
+        "p": 0.0001,
+        "distance": 3,
+        "basis": "x",
+        "rounds": 300,
+        "seed": 202609260508,
+        "shots": 2000000,
+        "failures": 51873,
+        "finite_window_per_round": 8.877015135251892e-05,
+        "finite_window_interval95": [
+          8.799754972490331e-05,
+          8.954794264686813e-05
+        ],
+        "training_predicted_failures": 50211.812910522196,
+        "plug_in_residual_sigma": 7.5082180480406295
+      },
+      {
+        "p": 0.0001,
+        "distance": 3,
+        "basis": "z",
+        "rounds": 300,
+        "seed": 202609260509,
+        "shots": 2000000,
+        "failures": 6102,
+        "finite_window_per_round": 1.0201051412265612e-05,
+        "finite_window_interval95": [
+          9.946306718284273e-06,
+          1.0460680309105545e-05
+        ],
+        "training_predicted_failures": 7304.339125477894,
+        "plug_in_residual_sigma": -14.093894811188466
+      },
+      {
+        "p": 0.0001,
+        "distance": 5,
+        "basis": "x",
+        "rounds": 500,
+        "seed": 202609260510,
+        "shots": 5000000,
+        "failures": 2986,
+        "finite_window_per_round": 1.1951124358668405e-06,
+        "finite_window_interval95": [
+          1.1526145559773229e-06,
+          1.2387770446477126e-06
+        ],
+        "training_predicted_failures": 4661.407998296666,
+        "plug_in_residual_sigma": -24.550738625660795
+      },
+      {
+        "p": 0.0001,
+        "distance": 5,
+        "basis": "z",
+        "rounds": 500,
+        "seed": 202609260511,
+        "shots": 5000000,
+        "failures": 2996,
+        "finite_window_per_round": 1.1991172176108058e-06,
+        "finite_window_interval95": [
+          1.156547469737201e-06,
+          1.2428536886359088e-06
+        ],
+        "training_predicted_failures": 1011.6534093189786,
+        "plug_in_residual_sigma": 62.39439738885711
+      }
+    ],
+    "caveat": "100d fits set endpoint correction to zero. Plug-in residuals omit uncertainty in the training prediction; they are diagnostics, not calibrated predictive tests."
+  },
+  "resource_comparisons": [
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 0.0001,
+      "convention": "component_mean",
+      "assumed_distance": 21,
+      "calibrated_distance": 27,
+      "distance_change": 6,
+      "qubit_ratio": 1.6530612244897962,
+      "distance_interval95_bonferroni": [
+        27,
+        27
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6530612244897962,
+        1.6530612244897962
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        25,
+        27
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.417233560090703,
+        1.6530612244897962
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 27,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.6530612244897962,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 0.0001,
+      "convention": "patch_union_bound",
+      "assumed_distance": 21,
+      "calibrated_distance": 27,
+      "distance_change": 6,
+      "qubit_ratio": 1.6530612244897962,
+      "distance_interval95_bonferroni": [
+        27,
+        27
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6530612244897962,
+        1.6530612244897962
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        27,
+        29
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.6530612244897962,
+        1.90702947845805
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 27,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.6530612244897962,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-05,
+      "convention": "component_mean",
+      "assumed_distance": 23,
+      "calibrated_distance": 29,
+      "distance_change": 6,
+      "qubit_ratio": 1.5897920604914935,
+      "distance_interval95_bonferroni": [
+        29,
+        29
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5897920604914935,
+        1.5897920604914935
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        29,
+        31
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5897920604914935,
+        1.8166351606805293
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 29,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.5897920604914935,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-05,
+      "convention": "patch_union_bound",
+      "assumed_distance": 23,
+      "calibrated_distance": 31,
+      "distance_change": 8,
+      "qubit_ratio": 1.8166351606805293,
+      "distance_interval95_bonferroni": [
+        29,
+        31
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5897920604914935,
+        1.8166351606805293
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        29,
+        31
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5897920604914935,
+        1.8166351606805293
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 29,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.5897920604914935,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-06,
+      "convention": "component_mean",
+      "assumed_distance": 25,
+      "calibrated_distance": 31,
+      "distance_change": 6,
+      "qubit_ratio": 1.5376,
+      "distance_interval95_bonferroni": [
+        31,
+        33
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5376,
+        1.7424000000000002
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        31,
+        33
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5376,
+        1.7424000000000002
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 31,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.5376,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-06,
+      "convention": "patch_union_bound",
+      "assumed_distance": 25,
+      "calibrated_distance": 33,
+      "distance_change": 8,
+      "qubit_ratio": 1.7424000000000002,
+      "distance_interval95_bonferroni": [
+        33,
+        33
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.7424000000000002,
+        1.7424000000000002
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        31,
+        33
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5376,
+        1.7424000000000002
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 31,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.5376,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 0.0001,
+      "convention": "component_mean",
+      "assumed_distance": 27,
+      "calibrated_distance": 35,
+      "distance_change": 8,
+      "qubit_ratio": 1.680384087791495,
+      "distance_interval95_bonferroni": [
+        33,
+        35
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.4938271604938274,
+        1.680384087791495
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        33,
+        35
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.4938271604938274,
+        1.680384087791495
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 33,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.4938271604938274,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 0.0001,
+      "convention": "patch_union_bound",
+      "assumed_distance": 27,
+      "calibrated_distance": 35,
+      "distance_change": 8,
+      "qubit_ratio": 1.680384087791495,
+      "distance_interval95_bonferroni": [
+        35,
+        35
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.680384087791495,
+        1.680384087791495
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        33,
+        37
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.4938271604938274,
+        1.8779149519890264
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 35,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.680384087791495,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-05,
+      "convention": "component_mean",
+      "assumed_distance": 29,
+      "calibrated_distance": 37,
+      "distance_change": 8,
+      "qubit_ratio": 1.6278240190249706,
+      "distance_interval95_bonferroni": [
+        37,
+        37
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6278240190249706,
+        1.6278240190249706
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        35,
+        37
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.4565992865636146,
+        1.6278240190249706
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 35,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.4565992865636146,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-05,
+      "convention": "patch_union_bound",
+      "assumed_distance": 29,
+      "calibrated_distance": 37,
+      "distance_change": 8,
+      "qubit_ratio": 1.6278240190249706,
+      "distance_interval95_bonferroni": [
+        37,
+        39
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6278240190249706,
+        1.808561236623068
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        35,
+        39
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.4565992865636146,
+        1.808561236623068
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 37,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.6278240190249706,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-06,
+      "convention": "component_mean",
+      "assumed_distance": 31,
+      "calibrated_distance": 39,
+      "distance_change": 8,
+      "qubit_ratio": 1.582726326742976,
+      "distance_interval95_bonferroni": [
+        39,
+        39
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.582726326742976,
+        1.582726326742976
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        37,
+        41
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.4245577523413113,
+        1.7492195629552547
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 39,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.582726326742976,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-06,
+      "convention": "patch_union_bound",
+      "assumed_distance": 31,
+      "calibrated_distance": 41,
+      "distance_change": 10,
+      "qubit_ratio": 1.7492195629552547,
+      "distance_interval95_bonferroni": [
+        39,
+        41
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.582726326742976,
+        1.7492195629552547
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        39,
+        41
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.582726326742976,
+        1.7492195629552547
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 39,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.582726326742976,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 0.0001,
+      "convention": "component_mean",
+      "assumed_distance": 33,
+      "calibrated_distance": 41,
+      "distance_change": 8,
+      "qubit_ratio": 1.5436179981634528,
+      "distance_interval95_bonferroni": [
+        41,
+        43
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5436179981634528,
+        1.6978879706152432
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        39,
+        43
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.3966942148760333,
+        1.6978879706152432
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 41,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.5436179981634528,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 0.0001,
+      "convention": "patch_union_bound",
+      "assumed_distance": 33,
+      "calibrated_distance": 43,
+      "distance_change": 10,
+      "qubit_ratio": 1.6978879706152432,
+      "distance_interval95_bonferroni": [
+        41,
+        43
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5436179981634528,
+        1.6978879706152432
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        41,
+        43
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5436179981634528,
+        1.6978879706152432
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 41,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.5436179981634528,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-05,
+      "convention": "component_mean",
+      "assumed_distance": 35,
+      "calibrated_distance": 45,
+      "distance_change": 10,
+      "qubit_ratio": 1.6530612244897962,
+      "distance_interval95_bonferroni": [
+        43,
+        45
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.509387755102041,
+        1.6530612244897962
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        43,
+        45
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.509387755102041,
+        1.6530612244897962
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 43,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.509387755102041,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-05,
+      "convention": "patch_union_bound",
+      "assumed_distance": 35,
+      "calibrated_distance": 45,
+      "distance_change": 10,
+      "qubit_ratio": 1.6530612244897962,
+      "distance_interval95_bonferroni": [
+        45,
+        45
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6530612244897962,
+        1.6530612244897962
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        43,
+        47
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.509387755102041,
+        1.8032653061224486
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 43,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.509387755102041,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-06,
+      "convention": "component_mean",
+      "assumed_distance": 37,
+      "calibrated_distance": 47,
+      "distance_change": 10,
+      "qubit_ratio": 1.6135865595325052,
+      "distance_interval95_bonferroni": [
+        47,
+        47
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6135865595325052,
+        1.6135865595325052
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        45,
+        49
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.47918188458729,
+        1.7538349159970783
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 45,
+      "long_memory_sensitivity_distance_change": 8,
+      "long_memory_sensitivity_qubit_ratio": 1.47918188458729,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-06,
+      "convention": "patch_union_bound",
+      "assumed_distance": 37,
+      "calibrated_distance": 47,
+      "distance_change": 10,
+      "qubit_ratio": 1.6135865595325052,
+      "distance_interval95_bonferroni": [
+        47,
+        49
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6135865595325052,
+        1.7538349159970783
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        45,
+        49
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.47918188458729,
+        1.7538349159970783
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 47,
+      "long_memory_sensitivity_distance_change": 10,
+      "long_memory_sensitivity_qubit_ratio": 1.6135865595325052,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 0.0001,
+      "convention": "component_mean",
+      "assumed_distance": 11,
+      "calibrated_distance": 13,
+      "distance_change": 2,
+      "qubit_ratio": 1.3966942148760333,
+      "distance_interval95_bonferroni": [
+        13,
+        13
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.3966942148760333,
+        1.3966942148760333
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        13,
+        13
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.3966942148760333,
+        1.3966942148760333
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 13,
+      "long_memory_sensitivity_distance_change": 2,
+      "long_memory_sensitivity_qubit_ratio": 1.3966942148760333,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 0.0001,
+      "convention": "patch_union_bound",
+      "assumed_distance": 11,
+      "calibrated_distance": 13,
+      "distance_change": 2,
+      "qubit_ratio": 1.3966942148760333,
+      "distance_interval95_bonferroni": [
+        13,
+        15
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.3966942148760333,
+        1.8595041322314048
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        13,
+        13
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.3966942148760333,
+        1.3966942148760333
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 13,
+      "long_memory_sensitivity_distance_change": 2,
+      "long_memory_sensitivity_qubit_ratio": 1.3966942148760333,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-05,
+      "convention": "component_mean",
+      "assumed_distance": 11,
+      "calibrated_distance": 15,
+      "distance_change": 4,
+      "qubit_ratio": 1.8595041322314048,
+      "distance_interval95_bonferroni": [
+        15,
+        15
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.8595041322314048,
+        1.8595041322314048
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        15,
+        15
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.8595041322314048,
+        1.8595041322314048
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 15,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.8595041322314048,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-05,
+      "convention": "patch_union_bound",
+      "assumed_distance": 11,
+      "calibrated_distance": 15,
+      "distance_change": 4,
+      "qubit_ratio": 1.8595041322314048,
+      "distance_interval95_bonferroni": [
+        15,
+        15
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.8595041322314048,
+        1.8595041322314048
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        15,
+        15
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.8595041322314048,
+        1.8595041322314048
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 15,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.8595041322314048,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-06,
+      "convention": "component_mean",
+      "assumed_distance": 13,
+      "calibrated_distance": 15,
+      "distance_change": 2,
+      "qubit_ratio": 1.3313609467455618,
+      "distance_interval95_bonferroni": [
+        15,
+        17
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.3313609467455618,
+        1.7100591715976332
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        15,
+        17
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.3313609467455618,
+        1.7100591715976332
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 17,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.7100591715976332,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000.0,
+      "budget": 1e-06,
+      "convention": "patch_union_bound",
+      "assumed_distance": 13,
+      "calibrated_distance": 17,
+      "distance_change": 4,
+      "qubit_ratio": 1.7100591715976332,
+      "distance_interval95_bonferroni": [
+        15,
+        17
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.3313609467455618,
+        1.7100591715976332
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        17,
+        17
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.7100591715976332,
+        1.7100591715976332
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 17,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.7100591715976332,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 0.0001,
+      "convention": "component_mean",
+      "assumed_distance": 13,
+      "calibrated_distance": 17,
+      "distance_change": 4,
+      "qubit_ratio": 1.7100591715976332,
+      "distance_interval95_bonferroni": [
+        17,
+        17
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.7100591715976332,
+        1.7100591715976332
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        17,
+        17
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.7100591715976332,
+        1.7100591715976332
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 17,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.7100591715976332,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 0.0001,
+      "convention": "patch_union_bound",
+      "assumed_distance": 13,
+      "calibrated_distance": 17,
+      "distance_change": 4,
+      "qubit_ratio": 1.7100591715976332,
+      "distance_interval95_bonferroni": [
+        17,
+        17
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.7100591715976332,
+        1.7100591715976332
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        17,
+        17
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.7100591715976332,
+        1.7100591715976332
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 17,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.7100591715976332,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-05,
+      "convention": "component_mean",
+      "assumed_distance": 15,
+      "calibrated_distance": 19,
+      "distance_change": 4,
+      "qubit_ratio": 1.6044444444444443,
+      "distance_interval95_bonferroni": [
+        17,
+        19
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.2844444444444443,
+        1.6044444444444443
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        19,
+        19
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.6044444444444443,
+        1.6044444444444443
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 19,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.6044444444444443,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-05,
+      "convention": "patch_union_bound",
+      "assumed_distance": 15,
+      "calibrated_distance": 19,
+      "distance_change": 4,
+      "qubit_ratio": 1.6044444444444443,
+      "distance_interval95_bonferroni": [
+        19,
+        19
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6044444444444443,
+        1.6044444444444443
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        19,
+        19
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.6044444444444443,
+        1.6044444444444443
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 19,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.6044444444444443,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-06,
+      "convention": "component_mean",
+      "assumed_distance": 15,
+      "calibrated_distance": 19,
+      "distance_change": 4,
+      "qubit_ratio": 1.6044444444444443,
+      "distance_interval95_bonferroni": [
+        19,
+        19
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6044444444444443,
+        1.6044444444444443
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        19,
+        19
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.6044444444444443,
+        1.6044444444444443
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 19,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.6044444444444443,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000.0,
+      "budget": 1e-06,
+      "convention": "patch_union_bound",
+      "assumed_distance": 15,
+      "calibrated_distance": 19,
+      "distance_change": 4,
+      "qubit_ratio": 1.6044444444444443,
+      "distance_interval95_bonferroni": [
+        19,
+        21
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.6044444444444443,
+        1.9599999999999997
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        19,
+        21
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.6044444444444443,
+        1.9599999999999997
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 21,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.9599999999999997,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 0.0001,
+      "convention": "component_mean",
+      "assumed_distance": 17,
+      "calibrated_distance": 21,
+      "distance_change": 4,
+      "qubit_ratio": 1.5259515570934257,
+      "distance_interval95_bonferroni": [
+        21,
+        21
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5259515570934257,
+        1.5259515570934257
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        21,
+        21
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5259515570934257,
+        1.5259515570934257
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 21,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.5259515570934257,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 0.0001,
+      "convention": "patch_union_bound",
+      "assumed_distance": 17,
+      "calibrated_distance": 21,
+      "distance_change": 4,
+      "qubit_ratio": 1.5259515570934257,
+      "distance_interval95_bonferroni": [
+        21,
+        21
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5259515570934257,
+        1.5259515570934257
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        21,
+        21
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5259515570934257,
+        1.5259515570934257
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 21,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.5259515570934257,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-05,
+      "convention": "component_mean",
+      "assumed_distance": 17,
+      "calibrated_distance": 21,
+      "distance_change": 4,
+      "qubit_ratio": 1.5259515570934257,
+      "distance_interval95_bonferroni": [
+        21,
+        23
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5259515570934257,
+        1.8304498269896197
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        21,
+        23
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.5259515570934257,
+        1.8304498269896197
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 23,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.8304498269896197,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-05,
+      "convention": "patch_union_bound",
+      "assumed_distance": 17,
+      "calibrated_distance": 23,
+      "distance_change": 6,
+      "qubit_ratio": 1.8304498269896197,
+      "distance_interval95_bonferroni": [
+        21,
+        23
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.5259515570934257,
+        1.8304498269896197
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        23,
+        23
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.8304498269896197,
+        1.8304498269896197
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 23,
+      "long_memory_sensitivity_distance_change": 6,
+      "long_memory_sensitivity_qubit_ratio": 1.8304498269896197,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-06,
+      "convention": "component_mean",
+      "assumed_distance": 19,
+      "calibrated_distance": 23,
+      "distance_change": 4,
+      "qubit_ratio": 1.4653739612188366,
+      "distance_interval95_bonferroni": [
+        23,
+        23
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.4653739612188366,
+        1.4653739612188366
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        23,
+        23
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.4653739612188366,
+        1.4653739612188366
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 23,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.4653739612188366,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    },
+    {
+      "p": 0.0001,
+      "tiles_times_cycles": 100000000000000.0,
+      "budget": 1e-06,
+      "convention": "patch_union_bound",
+      "assumed_distance": 19,
+      "calibrated_distance": 23,
+      "distance_change": 4,
+      "qubit_ratio": 1.4653739612188366,
+      "distance_interval95_bonferroni": [
+        23,
+        25
+      ],
+      "qubit_ratio_interval95_bonferroni": [
+        1.4653739612188366,
+        1.731301939058172
+      ],
+      "interval_note": "Conservative rectangle from two 97.5% profile intervals; asymptotic and conditional on the fitted law.",
+      "fit_choice_distance_range": [
+        23,
+        23
+      ],
+      "fit_choice_qubit_ratio_range": [
+        1.4653739612188366,
+        1.4653739612188366
+      ],
+      "fit_choice_note": "Sensitivity over primary, zero endpoint, 10d, 20d, d>=5 where available, and independent 100d fit when complete; not a confidence interval or rigorous systematic bound.",
+      "long_memory_sensitivity_distance": 23,
+      "long_memory_sensitivity_distance_change": 4,
+      "long_memory_sensitivity_qubit_ratio": 1.4653739612188366,
+      "long_memory_sensitivity_scope": "Post hoc 100d fit: d>=5 at 1e-3, d=3,5 at 1e-4; endpoint correction neglected."
+    }
+  ],
+  "shared_law_interpretation": "Apply the same law to STAR and FT; it cancels as a differential law assumption, but differing protected volumes and distance rounding can still change their relative costs. It does not cancel against NISQ.",
+  "sampling_library_references": [
+    "https://github.com/quantumlib/Stim",
+    "https://pymatching.readthedocs.io/en/stable/"
+  ]
+}

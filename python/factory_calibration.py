@@ -165,10 +165,14 @@ def menu():
 
 
 def main():
+    global FIT, OUT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('validate', 'run', 'menu'))
     parser.add_argument('--workers', type=int, default=120)
+    parser.add_argument('--fit', default=str(FIT.relative_to(ROOT)), help='surface-code law (fit.json)')
+    parser.add_argument('--out', default=str(OUT.relative_to(ROOT)), help='output folder')
     args = parser.parse_args()
+    FIT, OUT = ROOT/args.fit, ROOT/args.out
     if args.action == 'validate':
         cases = [(lawname, kind, p, a) for kind, p, a in PUBLISHED for lawname in ('reference', 'calibrated')]
         run(cases, OUT/'published.jsonl', min(args.workers, len(cases)))

@@ -20,7 +20,7 @@ TARGETS = [('RSA-2048', 2.5e8), ('FeMoco', 3.4e8)]
 
 def published_factories(p):
     """FT with Litinski-type factories re-optimized under the calibrated law, alongside cultivation."""
-    rows = read(ROOT/'results/quops_sensitivity_v1/capability.json')
+    rows = read(ROOT/settings().get('sensitivity_output', 'results/quops_sensitivity_v1')/'capability.json')
     return {v['Q']: v['score'] for v in rows if v['variant'] == 'calibrated_factories' and v['arm'] == 'ft' and v['p'] == p}
 
 
@@ -43,12 +43,12 @@ def main():
                     ax.fill_between(Q, y, np.fmax(better, y), step='post', color=COLORS['ft'], alpha=.15, lw=0)
         for name, value in MEASURED:
             ax.axhline(value, color='#999999', lw=.8, ls=':')
-            ax.text(1.3e2, value*1.15, f'{name} (measured)', fontsize=7.5, color='#666666')
+            ax.text(1.3*settings().get('q_min', 1e2), value*1.15, f'{name} (measured)', fontsize=7.5, color='#666666')
         for (name, value), offset in zip(TARGETS, (0.55, 1.2)):
             ax.axhline(value, color='#bbbbbb', lw=.8, ls='-.')
-            ax.text(1.3e2, value*offset, f'{name} target', fontsize=7.5, color='#666666',
+            ax.text(1.3*settings().get('q_min', 1e2), value*offset, f'{name} target', fontsize=7.5, color='#666666',
                     va='top' if offset < 1 else 'bottom')
-        ax.set(xscale='log', yscale='log', xlim=(1e2, 1e9), ylim=(1e1, 1e12),
+        ax.set(xscale='log', yscale='log', xlim=(settings().get('q_min', 1e2), 1e9), ylim=(1e1, 1e12),
                title=rf'$p={p:g}$', xlabel='Available physical qubits Q')
         ax.grid(alpha=.2)
     np.atleast_1d(axes)[0].set_ylabel('QUOPS score (largest passing size s)')
@@ -64,7 +64,7 @@ def main():
              ha='center', fontsize=8.5, color='#555555')
     fig.tight_layout(rect=(0, .06, 1, 1))
     for ext in ('pdf', 'png'):
-        fig.savefig(ROOT/f'figures/quops_capability.{ext}', dpi=180, bbox_inches='tight')
+        fig.savefig(ROOT/f"figures/quops_capability{settings().get('figure_suffix', '')}.{ext}", dpi=180, bbox_inches='tight')
     plt.close(fig)
 
 

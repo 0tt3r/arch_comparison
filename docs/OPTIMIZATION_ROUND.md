@@ -60,6 +60,31 @@ Two further configurations attribute the hybrid's advantage and replace the decl
   coherent cancellation. STAR loses 2–4 sites of reach and the hybrid 0–2; FT is strictly ahead from
   5×10⁵ instead of 7.9×10⁵ at p = 10⁻³, ε = 0.01; every never-behind point is unchanged.
 
+## Rounds v4 and v5: uniform noise (SD6)
+
+The manuscript now uses standard uniform circuit noise: p on every gate, idle, reset and measurement
+([SURFACE_LAW_SD6.md](SURFACE_LAW_SD6.md)). Round v4 repeats v2 (both families, all option menus) and
+round v5 repeats v3 (τ = L/4 sensitivities; its `all` reproduces v4 exactly) with three changes: the
+SD6 surface-code law (Λ = 6.30, A = 0.103 at p = 10⁻³; Λ = 44 at 10⁻⁴), SD6 STAR growth bounds
+(`results/growth_sd6_v1`), and a physical PEC reference that also charges one-qubit gates at p
+(`pec_uniform`: 0.8 one-qubit gates per two-qubit gate, the compiled fSWAP network; idle not charged).
+The calibrated factory menu is re-priced under the SD6 law (`results/factory_calibration_sd6_v1`).
+
+Headline (v5 `calibrated_factories`, τ = L/4):
+
+| p | ε | Encoded > physical (PEC / eff.) | FT never behind | STAR / hybrid | FT at τ = 8 |
+|---|---|---|---|---|---|
+| 10⁻³ | 0.01 | 0.7 / 3.2 ×10⁵ | 3.5×10⁵ | τ 2.5 / 3 | 9.6×10⁶ |
+| 10⁻³ | 0.001 | 1.1 / 4.1 ×10⁵ | 4.7×10⁵ | τ 1.5 / 2.5 | 7.9×10⁷ |
+| 10⁻⁴ | 0.01 | 0.7 / 2.0 ×10⁵ | 2.1×10⁵ | τ 4.5 / 5.5 | 2.0×10⁶ |
+| 10⁻⁴ | 0.001 | 0.7 / 2.9 ×10⁵ | 1.9×10⁵ | τ 3 / 4.5 | 9.6×10⁶ |
+
+Relative to the earlier model (v3) the qualitative picture is unchanged; FT's crossovers move 10–20% later
+at p = 10⁻³. The leader changes by option (v4, 64 cells) are FT delivery 10, lanes 4, Richardson 4, raw RUS 2,
+separate distances 2, all five 15. The reference-to-calibrated law change alters 9 of 64 leaders (4 on the
+time-growing workload). Without raw RUS FT is never behind earlier at p = 10⁻³ (1.9×10⁵ instead of 3.5×10⁵ at
+ε = 0.01). Numbers are printed by `python/sd6_numbers.py`; figures by `make optimization-round-sd6-figures`.
+
 ## Findings (round v1, reference law)
 
 Headline: time-growing workload τ = L/4, all five changes, one week. Exact tables are in the [summary](../results/optimization_round_v1/summary.md).

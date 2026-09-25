@@ -1,0 +1,140 @@
+{
+  "created": "2026-09-24",
+  "model": "SD6 uniform circuit noise",
+  "cases": [
+    {
+      "p": 0.001,
+      "distance": 3,
+      "shots": 500000,
+      "rounds": 300,
+      "basis": "x",
+      "batch": 4096,
+      "seed": 202609260500,
+      "key": "d3_x_p0.001_r300_s202609260500",
+      "worker": 0
+    },
+    {
+      "p": 0.001,
+      "distance": 3,
+      "shots": 500000,
+      "rounds": 300,
+      "basis": "z",
+      "batch": 4096,
+      "seed": 202609260501,
+      "key": "d3_z_p0.001_r300_s202609260501",
+      "worker": 0
+    },
+    {
+      "p": 0.001,
+      "distance": 5,
+      "shots": 500000,
+      "rounds": 500,
+      "basis": "x",
+      "batch": 4096,
+      "seed": 202609260502,
+      "key": "d5_x_p0.001_r500_s202609260502",
+      "worker": 0
+    },
+    {
+      "p": 0.001,
+      "distance": 5,
+      "shots": 500000,
+      "rounds": 500,
+      "basis": "z",
+      "batch": 4096,
+      "seed": 202609260503,
+      "key": "d5_z_p0.001_r500_s202609260503",
+      "worker": 0
+    },
+    {
+      "p": 0.001,
+      "distance": 7,
+      "shots": 500000,
+      "rounds": 700,
+      "basis": "x",
+      "batch": 4096,
+      "seed": 202609260504,
+      "key": "d7_x_p0.001_r700_s202609260504",
+      "worker": 0
+    },
+    {
+      "p": 0.001,
+      "distance": 7,
+      "shots": 500000,
+      "rounds": 700,
+      "basis": "z",
+      "batch": 4096,
+      "seed": 202609260505,
+      "key": "d7_z_p0.001_r700_s202609260505",
+      "worker": 0
+    },
+    {
+      "p": 0.001,
+      "distance": 9,
+      "shots": 500000,
+      "rounds": 900,
+      "basis": "x",
+      "batch": 4096,
+      "seed": 202609260506,
+      "key": "d9_x_p0.001_r900_s202609260506",
+      "worker": 0
+    },
+    {
+      "p": 0.001,
+      "distance": 9,
+      "shots": 500000,
+      "rounds": 900,
+      "basis": "z",
+      "batch": 4096,
+      "seed": 202609260507,
+      "key": "d9_z_p0.001_r900_s202609260507",
+      "worker": 0
+    },
+    {
+      "p": 0.0001,
+      "distance": 3,
+      "shots": 2000000,
+      "rounds": 300,
+      "basis": "x",
+      "batch": 4096,
+      "seed": 202609260508,
+      "key": "d3_x_p0.0001_r300_s202609260508",
+      "worker": 0
+    },
+    {
+      "p": 0.0001,
+      "distance": 3,
+      "shots": 2000000,
+      "rounds": 300,
+      "basis": "z",
+      "batch": 4096,
+      "seed": 202609260509,
+      "key": "d3_z_p0.0001_r300_s202609260509",
+      "worker": 0
+    },
+    {
+      "p": 0.0001,
+      "distance": 5,
+      "shots": 5000000,
+      "rounds": 500,
+      "basis": "x",
+      "batch": 4096,
+      "seed": 202609260510,
+      "key": "d5_x_p0.0001_r500_s202609260510",
+      "worker": 0
+    },
+    {
+      "p": 0.0001,
+      "distance": 5,
+      "shots": 5000000,
+      "rounds": 500,
+      "basis": "z",
+      "batch": 4096,
+      "seed": 202609260511,
+      "key": "d5_z_p0.0001_r500_s202609260511",
+      "worker": 0
+    }
+  ],
+  "worker_sha256": "b90b154b66e66826c0a7b6109d7ac730371ac0b4325a2dd465f27768f8140e48",
+  "sd6_module_sha256": "fe407299e859e822c0399d4f1bbd66a8fdfe4580d8788c5c40d88bd9e2aa43f4"
+}

@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "model": "SD6: p after every 1q/2q gate, p per idle qubit per layer, flip p after reset and before measurement",
+  "rows": [
+    {
+      "distance": 3,
+      "basis": "x",
+      "noiseless_detection_events": 0,
+      "detectors": 72,
+      "error_mechanisms": 1388
+    },
+    {
+      "distance": 3,
+      "basis": "z",
+      "noiseless_detection_events": 0,
+      "detectors": 72,
+      "error_mechanisms": 1369
+    },
+    {
+      "distance": 5,
+      "basis": "x",
+      "noiseless_detection_events": 0,
+      "detectors": 360,
+      "error_mechanisms": 7659
+    },
+    {
+      "distance": 5,
+      "basis": "z",
+      "noiseless_detection_events": 0,
+      "detectors": 360,
+      "error_mechanisms": 7654
+    }
+  ]
+}

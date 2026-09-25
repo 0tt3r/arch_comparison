@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#PBS -N growth-sd6
+#PBS -A QC_NA_Sim
+#PBS -q backfill
+#PBS -l select=1:ncpus=128
+#PBS -l place=scatter
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -r y
+set -euo pipefail
+cd /lcrc/project/QC_NA_Sim/architecture_comparison/python
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+/home/ac.otten/soft/mambaforge/envs/stim/bin/python -u growth_sd6.py --workers 24
