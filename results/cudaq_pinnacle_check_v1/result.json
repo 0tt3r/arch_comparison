@@ -1,0 +1,205 @@
+{
+  "cudaq_logical_version": "0.1.1.post1",
+  "workload": "2x2 Hubbard, plaquette, one step, tau = 0.5",
+  "precision": 1e-06,
+  "rotations": 28,
+  "tables": [
+    {
+      "item": "gb30",
+      "ledger": [
+        30,
+        8,
+        4,
+        140,
+        6
+      ],
+      "cudaq": [
+        30,
+        8,
+        4,
+        140,
+        6
+      ],
+      "match": true
+    },
+    {
+      "item": "gb62",
+      "ledger": [
+        62,
+        10,
+        6,
+        244,
+        8
+      ],
+      "cudaq": [
+        62,
+        10,
+        6,
+        244,
+        8
+      ],
+      "match": true
+    },
+    {
+      "item": "gb126",
+      "ledger": [
+        126,
+        12,
+        10,
+        452,
+        12
+      ],
+      "cudaq": [
+        126,
+        12,
+        10,
+        452,
+        12
+      ],
+      "match": true
+    },
+    {
+      "item": "gb254",
+      "ledger": [
+        254,
+        14,
+        16,
+        860,
+        18
+      ],
+      "cudaq": [
+        254,
+        14,
+        16,
+        860,
+        18
+      ],
+      "match": true
+    },
+    {
+      "item": "gb510",
+      "ledger": [
+        510,
+        16,
+        24,
+        1620,
+        26
+      ],
+      "cudaq": [
+        510,
+        16,
+        24,
+        1620,
+        26
+      ],
+      "match": true
+    },
+    {
+      "item": "p1e-4_1e-9",
+      "ledger": [
+        592,
+        14,
+        0.9981,
+        9.6e-10
+      ],
+      "cudaq": [
+        592,
+        14,
+        0.9981,
+        9.63e-10
+      ],
+      "match": true
+    },
+    {
+      "item": "p1e-4_1e-11",
+      "ledger": [
+        1807,
+        18,
+        0.98,
+        8.4e-12
+      ],
+      "cudaq": [
+        1807,
+        18,
+        0.98,
+        8.390695e-12
+      ],
+      "match": true
+    },
+    {
+      "item": "p1e-3_1e-9",
+      "ledger": [
+        4410,
+        26,
+        0.9,
+        6.2e-10
+      ],
+      "cudaq": [
+        4410,
+        26,
+        0.9,
+        6.151615600000003e-10
+      ],
+      "match": true
+    },
+    {
+      "item": "p1e-3_1e-11",
+      "ledger": [
+        5430,
+        26,
+        0.9,
+        1.2e-11
+      ],
+      "cudaq": [
+        5430,
+        26,
+        0.9,
+        1.2005419999999997e-11
+      ],
+      "match": true
+    }
+  ],
+  "tables_match": true,
+  "footprint": {
+    "blocks": 1,
+    "block_qubits": 140,
+    "scratch_blocks": 1,
+    "engine_qubits": 4410,
+    "cudaq_total": 4690,
+    "ledger_total": 4550
+  },
+  "routes": [
+    {
+      "route": "A",
+      "T_count": 744,
+      "p0_actions": {
+        "qlx_standard_pauli_rotation": 744
+      },
+      "status": "P2 compiled",
+      "engine_requests": 744,
+      "resource_rotations": 744,
+      "gadget_calls": {
+        "zero": 1,
+        "inject": 744,
+        "r6": 8
+      },
+      "analytical": "MissingEvidence: Tier.ANALYTICAL could not authenticate the selected device's active physical-resource closure",
+      "p3": "RuntimeError: Pass pipeline failed: fabric-to-phys{root-symbol=program_placed_qec device-symbol=PinnacleCheck graph-symbol=program_placed_qec_physical defer-output-verification=true} | loc(unknown): 'fabric.resource_rotate_product' op has an invalid resource-assisted physical Pauli product"
+    },
+    {
+      "route": "B",
+      "p0_actions": {
+        "qlx_standard_x": 4,
+        "qlx_standard_pauli_rotation": 28,
+        "qlx_standard_z": 8
+      },
+      "status": "failed before P2",
+      "error": "MLIRError: Verification failed: | error: unknown: 'fabric.retry' op retry success semantics do not match an exact ordered OutcomeMap row"
+    }
+  ],
+  "notes": [
+    "P3 failure diagnostic (native pass, printed to stderr): 'fabric.resource_rotate_product' op has an invalid resource-assisted physical Pauli product; with carrier-level qubits instead: 'fabric.transform_begin' op has an invalid physical frame projection",
+    "Analytical tier: the WSC gadgets' fabric.output_syndrome ops have no typed cost semantics",
+    "Route B needs pygridsynth (installed 2.0.0 into .venv-cudaq)"
+  ]
+}

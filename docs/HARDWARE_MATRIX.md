@@ -77,6 +77,22 @@ Pinnacle's jump near 10⁴ qubits is one sampler of six [[254,14,16]] blocks plu
 consequence. The grid QUOPS panels are computed from costs.json on the 10–10⁹ grid (quops_v1's
 capability.json starts at 10²).
 
+## CUDA-Q Logical cross-check (results/cudaq_pinnacle_check_v1, `make pinnacle-check`)
+
+- Codes (n, k, d, block qubits, cycle rounds) and all four engines (qubits, cycles per attempt, acceptance,
+  output error) match python/pinnacle.py entry by entry.
+- A 2×2 Hubbard plaquette step on a gb30 + p1e-3 engine device compiles to P2 via Clifford+T and PBC:
+  744 T → 744 engine requests → 744 `inject` gadgets (one logical Pauli-product measurement each). This
+  confirms the ledger's one-T-per-logical-measurement rule.
+- CUDA-Q binds one extra processing block per sampler as RUS scratch (4690 vs 4550 qubits here); the
+  ledger (paper Eq. 18) omits it. In our chosen designs: ≤3% for Hubbard L ≥ 16, +9% for the 9570-qubit
+  QUOPS sampler, up to +43% for one-block samplers (gb126 + 592-qubit engine, QUOPS w = 12 at p = 1e-4).
+- Not checkable in cudaq-logical 0.1.1.post1: P3 lowering of the GB codes ('fabric.resource_rotate_product'
+  op has an invalid resource-assisted physical Pauli product), the analytical tier (WSC output_syndrome
+  ops have no cost semantics), Pinnacle's RUS rotation route ('fabric.retry' op retry success semantics do
+  not match an exact ordered OutcomeMap row), and the logical-error fit (CUDA-Q uses a generic
+  0.1(p/0.01)^((d+1)/2) law). RUS would lower T counts, so our gridsynth counts are conservative for Pinnacle.
+
 ## Work plan
 
 1. (done) Pinnacle arm (Hubbard in `optimization_round.py`, QUOPS in `quops_study.py`), with the Table IV replay.
