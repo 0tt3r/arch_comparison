@@ -576,7 +576,18 @@ are synthesized as in FT, with the same Hamming-weight batching and
 Richardson options, and the search chooses the code, the engine, and the error
 split. As a check, the ledger reproduces the paper's Fermi--Hubbard ground-state
 estimates (their Table~IV) to within 1\%, using the $p_{\rm out}=10^{-9}$
-engine that the table, but not their Eq.~(20), assumes at $p=10^{-4}$.
+engine that the table, but not their Eq.~(20), assumes at $p=10^{-4}$. Independently, the
+codes and engines in CUDA-Q Logical's Pinnacle architecture agree with ours
+entry by entry, and compiling a $2\times2$ Hubbard step on a gb30 device with
+it turns each of the 744 T gates into one engine request and one logical
+Pauli-product measurement on the block, as the ledger assumes. That device
+also reserves one processing block per sampler as repeat-until-success
+scratch, which the ledger omits: at most 3\% of a sampler for
+$L\geq16$, 9\% for the 9570-qubit random-circuit sampler, and up to 40\% for
+the smallest samplers of one block and an engine. The compiler does not yet lower
+these codes to physical operations, and its repeat-until-success rotations,
+which would need fewer T gates than the gridsynth sequences we charge, do not
+yet pass its own verifier; our Pinnacle T counts are therefore conservative.
 
 Four features of this ledger favor Pinnacle, and one disfavors it. The decoder
 is optimal rather than practical; Eq.~\eqref{eq:pinnacle} is fitted at
